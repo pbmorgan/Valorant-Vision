@@ -1,5 +1,8 @@
 # Valorant-Vision
 
+# Fork Contributors
+- Jackson Johnson
+
 # FOR LINUX (Debian/Ubuntu)
 
 ## Requirements
