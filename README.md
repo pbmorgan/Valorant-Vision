@@ -3,6 +3,7 @@
 # Fork Contributors
 - Jackson Johnson
 - Preston Morgan
+- Jorgan Petit
 
 # FOR LINUX (Debian/Ubuntu)
 
