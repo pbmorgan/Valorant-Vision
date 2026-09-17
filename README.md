@@ -4,6 +4,7 @@
 - Jackson Johnson
 - Preston Morgan
 - Jorgan Petit
+- Luisa Quintero Pineda
 
 # FOR LINUX (Debian/Ubuntu)
 
