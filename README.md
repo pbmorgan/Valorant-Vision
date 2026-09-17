@@ -5,6 +5,7 @@
 - Preston Morgan
 - Jorgan Petit
 - Luisa Quintero Pineda
+- Diyar Tahir
 
 # FOR LINUX (Debian/Ubuntu)
 
