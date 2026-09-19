@@ -76,11 +76,11 @@ Add the following paths to the highlighted option in the image:
 ![Example of Env Variablle](images/picture.jpg)
 
 AFTER DOUBLE CLICKING ON Path!!
-//Note: If you installed Qt or OpenCV somewhere else, use that path instead. 
-`C:\Qt\6.11.2\msvc2022_64\bin`  
-`C:\opencv\build\bin`
-`C:\[FILE PATH TO Valorant-Vision]\Valorant-Vision\build\vcpkg_installed\x64-windows\bin` 
-  - //Note: I'll find a better way to handle the line above later, but for now this is how I got it to work.
+  - //Note: If you installed Qt or OpenCV somewhere else, use that path instead. 
+  - `C:\Qt\6.11.2\msvc2022_64\bin`  
+  - `C:\opencv\build\bin`
+  - `C:\[FILE PATH TO Valorant-Vision]\Valorant-Vision\build\vcpkg_installed\x64-windows\bin` 
+    - //Note: I'll find a better way to handle the line above later, but for now this is how I got it to work.
 
 Create new environment variable:
   - Variable name: `QT_PLUGIN_PATH`
