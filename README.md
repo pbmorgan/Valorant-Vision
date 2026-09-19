@@ -45,6 +45,15 @@
   - Install the following workloads:
     - Python development
     - Desktop development with C++
+
+- vcpkg
+  - From the terminal application on Windows, run the following commands:
+    - `cd C:\` 
+      - //Note: You can install vcpkg anywhere, but I recommend C:\ for simplicity.   
+    - `git clone https://github.com/microsoft/vcpkg.git`
+    - `cd vcpkg`
+    - `.\bootstrap-vcpkg.bat`
+  - That's it! vcpkg is now installed and ready to use.
   
 - Qt: https://www.qt.io/development/download-qt-installer-oss
   - Download the Qt installer and run it
