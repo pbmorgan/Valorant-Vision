@@ -98,8 +98,8 @@ Create new system variable:
 
 ## To make the Build
 In Visual Studio's 'Developer Powershell'; make sure you're in the `\Valorant_Vision` directory and run the follwing commands:  
-  -`cmake -S . -B build`: Generates the build files in the `\build` directory 
-  -`cmake --build build --config Release`: Compiles the project and creates the executable in the `\build\Release` directory
+  - `cmake -S . -B build`: Generates the build files in the `\build` directory
+  - `cmake --build build --config Release`: Compiles the project and creates the executable in the `\build\Release` directory
 
 If you need to rebuild or make the build again; before building run the following command in the `Developer Command Prompt` to delete the previous build:  
 `rmdir /s /q build`
