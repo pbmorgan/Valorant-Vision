@@ -106,9 +106,19 @@ Create new system variable:
 ![Example of System Variable](images/sys_var_example.jpg)
 
 ## To make the Build
-In Visual Studio's 'Developer Powershell'; make sure you're in the `\Valorant_Vision` directory and run the follwing commands:  
-  - `cmake -S . -B build`: Generates the build files in the `\build` directory
-  - `cmake --build build --config Release`: Compiles the project and creates the executable in the `\build\Release` directory
+In Visual Studio's 'Developer Powershell'; make sure you're in the `\Valorant_Vision` directory and run the follwing commands:
+  - `vcpkg new --application`: Creates a `vcpkg.json` file in the current directory
+  - These commands will add the following dependencies to your `vcpkg.json` file:
+    - `vcpkg add port eigen3`
+    - `vcpkg add port tesseract`
+    - `vcpkg add port nlohmann-json`
+    - `vcpkg add port onnxruntime`
+
+  - Close and reopen Visual Studio and wait for cmake to finish configuring the project. This will take a long time the first time around, but once it's finished you should see a message in the output window that says "Configuring done".
+  - Once cmake is done configuring, you can build the project by running the following commands:
+    - //Note: The next two commands for building the project will take a long time the first time around, possibly 30 minutes or more depending on your system.
+    - `cmake -S . -B build`: Generates the build files in the `\build` directory
+    - `cmake --build build --config Release`: Compiles the project and creates the executable in the `\build\Release` directory
 
 If you need to rebuild or make the build again; before building run the following command in the `Developer Command Prompt` to delete the previous build:  
 `rmdir /s /q build`
