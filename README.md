@@ -75,21 +75,25 @@ Select `Environment Varaibles` option below Startup and Recovery.
 Add the following paths to the highlighted option in the image:
 ![Example of Env Variablle](images/picture.jpg)
 
-AFTER DOUBLE CLICKING ON Path!! //Note: If you installed Qt or OpenCV somewhere else, use that path instead. 
+AFTER DOUBLE CLICKING ON Path!!
+//Note: If you installed Qt or OpenCV somewhere else, use that path instead. 
 `C:\Qt\6.11.2\msvc2022_64\bin`  
 `C:\opencv\build\bin`
-`C:\[FILE PATH TO Valorant-Vision]\Valorant-Vision\build\vcpkg_installed\x64-windows\bin` //Note: I'll find a better way to do this later, but for now this is how I got it to work.
+`C:\[FILE PATH TO Valorant-Vision]\Valorant-Vision\build\vcpkg_installed\x64-windows\bin` 
+  - //Note: I'll find a better way to handle the line above later, but for now this is how I got it to work.
 
 Create new environment variable:
   - Variable name: `QT_PLUGIN_PATH`
-  - Variable value (Example): `C:\Qt\6.11.2\msvc2022_64\plugins` //Note: If you installed Qt somewhere else, use that path instead.
+  - Variable value (Example): `C:\Qt\6.11.2\msvc2022_64\plugins` 
+    - //Note: If you installed Qt somewhere else, use that path instead.
 
 Click 'New...' under 'System Variables':
 ![Example of System Variable](images/system_var.jpg)
 
 Create new system variable:
   - Variable name: `VCPKG_ROOT`
-  - Variable value (Example): `C:\vcpkg` //Note: If you installed vcpkg somewhere else, use that path instead.
+  - Variable value (Example): `C:\vcpkg` 
+    - //Note: If you installed vcpkg somewhere else, use that path instead.
 ![Example of System Variable](images/sys_var_example.jpg)
 
 ## To make the Build
