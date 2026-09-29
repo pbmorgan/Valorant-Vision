@@ -4,6 +4,12 @@ if (NOT DEFINED ${CMAKE_TOOLCHAIN_FILE})
     set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
 endif()
 
+# Dynamically link the runtime libraries on Windows (MSVC)
+if(MSVC)
+    cmake_policy(SET CMP0091 NEW)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
+endif()
+
 project(Valorant-Vision)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_AUTOMOC ON)
@@ -77,6 +83,14 @@ target_link_libraries(Valorant-Vision PUBLIC
     Tesseract::libtesseract
     leptonica
     CURL::libcurl
+)
+
+# Copy the runtime DLLs to the output directory
+add_custom_command(TARGET Valorant-Vision POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    $<TARGET_RUNTIME_DLLS:Valorant-Vision>
+    $<TARGET_FILE_DIR:Valorant-Vision>
+    COMMAND_EXPAND_LISTS
 )
 
 # adds the minimap folder to the .exe directory
