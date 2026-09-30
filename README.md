@@ -127,8 +127,127 @@ If you need to rebuild or make the build again; before building run the followin
 Open the `\build\Release` directory in File Explorer and double click on `Valorant-Vision.exe` to run the program.
 
 
-# For MacOS
+#For MacOS 
 
-## Requirements
+- Tested on Apple Silicon (arm64). Intel Macs should use the x64-osx vcpkg triplet instead of arm64-osx. 
+
+##Requirements 
+#MacOS Build Requirements 
+- Xcode Command Line Tools  
+- Homebrew  
+- CMake  
+- Git  
+- Git LFS  
+- Ninja  
+- pkg-config  
+- Autoconf
+- Automake  
+- Autoconf Archive  
+- Libtool 
+- vcpkg 
+
+1. Check your Mac architecture: 
+
+  uname -m 
+
+If the output is arm64, you are using Apple Silicon. If the output is x86_64, you are using an Intel Mac. 
+
+2. Install the Xcode Command Line Tools: 
+
+  xcode-select –-install 
+
+3. Verify the C++ Compiler 
+
+  clang++ --version 
+
+4. Install the required development tools with Homebrew: 
+
+  brew install cmake git git-lfs pkg-config ninja autoconf automake autoconf-archive libtool 
+
+5. Initialize Git LFS: 
+
+  git lfs install 
+
+6. Clone vcpkg: 
+
+  cd ~ 
+  
+  git clone (https://github.com/pbmorgan/Valorant-Vision)
+  
+  cd vcpkg 
+  
+  ./bootstrap-vcpkg.sh 
+
+7. Set the vcpkg environment variables: 
+Apple Silicon: 
+
+  export VCPKG_ROOT="$HOME/vcpkg" 
+
+  export VCPKG_DEFAULT_TRIPLET=arm64-osx 
+
+Intel Mac: 
+  
+  export VCPKG_ROOT="$HOME/vcpkg" 
+  
+  export VCPKG_DEFAULT_TRIPLET=x64-osx 
+
+8. To make these variables permanent: 
+Apple Silicon: 
+
+  echo 'export VCPKG_ROOT="$HOME/vcpkg"' >> ~/.zshrc 
+
+  echo 'export VCPKG_DEFAULT_TRIPLET=arm64-osx' >> ~/.zshrc 
+
+  source ~/.zshrc 
+
+Intel Mac: 
+  
+  echo 'export VCPKG_ROOT="$HOME/vcpkg"' >> ~/.zshrc 
+  
+  echo 'export VCPKG_DEFAULT_TRIPLET=x64-osx' >> ~/.zshrc 
+  
+  source ~/.zshrc 
+
+9. Install the required libraries: 
+
+  cd ~/vcpkg 
+
+   ./vcpkg install \ 
+  qtbase \ 
+  qtmultimedia \ 
+  opencv4 \ 
+  eigen3 \ 
+  tesseract \ 
+  leptonica \ 
+  curl \ 
+  nlohmann-json \ 
+  onnxruntime 
+
+## To make the Build 
+1. Clone Valorant-Vision: 
+
+  git clone <REPOSITORY-URL> 
+  
+  cd Valorant-Vision 
+
+2. Download the Git LFS files: 
+
+  git lfs pull 
+
+3. Configure the project with CMake: 
+
+  cmake -S . -B build \ 
+  
+  -DCMAKE_TOOLCHAIN_FILE="$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake" 
+
+4. Build the project: 
+
+  cmake --build build -j$(sysctl -n hw.ncpu) 
+
+5. Run Valorant-Vision: 
+
+   ./build/Valorant-Vision 
+
+ 
 
 
