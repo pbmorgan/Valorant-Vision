@@ -122,7 +122,7 @@ void Minimap::redrawAgents(Eigen::MatrixXf frameData) {
         int xmax = frameData(i, 2);
         int ymax = frameData(i, 3);
         int trackID = frameData(i, 4);
-        int classID = frameData(i, 5);
+        int classID = frameData(i, 6);
 
         //Get the right agent
         cv::Mat agent = agentIcons[classID];
