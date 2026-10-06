@@ -28,7 +28,6 @@ find_package(onnxruntime CONFIG REQUIRED)
 include(FetchContent)
 
 # Download yaml-cpp because it breaks if used with vcpkg because of course...
-set(YAML_MSVC_SHARED_RT ON CACHE BOOL "Use MSVC shared runtime library" FORCE)
 FetchContent_Declare(
     yaml-cpp
     GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
