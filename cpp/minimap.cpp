@@ -98,6 +98,9 @@ QPixmap Minimap::cvMatToQPixmap(const cv::Mat &inMat) {
 }
 
 void Minimap::redrawAgents(Eigen::MatrixXf frameData) {
+    qDebug() << "[Minimap] received rows:" << frameData.rows()
+             << "columns:" << frameData.cols()
+             << "layout:" << mapFile;
 
     //Don't redraw if there are no predictions or if the predictions are unchanged from the last frame
     if (frameData.rows() == 0) { return; }
