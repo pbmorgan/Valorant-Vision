@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 3.16)
 
-if (NOT DEFINED ${CMAKE_TOOLCHAIN_FILE}) 
-    set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
-endif()
-
-# Dynamically link the runtime libraries on Windows (MSVC)
+# Use the standalone vcpkg installation
+set(
+    CMAKE_TOOLCHAIN_FILE
+    "C:/Users/Jr121/vcpkg/scripts/buildsystems/vcpkg.cmake"
+    CACHE FILEPATH ""
+    FORCE
+)
 if(MSVC)
     cmake_policy(SET CMP0091 NEW)
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
@@ -26,6 +28,10 @@ find_package(nlohmann_json CONFIG REQUIRED)
 find_package(onnxruntime CONFIG REQUIRED)
 
 include(FetchContent)
+
+if(MSVC)
+    set(YAML_MSVC_SHARED_RT ON CACHE BOOL "" FORCE)
+endif()
 
 # Download yaml-cpp because it breaks if used with vcpkg because of course...
 FetchContent_Declare(
@@ -115,13 +121,18 @@ add_custom_command(TARGET Valorant-Vision POST_BUILD
     "${CMAKE_SOURCE_DIR}/tessdata"
     "$<TARGET_FILE_DIR:Valorant-Vision>/tessdata"
 )
-
-# Copy data folder (players.txt) next to the exe so WebScraper finds it on any machine
+# Create the runtime players.txt from the source seed database
+# only when the runtime database does not already exist.
+#
+# This prevents rebuilding the project from overwriting teams
+# that were added to players.txt while the application was running.
 add_custom_command(TARGET Valorant-Vision POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    "${CMAKE_SOURCE_DIR}/data"
-    "$<TARGET_FILE_DIR:Valorant-Vision>/data"
+    COMMAND ${CMAKE_COMMAND}
+        "-DSOURCE_FILE=${CMAKE_SOURCE_DIR}/data/players.txt"
+        "-DDEST_FILE=$<TARGET_FILE_DIR:Valorant-Vision>/data/players.txt"
+        -P "${CMAKE_SOURCE_DIR}/cmake/CopySeedData.cmake"
 )
+
 
 # Copy over singular files
 foreach(DLL

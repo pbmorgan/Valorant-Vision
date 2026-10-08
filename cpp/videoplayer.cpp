@@ -4,7 +4,10 @@
 #include <QAudioOutput>
 #include <QVideoWidget>
 #include <QMediaMetadata>
-
+#include <QImage>
+// Needed to access Qt's decoded video frames.
+#include <QVideoSink>
+#include <QVideoFrame>
 #include <opencv2/opencv.hpp>
 
 #include <string>
@@ -24,6 +27,38 @@ VideoPlayer::VideoPlayer(QWidget *parentAddress) :
 
 	player->setVideoOutput(videoWidget);
 	player->setAudioOutput(audioOutput);
+
+	// Get access to the frames that Qt has already decoded for QVideoWidget.
+	// This lets OCR reuse the same decoded video instead of opening the MP4 again.
+	/*connect(videoWidget->videoSink(), &QVideoSink::videoFrameChanged,
+		this, [this](const QVideoFrame& frame) {
+
+			// Ignore invalid video frames.
+			if (!frame.isValid()) {
+				return;
+			}
+
+			// OCR only needs one frame about every 500 ms.
+			// Do not send every video frame to Tesseract.
+			qint64 currentPosition = player->position();
+
+			if (currentPosition - lastOcrFramePositionMs < 500) {
+				return;
+			}
+
+			lastOcrFramePositionMs = currentPosition;
+
+			// Convert Qt's already-decoded frame into a QImage.
+			QImage image = frame.toImage();
+
+			if (image.isNull()) {
+				return;
+			}
+
+		// Send the already-decoded image to OCR.
+			emit ocrFrameReady(image);
+		});
+		*/
 
 	connect(player, &QMediaPlayer::durationChanged, slider, &QSlider::setMaximum);
 	connect(player, &QMediaPlayer::positionChanged, slider, &QSlider::setValue);
@@ -52,12 +87,17 @@ qint64 VideoPlayer::currentPositionMs() const
 //Takes in the url to a video and displays it
 void VideoPlayer::displayVideo(std::string source) {
 
+	// Allow OCR to receive a frame immediately from the new video.
+	lastOcrFramePositionMs = -500;
+
 	//Store what the video's FPS is
 	//Using openCV to do it manually because Qt just gives the wrong FPS (it said a 60 fps video was 17 fps ????)
 	cv::VideoCapture video(source);
 	currentVideoFPS = video.get(cv::CAP_PROP_FPS);
 	video.release();
 	
+
+
 	//End the model's last processing loop if it had one
 	modelWrapper.endProcessingLoop();
 	//Let the model start another thread for processing the video's frames

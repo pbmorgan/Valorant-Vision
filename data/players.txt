@@ -1,10 +1,6918 @@
-PRX f0rsakeN
-PRX d4v41
-PRX something
-PRX Jinggg
-PRX invy
-NRG Ethan
-NRG keiko
-NRG brawk
-NRG mada
-NRG skuba
+Europe|VIT|Jamppi
+Europe|VIT|PROFEK
+Europe|VIT|Derke
+Europe|VIT|Chronicle
+Europe|VIT|Sayonara
+Europe|EP|kozzy
+Europe|EP|MAGNUM
+Europe|EP|iluri
+Europe|EP|paTiTek
+Europe|EP|Lime
+Europe|PXL|77even
+Europe|PXL|hoody
+Europe|PXL|hydro
+Europe|PXL|sunfloweR
+Europe|PXL|Serial
+Europe|PXL|ZachKappa
+Europe|PXL|nataNk
+Europe|BBL|Lar0k
+Europe|BBL|Loita
+Europe|BBL|Rosé
+Europe|BBL|Crewen
+Europe|BBL|lovers rock
+Europe|FF|hezacoil
+Europe|FF|Kachoww
+Europe|FF|b1squw1
+Europe|FF|batujnax
+Europe|FF|DeadInk
+Europe|FF|reazy
+Europe|NVJ|Javelin
+Europe|NVJ|Kolosha
+Europe|NVJ|Darxcioo
+Europe|NVJ|avey
+Europe|NVJ|sizo
+Europe|Szechenyi Istvan University|Den
+Europe|Szechenyi Istvan University|Vphome
+Europe|Szechenyi Istvan University|Kenzu
+Europe|Szechenyi Istvan University|Rick
+Europe|LEO|kappi
+Europe|LEO|rehn
+Europe|LEO|Thander
+Europe|LEO|Zoom
+Europe|LEO|flank
+Europe|REBORN|batujnax
+Europe|REBORN|hezacoil
+Europe|REBORN|Kachoww
+Europe|REBORN|DeadInk
+Europe|REBORN|reazy
+Europe|REBORN|b1squw1
+Europe|S2G|batujnax
+Europe|S2G|DeadInk
+Europe|S2G|hezacoil
+Europe|S2G|Kachoww
+Europe|S2G|reazy
+Europe|S2G|b1squw1
+Europe|SKN|Joliinaa
+Europe|SKN|LizA
+Europe|SKN|Thuy
+Europe|SKN|rezq
+Europe|SKN|fluxxy
+Europe|TL|nAts
+Europe|TL|GSR
+Europe|TL|kamo
+Europe|TL|trexx
+Europe|TL|Kicks
+Europe|TL|wayne
+Europe|TL|MiniBoo
+Europe|TL|purp0
+Europe|BRRR|Negradas
+Europe|BRRR|thex
+Europe|BRRR|ChimuZ
+Europe|BRRR|Floby
+Europe|BRRR|BERN1
+Europe|ECL|Sfx
+Europe|ECL|MoVest
+Europe|ECL|dymentxr
+Europe|KC|Avez
+Europe|KC|dos9
+Europe|KC|LewN
+Europe|KC|SUYGETSU
+Europe|KC|N4RRATE
+Europe|KC|Chaza
+Europe|KC|sheydos
+Europe|PCF|qpert
+Europe|PCF|seven
+Europe|NOF|mumble
+Europe|NOF|Doni
+Europe|NOF|nikolaslos
+Europe|SGE|musashi
+Europe|SGE|azury
+Europe|SGE|Jamelinho213
+Europe|SGE|Fizzy
+Europe|YK|fungi
+Europe|YK|Codertb
+Europe|FUT|sociablEE
+Europe|FUT|s0pp
+Europe|FUT|xeus
+Europe|FUT|yetujey
+Europe|FUT|KROSTALY
+Europe|Forward Team|KanG
+Europe|Forward Team|al1k
+Europe|Forward Team|turg1ch
+Europe|Forward Team|Cloud
+Europe|Forward Team|Jynkiora
+Europe|baigiau|GhostaS
+Europe|baigiau|bense
+Europe|baigiau|zetaisha
+Europe|baigiau|aiwas
+Europe|baigiau|Oak
+Europe|baigiau|Duz
+Europe|baigiau|hsher
+Europe|CFG|n1tze
+Europe|CFG|Kyta
+Europe|CFG|d1scovery
+Europe|TH|Wo0t
+Europe|TH|RieNs
+Europe|TH|benjyfishy
+Europe|JL|Enzo
+Europe|JL|kamyk
+Europe|QM|DrastZ
+Europe|QM|Bosh
+Europe|QM|Pax
+Europe|QM|jimbk
+Europe|QM|NVKIR
+Europe|QM|xiTsha
+Europe|QM|Luca
+Europe|QM|k9lyos
+Europe|QM|Masic
+Europe|CGN|Vince
+Europe|CGN|Wolfen
+Europe|CGN|Jady
+Europe|CGN|samed
+Europe|CGN|Serial
+Europe|CGN|shinnok
+Europe|Ranglistenspieler|Nairo
+Europe|Ranglistenspieler|yuma
+Europe|Ranglistenspieler|chay
+Europe|Ranglistenspieler|quo
+Europe|Ranglistenspieler|connR
+Europe|5STARS Esport|fsau
+Europe|5STARS Esport|FadeIntoYou
+Europe|M8|marteen
+Europe|M8|Proxh
+Europe|M8|Minny
+Europe|M8|bipo
+Europe|M8|starxo
+Europe|AXL|DrastZ
+Europe|AXL|Luca
+Europe|AXL|hydro
+Europe|AXL|sihw
+Europe|AXL|Davia
+Europe|AXL|w4yed
+Europe|AXL|Pax
+Europe|FKS.S|Samyyy
+Europe|FKS.S|cabbit
+Europe|FKS.S|star
+Europe|FKS.S|mali
+Europe|FKS.S|Addi
+Europe|CLS|kappi
+Europe|CLS|Che
+Europe|CLS|Shadow1
+Europe|CLS|Gingi
+Europe|CLS|Dro9
+Europe|CLS|Jake
+Europe|Arise|Matze
+Europe|Arise|HoppaSkills
+Europe|Arise|Juu W
+Europe|Arise|Norial
+Europe|Arise|TinyKilian
+Europe|TLA|Prti
+Europe|TLA|DonatelloOO
+Europe|TLA|rexxtoned
+Europe|TLA|WanZeru
+Europe|MSA|ZeyNo
+Europe|MSA|soren
+Europe|MSA|TITOUNE
+Europe|MSA|nAyte
+Europe|MSA|azume
+Europe|MSA|lux9
+Europe|EF|audaz
+Europe|EF|Spear
+Europe|EF|Favian
+Europe|EF|echo
+Europe|EF|nekky
+Europe|VentuCorp Phoenix|skonikS
+Europe|VentuCorp Phoenix|elchuluno
+Europe|VentuCorp Phoenix|LART1K3
+Europe|VentuCorp Phoenix|rxgak
+Europe|VentuCorp Phoenix|VIPEX
+Europe|ULF|nekky
+Europe|ULF|audaz
+Europe|ULF|Favian
+Europe|ULF|s0pp
+Europe|ULF|echo
+Europe|ESP|JunJun
+Europe|ESP|Ayrew
+Europe|ESP|Lazzoe
+Europe|LEXIBLE|0x0
+Europe|LEXIBLE|Lusadris
+Europe|LEXIBLE|troxy
+Europe|XingXing Gaming|iffo
+Europe|XingXing Gaming|frzy
+Europe|XingXing Gaming|leevi
+Europe|XingXing Gaming|manDrop
+Europe|XingXing Gaming|AWOOOOO
+Europe|MANIA Denmark|Tj
+Europe|MANIA Denmark|kikzenn
+Europe|MANIA Denmark|Kejser
+Europe|FMG|sunfloweR
+Europe|FMG|qu1ckz
+Europe|FMG|77even
+Europe|FMG|mikee
+Europe|FMG|tomaszy
+Europe|KlanNaLan|Fit1nho
+Europe|KlanNaLan|Kajuks
+Europe|KlanNaLan|Guardy
+Europe|DMNX|Keren
+Europe|DMNX|Mioli
+Europe|FNC|crashies
+Europe|FNC|kaajak
+Europe|FNC|Cloud
+Europe|FNC|Alfajer
+Europe|FNC|Veqaj
+Europe|FNC|Boaster
+Europe|MISA|Tiyosta
+Europe|MISA|Fortres
+Europe|MISA|pAwn1
+Europe|MISA|Ronniee
+Europe|MISA|MERZ
+Europe|MISA|Riser
+Europe|X3M|Neyes
+Europe|X3M|919jewwy
+Europe|X3M|Bayzon
+Europe|X3M|hoodie
+Europe|X3M|Wizzing
+Europe|X3M|Taiiko
+Europe|X3M|K1kana
+Europe|X3M|MIKE
+Europe|UBE|Moks
+Europe|UBE|nepalwarrior
+Europe|UBE|bandz
+Europe|UBE|spiral
+Europe|UBE|Yenk
+Europe|Semurg Gaming|seito
+Europe|Semurg Gaming|Rusty
+Europe|Semurg Gaming|H4SH1
+Europe|Semurg Gaming|Shake
+Europe|Semurg Gaming|Kenny
+Europe|TFT|Docent
+Europe|TFT|influx
+Europe|TFT|Archfiend
+Europe|TFT|wezzy
+Europe|TFT|MerSa
+Europe|UCAM|Buld
+Europe|UCAM|B1SK
+Europe|UCAM|Famsii
+Europe|UCAM|OLIZERA
+Europe|SCAR|doozy
+Europe|SCAR|Ro0t
+Europe|SCAR|Frostt
+Europe|SCAR|b3zginn
+Europe|SCAR|Elyxo
+Europe|NAVI|Ruxic
+Europe|NAVI|hiro
+Europe|NAVI|Shao
+Europe|NAVI|Filu
+Europe|NAVI|CyvOph
+Europe|NAVI|ExiT
+Europe|SZK|Rek1
+Europe|SZK|pablosaurio
+Europe|SZK|Perez
+Europe|SZK|DavidG
+Europe|SZK|Neiker
+Europe|SZK|aidan
+Europe|SZK|Vivik
+Europe|BAR|Fit1nho
+Europe|Karalaget|Bello
+Europe|Karalaget|Sparrow
+Europe|Karalaget|Mjerk
+Europe|Karalaget|Wanners
+Europe|Karalaget|Fjush
+Europe|EFP|sturNN
+Europe|EFP|skylen
+Europe|EFP|sterben
+Europe|EFP|glovee
+Europe|EFP|Spear
+Europe|GX|Flickless
+Europe|GX|westside
+Europe|GX|ara
+Europe|GX|tomaszy
+Europe|PivDiff|kafuteekito
+Europe|PivDiff|narcissist
+Europe|PivDiff|Kawador
+Europe|PivDiff|Shushan
+Europe|PivDiff|Anri
+Europe|FB|ibonata
+Europe|FB|Slaughter
+Europe|FB|mepeezy
+Europe|FB|Yigox
+Europe|FB|wtex
+Europe|TOG|Ben
+Europe|TOG|SanZ
+Europe|TOG|Sloov
+Europe|TOG|Kuro
+Europe|TOG|Complexit
+Europe|GoFund4OmarHouse|hoody
+Europe|GoFund4OmarHouse|hydro
+Europe|GoFund4OmarHouse|Br0zgA
+Europe|GoFund4OmarHouse|crow
+Europe|GoFund4OmarHouse|77even
+Europe|GoFund4OmarHouse|sizo
+Europe|BJK|MerSa
+Europe|BJK|Docent
+Europe|BJK|wezzy
+Europe|BJK|influx
+Europe|BJK|oroni
+Europe|Valiant Legacy|Che
+Europe|Valiant Legacy|Pie
+Europe|Valiant Legacy|Shak0w
+Europe|Valiant Legacy|nayso
+Europe|Valiant Legacy|Nysers
+Europe|N3|sak1
+Europe|N3|Asteria
+Europe|N3|KanG
+Europe|N3|Jynkiora
+Europe|N3|Cloud
+Europe|G2G|mimi
+Europe|G2G|Akita
+Europe|G2G|amy
+Europe|G2G|Vania
+Europe|G2G|eva
+Europe|GN|demek
+Europe|GN|Czester
+Europe|GN|Kozok
+Europe|GN|NeFi
+Europe|Nidaros Esport|Martux
+Europe|Nidaros Esport|Cintyx
+Europe|Nidaros Esport|fsau
+Europe|Nidaros Esport|lam
+Europe|Nidaros Esport|Snaptor
+Europe|Espergærde Esport Academy|Zelestral
+Europe|Espergærde Esport Academy|Slayer7
+Europe|Espergærde Esport Academy|Chazher
+Europe|Espergærde Esport Academy|aomine
+Europe|Espergærde Esport Academy|kitsc
+Europe|LP|kubfu
+Europe|LP|ViiZiionZzz
+Europe|LP|T0BA
+Europe|LP|Wintxrr
+Europe|LP|Deqadz
+Europe|EST|Aramejs
+Europe|RYL|Itachi
+Europe|RYL|PMC
+Europe|RYL|chris
+Europe|RYL|myhn
+Europe|NKVT|JrayN
+Europe|NKVT|influx
+Europe|NKVT|Touven
+Europe|NKVT|wezzy
+Europe|NKVT|ibonata
+Europe|THY KINGDOM COME|dcyde
+Europe|THY KINGDOM COME|hantu
+Europe|THY KINGDOM COME|ex9
+Europe|Cat Lovers|H1ber
+Europe|Cat Lovers|Ticey
+Europe|Cat Lovers|Vitie
+Europe|Cat Lovers|ZachKappa
+Europe|Cat Lovers|stonezy
+Europe|Cat Lovers|shinnok
+Europe|Cat Lovers|globeX
+Europe|GS|WerlasS
+Europe|GS|windett
+Europe|GS|Padisah
+Europe|GS|Slaughter
+Europe|GS|Zeask
+Europe|GS|VenTT
+Europe|GS|JrayN
+Europe|sardegnaenjoyers|Sweet
+Europe|sardegnaenjoyers|Z3RO
+Europe|sardegnaenjoyers|Titan
+Europe|sardegnaenjoyers|gRIGUAj
+Europe|sardegnaenjoyers|Musyka
+Europe|NOVO.NI|majusia
+Europe|NOVO.NI|Mochi
+Europe|NOVO.NI|ellie
+Europe|NOVO.NI|rainssa
+Europe|NOVO.NI|xsa
+Europe|TwoFace Gaming|Demon
+Europe|TwoFace Gaming|KarmaZK
+Europe|TwoFace Gaming|Shiro
+Europe|TwoFace Gaming|CEMENLOBANOV
+Europe|TwoFace Gaming|Jesse
+Europe|TwoFace Gaming|Aleksey
+Europe|RV|howl
+Europe|RV|Kuroo
+Europe|RV|eearslan
+Europe|RV|valio
+Europe|RV|Spexleon
+Europe|RV|Hafti
+Europe|RV|nic0las
+Europe|Royal Legion Academy|Mus1ala
+Europe|Royal Legion Academy|zujy
+Europe|Royal Legion Academy|oacees
+Europe|Royal Legion Academy|chimm9
+Europe|b0t1|oteN
+Europe|b0t1|obx
+Europe|b0t1|howl
+Europe|b0t1|southfv
+Europe|b0t1|striker
+Europe|BRATAN MIX|Kiles
+Europe|BRATAN MIX|zeddy
+Europe|BRATAN MIX|Zyppan
+Europe|BRATAN MIX|qu1ckz
+Europe|BRATAN MIX|globeX
+Europe|BRATAN MIX|doma
+Europe|BRATAN MIX|UNFAKE
+Europe|BRATAN MIX|paTiTek
+Europe|BRATAN MIX|kozzy
+Europe|BRATAN MIX|Fizzy
+Europe|REIGN|Jangsterii
+Europe|REIGN|Keks u
+Europe|REIGN|lcdFFF
+Europe|REIGN|Sin
+Europe|REIGN|tsägä
+Europe|TSE|Keatz
+Europe|TSE|d3mur
+Europe|TSE|k9lyos
+Europe|TSE|foe
+Europe|TSE|DaGG3r
+Europe|TSE|Tenkai
+Europe|wombat123|Snowi
+Europe|wombat123|Sin
+Europe|wombat123|eetu
+Europe|wombat123|tsägä
+Europe|wombat123|y0DISH
+Europe|wombat123|Keks u
+Europe|wombat123|c0n
+Europe|wombat123|ekuLul
+Europe|KNGI|Keks u
+Europe|KNGI|tsägä
+Europe|KNGI|y0DISH
+Europe|KNGI|Chaza
+Europe|KNGI|lcdFFF
+Europe|KINGSLAYERS X|ralle
+Europe|KINGSLAYERS X|FLOURITE
+Europe|KINGSLAYERS X|spark
+Europe|KINGSLAYERS X|elliot
+Europe|Avenue|Anq
+Europe|Avenue|braveaf
+Europe|Avenue|Sp1ke
+Europe|Avenue|qu1ckz
+Europe|Avenue|B1SK
+Europe|UKC Esport|Brix
+Europe|UKC Esport|Dr3am
+Europe|UKC Esport|Sixten
+Europe|UKC Esport|malberg
+Europe|UKC Esport|SpankyFukkz
+Europe|HDB|nozy
+Europe|HDB|Life
+Europe|HDB|Kleas
+Europe|HLT|GWIDOW
+Europe|HLT|Ruskof
+Europe|HLT|Fenzea
+Europe|HLT|heaven
+Europe|HLT|TIGER
+Europe|KPI|VIPEX
+Europe|KPI|verity
+Europe|KPI|AleZ
+Europe|KPI|SebZz
+Europe|KPI|delamac
+Europe|KPI|Movv
+Europe|VCE|p1boL
+Europe|VCE|Julen ei
+Europe|VCE|DavidG
+Europe|VCE|Perez
+Europe|VCE|davi
+Europe|VCE|CorSa
+Europe|VCE|Yuki
+Europe|VCE|payoabe
+Europe|NGU eSports|Legarzz
+Europe|NGU eSports|Perez
+Europe|NGU eSports|DavidG
+Europe|NGU eSports|Frospo
+Europe|adios|demmik
+Europe|adios|maku
+Europe|adios|Kouby
+Europe|adios|Dheny
+Europe|adios|Olmiiik
+Europe|adios|robinn
+Europe|PERKS|Binh
+Europe|PERKS|Pie
+Europe|PERKS|Wanlast
+Europe|PERKS|Shak0w
+Europe|PERKS|veteran
+Europe|Valorando|bucher
+Europe|Valorando|luckeRRR
+Europe|Valorando|Luc1d
+Europe|Valorando|eNes
+Europe|Valorando|n1co
+Europe|SU SAMURLARI|wukuje
+Europe|SU SAMURLARI|Xacro
+Europe|SU SAMURLARI|HyBriZ
+Europe|SU SAMURLARI|Otven
+Europe|AKA HERO|prayy
+Europe|AKA HERO|luckeRRR
+Europe|AKA HERO|eNes
+Europe|AKA HERO|Luc1d
+Europe|AKA HERO|bucher
+Europe|AKA HERO|Jini
+Europe|RRR|Matrixx
+Europe|RRR|eNes
+Europe|RRR|luckeRRR
+Europe|RRR|bucher
+Europe|RRR|Happen
+Europe|RRR|n1co
+Europe|DimoniX Esports Academy|Shad0wZN
+Europe|DimoniX Esports Academy|ktron
+Europe|DimoniX Esports Academy|Julen ei
+Europe|DimoniX Esports Academy|KeKo
+Europe|DimoniX Esports Academy|H1ts
+Europe|DimoniX Esports Academy|lored
+Europe|PEAKY|troxy
+Europe|PEAKY|krish
+Europe|FRG ShaoLins|rezai
+Europe|FRG ShaoLins|入力 keeraa
+Europe|FRG ShaoLins|rkz
+Europe|FRG ShaoLins|Linyi
+Europe|SUP|Fortres
+Europe|Heavener IQON|SharpyGG
+Europe|Heavener IQON|doxy
+Europe|Heavener IQON|Shadow1
+Europe|Heavener IQON|BSK
+Europe|mixtape5|Izzy
+Europe|mixtape5|krish
+Europe|mixtape5|ComeBack
+Europe|mixtape5|JN3v1cEEE
+Europe|mixtape5|Yigox
+Europe|KCGC|Jiex
+Europe|KCGC|alkyia
+Europe|KCGC|anesilia
+Europe|KCGC|Glance
+Europe|LEO Black|rehn
+Europe|LEO Black|Nass
+Europe|LEO Black|Toastie
+Europe|LEO Black|gepard
+Europe|LEO Black|naykoo
+Europe|Bitfix Academy|GRIXERN
+Europe|Bitfix Academy|bangz
+Europe|GriddyD Lv|Woldex
+Europe|GriddyD Lv|xRight
+Europe|GriddyD Lv|benzerra
+Europe|GriddyD Lv|phenex
+Europe|SSP Numina|Dorie VT
+Europe|Nebezpečný zabijáci|luky
+Europe|Nebezpečný zabijáci|Shaimon
+Europe|Nebezpečný zabijáci|Enrik
+Europe|Nebezpečný zabijáci|Vivik
+Europe|Nebezpečný zabijáci|Hazard
+Europe|SAMCRO|Vorwenn
+Europe|SAMCRO|xuss
+Europe|SAMCRO|mepeezy
+Europe|SAMCRO|Anima
+Europe|SAMCRO|Czester
+Europe|WGP|Lukey
+Europe|WGP|Deqadz
+Europe|WGP|Luca
+Europe|WGP|porkychop
+Europe|WGP|WillyG
+Europe|MIAU|bloom
+Europe|MIAU|kz
+Europe|MIAU|OsGuVii
+Europe|MIAU|LgenD
+Europe|MIAU|gon
+Europe|NOVO|etnaa
+Europe|NOVO|NoHelp
+Europe|NOVO|Vitie
+Europe|NOVO|ANXiOS
+Europe|NOVO|moner
+Europe|NOVO|Anoxai
+Europe|FOKIN|pAura
+Europe|FOKIN|VdekJeNN
+Europe|FOKIN|DeepMans
+Europe|FOKIN|dasy
+Europe|FOKIN|beawen
+Europe|NXR|sifty
+Europe|NXR|Limitless
+Europe|NXR|n0rth
+Europe|NXR|Néró
+Europe|NXR|hiekh
+Europe|LAG|sultan
+Europe|LAG|relaxcis
+Europe|SM|howl
+Europe|SM|Inst1nct
+Europe|INPUTLAG|S1neK
+Europe|INPUTLAG|egoisT
+Europe|INPUTLAG|k1board
+Europe|INPUTLAG|PoZzz1K
+Europe|INPUTLAG|Fi0
+Europe|INPUTLAG|Kuno
+Europe|INPUTLAG|witchblades
+Europe|Jabbawockeez|melz
+Europe|Jabbawockeez|bravo
+Europe|Jabbawockeez|Panagios
+Europe|Jabbawockeez|xad
+Europe|Jabbawockeez|kpro
+Europe|Jabbawockeez|yorkings
+Europe|Jabbawockeez|Hyperzxz
+Europe|Jabbawockeez|Kachow
+Europe|Jabbawockeez|pika
+Europe|Jabbawockeez|evil abel
+Europe|ATNR|silentsoul
+Europe|ATNR|Blossi
+Europe|ATNR|caelia
+Europe|ATNR|PuriTy
+Europe|ATNR|Karina
+Europe|ATNR|Jade
+Europe|ATNR|Lara
+Europe|Anime Virgins|Z1trus
+Europe|Anime Virgins|LouisV
+Europe|Anime Virgins|Clasher
+Europe|Anime Virgins|RizZo
+Europe|Anime Virgins|Hølyy
+Europe|TDB|Glority
+Europe|TDB|MonOkson
+Europe|TDB|LunaTiK
+Europe|TDB|Kaaru
+Europe|TDB|DaGG3r
+Europe|TDB|Tr0mA
+Europe|WWGAMING|kafuteekito
+Europe|WWGAMING|vmxxn
+Europe|WWGAMING|qwpep
+Europe|WWGAMING|narcissist
+Europe|WWGAMING|Anri
+Europe|Aconite|misu
+Europe|Aconite|MISO
+Europe|Aconite|BUBS
+Europe|Aconite|hxyden
+Europe|Aconite|Joak
+Europe|NXS|Rau
+Europe|NXS|Jedw
+Europe|NXS|T1MURL3Nq
+Europe|NXS|volkankonak
+Europe|NXS|hakany0y0
+Europe|NXS|wescer
+Europe|BAR.GC|Annie
+Europe|BAR.GC|Lyda
+Europe|BAR.GC|Toki
+Europe|BAR.GC|Miyori
+Europe|BAR.GC|devilasxa
+Europe|WACK|fsau
+Europe|WACK|Cintyx
+Europe|WACK|Snaptor
+Europe|WACK|scofield
+Europe|BLAZE|Kyn1
+Europe|BLAZE|Zym1x
+Europe|BLAZE|szkkail
+Europe|BLAZE|Fosse
+Europe|BLAZE|Adamaliya
+Europe|AK BARS|Zym1x
+Europe|AK BARS|Fosse
+Europe|AK BARS|Kyn1
+Europe|AK BARS|Cloud
+Europe|AK BARS|Adamaliya
+Europe|CLS|Goaster
+Europe|CLS|zeddy
+Europe|CLS|Neptunee
+Europe|CLS|Juskay
+Europe|CLS|rYn
+Europe|GHOSTS|exe
+Europe|GHOSTS|xanic
+Europe|i gommisti|pityth
+Europe|i gommisti|Sabajo
+Europe|i gommisti|kyzzu
+Europe|i gommisti|suin0
+Europe|Gasing|Jixey
+Europe|Gasing|Nino
+Europe|Gasing|Ghostz
+Europe|Gasing|Pax
+Europe|Gasing|Jixxen
+Europe|LIL|Knowbii
+Europe|Mardrömmen|FOLKE
+Europe|Mardrömmen|f1co
+Europe|Mardrömmen|wak1e
+Europe|Mardrömmen|Knowbii
+Europe|Mardrömmen|chapix
+Europe|Vertical7even|Eagle
+Europe|Vertical7even|Heni
+Europe|Vertical7even|Inst1nct
+Europe|DMNX|Akaza
+Europe|DMNX|Mioli
+Europe|DMNX|Nemesis
+Europe|DMNX|Keren
+Europe|DMNX|Nia
+Europe|Plapprende Papegøyer|Lynk
+Europe|Plapprende Papegøyer|Amandus
+Europe|Plapprende Papegøyer|metl1
+Europe|Plapprende Papegøyer|SpilluM
+Europe|Plapprende Papegøyer|Roduck
+Europe|Plapprende Papegøyer|bollebrun
+Europe|Plapprende Papegøyer|hd
+Europe|ASTRAE|veteran
+Europe|ASTRAE|Fenzea
+Europe|ASTRAE|Trayard
+Europe|FOCU5 esports|Sigmundr
+Europe|FOCU5 esports|Tus
+Europe|FOCU5 esports|Kev
+Europe|FOCU5 esports|Perfo
+Europe|FOCU5 esports|Jid
+Europe|SM|msh
+Europe|SM|demek
+Europe|SM|Fractioned
+Europe|SM|NeFi
+Europe|Plop|ORI4K
+Europe|Plop|Michel
+Europe|Plop|SwiFii
+Europe|Plop|krm
+Europe|Plop|r1zvaN
+Europe|EXG|MARKEZZ
+Europe|EXG|Sm1le
+Europe|EXG|Nex
+Europe|EXG|soon
+Europe|Hostile|poeth
+Europe|Hostile|ksm
+Europe|Hostile|nAyte
+Europe|Hostile|ZeyNo
+Europe|Hostile|lux9
+Europe|Hostile|izana
+Europe|ZTA|fraNdina
+Europe|ZTA|Z3RO
+Europe|buldak|lokiec
+Europe|buldak|nosby
+Europe|buldak|sulunist
+Europe|buldak|Kurzawa
+Europe|buldak|xad
+Europe|buldak|fvrioza
+Europe|LANDODGERS|stark
+Europe|LANDODGERS|xad
+Europe|LANDODGERS|sizo
+Europe|LANDODGERS|0x0
+Europe|O2G|soguja
+Europe|O2G|kosty1
+Europe|O2G|rxgak
+Europe|O2G|dlak
+Europe|O2G|skonikS
+Europe|O2G|LART1K3
+Europe|O2G|VIPEX
+Europe|2R3W|p3piti
+Europe|2R3W|Iguana
+Europe|2R3W|slendi
+Europe|2R3W|mLz
+Europe|2R3W|nomyzs
+Europe|GG|Símplex
+Europe|GG|Yuno
+Europe|GG|Kram
+Europe|GG|Wezey
+Europe|GG|RxYaL
+Europe|GG|shjin
+Europe|Mix My Miks|nysHAA
+Europe|Mix My Miks|ip0TT
+Europe|Mix My Miks|Yuta
+Europe|Mix My Miks|Neptunee
+Europe|Mix My Miks|Tr0mA
+Europe|Crazy Academy|sky
+Europe|Crazy Academy|kraked
+Europe|Crazy Academy|sarna2
+Europe|AaB Esport Denmark|sunshine
+Europe|AaB Esport Denmark|IsoliDD
+Europe|AaB Esport Denmark|Nille
+Europe|AaB Esport Denmark|popechuz
+Europe|AaB Esport Denmark|SM1LE
+Europe|RokaHEAT|Albifons
+Europe|RokaHEAT|chewieyy
+Europe|RokaHEAT|kyoukei
+Europe|NXR|lowless
+Europe|NXR|askoo
+Europe|NXR|Lucio
+Europe|NXR|Yotaa
+Europe|NXR|kztnotrui
+Europe|AaB Esports Sweden|fnuz
+Europe|AaB Esports Sweden|Llama
+Europe|AaB Esports Sweden|Silliam
+Europe|AaB Esports Sweden|Fer0
+Europe|NVS|j4héx
+Europe|NVS|Santiego
+Europe|NVS|Gloomy
+Europe|NVS|sh1ngo
+Europe|NVS|sh0ut
+Europe|7S|Tr0np0
+Europe|7S|zynwhite
+Europe|7S|Stoatzera
+Europe|7S|Doma
+Europe|7S|boo
+Europe|BLOK6|worlusha
+Europe|BLOK6|RieN
+Europe|BLOK6|Cemetery
+Europe|Million Flowerz|nev
+Europe|Million Flowerz|leyrr
+Europe|Million Flowerz|Blaazy
+Europe|Million Flowerz|Layzer
+Europe|Million Flowerz|reach
+Europe|Vennegjengen|chewieyy
+Europe|Vennegjengen|hantu
+Europe|Vennegjengen|ex9
+Europe|Vennegjengen|dcyde
+Europe|MIR|Bishepss
+Europe|MIR|reblyik
+Europe|MIR|innersavage
+Europe|MIR|feithjay
+Europe|MIR|Raz
+Europe|MIR|kospa1n
+Europe|MIR|Redgar
+Europe|FRG|Benni Benzon
+Europe|FRG|Paco
+Europe|FRG|Demonn
+Europe|FRG|fate
+Europe|FRG|gurbby
+Europe|PD|Símplex
+Europe|PD|Spexleon
+Europe|PD|InsaneDINI
+Europe|Lour|Padden
+Europe|Lour|Rouss
+Europe|EverSoWavyGang|mts
+Europe|EverSoWavyGang|Bully
+Europe|EverSoWavyGang|Stokesy
+Europe|EverSoWavyGang|John9
+Europe|EverSoWavyGang|Dutchie
+Europe|Team Divergentes GC|Daniela
+Europe|Team Divergentes GC|SweeN
+Europe|Team Divergentes GC|wambini
+Europe|Team Divergentes GC|kidziax
+Europe|AX|forgetw0w
+Europe|AX|perelomslivki
+Europe|AX|existence
+Europe|AX|hosedo
+Europe|AX|asH3XD
+Europe|Bitfix Valiants|Lloyd
+Europe|Bitfix Valiants|n0rth
+Europe|Bitfix Valiants|Fonzo
+Europe|Bitfix Valiants|Nomiz
+Europe|Bitfix Valiants|velk
+Europe|ROUNDS|awake
+Europe|ROUNDS|tsägä
+Europe|ROUNDS|Keks u
+Europe|ROUNDS|Jammu
+Europe|ROUNDS|cykk
+Europe|VIRMA|poseiiidon
+Europe|VIRMA|Shicoed
+Europe|VIRMA|Jammu
+Europe|VIRMA|jota
+Europe|TonTaubenSchießer|Jaynito
+Europe|TonTaubenSchießer|grey
+Europe|TonTaubenSchießer|Kronos
+Europe|TonTaubenSchießer|Lynix
+Europe|TonTaubenSchießer|Konsti
+Europe|TonTaubenSchießer|TheoRetisch
+Europe|FAST LEARNER|VqZ
+Europe|FAST LEARNER|OzNNN
+Europe|FAST LEARNER|Maxildez
+Europe|FAST LEARNER|Foty
+Europe|FAST LEARNER|ReZVyce
+Europe|HooK Esport|Bluey
+Europe|HooK Esport|Juskay
+Europe|HooK Esport|Pitou
+Europe|HooK Esport|Paco
+Europe|HooK Esport|beNca
+Europe|Team Verdant|karam
+Europe|Team Verdant|Frights
+Europe|Team Verdant|TazRen
+Europe|Team Verdant|Ş4B4BL1
+Europe|Habos Babos|Théa
+Europe|Habos Babos|SOREAL
+Europe|Habos Babos|SRZ
+Europe|Habos Babos|embi
+Europe|Habos Babos|fudgestars
+Europe|Los Czechos|Hruška
+Europe|Los Czechos|Pepe
+Europe|Los Czechos|Forykoo
+Europe|Los Czechos|Kurb0s
+Europe|Los Czechos|Sprüh
+Europe|95Vikings|Bry
+Europe|95Vikings|Luka
+Europe|95Vikings|jeLAc
+Europe|95Vikings|zaksanzil
+Europe|95Vikings|Perna
+Europe|95Vikings|surfenjoyer
+Europe|Sporty&amp;Rich|sora
+Europe|thegiornalisti|highh
+Europe|thegiornalisti|fraNdina
+Europe|thegiornalisti|xazyy
+Europe|thegiornalisti|roxas
+Europe|thegiornalisti|simoz
+Europe|wade|nisy
+Europe|wade|juz
+Europe|wade|Drag
+Europe|wade|yaska
+Europe|Titanic|Tj
+Europe|Titanic|kikzenn
+Europe|Titanic|Kejser
+Europe|Titanic|Lomin
+Europe|Ignite|yorkings
+Europe|Ignite|Unbalance
+Europe|Ignite|kpro
+Europe|Ignite|Hyperzxz
+Europe|Ignite|Kachow
+Europe|Ignite|wave
+Europe|LCK|Jayy
+Europe|LCK|ganjha
+Europe|LCK|Domingo
+Europe|LCK|dEiv
+Europe|LCK|uzumaki
+Europe|LCK|xixe
+Europe|LCK|H1elo
+Europe|LCK|aut0
+Europe|BLUEJAYS|drlofftv
+Europe|BLUEJAYS|tRengis
+Europe|BLUEJAYS|real1seRRR
+Europe|BLUEJAYS|cozje
+Europe|LLS|balanced
+Europe|LLS|d3ky
+Europe|LLS|Buby
+Europe|LLS|Kaizen
+Europe|LLS|acazzo
+Europe|BabunguerMix|LART1K3
+Europe|BabunguerMix|dlak
+Europe|BabunguerMix|elchuluno
+Europe|BabunguerMix|skonikS
+Europe|BabunguerMix|rxgak
+Europe|RZN|kvmil
+Europe|RZN|Creamydreamy
+Europe|RZN|Demiurge
+Europe|RZN|puggy
+Europe|RZN|Opex
+Europe|RZN|deyten
+Europe|RZN|narky
+Europe|RZN|ico
+Europe|RZN|valio
+Europe|RZN|MaximN
+Europe|TEAM GEORGE|henky
+Europe|TEAM GEORGE|Vašek
+Europe|TEAM GEORGE|luky
+Europe|TEAM GEORGE|Shaimon
+Europe|TEAM GEORGE|Hazard
+Europe|2L8|n1tze
+Europe|Moose in Pyjamas|blade
+Europe|Moose in Pyjamas|verduis
+Europe|Moose in Pyjamas|KS
+Europe|Moose in Pyjamas|Yoyebyn
+Europe|Moose in Pyjamas|wrnberg
+Europe|FRG UK|Fer0
+Europe|FRG UK|xray
+Europe|FRG UK|SharpyGG
+Europe|FRG UK|Boogie
+Europe|VIN|Dejwrix
+Europe|VIN|marcel
+Europe|VIN|Woody
+Europe|VIN|coco
+Europe|MAN|FuriouzMeow
+Europe|MAN|gurbby
+Europe|MAN|thoomstar
+Europe|EXA|RedroX
+Europe|EXA|MEHA
+Europe|EXA|Hiiro
+Europe|EXA|SH4WQ
+Europe|EXA|Dokusei
+Europe|EXA|ReZVyce
+Europe|KZ PLAYERS|screwdriver
+Europe|KZ PLAYERS|Nrk
+Europe|KZ PLAYERS|doventor
+Europe|KZ PLAYERS|Abelzinho
+Europe|Olympus Reborn|RaveN
+Europe|Olympus Reborn|RicStvan
+Europe|Olympus Reborn|Néró
+Europe|AK BARS OG|dzain
+Europe|AK BARS OG|aura
+Europe|AK BARS OG|BigBrother
+Europe|AK BARS OG|shatrux
+Europe|AK BARS OG|kachka
+Europe|DMNX|CEMENLOBANOV
+Europe|DMNX|xine
+Europe|DMNX|luluvich
+Europe|DMNX|Prolwy
+Europe|DMNX|Sorrow
+Europe|DMNX|Daiger
+Europe|ppp|jimbk
+Europe|ppp|Xini
+Europe|ppp|Drog
+Europe|RGN|dRKY
+Europe|RGN|Nyanist
+Europe|RGN|envex
+Europe|RGN|deminatiX1907
+Europe|RGN|baha
+Europe|PXL|lastround
+Europe|PXL|kyoukei
+Europe|PXL|Swampy
+Europe|PXL|Boredpug
+Europe|Aestralis|KPZET
+Europe|Aestralis|Desmo
+Europe|Aestralis|AvovA
+Europe|Aestralis|Rawn3n
+Europe|Aestralis|Pa1ze
+Europe|Aestralis|Kryger
+Europe|Aestralis|Bjorn
+Europe|MörköStäck|jesse
+Europe|MörköStäck|absi
+Europe|MörköStäck|ViIi
+Europe|MörköStäck|roope
+Europe|MörköStäck|TRMIS
+Europe|BLAZE RED|shatrux
+Europe|BLAZE RED|aura
+Europe|BLAZE RED|kachka
+Europe|BLAZE RED|BigBrother
+Europe|BLAZE RED|Karma
+Europe|MIRsfits|Albert1ks
+Europe|MIRsfits|MoVest
+Europe|MIRsfits|haint
+Europe|MIRsfits|m4xikk
+Europe|MIRsfits|Fitch
+Europe|ORA Esport GC|taraaaaaaaaaaaaa
+Europe|ORA Esport GC|Samsi
+Europe|ORA Esport GC|sumi
+Europe|ORA Esport GC|juliano
+Europe|ORA Esport GC|Looxie
+Europe|Foot Clan|Snapster
+Europe|Foot Clan|fubuki
+Europe|Foot Clan|4Z4Z1
+Europe|EK|eetu
+Europe|EK|Sin
+Europe|EK|myoo
+Europe|DAH|FuRy
+Europe|DAH|ImNotD7o
+Europe|DAH|Suu1tan
+Europe|DAH|KLR
+Europe|DAH|soull
+Europe|DAH|AddicTed
+Europe|Peek pas les légendes|BlackHawk
+Europe|Peek pas les légendes|PANDANIMAL
+Europe|Peek pas les légendes|Birdy
+Europe|Peek pas les légendes|PeekPasLaLegende
+Europe|Peek pas les légendes|bende
+Europe|MRN|jacoblofi
+Europe|MRN|Corte
+Europe|MRN|Tony Stark
+Europe|Dynasty|Apyr
+Europe|Dynasty|snowy
+Europe|Dynasty|Fairshooter
+Europe|Dynasty|Kyber2k
+Europe|Dynasty|thoomstar
+Europe|MT|yaggert
+Europe|MT|Zeni
+Europe|MT|clush
+Europe|MT|Galdex
+Europe|MT|NELTIIIX
+Europe|GamerZ Esports|Spocki
+Europe|GamerZ Esports|Terrox
+Europe|GamerZ Esports|verity
+Europe|GamerZ Esports|Opex
+Europe|GamerZ Esports|Katuzo
+Europe|GamerZ Esports|Felix
+Europe|XTRA|Flick
+Europe|XTRA|atay
+Europe|XTRA|Matsuri
+Europe|XTRA|schizo
+Europe|XTRA|fizart56
+Europe|XTRA|Kawador
+Europe|get kharavanned|khavan
+Europe|get kharavanned|Kyber2k
+Europe|get kharavanned|Fairshooter
+Europe|get kharavanned|Ashn
+Europe|get kharavanned|FL1P
+Europe|Gigantic LynX|cag1nex
+Europe|OAS|Deqadz
+Europe|OAS|szoren
+Europe|OAS|Famzzam
+Europe|OAS|porkychop
+Europe|OAS|T0BA
+Europe|Sportia Khore|gaara
+Europe|Sportia Khore|LgenD
+Europe|Sportia Khore|bloom
+Europe|Sportia Khore|ElBicho
+Europe|VSTG|nayso
+Europe|VSTG|Pie
+Europe|VSTG|Che
+Europe|VSTG|Nysers
+Europe|VSTG|Shak0w
+Europe|K5 Valorant|Anthony
+Europe|K5 Valorant|jb_n3rdz
+Europe|K5 Valorant|ent0x
+Europe|S4|WANHEDA
+Europe|S4|KHorror
+Europe|PURE|Boogie
+Europe|PURE|joshh
+Europe|PURE|Huko
+Europe|PURE|xray
+Europe|NTNUI Sigmars|JonasV
+Europe|NTNUI Sigmars|PlusElo
+Europe|NTNUI Sigmars|Tornado
+Europe|NTNUI Sigmars|arneZEN
+Europe|NTNUI Sigmars|vetle
+Europe|AUCA ESPORTS|felbie
+Europe|AUCA ESPORTS|MrJoper
+Europe|AUCA ESPORTS|miraclss
+Europe|AUCA ESPORTS|kazuomi
+Europe|AUCA ESPORTS|ilaeka
+Europe|AUCA ESPORTS|angel chobit
+Europe|GNR|Tricsorr
+Europe|GNR|Akenu
+Europe|Part Time Sweat Department|Nikoo
+Europe|Part Time Sweat Department|SotZ
+Europe|Part Time Sweat Department|Nag
+Europe|Part Time Sweat Department|Chadlite
+Europe|ASX|rens
+Europe|ASX|Ert
+Europe|ASX|Cheat
+Europe|ASX|rekich
+Europe|SWEP|Shiki
+Europe|SWEP|FireBucklerMan
+Europe|SWEP|Axhyt
+Europe|SWEP|Codertb
+Europe|SWEP|spxncer
+Europe|AIGHT|deyten
+Europe|AIGHT|eleo
+Europe|AIGHT|noumit
+Europe|AIGHT|appA
+Europe|Enisorail|ORI4K
+Europe|Enisorail|Sabajo
+Europe|Enisorail|Woldex
+Europe|Enisorail|SWINGG0D
+Europe|Naga Of The North|aCrazyKray
+Europe|Naga Of The North|SBHope
+Europe|Naga Of The North|Opium
+Europe|Naga Of The North|protction
+Europe|Naga Of The North|4llu
+Europe|Naga Of The North|flättis
+Europe|DX|SharpyGG
+Europe|DX|Nino
+Europe|DX|Ross
+Europe|DX|jacoblofi
+Europe|DX|Heni
+Europe|Trigon Titans|sterben
+Europe|Trigon Titans|exe
+Europe|Trigon Titans|starB
+Europe|Trigon Titans|Celasun
+Europe|Trigon Titans|DeepMans
+Europe|Trigon Titans|musz3kk
+Europe|NTNUI UNTN|PlusElo
+Europe|NTNUI UNTN|JonasV
+Europe|NTNUI UNTN|Lehre
+Europe|NTNUI UNTN|Aqua
+Europe|NTNUI UNTN|Tornado
+Europe|Axiom Esports|Bartyy
+Europe|Axiom Esports|Peizeeh
+Europe|Axiom Esports|benxzy
+Europe|Axiom Esports|BOOQWAFEEUS
+Europe|CTRL|flank
+Europe|CTRL|Drog
+Europe|CTRL|Brädi
+Europe|CTRL|Fezisss
+Europe|Still Gamblers|EMiL
+Europe|JGB|jkR
+Europe|JGB|quantumrino
+Europe|JGB|SanZ
+Europe|GOOD|dippy
+Europe|GOOD|mts
+Europe|Fruit Ninjas|Unbalance
+Europe|Fruit Ninjas|dippy
+Europe|Fruit Ninjas|mts
+Europe|Fruit Ninjas|yorkings
+Europe|Fruit Ninjas|Hyperzxz
+Europe|Wolhaiksong|Tricsorr
+Europe|Wolhaiksong|Doonko
+Europe|Wolhaiksong|Rexo
+Europe|Wolhaiksong|Yonko
+Europe|Abstract|zenkyy
+Europe|Abstract|toxy
+Europe|Abstract|kízy
+Europe|Abstract|Assu
+Europe|Abstract|snow
+Europe|Abstract|SimooVS
+Europe|RepuisParentless|Sefa
+Europe|RepuisParentless|Repu
+Europe|RepuisParentless|Bye
+Europe|RepuisParentless|Zaspalem
+Europe|RepuisParentless|M1llan
+Europe|RepuisParentless|Plamer
+Europe|Die Highspeed-Schnecken|ziegenlord
+Europe|Die Highspeed-Schnecken|dubzx
+Europe|Die Highspeed-Schnecken|docschnagg
+Europe|Die Highspeed-Schnecken|MariRocknroll
+Europe|Die Highspeed-Schnecken|Sil4us
+Europe|Rise Of The Underdogs|Aquiver
+Europe|Rise Of The Underdogs|Nox1
+Europe|Rise Of The Underdogs|Louie
+Europe|Rise Of The Underdogs|Ecoo
+Europe|Rise Of The Underdogs|woen1
+Europe|Rise Of The Underdogs|SimoN
+Europe|Rise Of The Underdogs|d1scovery
+Europe|Rise Of The Underdogs|Kyta
+Europe|DNG|Shyzen
+Europe|DNG|duX
+Europe|DNG|Fountaz
+Europe|DNG|vulkaS
+Europe|YoGurciki|ruin
+Europe|YoGurciki|gatto
+Europe|YoGurciki|trafka
+Europe|YoGurciki|발가락
+Europe|Blaze Norge|RaselColijn
+Europe|Blaze Norge|luludruham
+Europe|Blaze Norge|Haini
+Europe|Blaze Norge|baugulfconchur
+Europe|Blaze Norge|vgr
+Europe|Blaze Norge|Hey
+Europe|Blaze Norge|ysjen
+Europe|XtremeDogs|fang
+Europe|XtremeDogs|lucki
+Europe|XtremeDogs|prevail
+Europe|XtremeDogs|Akira
+Europe|XtremeDogs|adore
+Europe|XtremeDogs|emzijs
+Europe|XtremeDogs|rens
+Europe|SSP|frazune
+Europe|SSP|Tezics
+Europe|SSP|Swung
+Europe|SSP|Nirvia
+Europe|SSP|fl1xxd
+Europe|SSP|W4lter
+Europe|SSP|Benni Benzon
+Europe|NOMAD|sayrezz
+Europe|NOMAD|SixK9
+Europe|NOMAD|Lazare
+Europe|GOLDEN FIVE|Jamie
+Europe|GOLDEN FIVE|Nozzy
+Europe|GOLDEN FIVE|i miss her
+Europe|GOLDEN FIVE|VerfiX
+Europe|Espergærde Esport K9X|swixy
+Europe|Espergærde Esport K9X|Striker
+Europe|Espergærde Esport K9X|Cobra
+Europe|Espergærde Esport K9X|Doffen1neX
+Europe|Espergærde Esport K9X|shrooms
+Europe|Team Orion|Raw1
+Europe|Team Orion|DoИete21
+Europe|Team Orion|Luisto
+Europe|Team Orion|Rodrigueezz
+Europe|Team Orion|PeRZeY
+Europe|VLX|Skurkeren
+Europe|VLX|JensenMaestro
+Europe|VLX|Toyo
+Europe|VLX|Fezh
+Europe|VLX|PNZ
+Europe|Million Flowerz GC|oceyy
+Europe|Million Flowerz GC|Agla
+Europe|Million Flowerz GC|Aliiph
+Europe|Million Flowerz GC|Ven0m
+Europe|REH Gaming|Jixxen
+Europe|REH Gaming|Zoltox
+Europe|REH Gaming|Narcot1cs
+Europe|REH Gaming|t1zian
+Europe|REH Gaming|NivE
+Europe|REH Gaming|Bami
+Europe|DP|X3ryo
+Europe|DP|doozy
+Europe|DP|Frostt
+Europe|DP|ztmonarch
+Europe|DP|Ro0t
+Europe|Rotaryon|Nilsw
+Europe|Rotaryon|SnowZ
+Europe|Rotaryon|Noir
+Europe|Rotaryon|November
+Europe|Rotaryon|xKumu
+Europe|Twelve Esports|Flowy
+Europe|Twelve Esports|Ebeeee
+Europe|Twelve Esports|TTyke
+Europe|Twelve Esports|Fawaz
+Europe|Twelve Esports|Maher
+Europe|VOLK|Liam
+Europe|VOLK|Gumet Blau
+Europe|VOLK|Arturoaims
+Europe|VOLK|dorosu
+Europe|VOLK|Fleex
+Europe|UNI|shed3rik
+Europe|UNI|xserten
+Europe|UNI|dragneel
+Europe|UNI|mazeofmemory
+Europe|UNI|coddle
+Europe|Olimpo|Xirid
+Europe|Olimpo|Mxrk
+Europe|Olimpo|seizures
+Europe|Olimpo|Enfacy
+Europe|IMPACT Esports|RqGa
+Europe|IMPACT Esports|Jixey
+Europe|IMPACT Esports|Ghostz
+Europe|IMPACT Esports|Pax
+Europe|IMPACT Esports|s0gs
+Europe|IMPACT Esports|yelloww
+Europe|LYO|Doonko
+Europe|LYO|Rexo
+Europe|LYO|Yonko
+Europe|LYO|Tricsorr
+Europe|Billy Bob Gaming|FKZ
+Europe|Billy Bob Gaming|eqqan
+Europe|Billy Bob Gaming|little
+Europe|Billy Bob Gaming|Jónte
+Europe|Billy Bob Gaming|Shrew
+Europe|Billy Bob Gaming|Ericip
+Europe|PRM|NAKSU
+Europe|PRM|sinommi
+Europe|PRM|Aranel
+Europe|PRM|Pitohui
+Europe|PRM|riri
+Europe|Coffeshop|Kuroo
+Europe|Coffeshop|Kuzar
+Europe|Coffeshop|cWacky
+Europe|Coffeshop|connR
+Europe|Coffeshop|Hafti
+Europe|PCIFIC Akademi|n1tze
+Europe|PCIFIC Akademi|krish
+Europe|THE ONE|Truong
+Europe|THE ONE|tomato
+Europe|THE ONE|zProtection
+Europe|THE ONE|Turbo Tim
+Europe|THE ONE|supertoasty
+Europe|MCK|Slyste
+Europe|MCK|Mayukooo
+Europe|MCK|stamen
+Europe|MCK|FrancyBald
+Europe|MCK|NVKIR
+Europe|MCK|Browse
+Europe|XPS|Shiro
+Europe|XPS|allthewayPat
+Europe|ECO|ScelzeR
+Europe|ECO|Leon
+Europe|ECO|NoMiss
+Europe|ECO|pryxi
+Europe|WYG|Cobra
+Europe|WYG|p1boL
+Europe|WYG|Xpiryy
+Europe|WYG|ElBicho
+Europe|WYG|Dubstep
+Europe|WYG|Nerozsito
+Europe|gli asparagi|pingwu
+Europe|gli asparagi|Viks
+Europe|gli asparagi|stamen
+Europe|gli asparagi|Blad3r
+Europe|Team Prestish|ikzteJ
+Europe|Team Prestish|FABS
+Europe|Team Prestish|balk au
+Europe|Team Prestish|Quziq
+Europe|Team Prestish|kevinN
+Europe|200|Sferon
+Europe|200|kryo
+Europe|200|Szalony
+Europe|200|xiTsha
+Europe|200|nosby
+Europe|RVNT|snowe
+Europe|RVNT|Mic
+Europe|RVNT|mEgA
+Europe|RVNT|TopLuciano
+Europe|RVNT|Luka
+Europe|DOES|mumble
+Europe|DOES|Void
+Europe|DOES|Tj
+Europe|DOES|Kram
+Europe|EVO|henky
+Europe|EVO|Krizz
+Europe|EVO|bênjiro
+Europe|Västerås Esportförening|Timeguardian
+Europe|Västerås Esportförening|Vilbur
+Europe|Västerås Esportförening|Trax
+Europe|Västerås Esportförening|horus
+Europe|Västerås Esportförening|Eros
+Europe|USTUNLUKURANLAR|nichirin
+Europe|USTUNLUKURANLAR|cracked
+Europe|Dog Nation|RUSH
+Europe|Dog Nation|alfred0
+Europe|Dog Nation|Zapp TacoKing
+Europe|Dog Nation|Henny
+Europe|Dog Nation|DISCORONNY
+Europe|Dog Nation|Jokkarn
+Europe|Dog Nation|zRai
+Europe|KAMK.GG|reke
+Europe|KAMK.GG|Mallu
+Europe|KAMK.GG|Teltta
+Europe|KAMK.GG|Lotusflower
+Europe|KAMK.GG|JeqeBRRRRR
+Europe|KAMK.GG|malinenn
+North America|100T|vora
+North America|100T|Cryocells
+North America|100T|Asuna
+North America|100T|Timotino
+North America|100T|bang
+North America|NRG|Ethan
+North America|NRG|keiko
+North America|NRG|brawk
+North America|NRG|mada
+North America|NRG|skuba
+North America|LEV|kiNgg
+North America|LEV|spike
+North America|LEV|blowz
+North America|LEV|Neon
+North America|LEV|Sato
+North America|G2|valyn
+North America|G2|jawgemo
+North America|G2|BABYBAY
+North America|G2|trent
+North America|G2|leaf
+North America|SRB|zander
+North America|SRB|satellite
+North America|SRB|exa
+North America|SRB|Smoke
+North America|SRB|NaturE
+North America|SAD|welyy
+North America|SAD|payne
+North America|SAD|Pa1nt
+North America|SAD|vita
+North America|Dream Esports|Vinc
+North America|Dream Esports|Kurb0s
+North America|Dream Esports|wwaer
+North America|Cumberland Prophecy|Cell
+North America|Cumberland Prophecy|kiyoe
+North America|Cumberland Prophecy|JohN
+North America|Cumberland Prophecy|Romeo
+North America|Cumberland Prophecy|Flytes
+North America|M80|Kyu
+North America|M80|Spaz
+North America|M80|Boni
+North America|M80|NiSMO
+North America|M80|alvinboy
+North America|Eternal Focus Night|BayPopper
+North America|Eternal Focus Night|mogzin
+North America|Eternal Focus Night|fraggleton
+North America|Eternal Focus Night|s1n
+North America|Eternal Focus Night|Dragonking
+North America|NBG|sonofcar
+North America|NBG|zeek
+North America|NBG|stunna
+North America|NBG|stellar
+North America|NBG|toozy
+North America|ENVY|Eggsterr
+North America|ENVY|ion
+North America|ENVY|P0PPIN
+North America|ENVY|Rossy
+North America|ENVY|keznit
+North America|ENVY|GLYPH
+North America|ENVY|Demon1
+North America|ENVY|nightz
+North America|RANK|P0PPIN
+North America|RANK|ion
+North America|RANK|Eggsterr
+North America|RANK|Inspire
+North America|RANK|canezerra
+North America|BBQC|dre
+North America|BBQC|DataKiller
+North America|BBQC|Rafe
+North America|BBQC|picklespear
+North America|BBQC|Slammed
+North America|BBQC|zestyahhlizard35
+North America|SEN|johnqt
+North America|SEN|Reduxx
+North America|SEN|cortezia
+North America|SEN|JonahP
+North America|SEN|Jerrwin
+North America|EG|Paincakes
+North America|EG|supamen
+North America|EG|bao
+North America|EG|dgzin
+North America|EG|zerona
+North America|C9|Zellsis
+North America|C9|FireBallOps
+North America|C9|Jackk
+North America|C9|OXY
+North America|C9|v1c
+North America|YSL|sambae
+North America|YSL|zaj
+North America|YSL|exile
+North America|YSL|roccomax
+North America|MU|renz
+North America|MU|Ange
+North America|MU|geeza
+North America|MU|Shondex
+North America|MU|A1D
+North America|NRGA|haeyoday
+North America|NRGA|renz
+North America|NRGA|Ange
+North America|NRGA|geeza
+North America|NRGA|Shondex
+North America|Vulcan Rising|vitalyy
+North America|Vulcan Rising|Fang
+North America|Vulcan Rising|zoe
+North America|Vulcan Rising|Ry1
+North America|D1|dynamic
+North America|D1|calamity
+North America|D1|Boomy
+North America|D1|foreign
+North America|D1|beeb
+North America|EGA|ahm4xx
+North America|EGA|zanks
+North America|EGA|jakee
+North America|EGA|bdog
+North America|EGA|wedid
+North America|YDZ|TonkeyyKong
+North America|YDZ|Layzr
+North America|YDZ|TcKyv
+North America|YDZ|derilasong
+North America|BOSS BABY|ahm4xx
+North America|BOSS BABY|nerve
+North America|BOSS BABY|icy
+North America|BOSS BABY|zanks
+North America|BOSS BABY|max
+North America|Tempers|wertlle
+North America|Tempers|Dillon
+North America|Tempers|Flamezz
+North America|Tempers|squirmor
+North America|KIN Esports|Yuki
+North America|KIN Esports|niko
+North America|KIN Esports|ExpiredNuts
+North America|KIN Esports|rico
+North America|KIN Esports|Ares
+North America|KIN Esports|VantiK
+North America|KIN Esports|Weegle
+North America|TMU.B|Floko2x
+North America|TMU.B|mwuffin
+North America|TMU.B|xero
+North America|TMU.B|lumpia shanghai
+North America|TMU.B|mr siren
+North America|TMU.B|Rezquit
+North America|ORA Esports|jinwoo
+North America|ORA Esports|Booey
+North America|ORA Esports|ghost
+North America|ORA Esports|Demi
+North America|ORA Esports|khansoul
+North America|Monarch X|Yuki
+North America|Monarch X|VantiK
+North America|Monarch X|Manny
+North America|Monarch X|deseo
+North America|777|huphh
+North America|777|KHS
+North America|777|chillin
+North America|777|Awkua
+North America|777|twigz
+North America|SCC|Tillo
+North America|SCC|Bearrett
+North America|SCC|xela
+North America|SCC|Instxnct
+North America|SCC|jayp
+North America|SCC|woddy
+North America|BOX|Awkua
+North America|BOX|twigz
+North America|BOX|huphh
+North America|BOX|KHS
+North America|BOX|chillin
+North America|COO|cuz
+North America|COO|Kouf
+North America|COO|Andersin
+North America|COO|Zamal
+North America|COO|Cohburg
+North America|YFP Pigeons|Zamal
+North America|YFP Pigeons|Cohburg
+North America|YFP Pigeons|cuz
+North America|YFP Pigeons|Andersin
+North America|YFP Pigeons|Kouf
+North America|RGP|sherb
+North America|RGP|snowing
+North America|RGP|dancingdino371
+North America|RGP|surge
+North America|RGP|flasHH
+North America|DGTL|MONKEY BUSINESS
+North America|DGTL|GrimReaper874
+North America|DGTL|hoops
+North America|DGTL|Koto
+North America|BLUE|om3y
+North America|BLUE|Fair
+North America|BLUE|calamity
+North America|BLUE|Bob
+North America|BLUE|RayUndaunted
+North America|Focused On Gaming|supergecko17
+North America|Focused On Gaming|puffy panda
+North America|Focused On Gaming|kero
+North America|Focused On Gaming|yeetmachine
+North America|ADG|mikeE
+North America|ADG|Kaoticc
+North America|ADG|sacred
+North America|ADG|ion
+North America|ADG|florescent
+North America|BKR|hyjinx
+North America|BKR|Dillon
+North America|BKR|junst9r
+North America|BKR|Boomy
+North America|BKR|demon
+North America|BKR|NAMI
+North America|BKR|Revenge
+North America|BKR|maliqeye
+North America|HU|jeffie
+North America|HU|iyen
+North America|HU|Huso
+North America|HU|wodahS
+North America|SaD|flasHH
+North America|SaD|surge
+North America|SaD|snowing
+North America|SaD|Klamran
+North America|SaD|ven
+North America|SOL|ChadZz
+North America|SOL|g1tch2
+North America|SOL|guady
+North America|SOL|mikeyy
+North America|SOL|uchuu
+North America|octonauts|Neat
+North America|octonauts|Mezin
+North America|octonauts|mad
+North America|octonauts|ce6Jay
+North America|Certified Turtles|RYKER
+North America|Certified Turtles|ducq
+North America|Certified Turtles|Weegle
+North America|Certified Turtles|ScrewFace
+North America|Certified Turtles|Notexxd
+North America|ATNAV|ren george
+North America|ATNAV|KILLERJOHNSON77
+North America|ATNAV|donnie
+North America|ATNAV|nurahh
+North America|ATNAV|uxie
+North America|ATNAV|calamity
+North America|NW|furbsa
+North America|NW|sonofcar
+North America|NW|ALEKSANDAR
+North America|NW|benjii
+North America|NW|toozy
+North America|NW|Noble
+North America|WU|Veyron
+North America|WU|strongtallguy62
+North America|WU|Fair
+North America|WU|Governor
+North America|WU|infiltrator
+North America|WU|Jerk
+North America|Rutgers University|albin
+North America|Rutgers University|Cano
+North America|Rutgers University|snappypikachu69
+North America|Rutgers University|temper
+North America|Rutgers University|walkemdwnmustafa
+North America|EVX|atlas
+North America|EVX|alym
+North America|EVX|winter
+North America|EVX|Okeanos
+North America|Curry and Friends|Leone
+North America|Curry and Friends|Fleuk
+North America|Curry and Friends|Avarice
+North America|Curry and Friends|albin
+North America|Curry and Friends|snappypikachu69
+North America|KSU|DSNI
+North America|KSU|khi
+North America|KSU|Misthallow
+North America|KSU|qwakiie
+North America|KSU|Hawaiian
+North America|baboons|Leamer
+North America|baboons|santi
+North America|baboons|ghost
+North America|baboons|Flamezz
+North America|baboons|este
+North America|baboons|LIAN
+North America|OhSquad|kora
+North America|OhSquad|Flamezz
+North America|OhSquad|LIAN
+North America|OhSquad|Leamer
+North America|OhSquad|santi
+North America|CCG Esports|H0llywood
+North America|CCG Esports|ahm4xx
+North America|CCG Esports|Lthew
+North America|CCG Esports|kimchi
+North America|CCG Esports|melari
+North America|CCG Esports|In0X
+North America|CCG Esports|Leamer
+North America|CCG Esports|scape
+North America|Hydra Esports|rain
+North America|Hydra Esports|Pamstou
+North America|Hydra Esports|wozy
+North America|Hydra Esports|g1tch2
+North America|BSU|skies
+North America|BSU|Daimyo
+North America|BSU|Prestige
+North America|BSU|Skelesis
+North America|BSU|KOS
+North America|BSU|Master
+North America|SWIM|eli
+North America|SWIM|venture
+North America|SWIM|k0rupt
+North America|SWIM|Bob
+North America|SWIM|CHAROD
+North America|SWIM|SleepyAria
+North America|InControl|yakult
+North America|InControl|Firewolf
+North America|InControl|zK1
+North America|InControl|Xmj
+North America|XS|Comfy
+North America|XS|crewcial
+North America|XS|Redefy
+North America|XS|wulfanite
+North America|XS|alecxndr
+North America|Keiser University|Izo
+North America|Keiser University|Tman
+North America|Keiser University|Nino
+North America|Keiser University|Lethal
+North America|Keiser University|solo
+North America|Keiser University|Mason143
+North America|Una Ludio|jxlen
+North America|Una Ludio|ghoultf
+North America|Una Ludio|chee
+North America|Una Ludio|tora
+North America|Una Ludio|fishr
+North America|Una Ludio|eigne
+North America|Heroics|niko
+North America|Heroics|Rebex
+North America|Heroics|Dragonking
+North America|Heroics|orzo
+North America|Heroics|BenJesus
+North America|Surfs Up|Orbital
+North America|Surfs Up|darm
+North America|Surfs Up|Saul
+North America|Surfs Up|Melvin
+North America|Surfs Up|dyl
+North America|NEO Esports|YPM
+North America|NEO Esports|m4ndzin
+North America|NEO Esports|shion
+North America|NEO Esports|h1perZ
+North America|NEO Esports|cai
+North America|Throne|Mitchell
+North America|Throne|stuckzy
+North America|Throne|Zuper
+North America|Throne|samawoo
+North America|Throne|drud
+North America|1c34|uxie
+North America|1c34|guady
+North America|1c34|C
+North America|1c34|shuaJY
+North America|1c34|margiela
+North America|Xora Esports|Hasagi
+North America|Xora Esports|flux
+North America|Xora Esports|wertlle
+North America|Xora Esports|Freshie
+North America|Xora Esports|Ch1pS
+North America|Xora Esports|RageARage
+North America|Xora Esports|Ayble
+North America|BZK|rain
+North America|BZK|romann
+North America|BZK|Pamstou
+North America|BZK|deseo
+North America|NXG|Tn
+North America|NXG|Spear
+North America|NXG|Cfax
+North America|NXG|baze
+North America|NXG|ExpiredNuts
+North America|ROSO|ricky
+North America|ROSO|Fake
+North America|ROSO|Kozin
+North America|ROSO|dunks
+North America|ROSO|a1dan
+North America|BURG|Nanners
+North America|BURG|Ali
+North America|BURG|SexyChristian
+North America|BURG|Katashio
+North America|BURG|jcrueL
+North America|UCI|ethos
+North America|UCI|Add3r
+North America|UCI|dmo
+North America|UCI|L4CE
+North America|UCI|jas0n
+North America|UCI|richie
+North America|UCI|kook
+North America|DYNA|dhawk
+North America|DYNA|zanks
+North America|DYNA|ahm4xx
+North America|DYNA|max
+North America|MADE|Cheezit
+North America|Wanted Goons|fraggleton
+North America|Wanted Goons|bless
+North America|Wanted Goons|Tn
+North America|Wanted Goons|Cfax
+North America|Wanted Goons|ExpiredNuts
+North America|La espada|benjino
+North America|La espada|bam
+North America|La espada|ghost
+North America|La espada|wisp
+North America|La espada|Renity
+North America|PUG|Beagle
+North America|PUG|cxL
+North America|PUG|rookie
+North America|PUG|simss
+North America|PUG|KRAKEN
+North America|MLV|PoppyZera
+North America|MLV|Joshe
+North America|MLV|sakuta
+North America|MLV|goshh
+North America|MLV|ToKI
+North America|VarsityGG|rain
+North America|VarsityGG|junst9r
+North America|VarsityGG|Ronga
+North America|VarsityGG|Koto
+North America|VarsityGG|wozy
+North America|EVXB|questions
+North America|EVXB|Schw3pp3s
+North America|EVXB|kEsh
+North America|EVXB|zera
+North America|ORA Farmers|Hiccup
+North America|7VEN|ArsonistGhost
+North America|7VEN|Ratla
+North America|7VEN|ohs1x
+North America|7VEN|t t t
+North America|7VEN|kookie
+North America|WVU|Leone
+North America|WVU|ExciteMVP
+North America|WVU|gucc107
+North America|WVU|A77
+North America|WVU|mrtnssj
+North America|WVU|Dinxx
+North America|TEMPR|Swichblade
+North America|TEMPR|renai
+North America|TEMPR|Ev0
+North America|TEMPR|Carnage
+North America|TEMPR|Legend
+North America|TEMPR|Buzzer
+North America|Buzzkill Esports|Saul
+North America|Buzzkill Esports|Orbital
+North America|Buzzkill Esports|dyl
+North America|Buzzkill Esports|darm
+North America|Monarch-X EKKO|Victisss
+North America|Monarch-X EKKO|Sobaan
+North America|Monarch-X EKKO|Synfin
+North America|Monarch-X EKKO|Nezumi
+North America|FLY|theia
+North America|FLY|edith
+North America|FLY|melya
+North America|FLY|evv
+North America|FLY|Jazzyk1ns
+North America|OSU Scarlet|Danak
+North America|OSU Scarlet|CheeseSquirrel
+North America|OSU Scarlet|EyS
+North America|OSU Scarlet|Villa
+North America|OSU Scarlet|ChuckTheHuman
+North America|OSU Scarlet|wire
+North America|OSU Scarlet|Anas
+North America|OSU Scarlet|Talkingrock
+North America|UCSD|NOVEMBER
+North America|UCSD|Melvin
+North America|UCSD|DAZAII
+North America|UCSD|469matt
+North America|UCSD|lowkeycow
+North America|UCSD|Chrome
+North America|UCSD|TRAN
+North America|UCSD|frost
+North America|Zero G Esports|yusolla
+North America|Zero G Esports|joewii
+North America|Zero G Esports|Lake
+North America|Zero G Esports|AlexTheGoose
+North America|Zero G Esports|Lorenzo
+North America|CVU|avien
+North America|CVU|Puffin
+North America|CVU|Arctic
+North America|LUX Iridescence|D0MED
+North America|LUX Iridescence|shuaJY
+North America|LUX Iridescence|prophecy
+North America|OVERPEEK|Lexa
+North America|OVERPEEK|nassita
+North America|OVERPEEK|ritsu
+North America|OVERPEEK|Lil Bob
+North America|OVERPEEK|htm
+North America|We have Paper Rex at Home|MattZ
+North America|We have Paper Rex at Home|Psyche
+North America|We have Paper Rex at Home|SexyChristian
+North America|We have Paper Rex at Home|sherb
+North America|ZER0 Esports|ren george
+North America|ZER0 Esports|kimchi
+North America|ZER0 Esports|echo
+North America|ZER0 Esports|LINDEN
+North America|ZER0 Esports|Henry
+North America|Elation Esports|rye
+North America|Elation Esports|ashes
+North America|Elation Esports|Schway
+North America|Elation Esports|Nova
+North America|Elation Esports|Venus
+North America|Overtake|aristotle
+North America|Overtake|side
+North America|Overtake|bless
+North America|Overtake|Tn
+North America|Overtake|Cfax
+North America|Tedward Gaming|nixx
+North America|Tedward Gaming|Fang
+North America|Tedward Gaming|Koma
+North America|Tedward Gaming|HighRise
+North America|Tedward Gaming|wertlle
+North America|Arrival Seven|Uncreative
+North America|Arrival Seven|karizma
+North America|Ares2 Legion|shachi2x
+North America|Ares2 Legion|yearn
+North America|Ares2 Legion|Zeuggy
+North America|Ares2 Legion|Detley
+North America|Ares2 Legion|Gwester
+North America|MIBR|zombzino
+North America|MIBR|seji
+North America|MIBR|CHUNK
+North America|MIBR|Jetstream
+North America|MIBR|HooyoWalkEmDown
+North America|MIBR|turt
+North America|MIBR|Hasselhosch
+North America|Overtake Red|Jerado
+North America|Overtake Red|fishr
+North America|Overtake Red|Austinair
+North America|Overtake Red|surge
+North America|Overtake Red|sherb
+North America|Deleta Esports|reforminq
+North America|Deleta Esports|FADE IS HOT
+North America|Deleta Esports|zeka
+North America|RA|XeTa1
+North America|RA|purqs
+North America|RA|shimon
+North America|RA|coda
+North America|RA|Detley
+North America|Ace Esports|om3y
+North America|Ace Esports|Boomy
+North America|Ace Esports|lyrical
+North America|Beneath Reality|sohk
+North America|Beneath Reality|RamenIsBest
+North America|Beneath Reality|Juzky
+North America|Beneath Reality|cake
+North America|Empire Redux|JustDieAlready
+North America|Empire Redux|zombi3
+North America|Empire Redux|Nikkiteer
+North America|Empire Redux|ninjamckinnley
+North America|Glacial|Flarmm
+North America|Glacial|Natedog
+North America|Glacial|IcyCubed
+North America|Glacial|Dart
+North America|Glacial|Firescope
+North America|USF Gold|Davygravy
+North America|USF Gold|XTC
+North America|USF Gold|GLORIOUS
+North America|USF Gold|yakult
+North America|MEOW|LunaFox
+North America|MEOW|Kestrel
+North America|MEOW|Elab0rate
+North America|MEOW|Raven
+North America|MEOW|BlueOwl
+North America|MEOW|icee
+North America|UI|Cheese
+North America|UI|DoHyun
+North America|UI|Loftech
+North America|DYNA|ruincrest
+North America|DYNA|neru
+North America|DYNA|caelinthegr8
+North America|DYNA|Kayla
+North America|Greed|wishings
+North America|Greed|LINDEN
+North America|Greed|kimchi
+North America|Greed|Neat
+North America|Greed|Lthew
+North America|GT.G|baen
+North America|GT.G|WiFi
+North America|GT.G|HYUNBIN
+North America|GT.G|DoubleAWsmile
+North America|GT.G|Koruto
+North America|YDZ.I|ShadowKnight
+North America|YDZ.I|Backslash
+North America|YDZ.I|Raiu
+North America|YDZ.I|Devine
+North America|YDZ.I|Shrilly
+North America|UT Dallas|melari
+North America|UT Dallas|Glory
+North America|UT Dallas|KENRICH
+North America|UT Dallas|SUN GOD NIKA
+North America|UT Dallas|nackey
+North America|SMC Esports|stolen
+North America|SMC Esports|kye5
+North America|SMC Esports|Grizz
+North America|Fluffy Unicorns|soji
+North America|Fluffy Unicorns|Kill
+North America|Fluffy Unicorns|kosh
+North America|Fluffy Unicorns|goon
+North America|Fluffy Unicorns|Insanity
+North America|Fluffy Unicorns|Tekkh
+North America|who is greg|Kill
+North America|who is greg|BALLWARD
+North America|who is greg|Kaso
+North America|who is greg|TomZu
+North America|who is greg|EXETER
+North America|Alphaware Olympians|go1den7
+North America|Alphaware Olympians|Ellep
+North America|Alphaware Olympians|soul
+North America|Alphaware Olympians|rrisky
+North America|Alphaware Olympians|spyder
+North America|MECH|ihateworm
+North America|MECH|Lethalz
+North America|MECH|Eobard Thawne
+North America|MECH|Tobi
+North America|MECH|Abstract
+North America|Eternal Focus|mogzin
+North America|Eternal Focus|koupert
+North America|Eternal Focus|BayPopper
+North America|Eternal Focus|CHUNK
+North America|Eternal Focus|s1n
+North America|Empire Gaming|Tiny
+North America|Empire Gaming|joewii
+North America|Empire Gaming|AlexTheGoose
+North America|Empire Gaming|Sueiy
+North America|Empire Gaming|stray
+North America|Empire Gaming|yumi
+North America|Lionheart eSports|Crispan
+North America|Lionheart eSports|Stalker
+North America|Lionheart eSports|Koto
+North America|Lionheart eSports|grayskí
+North America|Lionheart eSports|Tbite
+North America|Froggers|hamburger742
+North America|Froggers|kipzie
+North America|Froggers|walkemdwnmustafa
+North America|Froggers|frogfurger
+North America|Froggers|etc
+North America|Cool Frogs|BarryWaltzer
+North America|Cool Frogs|wast3d
+North America|Cool Frogs|N00BPWNER69
+North America|Cool Frogs|Zydro
+North America|Cool Frogs|jxe
+North America|FweakyFwoppers|Okiezi
+North America|FweakyFwoppers|nitelyfe
+North America|FweakyFwoppers|Mapi
+North America|FweakyFwoppers|cam
+North America|FweakyFwoppers|Lunar
+North America|O5|Source
+North America|O5|CHUNK
+North America|O5|trub
+North America|O5|Torqxz
+North America|O5|Repetition
+North America|ROSO|f4ngz
+North America|ROSO|Sythrine
+North America|ROSO|biacat
+North America|ROSO|sof
+North America|MIZ|Maas
+North America|MIZ|elek
+North America|MIZ|Stim
+North America|MIZ|BDog102
+North America|MIZ|Bubbs
+North America|NextGenEsports|rrisky
+North America|NextGenEsports|Ellep
+North America|NextGenEsports|arg1
+North America|NextGenEsports|go1den7
+North America|NextGenEsports|maxxy
+North America|IF|Comfy
+North America|IF|crewcial
+North America|IF|wulfanite
+North America|IF|dNd
+North America|Arctic Reign|prezQT
+North America|Arctic Reign|Kyle
+North America|Arctic Reign|wishings
+North America|Arctic Reign|Truth
+North America|Arctic Reign|Shio
+North America|Ends Meet|Iv9rys
+North America|Ends Meet|opie
+North America|Ends Meet|SomeNobody
+North America|Ends Meet|v1nce
+North America|Ends Meet|DontT0uchMyRICe
+North America|Ends Meet|Cheff
+North America|Digital Spiders|calsushi
+North America|Digital Spiders|Nora
+North America|Digital Spiders|awpi
+North America|SPID|calsushi
+North America|SPID|Nora
+North America|CLT|demijune
+North America|CLT|Ruta
+North America|CLT|JustAidan
+North America|CLT|pchu
+North America|CLT|SiF
+North America|SRG|dodonut
+North America|SRG|vanitas
+North America|SRG|glowstick
+North America|SRG|alexis
+North America|SRG|Noia
+North America|SRG|meL
+North America|Volitant|TNTDestroyer
+North America|Volitant|Ahjin
+North America|Volitant|macroura
+North America|Volitant|NonoYes7844
+North America|Volitant|Bzee
+North America|Volitant|S7ATIX
+North America|Volitant|whimsy
+North America|Tropical Fish|questions
+North America|Tropical Fish|EXOT1C
+North America|Tropical Fish|Swivel
+North America|Tropical Fish|AwesomeGuy
+North America|Tropical Fish|Noi
+North America|The Aquarium|TROPICALTROUT163
+North America|The Aquarium|NoiR
+North America|The Aquarium|Flarmm
+North America|The Aquarium|Avg
+North America|The Aquarium|Lroh
+North America|RIT Orange|Fable
+North America|RIT Orange|Rayn
+North America|RIT Orange|the johnson
+North America|RIT Orange|sticky
+North America|GLXY|MufinSenpai
+North America|GLXY|foxstylee
+North America|GLXY|Skippy
+North America|GLXY|YETUJEYISMYDADDY
+North America|GLXY|Vow
+North America|HC|Skippy
+North America|HC|GLORIOUS
+North America|HC|hyern
+North America|HC|JHYK
+North America|HC|Soru
+North America|Inters|Duck
+North America|Inters|MrSpudButt
+North America|Inters|Karma
+North America|Inters|joshee
+North America|Inters|No Kizzy
+North America|DG|Chrome
+North America|DG|frost
+North America|DG|469matt
+North America|DG|WicK
+North America|DG|tsalad
+North America|DG|Melvin
+North America|HEHEHEHA|S1ay3rr
+North America|HEHEHEHA|Daimyo
+North America|HEHEHEHA|nom
+North America|HEHEHEHA|dino
+North America|HEHEHEHA|shrekasaurus
+North America|Spyre|andonitee
+North America|Spyre|era
+North America|Spyre|Kaze
+North America|Seraph|jin
+North America|Seraph|Hades
+North America|Seraph|Deity
+North America|Seraph|najm
+North America|Seraph|virtue
+North America|EMU|alecxndr
+North America|EMU|Comfy
+North America|EMU|wulfanite
+North America|EMU|Loumac
+North America|EMU|Redefy
+North America|EMU|kami
+Brazil|RES|khaikky
+Brazil|RES|lilo
+Brazil|RES|drz
+Brazil|RES|ayxrus
+Brazil|RES|glym
+Brazil|LOUD|erde
+Brazil|LOUD|lukxo
+Brazil|LOUD|DaviH
+Brazil|LOUD|Darker
+Brazil|LOUD|tkzin
+Brazil|MIBR|zekken
+Brazil|MIBR|Mazino
+Brazil|MIBR|Verno
+Brazil|MIBR|aspas
+Brazil|MIBR|tex
+Brazil|TSS|raafa
+Brazil|TSS|havoc
+Brazil|TSS|liazzi
+Brazil|TSS|nevoy
+Brazil|TSS|GuhRVN
+Brazil|DIRE|dgzin
+Brazil|DIRE|raafa
+Brazil|DIRE|kon4n
+Brazil|DIRE|PxS
+Brazil|DIRE|havoc
+Brazil|HERO|raafa
+Brazil|HERO|dgzin
+Brazil|HERO|pancc
+Brazil|HERO|Askia
+Brazil|HERO|GuhRVN
+Brazil|2G|gobera
+Brazil|2G|xenom
+Brazil|2G|frz
+Brazil|FUR|artzin
+Brazil|FUR|basic
+Brazil|FUR|Shyy
+Brazil|FUR|eeiu
+Brazil|FUR|koalanoob
+Brazil|FUR|C0M
+Brazil|MIBR.AC|taka
+Brazil|MIBR.AC|peixeh
+Brazil|MIBR.AC|Luid
+Brazil|MIBR.AC|turkish
+Brazil|MIBR.AC|Kring
+Brazil|MIBR.AC|aztex
+Brazil|MIBR.AC|sanoj
+Brazil|FX|mazin
+Brazil|FX|jzz
+Brazil|FX|tuyz
+Brazil|FX|Palla
+Brazil|FX|Zanatsu
+Brazil|MAS|mazin
+Brazil|MAS|Zanatsu
+Brazil|MAS|jzz
+Brazil|MAS|tuyz
+Brazil|MAS|Palla
+Brazil|CAOS|Zanatsu
+Brazil|CAOS|Palla
+Brazil|CAOS|mazin
+Brazil|CAOS|tuyz
+Brazil|CAOS|jzz
+Brazil|Arashi|murizzz
+Brazil|Arashi|gbz
+Brazil|Arashi|fish
+Brazil|Arashi|above
+Brazil|Arashi|raised
+Brazil|ELV|Zap
+Brazil|ELV|maestr0
+Brazil|ELV|kon4n
+Brazil|ELV|dth
+Brazil|44A|fx
+Brazil|44A|Carmine
+Brazil|44A|roxthi
+Brazil|44A|Gdzin
+Brazil|44A|azza
+Brazil|44A|pedropacoca
+Brazil|BIDA|kramarick
+Brazil|BIDA|phc
+Brazil|BIDA|lowz
+Brazil|BIDA|caiobaz
+Brazil|BIDA|aztex
+Brazil|PEA|mixyce
+Brazil|PEA|nicksz
+Brazil|PEA|sanoj
+Brazil|PEA|drakz
+Brazil|PEA|Fw
+Brazil|AXK|Nexo
+Brazil|AXK|w1nter
+Brazil|AXK|Flz
+Brazil|AXK|Hinokata
+Brazil|AXK|JoKerZ
+Brazil|ELVA|yanz
+Brazil|ELVA|artru
+Brazil|ELVA|Mzvl
+Brazil|ELVA|H1soka
+Brazil|ELVA|Alan
+Brazil|AFG|Beco
+Brazil|AFG|KvS
+Brazil|AFG|lluakii
+Brazil|AFG|bontre
+Brazil|AFG|netin
+Brazil|NXT|skz
+Brazil|NXT|Klaus
+Brazil|NXT|prozin
+Brazil|NXT|RgLMeister
+Brazil|NXT|forbanz
+Brazil|RED|sw
+Brazil|RED|Urango
+Brazil|ADS|six
+Brazil|JUV|gahbziN
+Brazil|JUV|Dust
+Brazil|JUV|CODE
+Brazil|JUV|skazyN
+Brazil|JUV|FlameTz
+Brazil|MHUB|bL1
+Brazil|MHUB|Shizuo
+Brazil|MHUB|fgkk
+Brazil|MHUB|Danski
+Brazil|MHUB|Coelho
+Brazil|ADV|v1nny
+Brazil|ADV|Bruxo
+Brazil|ADV|Stwz1
+Brazil|ADV|Tisora
+Brazil|ADV|guuih
+Brazil|XEH|Razy
+Brazil|XEH|somera
+Brazil|XEH|NAKA
+Brazil|XEH|kurb
+Brazil|OSKARAVELHO|BiDa
+Brazil|OSKARAVELHO|pava
+Brazil|OSKARAVELHO|Tixinha
+Brazil|OSKARAVELHO|spacca
+Brazil|FDS|lula molusco
+Brazil|FDS|nuuh
+Brazil|FDS|francez
+Brazil|FDS|dgk
+Brazil|FDS|doggo
+Brazil|SLM|docas
+Brazil|SLM|pagod
+Brazil|SLM|greiN
+Brazil|PAN|Bjk
+Brazil|PAN|saviour
+Brazil|PAN|pzz
+Brazil|PAN|Bielzin
+Brazil|PAN|jx
+Brazil|NMD|Silva
+Brazil|NMD|leozynn
+Brazil|NMD|Zexz1
+Brazil|NMD|Tempest
+Brazil|NMD|Leywin
+Brazil|NMD|Jhugo
+Brazil|Agropesca Academy|prince
+Brazil|Agropesca Academy|rafaum
+Brazil|Agropesca Academy|eZo
+Brazil|Agropesca Academy|art
+Brazil|Agropesca Academy|mecci
+Brazil|Agropesca Academy|pacoca
+Brazil|UNI|kayz
+Brazil|UNI|awAKe
+Brazil|ATL|guiih9
+Brazil|ATL|mendess
+Brazil|HYD|Bap
+Brazil|HYD|lucão
+Brazil|HYD|PG
+Brazil|HYD|Pdro
+Brazil|HYD|coelhA
+Brazil|FTS|Lilos
+Brazil|FTS|mogli
+Brazil|FTS|mecanlia
+Brazil|FTS|netin
+Brazil|VLG|telec0
+Brazil|LPT|mozz1e
+Brazil|LPT|injaguar
+Brazil|LPT|Blastz
+Brazil|LPT|gbL
+Brazil|LPT|jzn
+Brazil|MGK|cabrxl
+Brazil|MGK|LIEBE
+Brazil|MGK|isart
+Brazil|MGK|Lunary
+Brazil|MGK|lucashsra
+Brazil|LP|Blastz
+Brazil|LP|jzn
+Brazil|LP|gbL
+Brazil|LP|Campos
+Brazil|LP|injaguar
+Brazil|EXT|Kazuki
+Brazil|EXT|ZerØ
+Brazil|EXT|Aang
+Brazil|EXT|Rafinhavg
+Brazil|EXT|s0urc3
+Brazil|AZR|Kick
+Brazil|AZR|ScherBi
+Brazil|AZR|Andre
+Brazil|AZR|greiN
+Brazil|AZR|taek
+Brazil|AZR|piM
+Brazil|MES|krownnl
+Brazil|MES|Pipão
+Brazil|MES|miglin
+Brazil|MES|Greed
+Brazil|MES|kikito
+Brazil|NOX|lowfrag
+Brazil|NOX|bolacha
+Brazil|NOX|Bontre
+Brazil|NOX|matheusapeca
+Brazil|NOX|ace
+Brazil|GRE|ktr
+Brazil|GRE|Estranho
+Brazil|GRE|Copaiba
+Brazil|GRE|Scadush
+Brazil|F4T|duhT
+Brazil|F4T|Loweed
+Brazil|F4T|znajder
+Brazil|F4T|pollo
+Brazil|F4T|shion
+Brazil|AURA!|quev
+Brazil|AURA!|AstroDarkin
+Brazil|CPC|Asta666
+Brazil|CPC|norid
+Brazil|CPC|Dream3r
+Brazil|ARRANCA DREAMS|duhT
+Brazil|ARRANCA DREAMS|Loweed
+Brazil|ARRANCA DREAMS|lucks
+Brazil|ARRANCA DREAMS|kwn
+Brazil|ARRANCA DREAMS|Campos
+Brazil|CRW|effetic
+Brazil|CRW|propszin
+Brazil|CRW|Jway
+Brazil|INF|real 33
+Brazil|INF|Synk
+Brazil|INF|serisex0
+Brazil|INF|skywalz
+Brazil|CCV|Aby3s
+Brazil|CCV|Antøny192
+Brazil|CCV|alone
+Brazil|CCV|Zin
+Brazil|CCV|GodFollow
+Brazil|Atlanta Academy|Lukew
+Brazil|Atlanta Academy|gui07
+Brazil|AXS|vladi
+Brazil|AXS|Zé Drops
+Brazil|AXS|AXIS Bodo Glimt
+Brazil|AXS|ySantosz
+Brazil|AXS|akrasia
+Brazil|AXS|dnkzao
+Brazil|AXS|Duduka
+Brazil|STR|Caíque
+Brazil|STR|kxvera
+Brazil|STR|Phillipsz
+Brazil|STR|Strawhat
+Brazil|STR|passum
+Brazil|TLV|daiki
+Brazil|TLV|Jelly
+Brazil|TLV|Bizerra
+Brazil|TLV|Joojina
+Brazil|TLV|isaa
+Brazil|NEO|teuzz
+Brazil|NEO|xeloote
+Brazil|NEO|riro
+Brazil|NEO|Hawks
+Brazil|NEO|Rtk
+Brazil|Juventus Red Fem|lana
+Brazil|Juventus Red Fem|may
+Brazil|Juventus Red Fem|Sally
+Brazil|Juventus Red Fem|miesak
+Brazil|Juventus Red Fem|Yumii
+Brazil|KIM|yaza
+Brazil|KIM|storm
+Brazil|KIM|naliv
+Brazil|KIM|Nami
+Brazil|KIM|Len
+Brazil|TOT|Rokudaime
+Brazil|TOT|nog
+Brazil|TOT|Godzin
+Brazil|TOT|benky
+Brazil|TOT|Smag
+Brazil|TOT|strauss
+Brazil|JARE|vinizin
+Brazil|JARE|Ginilson
+Brazil|JARE|ju1ce
+Brazil|JARE|eSr
+Brazil|JARE|TORONTO
+Brazil|TOT|rod
+Brazil|TOT|mozz1e
+Brazil|TOT|Fw
+Asia-Pacific|PRX|invy
+Asia-Pacific|PRX|Jinggg
+Asia-Pacific|PRX|f0rsakeN
+Asia-Pacific|PRX|d4v41
+Asia-Pacific|PRX|something
+Asia-Pacific|KOTATSU PRIME|west
+Asia-Pacific|KOTATSU PRIME|bashii
+Asia-Pacific|KOTATSU PRIME|Cheatcode
+Asia-Pacific|KOTATSU PRIME|r x s n
+Asia-Pacific|KOTATSU PRIME|ikigai
+Asia-Pacific|KOTATSU PRIME|Nao
+Asia-Pacific|KOTATSU PRIME|Astrizeth
+Asia-Pacific|1st Round Exiters|Luisito
+Asia-Pacific|1st Round Exiters|mada
+Asia-Pacific|1st Round Exiters|Jezuro
+Asia-Pacific|1st Round Exiters|Rianze
+Asia-Pacific|1st Round Exiters|Caprieo
+Asia-Pacific|KINDER JOYS|Beefs
+Asia-Pacific|KINDER JOYS|Chaze
+Asia-Pacific|KINDER JOYS|bae
+Asia-Pacific|KINDER JOYS|Zhee
+Asia-Pacific|KINDER JOYS|ame
+Asia-Pacific|GE|xavi8k
+Asia-Pacific|GE|PatMen
+Asia-Pacific|GE|UdoTan
+Asia-Pacific|GE|Kr1stal
+Asia-Pacific|GE|Autumn
+Asia-Pacific|SP|PTC
+Asia-Pacific|SP|Kadoom
+Asia-Pacific|SP|Apinya
+Asia-Pacific|SP|Laz
+Asia-Pacific|SP|NIZ
+Asia-Pacific|FS|Killua
+Asia-Pacific|FS|primmie
+Asia-Pacific|FS|JitBoyS
+Asia-Pacific|FS|seph1roth
+Asia-Pacific|FS|thyy
+Asia-Pacific|FS|Leviathan
+Asia-Pacific|MITH|cgrs
+Asia-Pacific|MITH|Laz
+Asia-Pacific|MITH|Kadoom
+Asia-Pacific|MITH|Killua
+Asia-Pacific|MITH|seph1roth
+Asia-Pacific|The Skirmishers|Waylay practises
+Asia-Pacific|The Skirmishers|Kabuto
+Asia-Pacific|The Skirmishers|December
+Asia-Pacific|The Skirmishers|kiRaboi
+Asia-Pacific|The Skirmishers|articuno
+Asia-Pacific|The Skirmishers|LittleDoYouKnow
+Asia-Pacific|BME|Nakya
+Asia-Pacific|BME|d3ffo
+Asia-Pacific|BME|Shiro
+Asia-Pacific|BME|NcSlasher
+Asia-Pacific|XIP|canady
+Asia-Pacific|XIP|doffy
+Asia-Pacific|XIP|aLerT
+Asia-Pacific|XIP|Surf
+Asia-Pacific|XIP|endoist
+Asia-Pacific|555|canady
+Asia-Pacific|555|doffy
+Asia-Pacific|555|aLerT
+Asia-Pacific|555|Surf
+Asia-Pacific|555|endoist
+Asia-Pacific|S8UL|SkRossi
+Asia-Pacific|S8UL|RvK
+Asia-Pacific|S8UL|Yuvi
+Asia-Pacific|S8UL|Anq
+Asia-Pacific|S8UL|xexxar
+Asia-Pacific|RRQ|crazyguy
+Asia-Pacific|RRQ|Monyet
+Asia-Pacific|RRQ|xffero
+Asia-Pacific|RRQ|Jemkin
+Asia-Pacific|RRQ|Kushy
+Asia-Pacific|HARU|jaso
+Asia-Pacific|HARU|Kael
+Asia-Pacific|HARU|migz
+Asia-Pacific|HARU|Funky
+Asia-Pacific|Ano Tara?|Kousei
+Asia-Pacific|OPY|persona11
+Asia-Pacific|OPY|ki1wsy
+Asia-Pacific|OPY|Teddy
+Asia-Pacific|OPY|Inf
+Asia-Pacific|OPY|Pyrix
+Asia-Pacific|OAS|Hotsauz
+Asia-Pacific|OAS|Wild0reoo
+Asia-Pacific|OAS|13RD
+Asia-Pacific|OAS|tesseract
+Asia-Pacific|OAS|marky
+Asia-Pacific|DXE|TERMI
+Asia-Pacific|DXE|bumbo
+Asia-Pacific|DXE|MasK
+Asia-Pacific|DXE|psy
+Asia-Pacific|DXE|penny
+Asia-Pacific|1TAP|braind3ad
+Asia-Pacific|1TAP|Lightning
+Asia-Pacific|1TAP|Bin
+Asia-Pacific|1TAP|Pr1ck
+Asia-Pacific|1TAP|Negyun ZA
+Asia-Pacific|1TAP|Hasagiii
+Asia-Pacific|TLN|Crws
+Asia-Pacific|TLN|Killua
+Asia-Pacific|TLN|thyy
+Asia-Pacific|TLN|JitBoyS
+Asia-Pacific|TLN|primmie
+Asia-Pacific|TLN|Surf
+Asia-Pacific|BOSSING|Hokori
+Asia-Pacific|BOSSING|ent1ty
+Asia-Pacific|BOSSING|Dinklefarts
+Asia-Pacific|BOSSING|xuxi
+Asia-Pacific|BOSSING|fLx
+Asia-Pacific|RNTX|Venka
+Asia-Pacific|RNTX|Hoax
+Asia-Pacific|RNTX|Techno
+Asia-Pacific|RNTX|Madelyn
+Asia-Pacific|RNTX|k1ngkappa
+Asia-Pacific|RNTX|Rinsat
+Asia-Pacific|TRN|decoy
+Asia-Pacific|TRN|diky
+Asia-Pacific|TRN|140
+Asia-Pacific|TRN|Batenkh
+Asia-Pacific|TRN|santnas
+Asia-Pacific|TEAM P1NOC|Dodo
+Asia-Pacific|TEAM P1NOC|VynDrav
+Asia-Pacific|TEAM P1NOC|Cennzera
+Asia-Pacific|TEAM P1NOC|WinterSoldieR
+Asia-Pacific|TEAM P1NOC|MyFavoriteThings
+Asia-Pacific|CGW|Batenkh
+Asia-Pacific|CGW|Cinjvv
+Asia-Pacific|CGW|140
+Asia-Pacific|CGW|anotherrr
+Asia-Pacific|CGW|Fetiz
+Asia-Pacific|Cơn Lốc Hải Phòng|deviceHP
+Asia-Pacific|Cơn Lốc Hải Phòng|Mistzzz
+Asia-Pacific|Cơn Lốc Hải Phòng|Mika
+Asia-Pacific|Cơn Lốc Hải Phòng|Xuân Trung Quân
+Asia-Pacific|Cơn Lốc Hải Phòng|b00nrealcul
+Asia-Pacific|JADE|2GE
+Asia-Pacific|JADE|Georggyyy
+Asia-Pacific|JADE|Nexi
+Asia-Pacific|JADE|kkoruna
+Asia-Pacific|JADE|Papi
+Asia-Pacific|PHR|kkoruna
+Asia-Pacific|PHR|Nexi
+Asia-Pacific|PHR|Wild0reoo
+Asia-Pacific|PHR|2GE
+Asia-Pacific|PHR|Georggyyy
+Asia-Pacific|NSP|sayoo
+Asia-Pacific|NSP|deecee
+Asia-Pacific|NSP|damaraa
+Asia-Pacific|NSP|Lightningfast
+Asia-Pacific|NSP|hellff
+Asia-Pacific|NSP|Gambo
+Asia-Pacific|Blessed|婊子你最好做好准备
+Asia-Pacific|Blessed|sickerz
+Asia-Pacific|Blessed|Kagura
+Asia-Pacific|Blessed|ザンジ
+Asia-Pacific|Blessed|YangBerhormat
+Asia-Pacific|Blessed|Ponyo
+Asia-Pacific|GDR|deecee
+Asia-Pacific|GDR|Lightningfast
+Asia-Pacific|GDR|hellff
+Asia-Pacific|LITP|Long
+Asia-Pacific|LITP|yZkA1
+Asia-Pacific|LITP|SumiLunai
+Asia-Pacific|LITP|Funnyman
+Asia-Pacific|LITP|QueYa
+Asia-Pacific|LITP|Awei
+Asia-Pacific|LITL|Ra1ny
+Asia-Pacific|LITL|YanLi
+Asia-Pacific|LITL|yanyandd
+Asia-Pacific|LITL|SunfaN
+Asia-Pacific|LITL|Toast
+Asia-Pacific|把牛變成鱒魚|SunfaN
+Asia-Pacific|把牛變成鱒魚|YanLi
+Asia-Pacific|把牛變成鱒魚|Ra1ny
+Asia-Pacific|把牛變成鱒魚|SecreT
+Asia-Pacific|把牛變成鱒魚|ChiaWei
+Asia-Pacific|把牛變成鱒魚|GoodSon
+Asia-Pacific|ONE|YanLi
+Asia-Pacific|ONE|Ra1ny
+Asia-Pacific|ONE|ngk
+Asia-Pacific|ONE|XyuS
+Asia-Pacific|ONE|SecreT
+Asia-Pacific|ONE|KiNo
+Asia-Pacific|ONE|ChiaWei
+Asia-Pacific|OneOTwo|tongK
+Asia-Pacific|OneOTwo|สมปองมายองเนส
+Asia-Pacific|OneOTwo|Fixz
+Asia-Pacific|OneOTwo|immawreckeD
+Asia-Pacific|OneOTwo|Sulliva4n
+Asia-Pacific|是這裡嗎|glacier
+Asia-Pacific|是這裡嗎|Asuka
+Asia-Pacific|是這裡嗎|gyenWoo
+Asia-Pacific|是這裡嗎|N11
+Asia-Pacific|是這裡嗎|yo1th
+Asia-Pacific|LITE|Kirbymon
+Asia-Pacific|LITE|Xi4oZhou
+Asia-Pacific|LITE|Xuan
+Asia-Pacific|LITE|Lian
+Asia-Pacific|LITE|Ya0yU1
+Asia-Pacific|Onedamn|KiNo
+Asia-Pacific|Onedamn|XyuS
+Asia-Pacific|Onedamn|W1nner
+Asia-Pacific|Onedamn|B1ngXun
+Asia-Pacific|BEWD|deviceHP
+Asia-Pacific|BEWD|Pr1ck
+Asia-Pacific|BEWD|MiGodd
+Asia-Pacific|BEWD|Hasagiii
+Asia-Pacific|BEWD|KhoiBeo
+Asia-Pacific|KRTA|gotten
+Asia-Pacific|KRTA|Zneider
+Asia-Pacific|KRTA|AmerNone
+Asia-Pacific|KRTA|Chrollo
+Asia-Pacific|KRTA|Jefz
+Asia-Pacific|KRTA|Dragy
+Asia-Pacific|KRTA|netlov
+Asia-Pacific|Five Stars|GNASCHE
+Asia-Pacific|Five Stars|PiQn
+Asia-Pacific|Five Stars|国程
+Asia-Pacific|Five Stars|Hwayoung
+Asia-Pacific|Five Stars|mviz
+Asia-Pacific|Five Stars|leetcode
+Asia-Pacific|Five Stars|Aki
+Asia-Pacific|Five Stars|lonely stonnie
+Asia-Pacific|DLSU|Secre
+Asia-Pacific|DLSU|guelson
+Asia-Pacific|DLSU|Fission
+Asia-Pacific|DLSU|Banunu
+Asia-Pacific|你後面有車|carrymepls
+Asia-Pacific|你後面有車|idunno
+Asia-Pacific|你後面有車|senz
+Asia-Pacific|你後面有車|Luwis
+Asia-Pacific|你後面有車|PRX something
+Asia-Pacific|你後面有車|Minato
+Asia-Pacific|XGOD|foxz
+Asia-Pacific|XGOD|KRX
+Asia-Pacific|XGOD|Fluky
+Asia-Pacific|XGOD|bababui
+Asia-Pacific|XGOD|JohnOlsen
+Asia-Pacific|TUMT|xzzcat
+Asia-Pacific|TUMT|Ethan
+Asia-Pacific|TUMT|popoman4Q
+Asia-Pacific|TUMT|Shu
+Asia-Pacific|TUMT|Yakuri
+Asia-Pacific|TUMT|Nastiness
+Asia-Pacific|S2|moon
+Asia-Pacific|S2|mks
+Asia-Pacific|S2|Liliy
+Asia-Pacific|Ghoul esport|Zephyr
+Asia-Pacific|Ghoul esport|shyn
+Asia-Pacific|Ghoul esport|HopperyX
+Asia-Pacific|Ghoul esport|Mint Thumb
+Asia-Pacific|Ghoul esport|Griffith
+Asia-Pacific|SD|pennywise
+Asia-Pacific|SD|Changee
+Asia-Pacific|SD|saranghae
+Asia-Pacific|SD|Layman
+Asia-Pacific|SD|Neft
+Asia-Pacific|SAIO|LilMeuc
+Asia-Pacific|SAIO|yanwei
+Asia-Pacific|SAIO|moon
+Asia-Pacific|SAIO|MiLuan
+Asia-Pacific|SAIO|Sa1koro
+Asia-Pacific|MonkeyCave|Mirage
+Asia-Pacific|MonkeyCave|Masei
+Asia-Pacific|MonkeyCave|f0ng
+Asia-Pacific|MonkeyCave|Ryhan
+Asia-Pacific|MonkeyCave|yuckii
+Asia-Pacific|MonkeyCave|dagg
+Asia-Pacific|SGN|Envy2K
+Asia-Pacific|SGN|Makaveli
+Asia-Pacific|SGN|CreamZ
+Asia-Pacific|SGN|xeon
+Asia-Pacific|SGN|WooDyy
+Asia-Pacific|CC|Hyuse
+Asia-Pacific|CC|Crus
+Asia-Pacific|CC|Kishi
+Asia-Pacific|CC|ting2k5
+Asia-Pacific|CC|K1LLERS
+Asia-Pacific|Dreamer|senr1x
+Asia-Pacific|Dreamer|junee
+Asia-Pacific|Dreamer|BinyX
+Asia-Pacific|Dreamer|ferbzxje
+Asia-Pacific|Dreamer|Roswynn
+Asia-Pacific|AST|Trinity
+Asia-Pacific|AST|Kohliii
+Asia-Pacific|AST|r1seN
+Asia-Pacific|AST|kibojn
+Asia-Pacific|AST|karam1l
+Asia-Pacific|Shang|Mini Luna
+Asia-Pacific|Shang|SinS
+Asia-Pacific|Shang|Gulu
+Asia-Pacific|Shang|Bumble
+Asia-Pacific|Shang|serjz
+Asia-Pacific|Shang|hippo
+Asia-Pacific|VNS|Bumble
+Asia-Pacific|VNS|serjz
+Asia-Pacific|VNS|SinS
+Asia-Pacific|ZX|Chongi
+Asia-Pacific|ZX|Chuchu
+Asia-Pacific|ZX|Kevzii
+Asia-Pacific|ZX|Repulsive
+Asia-Pacific|ZX|Jung
+Asia-Pacific|ZX|Shintaro
+Asia-Pacific|V6 esport|slightslash
+Asia-Pacific|V6 esport|phish
+Asia-Pacific|V6 esport|Harilza
+Asia-Pacific|V6 esport|Hanks
+Asia-Pacific|V6 esport|TeukuUmar
+Asia-Pacific|XOXO|ITaoEartH
+Asia-Pacific|XOXO|SnowBallz
+Asia-Pacific|XOXO|Monica
+Asia-Pacific|XOXO|Namtramee
+Asia-Pacific|XOXO|umaruchans
+Asia-Pacific|XOXO|ALLR1GHTT
+Asia-Pacific|DAG|Myxinhnhat
+Asia-Pacific|DAG|Kiatwfish
+Asia-Pacific|DAG|Lemf
+Asia-Pacific|DAG|Lama
+Asia-Pacific|DAG|Barbatos
+Asia-Pacific|DAG|WhySoEz
+Asia-Pacific|XRE|s1mple
+Asia-Pacific|XRE|Yamiii
+Asia-Pacific|XRE|Gauransh
+Asia-Pacific|XRE|YasH
+Asia-Pacific|XRE|Rinsat
+Asia-Pacific|fat guy from mario|1KAPUMBA
+Asia-Pacific|fat guy from mario|ChromnZ
+Asia-Pacific|fat guy from mario|Asitte
+Asia-Pacific|fat guy from mario|ZinG
+Asia-Pacific|fat guy from mario|Ahu
+Asia-Pacific|LG|Asitte
+Asia-Pacific|LG|Laambe
+Asia-Pacific|LG|Raitoz
+Asia-Pacific|LG|Orangehas
+Asia-Pacific|LG|Ahu
+Asia-Pacific|LG|Toji Fushiguro
+Asia-Pacific|LG|ChromnZ
+Asia-Pacific|GC|L1nggx
+Asia-Pacific|GC|Kratos
+Asia-Pacific|GC|For a flashback
+Asia-Pacific|GC|1m75
+Asia-Pacific|GC|decent
+Asia-Pacific|GC|tok1o
+Asia-Pacific|GO|nex1SphiX
+Asia-Pacific|GO|Orgil
+Asia-Pacific|GO|MnFeaR
+Asia-Pacific|GO|Chintu
+Asia-Pacific|MGLZ|SkyIsBlue
+Asia-Pacific|MGLZ|MnFeaR
+Asia-Pacific|MGLZ|123
+Asia-Pacific|Tai Lung Gaming|CXIX666
+Asia-Pacific|Tai Lung Gaming|nex1SphiX
+Asia-Pacific|Tai Lung Gaming|MnFeaR
+Asia-Pacific|Tai Lung Gaming|Orgil
+Asia-Pacific|Tai Lung Gaming|liq
+Asia-Pacific|126T|nex1SphiX
+Asia-Pacific|126T|SkyIsBlue
+Asia-Pacific|126T|decoy
+Asia-Pacific|126T|Chintu
+Asia-Pacific|126T|diky
+Asia-Pacific|LAN|Ladi
+Asia-Pacific|LAN|xuan
+Asia-Pacific|LAN|Bea2
+Asia-Pacific|LAN|yTao
+Asia-Pacific|LAN|solo88
+Asia-Pacific|OCU Shark|Lizluvx
+Asia-Pacific|OCU Shark|YungEn
+Asia-Pacific|OCU Shark|Sh4keR
+Asia-Pacific|OCU Shark|rain
+Asia-Pacific|OCU Shark|rgser
+Asia-Pacific|OCU Shark|QiaoEn
+Asia-Pacific|OCU Shark|NEWKING
+Asia-Pacific|zBlue|Aspire
+Asia-Pacific|zBlue|RedoxInn
+Asia-Pacific|zBlue|GODSPREE
+Asia-Pacific|ChesterField|cjP
+Asia-Pacific|ChesterField|MJ999
+Asia-Pacific|ChesterField|Hacl0x
+Asia-Pacific|ChesterField|Yaboo
+Asia-Pacific|ChesterField|Anarzel
+Asia-Pacific|PAPA|Shu
+Asia-Pacific|PAPA|N11
+Asia-Pacific|PAPA|Nasty
+Asia-Pacific|PAPA|popoman4Q
+Asia-Pacific|PAPA|Ethan
+Asia-Pacific|NVL|mikezin
+Asia-Pacific|NVL|Magician
+Asia-Pacific|NVL|ahongboy
+Asia-Pacific|NVL|HZBY
+Asia-Pacific|NVL|fausTao
+Asia-Pacific|NVL|capeesha
+Asia-Pacific|SES|Magician
+Asia-Pacific|SES|movi
+Asia-Pacific|SES|HZBY
+Asia-Pacific|SES|ahongboy
+Asia-Pacific|SES|aidaN
+Asia-Pacific|Bandung SUPERTEAM|aidaN
+Asia-Pacific|Bandung SUPERTEAM|Hixer
+Asia-Pacific|Bandung SUPERTEAM|movi
+Asia-Pacific|Bandung SUPERTEAM|ahongboy
+Asia-Pacific|Bandung SUPERTEAM|Magician
+Asia-Pacific|4S|Hyuse
+Asia-Pacific|4S|ting2k5
+Asia-Pacific|4S|her
+Asia-Pacific|4S|minh2
+Asia-Pacific|4S|Crus
+Asia-Pacific|WXB|Magician
+Asia-Pacific|WXB|aidaN
+Asia-Pacific|WXB|zui
+Asia-Pacific|WXB|binzo
+Asia-Pacific|WXB|movi
+Asia-Pacific|West Aspect|ZiRaa
+Asia-Pacific|West Aspect|kruM
+Asia-Pacific|West Aspect|Kenshi
+Asia-Pacific|West Aspect|Salvuz
+Asia-Pacific|calm Clams x MiB|binzo
+Asia-Pacific|calm Clams x MiB|movi
+Asia-Pacific|calm Clams x MiB|zui
+Asia-Pacific|calm Clams x MiB|Harue
+Asia-Pacific|NoFear|ldn
+Asia-Pacific|NoFear|Chocopaofu
+Asia-Pacific|NoFear|ycy
+Asia-Pacific|NoFear|Luluv7umaoZ
+Asia-Pacific|NoFear|x1aoluyu
+Asia-Pacific|Project X|ZesBeeW
+Asia-Pacific|Project X|aduka
+Asia-Pacific|Project X|toggle
+Asia-Pacific|Project X|Dignified
+Asia-Pacific|Project X|JayH
+Asia-Pacific|WIZ|binzo
+Asia-Pacific|WIZ|movi
+Asia-Pacific|WIZ|kruM
+Asia-Pacific|WIZ|Kahlheit
+Asia-Pacific|WIZ|Harue
+Asia-Pacific|HLS|Slyancee
+Asia-Pacific|HLS|Intense
+Asia-Pacific|HLS|moon
+Asia-Pacific|HLS|Xty
+Asia-Pacific|HLS|Ivhan
+Asia-Pacific|AG|Layman
+Asia-Pacific|AG|loley
+Asia-Pacific|AG|saranghae
+Asia-Pacific|AG|pennywise
+Asia-Pacific|AG|Neft
+Asia-Pacific|ESMONDE GAMING|pudj
+Asia-Pacific|ESMONDE GAMING|hyk
+Asia-Pacific|ESMONDE GAMING|ESMONDE
+Asia-Pacific|ESMONDE GAMING|Akame
+Asia-Pacific|ESMONDE GAMING|markL
+Asia-Pacific|WhatEver|kiRaboi
+Asia-Pacific|WhatEver|TEE
+Asia-Pacific|WhatEver|Imysb
+Asia-Pacific|WhatEver|Tmo
+Asia-Pacific|WhatEver|blue
+Asia-Pacific|TS|natz
+Asia-Pacific|TS|Zeus
+Asia-Pacific|TS|STYRON
+Asia-Pacific|TS|kellyS
+Asia-Pacific|TS|Sylvan
+Asia-Pacific|DODGE ACELS|goofy
+Asia-Pacific|DODGE ACELS|Kazera
+Asia-Pacific|DODGE ACELS|Trinity
+Asia-Pacific|DODGE ACELS|Ethics
+Asia-Pacific|DODGE ACELS|kyvaire
+Asia-Pacific|DODGE ACELS|OrangeKatsu
+Asia-Pacific|DODGE ACELS|acels
+Asia-Pacific|DODGE ACELS|adwinn
+Asia-Pacific|U5|Fivm
+Asia-Pacific|U5|persona11
+Asia-Pacific|U5|twelve
+Asia-Pacific|U5|Reverie
+Asia-Pacific|AETHERSTRIKE|fatezn
+Asia-Pacific|AETHERSTRIKE|jhomxx
+Asia-Pacific|AETHERSTRIKE|k4rma
+Asia-Pacific|AETHERSTRIKE|chong
+Asia-Pacific|OG|saxx
+Asia-Pacific|OG|prozac
+Asia-Pacific|OG|Dylan
+Asia-Pacific|OG|JackNo1
+Asia-Pacific|OG|16Chops
+Asia-Pacific|OG|TTT
+Asia-Pacific|All Stars|YogiAmstrong
+Asia-Pacific|All Stars|Faraday
+Asia-Pacific|All Stars|Alfadel
+Asia-Pacific|All Stars|udinatenz
+Asia-Pacific|All Stars|LbkBulus
+Asia-Pacific|RAD|Paradox
+Asia-Pacific|RAD|Lilboi
+Asia-Pacific|RAD|tricky
+Asia-Pacific|RAD|Garv
+Asia-Pacific|RAD|SNIPST
+Asia-Pacific|NONG|Atom200iq
+Asia-Pacific|NONG|D4SH3R
+Asia-Pacific|NONG|Sy1vezt
+Asia-Pacific|NONG|Cheona
+Asia-Pacific|NONG|U I I A E O U I
+Asia-Pacific|RVL|Tempz
+Asia-Pacific|RVL|Iceyyy
+Asia-Pacific|RVL|Inf
+Asia-Pacific|RVL|aplycs
+Asia-Pacific|RVL|Pr0digy
+Asia-Pacific|ECHO Esports|Swicy
+Asia-Pacific|ECHO Esports|feizK
+Asia-Pacific|ECHO Esports|misty
+Asia-Pacific|ECHO Esports|Arctic
+Asia-Pacific|ECHO Esports|zucleon
+Asia-Pacific|ECHO.RE|Coddd
+Asia-Pacific|ECHO.RE|misty
+Asia-Pacific|ECHO.RE|feizK
+Asia-Pacific|ECHO.RE|Arctic
+Asia-Pacific|ECHO.RE|SparroW
+Asia-Pacific|ECHO.RE|ZacW
+Asia-Pacific|ECHO.RE|Swicy
+Asia-Pacific|SF|Solitude
+Asia-Pacific|SF|tdk love he
+Asia-Pacific|SF|Vantage
+Asia-Pacific|SF|sachi nanjou
+Asia-Pacific|SF|Biruss
+Asia-Pacific|SF|4bY
+Asia-Pacific|Ayam|slightslash
+Asia-Pacific|Ayam|Chard
+Asia-Pacific|Ayam|Hanks
+Asia-Pacific|spidermonkey v.2|ตอเรส 08 แดง
+Asia-Pacific|spidermonkey v.2|jjpepapitpm179
+Asia-Pacific|spidermonkey v.2|Warriorเขมรสำโรง
+Asia-Pacific|spidermonkey v.2|yokster
+Asia-Pacific|spidermonkey v.2|beazzyy
+Asia-Pacific|OF|Changee
+Asia-Pacific|OF|พรเทพ
+Asia-Pacific|OF|Piimu
+Asia-Pacific|OF|slash
+Asia-Pacific|OF|sterllas
+Asia-Pacific|NEF|B3LA1R
+Asia-Pacific|NEF|Ekso
+Asia-Pacific|NEF|Dab
+Asia-Pacific|NEF|angelo
+Asia-Pacific|NEF|ZacW
+Asia-Pacific|LFM|Lilo
+Asia-Pacific|LFM|artaa
+Asia-Pacific|LFM|woody
+Asia-Pacific|LFM|vascalizz
+Asia-Pacific|LFM|no1syboy
+Asia-Pacific|EVAR|tupai
+Asia-Pacific|EVAR|chen
+Asia-Pacific|Future Greats|prettyprncess
+Asia-Pacific|Future Greats|Oreo
+Asia-Pacific|Future Greats|CAZCAZCAZCAZCAZ
+Asia-Pacific|Future Greats|Snowish
+Asia-Pacific|Future Greats|JAYLOH7
+Asia-Pacific|ARF|Chrollo
+Asia-Pacific|ARF|AmerNone
+Asia-Pacific|ARF|w1sh
+Asia-Pacific|ARF|tupai
+Asia-Pacific|ARF|chen
+Asia-Pacific|DLSU|Fission
+Asia-Pacific|DLSU|guelson
+Asia-Pacific|DLSU|Banunu
+Asia-Pacific|DLSU|Secre
+Asia-Pacific|DLSU|tomix
+Asia-Pacific|SORTIGEN|migz
+Asia-Pacific|SORTIGEN|Rimuru
+Asia-Pacific|SORTIGEN|MD2
+Asia-Pacific|SORTIGEN|Jeweeeak
+Asia-Pacific|SORTIGEN|Yeseo
+Asia-Pacific|Tài Năng Trẻ HP|Mistzzz
+Asia-Pacific|Tài Năng Trẻ HP|Mika
+Asia-Pacific|Tài Năng Trẻ HP|Kishi
+Asia-Pacific|Tài Năng Trẻ HP|Chico
+Asia-Pacific|Tài Năng Trẻ HP|Xuân Trung Quân
+Asia-Pacific|Meow|watasink
+Asia-Pacific|Meow|rico
+Asia-Pacific|Meow|Lightning
+Asia-Pacific|Meow|Kippo
+Asia-Pacific|Meow|meep
+Asia-Pacific|HS|ZesBeeW
+Asia-Pacific|HS|aduka
+Asia-Pacific|HS|toggle
+Asia-Pacific|HS|Dignified
+Asia-Pacific|HS|JayH
+Asia-Pacific|SupleXure|Shreesha
+Asia-Pacific|SupleXure|IAMPrasad
+Asia-Pacific|SupleXure|Baaz
+Asia-Pacific|SupleXure|Morpheus
+Asia-Pacific|SupleXure|KonsTanT
+Asia-Pacific|SupleXure|BADSHAH
+Asia-Pacific|MOST WANTED|noctis
+Asia-Pacific|MOST WANTED|the black dog
+Asia-Pacific|MOST WANTED|Jeweeeak
+Asia-Pacific|MOST WANTED|johms
+Asia-Pacific|MOST WANTED|clid
+Asia-Pacific|NJT|Novacane
+Asia-Pacific|NJT|w1sh
+Asia-Pacific|NJT|Kylee
+Asia-Pacific|NJT|Naroks
+Asia-Pacific|NJT|tupai
+Asia-Pacific|ILUSO|BinyX
+Asia-Pacific|ILUSO|senr1x
+Asia-Pacific|ILUSO|junee
+Asia-Pacific|ILUSO|Howl
+Asia-Pacific|ILUSO|Roswynn
+Asia-Pacific|Tâm Lý Yếu|senr1x
+Asia-Pacific|Tâm Lý Yếu|DeeKay
+Asia-Pacific|Tâm Lý Yếu|Roswynn
+Asia-Pacific|Tâm Lý Yếu|Thuxinhnhat
+Asia-Pacific|Tâm Lý Yếu|junee
+Asia-Pacific|100WR|kulantro
+Asia-Pacific|100WR|Skylervon
+Asia-Pacific|100WR|Karl
+Asia-Pacific|100WR|astr0
+Asia-Pacific|100WR|DizzyFps
+Asia-Pacific|100WR|Stazy
+Asia-Pacific|TheProdiGs|Stazy
+Asia-Pacific|TheProdiGs|Skylervon
+Asia-Pacific|TheProdiGs|DizzyFps
+Asia-Pacific|TheProdiGs|Casein Nitrate
+Asia-Pacific|TheProdiGs|SecondLove
+Asia-Pacific|BGE|ashley
+Asia-Pacific|BGE|Adn
+Asia-Pacific|BGE|kivar
+Asia-Pacific|BGE|movi
+Asia-Pacific|BGE|sTizzy
+Asia-Pacific|BGE|kruM
+Asia-Pacific|GEN.Z|Funky
+Asia-Pacific|GEN.Z|DizzyFps
+Asia-Pacific|GEN.Z|SecondLove
+Asia-Pacific|GEN.Z|Stazy
+Asia-Pacific|GEN.Z|k4rma
+Asia-Pacific|Tim Tams|Maui
+Asia-Pacific|Tim Tams|Psychosis
+Asia-Pacific|Tim Tams|MANCHILD
+Asia-Pacific|Tim Tams|r4ven
+Asia-Pacific|Tim Tams|ssera
+Asia-Pacific|LLM|Chocopaofu
+Asia-Pacific|LLM|Luluv7umaoZ
+Asia-Pacific|LLM|ldn
+Asia-Pacific|LLM|Terry
+Asia-Pacific|LLM|ycy
+Asia-Pacific|Streamer Queue|SuperMj
+Asia-Pacific|Streamer Queue|Br3ntlog
+Asia-Pacific|Streamer Queue|MAHILIIG SA LOLA
+Asia-Pacific|Streamer Queue|Morewil GTV
+Asia-Pacific|Streamer Queue|Dyankiee
+Asia-Pacific|SoloMid|shyn
+Asia-Pacific|SoloMid|HopperyX
+Asia-Pacific|SoloMid|BoiThiệtThòi
+Asia-Pacific|SoloMid|normal person
+Asia-Pacific|SoloMid|Griffith
+Asia-Pacific|VNU|Asta
+Asia-Pacific|VNU|Anc1enT
+Asia-Pacific|VNU|T1ankong
+Asia-Pacific|VNU|Nia
+Asia-Pacific|VNU|XiaoQ
+Asia-Pacific|Phenikaa esport club|Ferb
+Asia-Pacific|Phenikaa esport club|Innocence
+Asia-Pacific|Phenikaa esport club|Chanbomayde
+Asia-Pacific|Phenikaa esport club|ihavemyownkarma
+Asia-Pacific|Phenikaa esport club|clicker
+Asia-Pacific|1TAPxPEC|clicker
+Asia-Pacific|1TAPxPEC|Innocence
+Asia-Pacific|1TAPxPEC|ihavemyownkarma
+Asia-Pacific|1TAPxPEC|Karen
+Asia-Pacific|1TAPxPEC|Lich
+Asia-Pacific|VAN152|Wu5
+Asia-Pacific|VAN152|Royal0ak
+Asia-Pacific|VAN152|0n1y
+Asia-Pacific|VAN152|ShangYan
+Asia-Pacific|VAN152|Leoweng
+Asia-Pacific|KRYON ESPORTS|kiersaz
+Asia-Pacific|KRYON ESPORTS|sAmar
+Asia-Pacific|KRYON ESPORTS|heyNF
+Asia-Pacific|KRYON ESPORTS|Mr Cyberx
+Asia-Pacific|KRYON ESPORTS|Akdemon
+Asia-Pacific|PRFS|AlleN
+Asia-Pacific|PRFS|hsn
+Asia-Pacific|PRFS|Smiley
+Asia-Pacific|PRFS|mysT
+Asia-Pacific|PRFS|Dexter
+Asia-Pacific|PRFS|Niklaus
+Asia-Pacific|PRFS|Abdullah
+Asia-Pacific|BDBS|yuhneb
+Asia-Pacific|BDBS|moefcute
+Asia-Pacific|BDBS|n1zzy
+Asia-Pacific|BDBS|Hyzee
+Asia-Pacific|BDBS|K1LLERS
+Asia-Pacific|NMD|vinzo
+Asia-Pacific|NMD|Hitman
+Asia-Pacific|NMD|vS
+Asia-Pacific|NMD|NagiFPS
+Asia-Pacific|NMD|kfye
+Asia-Pacific|NMD|MRVL
+Asia-Pacific|ab123|Effect
+Asia-Pacific|ab123|Xaa
+Asia-Pacific|ab123|Anoko
+Asia-Pacific|ab123|derp
+Asia-Pacific|ab123|UDKrong
+Asia-Pacific|Veritas|KACHOW
+Asia-Pacific|Veritas|Vixeria
+Asia-Pacific|Veritas|psychedelic
+Asia-Pacific|Veritas|Paul Atreides
+Asia-Pacific|Veritas|maestr0
+Asia-Pacific|Veritas|rooster
+Asia-Pacific|DT|小豬崽仔
+Asia-Pacific|DT|CIC
+Asia-Pacific|DT|Chihiro
+Asia-Pacific|DT|tempest
+Asia-Pacific|DT|Shihyu
+Asia-Pacific|DT|Kaszin
+Asia-Pacific|FP|nyxsus
+Asia-Pacific|FP|rayy
+Asia-Pacific|FP|SDY
+Asia-Pacific|FP|Tetsuya
+Asia-Pacific|FP|DREBS
+Asia-Pacific|Vicini Certus|SDY
+Asia-Pacific|Vicini Certus|Tetsuya
+Asia-Pacific|Vicini Certus|Roys
+Asia-Pacific|Vicini Certus|DREBS
+Asia-Pacific|Vicini Certus|cjP
+Asia-Pacific|AMT|Ghost
+Asia-Pacific|AMT|Khrezner
+Asia-Pacific|AMT|nebu
+Asia-Pacific|AMT|Kousei
+Asia-Pacific|AMT|Denz
+Asia-Pacific|MORI Golden Horus|Ghost
+Asia-Pacific|MORI Golden Horus|bardie
+Asia-Pacific|MORI Golden Horus|Grizzlyy
+Asia-Pacific|MORI Golden Horus|Kage
+Asia-Pacific|NU|eepy
+Asia-Pacific|NU|Chi
+Asia-Pacific|NU|darky
+Asia-Pacific|NU|Ash999
+Asia-Pacific|NU|Njames
+Asia-Pacific|NU|Yoishii
+Asia-Pacific|DUPG|D1Rollins
+Asia-Pacific|DUPG|FLAMEE
+Asia-Pacific|HEYHA67|M for M
+Asia-Pacific|HEYHA67|Anyzex
+Asia-Pacific|HEYHA67|PJAY
+Asia-Pacific|HEYHA67|Blackmambruh
+Asia-Pacific|HEYHA67|Prame
+Asia-Pacific|Candy|Anyzex
+Asia-Pacific|Candy|Blackmambruh
+Asia-Pacific|Candy|csythx
+Asia-Pacific|Candy|Namtramee
+Asia-Pacific|Candy|PJAY
+Asia-Pacific|MF|PJAY
+Asia-Pacific|MF|H4te2
+Asia-Pacific|V RAPTOR|Saivon
+Asia-Pacific|V RAPTOR|phish
+Asia-Pacific|V RAPTOR|Khaldrogo
+Asia-Pacific|HIVE|ayrA
+Asia-Pacific|HIVE|dekun
+Asia-Pacific|HIVE|ken carson
+Asia-Pacific|HIVE|KnZinnn
+Asia-Pacific|HIVE|AlliCe
+Asia-Pacific|NTP|nathanno3
+Asia-Pacific|NTP|Nyx
+Asia-Pacific|NTP|jinmin
+Asia-Pacific|NTP|Recoil
+Asia-Pacific|NTP|Cherish
+Asia-Pacific|Iron Sight Elite|DeYing
+Asia-Pacific|Iron Sight Elite|alekxdar vduc
+Asia-Pacific|Iron Sight Elite|VyT
+Asia-Pacific|Iron Sight Elite|baeBy
+Asia-Pacific|Iron Sight Elite|Damslette
+Asia-Pacific|Iron Sight Elite|ZYKANG
+Asia-Pacific|HaNoi Dental|K4ruuu
+Asia-Pacific|HaNoi Dental|Dy1anBog
+Asia-Pacific|HaNoi Dental|sanctuary
+Asia-Pacific|HaNoi Dental|Phú Thànhh
+Asia-Pacific|HaNoi Dental|Uriyah
+Asia-Pacific|HaNoi Dental|sjwsvl
+Asia-Pacific|AEEC|Seven
+Asia-Pacific|AEEC|ZuoZuo
+Asia-Pacific|AEEC|花花的世界蝴蝶多
+Asia-Pacific|AEEC|Sing
+Asia-Pacific|AEEC|PPDBJ
+Asia-Pacific|KROMATIC PHORCYS|pald6S
+Asia-Pacific|KROMATIC PHORCYS|dsk
+Asia-Pacific|KROMATIC PHORCYS|Zho
+Asia-Pacific|KROMATIC PHORCYS|Natzu
+Asia-Pacific|KROMATIC PHORCYS|Limbo
+Asia-Pacific|Hey hey hey|RANDGRIS
+Asia-Pacific|Hey hey hey|Erz4h
+Asia-Pacific|Hey hey hey|frogbsq
+Asia-Pacific|Hey hey hey|santino
+Asia-Pacific|Hey hey hey|prodg
+Asia-Pacific|Hey hey hey|w1nter
+Asia-Pacific|Hey hey hey|webhead
+Asia-Pacific|IM THE RAJA|synx
+Asia-Pacific|IM THE RAJA|Snowish
+Asia-Pacific|IM THE RAJA|Oreo
+Asia-Pacific|IM THE RAJA|Acoric
+Asia-Pacific|IM THE RAJA|prettyprncess
+Asia-Pacific|Hamta Troll|Cheesehead
+Asia-Pacific|Hamta Troll|Signature
+Asia-Pacific|Hamta Troll|Fu0L
+Asia-Pacific|Hamta Troll|sapu
+Asia-Pacific|Hamta Troll|PITOOOOOOMMM
+Asia-Pacific|LAKAN|firo
+Asia-Pacific|LAKAN|sosa
+Asia-Pacific|LAKAN|nev
+Asia-Pacific|LAKAN|Chronical
+Asia-Pacific|LAKAN|eeju
+Asia-Pacific|One dream for all|Tefolailatoiday
+Asia-Pacific|One dream for all|leetcode
+Asia-Pacific|One dream for all|GNASCHE
+Asia-Pacific|One dream for all|Hwayoung
+Asia-Pacific|One dream for all|oăn táp oăn kiu
+Asia-Pacific|Ryusei Tridents|alvi2k
+Asia-Pacific|Ryusei Tridents|Dream1
+Asia-Pacific|Ryusei Tridents|Frenzy
+Asia-Pacific|Ryusei Tridents|Flexx
+Asia-Pacific|Ryusei Tridents|DEMON
+Asia-Pacific|Svvagy FC|wawood
+Asia-Pacific|Svvagy FC|Justhistory
+Asia-Pacific|Svvagy FC|LuXu
+Asia-Pacific|Svvagy FC|asakuraga
+Asia-Pacific|Svvagy FC|carmine
+Asia-Pacific|YG|Monday
+Asia-Pacific|YG|kasai
+Asia-Pacific|YG|ERIMINOS
+Asia-Pacific|YG|zimbapway
+Asia-Pacific|YG|foxybunny
+Asia-Pacific|Kintsugi Esports|joys
+Asia-Pacific|Kintsugi Esports|Mowtiii
+Asia-Pacific|Kintsugi Esports|bardie
+Asia-Pacific|Kintsugi Esports|Vill
+Asia-Pacific|Sankhara|eugeneS
+Asia-Pacific|Sankhara|Kye
+Asia-Pacific|Sankhara|SecondLove
+Asia-Pacific|Sankhara|Busher
+Asia-Pacific|Sankhara|406
+Asia-Pacific|RDN TEAM|CrapzF
+Asia-Pacific|RDN TEAM|Saivon
+Asia-Pacific|RDN TEAM|Chard
+Asia-Pacific|RDN TEAM|Ryq
+Asia-Pacific|RDN TEAM|xRIKZ
+Asia-Pacific|4KOB|MAX
+Asia-Pacific|4KOB|AceStaRRRRR
+Asia-Pacific|4KOB|CaspeR
+Asia-Pacific|4KOB|D1Rollins
+Asia-Pacific|4KOB|LOVE
+Asia-Pacific|Nomad Nemesis|MasU
+Asia-Pacific|Nomad Nemesis|Raiden
+Asia-Pacific|Nomad Nemesis|Teln
+Asia-Pacific|Nomad Nemesis|zerotwo
+Asia-Pacific|Nomad Nemesis|dei
+Asia-Pacific|FY|kongared
+Asia-Pacific|FY|xZe
+Asia-Pacific|FY|pedio
+Asia-Pacific|FY|siraphop
+Asia-Pacific|FY|KRUZEL
+Asia-Pacific|กาลกิณี|xZe
+Asia-Pacific|กาลกิณี|notxd
+Asia-Pacific|กาลกิณี|KRUZEL
+Asia-Pacific|กาลกิณี|Tongrak
+Asia-Pacific|กาลกิณี|kongared
+Asia-Pacific|กาลกิณี|pedio
+Asia-Pacific|Brewling Esports|Kuga
+Asia-Pacific|Brewling Esports|JSea
+Asia-Pacific|Brewling Esports|yawn
+Asia-Pacific|Brewling Esports|Naiiisu
+Asia-Pacific|Brewling Esports|4rd
+Asia-Pacific|Brewling Esports|Sarang Hae
+Asia-Pacific|Chơi giải trí|Oir4m
+Asia-Pacific|Chơi giải trí|TLinnnnnn
+Asia-Pacific|Chơi giải trí|Ronnie
+Asia-Pacific|Chơi giải trí|outsider
+Asia-Pacific|Chơi giải trí|YOwORU
+Asia-Pacific|CA|Huiii
+Asia-Pacific|CA|Kirito
+Asia-Pacific|CA|13lue
+Asia-Pacific|CA|YRSelect
+Asia-Pacific|CA|aerichandesu
+Asia-Pacific|GXR|RUBY4D
+Asia-Pacific|GXR|2ez4Ploy
+Asia-Pacific|GXR|Spector
+Asia-Pacific|GXR|Park
+Asia-Pacific|GXR|Clumsy
+Asia-Pacific|GXR|Roz
+Asia-Pacific|GXR|dc
+Asia-Pacific|SYS.REI|Park
+Asia-Pacific|SYS.REI|Inory
+Asia-Pacific|SYS.REI|Spector
+Asia-Pacific|SYS.REI|Roz
+Asia-Pacific|SYS.REI|Clumsy
+Asia-Pacific|SYS.REI|2ez4Ploy
+Asia-Pacific|ME|Gw3rty
+Asia-Pacific|ME|skyfall
+Asia-Pacific|ME|griffinist
+Asia-Pacific|ME|luckycat
+Asia-Pacific|ME|mejimonster
+Asia-Pacific|ME|Laxusss
+Asia-Pacific|ME|snOwm3rs
+Asia-Pacific|ME|Merlindz
+Asia-Pacific|36 Gang|Ques
+Asia-Pacific|36 Gang|E z B E z i
+Asia-Pacific|36 Gang|LOVE
+Asia-Pacific|36 Gang|deuce
+Asia-Pacific|36 Gang|Darian
+Asia-Pacific|36 Gang|36Foast
+Asia-Pacific|Light Cavalry|Freed0m
+Asia-Pacific|Light Cavalry|deuce
+Asia-Pacific|Light Cavalry|Darian
+Asia-Pacific|Light Cavalry|LOVE
+Asia-Pacific|Light Cavalry|E z B E z i
+Asia-Pacific|Light Cavalry|Nabi
+Asia-Pacific|Fantastic 5|deuce
+Asia-Pacific|Fantastic 5|E z B E z i
+Asia-Pacific|Fantastic 5|Duybao2k5
+Asia-Pacific|Fantastic 5|Ts0af
+Asia-Pacific|Fantastic 5|Darian
+Asia-Pacific|Kazz Amigo|Dabi
+Asia-Pacific|Kazz Amigo|Lys
+Asia-Pacific|Kazz Amigo|E z B E z i
+Asia-Pacific|Kazz Amigo|Duybao2k5
+Asia-Pacific|ESAN GANGSTER|iProAimBot
+Asia-Pacific|ESAN GANGSTER|king is king
+Asia-Pacific|ESAN GANGSTER|poniez
+Asia-Pacific|ESAN GANGSTER|dimotry
+Asia-Pacific|ESAN GANGSTER|Xetha
+Asia-Pacific|ESAN GANGSTER|ploy arigato
+Asia-Pacific|HV96|LilHieu
+Asia-Pacific|HV96|Beckenbauer
+Asia-Pacific|HV96|Rai Caa
+Asia-Pacific|HV96|WexijZX
+Asia-Pacific|HV96|vers4ce
+Asia-Pacific|HV96|sou
+Asia-Pacific|HV96|Shaun
+Asia-Pacific|HLG|Takoyaki
+Asia-Pacific|HLG|Jenri
+Asia-Pacific|HLG|cuteganchet
+Asia-Pacific|HLG|LilHieu
+Asia-Pacific|HLG|Rai Caa
+Asia-Pacific|Mystique Team|MAG1C
+Asia-Pacific|Mystique Team|klzyk
+Asia-Pacific|Mystique Team|Sugaarr
+Asia-Pacific|Mystique Team|mutsuki
+Asia-Pacific|Mystique Team|Bubbles
+Asia-Pacific|Euphoria|MAG1C
+Asia-Pacific|Euphoria|mutsuki
+Asia-Pacific|Euphoria|klzyk
+Asia-Pacific|Euphoria|Bubbles
+Asia-Pacific|Euphoria|Sugaarr
+Asia-Pacific|LS|ranskii
+Asia-Pacific|LS|Cold
+Asia-Pacific|LS|chubbspirit
+Asia-Pacific|LS|Lexierna
+Asia-Pacific|LS|zids
+Asia-Pacific|Mercurialz Esport|Juju
+Asia-Pacific|Mercurialz Esport|Dodo
+Asia-Pacific|Mercurialz Esport|Rachata
+Asia-Pacific|Mercurialz Esport|WinterSoldieR
+Asia-Pacific|Mercurialz Esport|MyFavoriteThings
+Asia-Pacific|Mercurialz Esport|kyttc
+Asia-Pacific|Mercurialz Esport|P1NOC
+Asia-Pacific|Washed|haw
+Asia-Pacific|Washed|peego
+Asia-Pacific|Washed|Hes
+Asia-Pacific|Washed|Wys
+Asia-Pacific|Washed|4Mnt
+Asia-Pacific|Washed|Freakz
+Asia-Pacific|ART|XIV
+Asia-Pacific|ART|ANNYEON
+Asia-Pacific|ART|JaebiN
+Asia-Pacific|ART|Rico
+Asia-Pacific|ART|RedLight
+Asia-Pacific|THEO|AimSick
+Asia-Pacific|THEO|jinnk
+Asia-Pacific|THEO|ZRIP
+Asia-Pacific|THEO|Kenzera
+Asia-Pacific|THEO|taozerarr
+Asia-Pacific|THEO|Flashii
+Asia-Pacific|GOD DID|Astroboy
+Asia-Pacific|GOD DID|bambii
+Asia-Pacific|GOD DID|kkumaqt
+Asia-Pacific|GOD DID|heyyou Chooko
+Asia-Pacific|GOD DID|Kronoshii
+Asia-Pacific|Flawless|Zircon
+Asia-Pacific|Flawless|Pemika
+Asia-Pacific|Flawless|jinnk
+Asia-Pacific|Flawless|SPINO
+Asia-Pacific|Flawless|r3ason
+Asia-Pacific|5BG|screwy
+Asia-Pacific|5BG|eswell
+Asia-Pacific|5BG|ixrara
+Asia-Pacific|5BG|HarmonY
+Asia-Pacific|5BG|lwk3y
+Asia-Pacific|5BG|Kakashi
+Asia-Pacific|FNX|Symphony
+Asia-Pacific|FNX|r1lex
+Asia-Pacific|FNX|Chard
+Asia-Pacific|FNX|Ascalon
+Asia-Pacific|NL|Ming
+Asia-Pacific|NL|Vangz
+Asia-Pacific|NL|dax
+Asia-Pacific|NL|Prestige
+Asia-Pacific|NL|SkullMun
+Asia-Pacific|小米酒的homie|XguAi
+Asia-Pacific|小米酒的homie|one of destiny
+Asia-Pacific|小米酒的homie|2Real
+Asia-Pacific|小米酒的homie|kosita
+Asia-Pacific|小米酒的homie|姊姊好壞我好愛
+Asia-Pacific|小米酒的homie|UDKrong
+Asia-Pacific|BNF|PEEK
+Asia-Pacific|BNF|Jurigs
+Asia-Pacific|BNF|baoncik
+Asia-Pacific|BNF|whiffcream
+Asia-Pacific|BNF|sLazht4q
+Asia-Pacific|AKARI ADAMSON|moja
+Asia-Pacific|AKARI ADAMSON|z4rkey
+Asia-Pacific|AKARI ADAMSON|Muto
+Asia-Pacific|AKARI ADAMSON|krabbymatty
+Asia-Pacific|AKARI ADAMSON|Cartel
+Asia-Pacific|DHA|iFiaTZ
+Asia-Pacific|DHA|noticeme
+Asia-Pacific|DHA|DARUMU
+Asia-Pacific|DHA|Kyusan
+Asia-Pacific|DHA|Xburner
+Asia-Pacific|FELIX x Minh Khôi PC|kaz
+Asia-Pacific|FELIX x Minh Khôi PC|Nartot
+Asia-Pacific|FELIX x Minh Khôi PC|Tobi
+Asia-Pacific|FELIX x Minh Khôi PC|SonyaYT
+Asia-Pacific|FELIX x Minh Khôi PC|Ryzen
+Asia-Pacific|FELIX x Minh Khôi PC|Ying
+Asia-Pacific|Shrine|eygee
+Asia-Pacific|Shrine|Moden
+Asia-Pacific|Shrine|Atrium
+Asia-Pacific|Shrine|Dusty
+Asia-Pacific|Shrine|youngfi
+Asia-Pacific|Shrine|nomnomnomnomnom
+Asia-Pacific|OCU|rain
+Asia-Pacific|OCU|rgser
+Asia-Pacific|OCU|aimbot
+Asia-Pacific|KTG Anzai|Luisito
+Asia-Pacific|KTG Anzai|Rianze
+Asia-Pacific|KTG Anzai|Caprieo
+Asia-Pacific|KTG Anzai|Kage
+Asia-Pacific|KTG Anzai|mada
+Asia-Pacific|RedViperZ|Kyojin
+Asia-Pacific|RedViperZ|Zami
+Asia-Pacific|RedViperZ|FalcoN
+Asia-Pacific|RedViperZ|UDeaD
+Asia-Pacific|RedViperZ|SkillzAura
+Asia-Pacific|Unrivaled|Zaidan
+Asia-Pacific|Unrivaled|Babooshka
+Asia-Pacific|Unrivaled|introvert
+Asia-Pacific|Unrivaled|DeDli
+Asia-Pacific|Unrivaled|Zaraki
+Asia-Pacific|Unrivaled|son1c
+Asia-Pacific|Unrivaled|Jerk
+Asia-Pacific|Always 8|Prestige
+Asia-Pacific|Always 8|darrius
+Asia-Pacific|Always 8|Ming
+Asia-Pacific|TC|DeDli
+Asia-Pacific|TC|son1c
+Asia-Pacific|TC|Babooshka
+Asia-Pacific|TC|sh33lz
+Asia-Pacific|TC|Zaidan
+Asia-Pacific|TC|Steve Jobless
+Asia-Pacific|ARCEUS|Ryzenn
+Asia-Pacific|ARCEUS|Bin
+Asia-Pacific|ARCEUS|タロイモ
+Asia-Pacific|ARCEUS|sou
+Asia-Pacific|ARCEUS|jweii
+Asia-Pacific|ARCEUS|xiaoyan
+Asia-Pacific|ARCEUS|PhatFPS
+Asia-Pacific|ARCEUS|Fin
+Asia-Pacific|ARCEUS|daiki
+Asia-Pacific|Full on Tp|forkeN
+Asia-Pacific|Full on Tp|Harshhh
+Asia-Pacific|Full on Tp|Braxxyy
+Asia-Pacific|Full on Tp|A n x i e t y
+Asia-Pacific|Full on Tp|mw1
+Asia-Pacific|EXODIA|winter lover
+Asia-Pacific|EXODIA|PhatFPS
+Asia-Pacific|EXODIA|xiaoyan
+Asia-Pacific|EXODIA|sou
+Asia-Pacific|EXODIA|daiki
+Asia-Pacific|Clutch Core Esports|DEATHMAKER
+Asia-Pacific|Clutch Core Esports|AaG
+Asia-Pacific|Clutch Core Esports|devashhessh
+Asia-Pacific|Clutch Core Esports|ToXicSumit
+Asia-Pacific|Clutch Core Esports|EL1TE
+Asia-Pacific|Clutch Core Esports|Moonn
+Asia-Pacific|RR Paglus|Zipline
+Asia-Pacific|RR Paglus|ado enjoyer
+Asia-Pacific|RR Paglus|CLowNx
+Asia-Pacific|RR Paglus|V1Ren
+Asia-Pacific|RR Paglus|DhruvxBot
+Asia-Pacific|LCR|Rapheleen
+Asia-Pacific|LCR|RIZKYMD
+Asia-Pacific|LCR|kuroza
+Asia-Pacific|LCR|hey
+Asia-Pacific|LCR|frostmind
+Asia-Pacific|USC Vamos Warriors|Hanz1
+Asia-Pacific|USC Vamos Thunder|DeeJayS
+Asia-Pacific|USC Vamos Thunder|Hanz1
+Asia-Pacific|USC Vamos Thunder|aromA
+Asia-Pacific|USC Vamos Thunder|KKaiju
+Asia-Pacific|RGLB|M1sfit
+Asia-Pacific|RGLB|Baqi
+Asia-Pacific|RGLB|Dimps
+Asia-Pacific|RGLB|Drowsy
+Asia-Pacific|RGLB|Jinpachi
+Asia-Pacific|RGLB|KaZeING
+Asia-Pacific|VKU|all aim no brain
+Asia-Pacific|VKU|1mdeadinside
+Asia-Pacific|VKU|2heart
+Asia-Pacific|VKU|Shu1
+Asia-Pacific|VKU|kaix1nwan
+Asia-Pacific|Revenge Horizon|Shu1
+Asia-Pacific|Revenge Horizon|2heart
+Asia-Pacific|Revenge Horizon|무호 오웬
+Asia-Pacific|Revenge Horizon|cakeo
+Asia-Pacific|Revenge Horizon|kaix1nwan
+Asia-Pacific|ROY|Hyuse
+Asia-Pacific|ROY|minh2
+Asia-Pacific|ROY|her
+Asia-Pacific|ROY|Crus
+Asia-Pacific|ROY|ting2k5
+Asia-Pacific|PWG|VIKTOR
+Asia-Pacific|PWG|curlyfries
+Asia-Pacific|PWG|xyz
+Asia-Pacific|PWG|Gimly
+Asia-Pacific|PWG|RenZ
+Asia-Pacific|UI Hakuji|Kyle
+Asia-Pacific|UI Hakuji|Frag1le
+Asia-Pacific|UI Hakuji|k1rbyy
+Asia-Pacific|UI Hakuji|astzk
+Asia-Pacific|UI Hakuji|zoro n reddy
+Asia-Pacific|UI Hakuji|DSR
+Asia-Pacific|UI Hakuji|FAYKOSKELLY
+Asia-Pacific|UI Hakuji|dapp
+Asia-Pacific|PAPUY|astzk
+Asia-Pacific|PAPUY|deviLLLL
+Asia-Pacific|PAPUY|DSR
+Asia-Pacific|PAPUY|dapp
+Asia-Pacific|PAPUY|Tapz
+Asia-Pacific|U2G|yungcarti
+Asia-Pacific|U2G|slothbaby
+Asia-Pacific|U2G|Fu0L
+Asia-Pacific|U2G|Signature
+Asia-Pacific|U2G|Cheesehead
+Asia-Pacific|U2G|swifft
+Asia-Pacific|CLS|SaKura
+Asia-Pacific|CLS|Umi
+Asia-Pacific|CLS|19tin6
+Asia-Pacific|CLS|Jhsetst
+Asia-Pacific|CLS|Cb
+Asia-Pacific|CLS|Thebackshotsking
+Asia-Pacific|BRK|sasufly
+Asia-Pacific|BRK|Asmodeus
+Asia-Pacific|BRK|babu
+Asia-Pacific|BRK|Fetiz
+Asia-Pacific|BRK|Quetz
+Asia-Pacific|BRK|weneq
+Asia-Pacific|SPF|MooN
+Asia-Pacific|SPF|crmsnn
+Asia-Pacific|SPF|Quetz
+Asia-Pacific|SPF|babu
+Asia-Pacific|SPF|weneq
+Asia-Pacific|SPF|Fetiz
+Asia-Pacific|AURA|Zephyr
+Asia-Pacific|AURA|Aston
+Asia-Pacific|AURA|JKCF
+Asia-Pacific|AURA|Hanaa
+Asia-Pacific|Fullhouse|Peam
+Asia-Pacific|Fullhouse|Hurricangerr
+Asia-Pacific|Fullhouse|yokster
+Asia-Pacific|Fullhouse|beazzyy
+Asia-Pacific|Fullhouse|Warriorเขมรสำโรง
+Asia-Pacific|ATC team|slick
+Asia-Pacific|ATC team|Wailord
+Asia-Pacific|ATC team|ctennrp
+Asia-Pacific|ATC team|Afyy
+Asia-Pacific|ATC team|bene
+Asia-Pacific|ATC team|Shou
+Asia-Pacific|UP Fighting Maroons|xands
+Asia-Pacific|UP Fighting Maroons|mrzebracow
+Asia-Pacific|UP Fighting Maroons|Clemente
+Asia-Pacific|UP Fighting Maroons|Uson
+Asia-Pacific|UP Fighting Maroons|Daeyun
+Asia-Pacific|RedPixel|P0WER
+Asia-Pacific|RedPixel|Dallu
+Asia-Pacific|RedPixel|GHO5T
+Asia-Pacific|RedPixel|pryx
+Asia-Pacific|RedPixel|seb1rt
+Asia-Pacific|Griffin Egoist|mini anesthea
+Asia-Pacific|Griffin Egoist|BLACK
+Asia-Pacific|Griffin Egoist|hamburger
+Asia-Pacific|Griffin Egoist|Longkonn810
+Asia-Pacific|Griffin Egoist|KAS
+Asia-Pacific|G TOWN|Bully
+Asia-Pacific|G TOWN|Marge
+Asia-Pacific|G TOWN|游离诀
+Asia-Pacific|G TOWN|pxl
+Asia-Pacific|G TOWN|yobeyhosey
+Asia-Pacific|G TOWN|Mike Ross
+Asia-Pacific|Thailand Super 10|FIGHT
+Asia-Pacific|Thailand Super 10|NRG FNS My GOAT
+Asia-Pacific|Thailand Super 10|superkata
+Asia-Pacific|Thailand Super 10|Servand4r
+Asia-Pacific|Thailand Super 10|Sunzeraaaaaaaa
+Asia-Pacific|Thailand Super 10|Buzzlightyr
+Asia-Pacific|UST Teletigers|Lamperouge
+Asia-Pacific|UST Teletigers|Melior
+Asia-Pacific|UST Teletigers|Roui
+Asia-Pacific|UST Teletigers|Nuxta
+Asia-Pacific|UST Teletigers|imgonnagrowwings
+Asia-Pacific|Lost Kids|Matheee
+Asia-Pacific|Lost Kids|Roui
+Asia-Pacific|Lost Kids|Lamperouge
+Asia-Pacific|Lost Kids|Elijah
+Asia-Pacific|Lost Kids|Manuta
+Asia-Pacific|101|shiq1
+Asia-Pacific|101|Pure
+Asia-Pacific|101|Gu1
+Asia-Pacific|101|Jww
+Asia-Pacific|101|Boli
+Asia-Pacific|101|Yunni
+Asia-Pacific|Squad Tenaga|JeZterrr
+Asia-Pacific|Squad Tenaga|bjorr
+Asia-Pacific|Squad Tenaga|DimplesZs
+Asia-Pacific|Squad Tenaga|MagE
+Asia-Pacific|Squad Tenaga|cruztea
+Asia-Pacific|Squad Tenaga|Azunya
+Asia-Pacific|KROMATIC SHIRE|xycrone
+Asia-Pacific|KROMATIC SHIRE|tibo
+Asia-Pacific|KROMATIC SHIRE|Xaviour
+Asia-Pacific|KROMATIC SHIRE|Massss
+Asia-Pacific|KROMATIC SHIRE|Zho
+Asia-Pacific|KROMATIC SHIRE|evil cat
+Asia-Pacific|Ordinance Inferno|0xZen
+Asia-Pacific|Ordinance Inferno|Adrena1ine
+Asia-Pacific|Ordinance Inferno|Fhaust
+Asia-Pacific|Ordinance Inferno|yyadfa
+Asia-Pacific|Ordinance Inferno|keshi enjoyer
+Asia-Pacific|ABYSSAL FIREFLY|Xaviour
+Asia-Pacific|ABYSSAL FIREFLY|tibo
+Asia-Pacific|ABYSSAL FIREFLY|evil cat
+Asia-Pacific|ABYSSAL FIREFLY|Massss
+Asia-Pacific|ABYSSAL FIREFLY|xycrone
+Asia-Pacific|JINXPRO|Xaviour
+Asia-Pacific|JINXPRO|evil cat
+Asia-Pacific|JINXPRO|tibo
+Asia-Pacific|JINXPRO|xycrone
+Asia-Pacific|JINXPRO|ken carson
+Asia-Pacific|Archangel Esports|Exia
+Asia-Pacific|Archangel Esports|Tenshi
+Asia-Pacific|Archangel Esports|LokeN
+Asia-Pacific|Archangel Esports|XINTOR
+Asia-Pacific|Archangel Esports|Cyy
+Asia-Pacific|Archangel Esports|Pr0pheror
+Asia-Pacific|Báo Thủ Team|Lil Fei
+Asia-Pacific|Báo Thủ Team|K1tD
+Asia-Pacific|Báo Thủ Team|Empty
+Asia-Pacific|Báo Thủ Team|Popcorncard
+Asia-Pacific|Báo Thủ Team|handsome guy
+Asia-Pacific|Báo Thủ Team|Tikesuarux
+Asia-Pacific|FLOWSTATE.GG|JIggez
+Asia-Pacific|FLOWSTATE.GG|eath
+Asia-Pacific|FLOWSTATE.GG|Jimnembul1234567
+Asia-Pacific|FLOWSTATE.GG|desamor
+Asia-Pacific|FLOWSTATE.GG|sumaaa
+Asia-Pacific|Dern Mhong|PSJR
+Asia-Pacific|Dern Mhong|adirak
+Asia-Pacific|Dern Mhong|BabyAom
+Asia-Pacific|Dern Mhong|StepX
+Asia-Pacific|Dern Mhong|PreamPS
+Asia-Pacific|RAMPAGE|7hrone
+Asia-Pacific|RAMPAGE|Pianicast
+Asia-Pacific|RAMPAGE|Relik
+Asia-Pacific|RAMPAGE|sean
+Asia-Pacific|RAMPAGE|TAPIR
+Asia-Pacific|RAMPAGE|Vynlan
+Asia-Pacific|Slayers|Anthony Edwards
+Asia-Pacific|Slayers|joyboy
+Asia-Pacific|Slayers|Karui
+Asia-Pacific|Slayers|Achuwi
+Asia-Pacific|Slayers|Pau
+Asia-Pacific|HKUF|Diaoga
+Asia-Pacific|HKUF|GunterR
+Asia-Pacific|HKUF|Yoyoman
+Asia-Pacific|HKUF|Dizzy
+Asia-Pacific|HKUF|ngk
+Asia-Pacific|XOGG|FNooB
+Asia-Pacific|XOGG|Kladenstein
+Asia-Pacific|XOGG|SavageYoddha
+Asia-Pacific|XOGG|ScaR
+Asia-Pacific|XOGG|Cyrax
+Asia-Pacific|UI Kuro|chizu
+Asia-Pacific|UI Kuro|reminiscence
+Asia-Pacific|UI Kuro|8BIT PRIME
+Asia-Pacific|UI Kuro|digidaw
+Asia-Pacific|UI Kuro|4effect
+Asia-Pacific|UI Kuro|eggiee
+Asia-Pacific|Kelps|malayking
+Asia-Pacific|Kelps|Wetsalt
+Asia-Pacific|Kelps|nexox
+Asia-Pacific|Kelps|pugtato293
+Asia-Pacific|Kelps|Bless
+Asia-Pacific|OLFU|Shintaro
+Asia-Pacific|OLFU|Aeonyx
+Asia-Pacific|OLFU|Kevzii
+Asia-Pacific|OLFU|Repulsive
+Asia-Pacific|OLFU|wes
+Asia-Pacific|Balbacua|Boogeyyy
+Asia-Pacific|Balbacua|Repulsive
+Asia-Pacific|Balbacua|wes
+Asia-Pacific|Balbacua|ABATMAN
+Asia-Pacific|Balbacua|Shintaro
+Asia-Pacific|Balbacua|GhettoPriest
+Asia-Pacific|BZE|RXFLEX
+Asia-Pacific|BZE|ayman
+Asia-Pacific|BZE|Edw4rd
+Asia-Pacific|BZE|jans0n
+Asia-Pacific|BZE|koony
+Asia-Pacific|ABZ|PIKAC
+Asia-Pacific|ABZ|Kayzz
+Asia-Pacific|ABZ|MonkeyD
+Asia-Pacific|ABZ|SigarZ
+Asia-Pacific|SORSOGOON|snc
+Asia-Pacific|SORSOGOON|Dinklefarts
+Asia-Pacific|SORSOGOON|fLx
+Asia-Pacific|SORSOGOON|lebcxzzzz
+Asia-Pacific|SORSOGOON|xuxi
+Asia-Pacific|KROMATIC DONKEY|Natzu
+Asia-Pacific|KROMATIC DONKEY|cupid
+Asia-Pacific|KROMATIC DONKEY|sh1ver
+Asia-Pacific|KROMATIC DONKEY|Zho
+Asia-Pacific|KROMATIC DONKEY|Limbo
+Asia-Pacific|KROMATIC DONKEY|pald6S
+Asia-Pacific|Imagine Breaker|always her
+Asia-Pacific|Imagine Breaker|lswbyp
+Asia-Pacific|Imagine Breaker|Flick Vào Tim Em
+Asia-Pacific|Imagine Breaker|Híu
+Asia-Pacific|Imagine Breaker|Trùm Đố Bạn
+Asia-Pacific|Imagine Breaker|prozac
+Asia-Pacific|Imagine Breaker|tmy
+Asia-Pacific|Sixth Sense|Wii
+Asia-Pacific|Sixth Sense|Hydra
+Asia-Pacific|Sixth Sense|n4p0ly
+Asia-Pacific|Sixth Sense|不耐烦
+Asia-Pacific|Sixth Sense|JeanP
+Asia-Pacific|Sixth Sense|Kur0o
+Asia-Pacific|TES|ShinShin
+Asia-Pacific|TES|Grizz
+Asia-Pacific|TES|Sharkie
+Asia-Pacific|TES|Unblocker
+Asia-Pacific|TES|hyp3r
+Asia-Pacific|ToothLess Esport|kaz
+Asia-Pacific|ToothLess Esport|Tobi
+Asia-Pacific|ToothLess Esport|Ryzen
+Asia-Pacific|ToothLess Esport|SStryX
+Asia-Pacific|ToothLess Esport|Nartot
+Asia-Pacific|BARA API PRIME|PinkyBoy
+Asia-Pacific|BARA API PRIME|R3ader
+Asia-Pacific|BARA API PRIME|vaLL2k
+Asia-Pacific|BARA API PRIME|hohenheim
+Asia-Pacific|BARA API PRIME|Xyo
+Asia-Pacific|TEAR|knaifu
+Asia-Pacific|TEAR|Kuro
+Asia-Pacific|TEAR|Hansia
+Asia-Pacific|TEAR|BBC
+Asia-Pacific|TEAR|Heargreaves
+Asia-Pacific|TEAR|Palette
+Asia-Pacific|TEAR|YOwORU
+Asia-Pacific|BIBD|Bob
+Asia-Pacific|BIBD|chubbspirit
+Asia-Pacific|BIBD|Lexierna
+Asia-Pacific|BIBD|Cold
+Asia-Pacific|BIBD|ragnos
+Asia-Pacific|Ongeh|celll
+Asia-Pacific|Ongeh|Cold
+Asia-Pacific|Ongeh|Lexierna
+Asia-Pacific|Ongeh|Bob
+Asia-Pacific|Ongeh|chubbspirit
+Asia-Pacific|Ongeh|zids
+Asia-Pacific|KOYIP ESPORTS|altG
+Asia-Pacific|KOYIP ESPORTS|HydraKid
+Asia-Pacific|KOYIP ESPORTS|n9sty
+Asia-Pacific|KOYIP ESPORTS|B1LANK
+Asia-Pacific|KOYIP ESPORTS|kgm777
+Asia-Pacific|AIM|n9sty
+Asia-Pacific|AIM|bry
+Asia-Pacific|AIM|kgm777
+Asia-Pacific|AIM|naj
+Asia-Pacific|AIM|HydraKid
+Asia-Pacific|AIM|yawn
+Asia-Pacific|Five Little Men|Dirt
+Asia-Pacific|Five Little Men|Kiddo Jay
+Asia-Pacific|Five Little Men|Eggplant
+Asia-Pacific|Five Little Men|LMzMZZZ
+Asia-Pacific|Five Little Men|clss
+Asia-Pacific|Five Little Men|user18081971
+Asia-Pacific|Five Little Men|nailong
+Asia-Pacific|RawLan|Yeahhhh
+Asia-Pacific|RawLan|BJAI
+Asia-Pacific|RawLan|YOKU
+Asia-Pacific|RawLan|Arisu
+Asia-Pacific|RawLan|FlashMaiบอก
+Asia-Pacific|goldenretieverdawg|Shido Ryusei
+Asia-Pacific|goldenretieverdawg|Arisu
+Asia-Pacific|goldenretieverdawg|dropmevandal1
+Asia-Pacific|goldenretieverdawg|YOKU
+Asia-Pacific|goldenretieverdawg|Yeahhhh
+Asia-Pacific|YMG|Arn0ob
+Asia-Pacific|YMG|Valentin0
+Asia-Pacific|YMG|Skas
+Asia-Pacific|YMG|Baesana
+Asia-Pacific|YMG|Loc
+Asia-Pacific|6S|kerveen
+Asia-Pacific|6S|primus
+Asia-Pacific|6S|PR0PHET
+Asia-Pacific|6S|deeno
+Asia-Pacific|6S|Dan1sh
+Asia-Pacific|LSE|luc1d
+Asia-Pacific|LSE|R0meo
+Asia-Pacific|LSE|FLAMEE
+Asia-Pacific|LSE|LOVE
+Asia-Pacific|LSE|MAX
+Asia-Pacific|LSE|once he was
+China|TYL|SiuFatBB
+China|TYL|splash
+China|TYL|Scales
+China|TYL|Erv
+China|TYL|slowly
+China|TYL|xihe
+China|NOVA|qiutiaN
+China|NOVA|cb
+China|NOVA|Ezeir
+China|NOVA|GuanG
+China|NOVA|swagzor
+China|NOVA|kodeth
+China|NOVA|GREEN
+China|XLG|WsLeo
+China|XLG|Sharks
+China|XLG|Lysoar
+China|XLG|NoMan
+China|XLG|Rarga
+China|XLG|happywei
+China|EDG|nobody
+China|EDG|ZmjjKK
+China|EDG|CHICHOO
+China|EDG|Smoggy
+China|EDG|Jieni7
+China|EDG|stew
+China|EDG|zjc
+China|RA|Guran
+China|RA|Potter
+China|RA|nnono
+China|RA|Croudy
+China|RA|Ben1Ley
+China|RA|Z1yan
+China|AG|Shr1mp
+China|AG|K1ra
+China|AG|Bai
+China|AG|f4ngeer
+China|AG|iamgrq
+China|JDG|BerLIN
+China|JDG|jkuro
+China|JDG|zhe
+China|JDG|Yuicaw
+China|JDG|crownfisher
+China|BLG|whzy
+China|BLG|rushia
+China|BLG|nephh
+China|BLG|yilai
+China|BLG|Knight
+China|BLG|bud
+China|BLG|FT
+China|BLG|Levius
+China|FPX|AAAAY
+China|FPX|coconut
+China|FPX|Xlele
+China|FPX|Setrod
+China|AQ|Juicy
+China|AQ|S1Mon
+China|AQ|5CM
+China|AQ|Dannyy
+China|AQ|Youjun
+China|TEC|Haodong
+China|TEC|lucas
+China|TEC|Dynamite
+China|TEC|ra1ny
+China|TEC|Coco
+China|TEC|Spitfires
+China|DRG|Nicc
+China|DRG|Flex1n
+China|DRG|Life
+China|DRG|vo0kashu
+China|DRG|Verse
+China|DRG|SpiritZ1
+China|WBG|AcMe
+China|WBG|Yoyo
+China|WBG|Satoshi
+China|WBG|heybay
+China|WBG|Leav3u
+China|KBG|Akeman
+China|KBG|sibeastw0w
+China|KBG|Tonk
+China|KBG|Ying
+China|KBG|Krst1Ng
+China|KBG|coldfish
+China|TE|LuoK1ng
+China|TE|Kai
+China|TE|FengF
+China|TE|FKEY
+China|TE|deLb
+China|TE|Abo
+China|TE|Toosy
+China|UR|waituu
+China|UR|Hopedawn
+China|UR|CXIX666
+China|UR|Ninebody
+China|UR|QiuYe
+China|ALG|Ending
+China|ALG|Yanggg
+China|ALG|barricade
+China|ALG|Zeno
+China|ALG|Chaos
+China|ODG|XyuS
+China|ODG|YHchen
+China|ODG|ZiXuan
+China|ODG|W1nner
+China|WOL|glacier
+China|WOL|yosemite
+China|WOL|Spring
+China|WOL|Deryeon
+China|WOL|aluba
+China|WOL|nothing
+Japan|VL|C1ndeR
+Japan|VL|Foxy9
+Japan|VL|Klaus
+Japan|VL|XuNa
+Japan|VL|oonzmlp
+Japan|VL|Zexy
+Japan|RC|Yoshiii
+Japan|RC|Dep
+Japan|RC|BRIAN
+Japan|RC|Jremy
+Japan|RC|hiroronn
+Japan|RC|Persia
+Japan|DFM|SSeeS
+Japan|DFM|Meiy
+Japan|DFM|yatsuka
+Japan|DFM|Caedye
+Japan|DFM|Akame
+Japan|QTD|Kippei
+Japan|QTD|Misaya
+Japan|QTD|yuran
+Japan|SG|Gwangboong
+Japan|SG|Kippei
+Japan|SG|NOBITA
+Japan|SG|Misaya
+Japan|SG|yuran
+Japan|FL|Aace
+Japan|FL|Hals
+Japan|FL|Anthem
+Japan|FL|GangPin
+Japan|RID|JoXJo
+Japan|RID|gyen
+Japan|SZ|gray9
+Japan|SZ|Kellan
+Japan|SZ|SacrificE
+Japan|SZ|Yamada
+Japan|SZ|tf
+Japan|SZ|Medusa
+Japan|ZETA|SugarZ3ro
+Japan|ZETA|Absol
+Japan|ZETA|SyouTa
+Japan|ZETA|eKo
+Japan|ZETA|Xdll
+Japan|IGZ|Frxeez
+Japan|IGZ|oitaN
+Japan|IGZ|kAyle
+Japan|IGZ|SID
+Japan|MRG|MrTenzouEz
+Japan|MRG|HoneyBunny
+Japan|GYOSON GAMING|take
+Japan|GYOSON GAMING|kurozooted
+Japan|RRX|Mametu
+Japan|RRX|Kapi
+Japan|RRX|Ady
+Japan|RRX|kurozooted
+Japan|RRX|Satwoshi
+Japan|INS|flora
+Japan|INS|Karaage
+Japan|INS|yuki
+Japan|INS|Satwoshi
+Japan|INS|MeatPieN
+Japan|ZETA.AC|yamahamu
+Japan|ZETA.AC|HoneyBunny
+Japan|ZETA.AC|yuki
+Japan|ZETA.AC|Falk
+Japan|KRHN|kaspas
+Japan|KRHN|Chocolatte
+Japan|KRHN|Flux
+Japan|KRHN|MK
+Japan|KRHN|Iggy
+Japan|IGZA|Flux
+Japan|IGZA|Chocolatte
+Japan|IGZA|kaspas
+Japan|IGZA|meilio
+Japan|IGZA|masaki
+Japan|BB|EscO
+Japan|BB|kuro
+Japan|BB|Lafura
+Japan|BCS|LOB
+Japan|BCS|dabuchi
+Japan|BCS|Jinbey
+Japan|ALES|yuta
+Japan|ALES|gan
+Japan|ALES|Soa
+Japan|ALES|SmiLe
+Japan|ALES|Aho
+Japan|KG|Yota
+Japan|KG|mimi
+Japan|KG|Lroll
+Japan|KG|Keimaru
+Japan|KG|ショットガン脇田
+Japan|SIB|keisu
+Japan|SIB|SIN
+Japan|SIB|Zan
+Japan|SIB|Kapi
+Japan|SIB|Han
+Japan|PRN|Lipsum
+Japan|PRN|Russeyll
+Japan|PRN|Kylerr
+Japan|PRN|Hisuy
+Japan|PRN|RIFE
+Japan|NTHY|r4bbit
+Japan|NTHY|Kennosuke
+Japan|NTHY|Milk
+Japan|NTHY|Acherron
+Japan|NTHY|R14h
+Japan|WECC|Cazkla
+Japan|WECC|distinct
+Japan|WECC|RONY
+Japan|WECC|tarkun
+Japan|WECC|3d3r
+Japan|WECC|Shimons
+Japan|FAV.YO|sulme
+Japan|FAV.YO|Loll
+Japan|FAV.YO|Noa
+Japan|FAV.YO|Rize
+Japan|FAV.YO|x4sioy
+Japan|DFMA|zerurun
+Japan|DFMA|taru
+Japan|DFMA|Lucky
+Japan|DFMA|TK
+Japan|DFMA|PaiN
+Japan|DFMA|foumy
+Japan|DFMA|ShetS
+Japan|DFMA|TOTONFU
+LA South|KRÜ|Less
+LA South|KRÜ|heat
+LA South|KRÜ|saadhak
+LA South|KRÜ|Dantedeu5
+LA South|KRÜ|mwzera
+LA South|KRUS|phc
+LA South|KRUS|benG
+LA South|OXEN|neto
+LA South|OXEN|maxhinh9
+LA South|OXEN|mta
+LA South|OXEN|Cebando
+LA South|SHI|vaiZ
+LA South|SHI|nx1
+LA South|SHI|leadssj
+LA South|SHI|adverso
+LA South|SHI|rubkkoide
+LA South|FVN|Melser
+LA South|FVN|Shyy
+LA South|FVN|chubizin
+LA South|FVN|Tacolilla
+LA South|FVN|david
+LA South|NOTT|HANLING
+LA South|NOTT|bnj
+LA South|NOTT|jotinha
+LA South|NOTT|mizu
+LA South|NOTT|neto
+LA South|ZEN|kivary
+LA South|ZEN|tinchoff
+LA South|FTC|mta
+LA South|FTC|deev
+LA South|FTC|TAFG
+LA South|FTC|Lolo
+LA South|LEVA|Kramz
+LA South|LEVA|mrtnssj
+LA South|LEVA|SykTap
+LA South|LEVA|Darky
+LA South|LEVA|Yuna
+LA South|KLG|HOPS
+LA South|KLG|antrex
+LA South|KLG|1kuzohh
+LA South|KLG|nezek
+LA South|9ZG|MiradaNinja
+LA South|9ZG|Kimbo
+LA South|9ZG|skyppervz
+LA South|9ZG|Tuli
+LA South|9ZG|M1key
+LA South|EF|sKizzo
+LA South|EF|fabiziN
+LA South|EF|litzinho
+LA South|EF|Miracles
+LA South|EF|daddy
+LA South|EF|Jon Snow
+LA South|FDY|joaquin
+LA South|FDY|bnja
+LA South|FDY|delta
+LA South|FDY|sh0twell
+LA South|FDY|saNtifikado19
+LA South|UW|KNZY
+LA South|UW|alca
+LA South|UW|Mathi
+LA South|UW|ruso
+LA South|UW|Mystizip
+LA South|UW|Zebeej
+LA South|F4|Mystizip
+LA South|F4|ruso
+LA South|F4|KNZY
+LA South|F4|alca
+LA South|F4|Mathi
+LA South|TXR|KNZY
+LA South|TXR|Mystizip
+LA South|TXR|sh0twell
+LA South|TXR|alca
+LA South|TXR|vaiZ
+LA South|TXR|ruso
+LA South|Lost Puppies Dark|Fran
+LA South|Lost Puppies Dark|Matiaul
+LA South|Lost Puppies Dark|Splotza
+LA South|Lost Puppies Dark|mabrik
+LA South|Lost Puppies Dark|maxy
+LA South|Lost Puppies Dark|gabzera
+LA South|QV|Frimus
+LA South|QV|Mesmer
+LA South|QV|Maddz1N
+LA South|QV|miniTahara
+LA South|TOYO|deev
+LA South|TOYO|Desruzin
+LA South|TOYO|KaZe
+LA South|TOYO|meyern
+LA South|TOYO|jnzzz405
+LA South|TOYO|CaniJ
+LA South|TOYO|brast
+LA South|DG|Kawa
+LA South|DG|6enja
+LA South|DG|c0ldd
+LA South|DG|rixieee
+LA South|DG|cardigan
+LA South|KRUB|none
+LA South|KRUB|antG
+LA South|KRUB|ponix
+LA South|KRUB|tok1o
+LA South|KRUB|dods
+LA South|KRUB|micaela
+LA South|KRUB|mmonch
+LA North|FUE|Javiierh
+LA North|FUE|Sabortzz
+LA North|FUE|ezznap
+LA North|FUE|GeneralSteak
+LA North|FUE|Hada
+LA North|FUE|Rei
+LA North|FUE|drakk
+LA North|BBB|dedmos
+LA North|BBB|Peloncito
+LA North|BBB|paganus
+LA North|BBB|CRUNCH
+LA North|DCT|Sunxs
+LA North|DCT|Juancho
+LA North|DCT|PisGod
+LA North|DCT|Javisitto
+LA North|DCT|Luchy
+LA North|FSN|gioØ2x
+LA North|FSN|ScrewFace
+LA North|FSN|aproto
+LA North|FSN|Weegle
+LA North|FSN|vandals
+LA North|Grizzly Gang|prask
+LA North|Grizzly Gang|ScrewFace
+LA North|Grizzly Gang|MiniNiwde
+LA North|Grizzly Gang|aproto
+LA North|Grizzly Gang|Weegle
+LA North|TZC|MiniNiwde
+LA North|TZC|ScrewFace
+LA North|TZC|prask
+LA North|TZC|Xhowi
+LA North|TZC|Weegle
+LA North|TZC|PoppyZera
+LA North|TZC|Dqduzin
+LA North|STA|Levi
+LA North|STA|Yarwiz
+LA North|STA|Snapss
+LA North|STA|Matkazeta
+LA North|STA|Dlasqx1
+LA North|CHV|Cfax
+LA North|CHV|clutchz
+LA North|CHV|otaQ
+LA North|CHV|Clewy
+LA North|CHV|solution
+LA North|LZR|Fresht
+LA North|LZR|Bull3tZ
+LA North|LZR|Xhowi
+LA North|LZR|MiniNiwde
+LA North|KTN|E13
+LA North|KTN|Hada
+LA North|KTN|Danielesflo
+LA North|KTN|vApes
+LA North|SxC|shxdow
+LA North|SxC|E13
+LA North|SxC|ktr
+LA North|SxC|Yarwiz
+LA North|SxC|DiivZ
+Oceania|YJ|KADIRI
+Oceania|YJ|Dragon
+Oceania|Xilly GeeSe|WRLD
+Oceania|Xilly GeeSe|toothfairy
+Oceania|Xilly GeeSe|zac
+Oceania|Xilly GeeSe|DAK4RI
+Oceania|Xilly GeeSe|dan
+Oceania|KING|FLOGA
+Oceania|KING|KADIRI
+Oceania|KING|SWERL
+Oceania|KING|IKANA
+Oceania|JJH|Minimise
+Oceania|JJH|Dragon
+Oceania|JJH|LEW
+Oceania|JJH|IKANA
+Oceania|JJH|punda
+Oceania|JJH|tixx
+Oceania|BUNS|Active
+Oceania|BUNS|Bonobo
+Oceania|BUNS|SCRAM
+Oceania|BUNS|HoangBao
+Oceania|rabbit gang|rajin
+Oceania|rabbit gang|palm
+Oceania|rabbit gang|CENTCH
+Oceania|rabbit gang|skies
+Oceania|rabbit gang|DOZA
+Oceania|rabbit gang|RAJIN
+Oceania|MEOW|cybxr
+Oceania|MEOW|Shinobu
+Oceania|MEOW|Don
+Oceania|Crusaders|kaza
+Oceania|Crusaders|Nozz
+Oceania|Crusaders|zenox
+Oceania|Crusaders|crayon
+Oceania|Crusaders|SWERL
+Oceania|Crusaders|FLOGA
+Oceania|FEL|Hiraeth
+Oceania|FEL|Minty
+Oceania|FEL|Dusk
+Oceania|FEL|tk7
+Oceania|FEL|Hazz
+Oceania|FEL|Densi
+Oceania|MZN|Swifty
+Oceania|MZN|RESLYDE
+Oceania|MZN|Blessed
+Oceania|MZN|BiggieCheese
+Oceania|MZN|FETA
+Oceania|JFT|vina
+Oceania|JFT|Jawsy
+Oceania|JFT|quens1on
+Oceania|DW|IKANA
+Oceania|DW|quens1on
+Oceania|DW|Jawsy
+Oceania|DW|vex
+Oceania|DW|vina
+Oceania|VSH|vex
+Oceania|VSH|Jawsy
+Oceania|VSH|quens1on
+Oceania|VSH|vina
+Oceania|VSH|joms
+Oceania|MommysGoodBoy|Xaptos
+Oceania|MommysGoodBoy|Web
+Oceania|MommysGoodBoy|luf
+Oceania|MommysGoodBoy|Notion
+Oceania|MommysGoodBoy|Trentos
+Oceania|MommysGoodBoy|WOOF WOOF
+Oceania|Mejais Soulstealers|quens1on
+Oceania|Mejais Soulstealers|vina
+Oceania|Mejais Soulstealers|zenox
+Oceania|Mejais Soulstealers|kaza
+Oceania|Mejais Soulstealers|exempt
+Oceania|Mejais Soulstealers|Jawsy
+Oceania|Carlos Disciples|zenox
+Oceania|Carlos Disciples|phi
+Oceania|Carlos Disciples|Jawsy
+Oceania|Carlos Disciples|vina
+Oceania|Carlos Disciples|quens1on
+Oceania|SC|murza
+Oceania|SC|baza
+Oceania|SC|mammal
+Oceania|SC|Sinaway
+Oceania|SC|LEW
+Oceania|SC|kiss
+Oceania|ASD|benguin
+Oceania|ASD|TRAGIC
+Oceania|ASD|aloneintokyo
+Oceania|ASD|martin
+Oceania|ASD|Juggy
+Oceania|ASD|Minty
+Oceania|TROOPERS|RYRY
+Oceania|TROOPERS|Strame
+Oceania|TROOPERS|nez
+Oceania|TROOPERS|illumi
+Oceania|TROOPERS|arcto
+Oceania|ARC|wisp
+Oceania|ARC|vsoul
+Oceania|ARC|JERIC
+Oceania|ARC|JayJay
+Oceania|Performative|vsoul
+Oceania|Performative|JERIC
+Oceania|Performative|dara
+Oceania|Performative|JayJay
+Oceania|Performative|ZHONG
+Oceania|ZO|Strame
+Oceania|ZO|illumi
+Oceania|ZO|fengshui
+Oceania|ZO|phi
+Oceania|ZO|WATER
+Oceania|Project Curry|Strame
+Oceania|Project Curry|WATER
+Oceania|Project Curry|fengshui
+Oceania|Project Curry|Esuh
+Oceania|Project Curry|illumi
+Oceania|Rambunctious Bears|CHILDCARE
+Oceania|Rambunctious Bears|Esuh
+Oceania|Rambunctious Bears|Neon
+Oceania|Rambunctious Bears|WATER
+Oceania|Rambunctious Bears|illumi
+Oceania|Rambunctious Bears|Kawaii
+Oceania|EVO|Tayo
+Oceania|EVO|bao
+Oceania|EVO|tek
+Oceania|EVO|B1n
+Oceania|EVO|niekk
+Oceania|DK|Minty
+Oceania|DK|Cracko
+Oceania|DK|Hazz
+Oceania|DK|Chip
+Oceania|DK|Zerphyr
+Oceania|RaPiD|Slaz
+Oceania|RaPiD|Cracko
+Oceania|RaPiD|Densi
+Oceania|RaPiD|Minty
+Oceania|RaPiD|HandlerOne
+Oceania|Waterfall|Baldy
+Oceania|Waterfall|Kruise
+Oceania|Waterfall|nayv
+Oceania|Waterfall|Wakas
+Oceania|Waterfall|ween
+Oceania|NORTHBOUND|Yamic
+Oceania|NORTHBOUND|Bumi
+Oceania|NORTHBOUND|nafeh
+Oceania|NORTHBOUND|asm
+Oceania|NORTHBOUND|coleads
+Oceania|CNX|MSR
+Oceania|CNX|jiojio
+Oceania|CNX|Viper3
+Oceania|CNX|FalleN
+Oceania|CNX|JAMIE
+Oceania|CNX|XIAOXIN
+Oceania|CNX|OvO
+Oceania|CNX|KR1S
+Oceania|Overheat|Nera
+Oceania|Overheat|Lilac
+Oceania|Overheat|Dalton
+Oceania|Overheat|Aletto
+Oceania|Overheat|domeg
+Oceania|HIPO|gon
+Oceania|HIPO|jippo
+Oceania|HIPO|zekkenfan
+Oceania|HIPO|Capy
+Oceania|Angelo|GELOL
+Oceania|Angelo|Excaliburn
+Oceania|Angelo|raksa
+Oceania|Angelo|chrollo
+Oceania|Angelo|Prismo
+Oceania|Angelo|rjay
+Oceania|Angelo|leon
+Oceania|TXG|kyuu
+Oceania|TXG|Exi
+Oceania|TXG|Aaryan14
+Oceania|TXG|Vanilla
+Oceania|TXG|ablaze
+Oceania|Whaler Gaming NX|sky
+Oceania|Whaler Gaming NX|pa1etteY
+Oceania|Whaler Gaming NX|nian
+Oceania|Whaler Gaming NX|Xuan
+Oceania|Whaler Gaming NX|Dcey
+Oceania|Whaler Gaming NX|Yuan
+Oceania|Whaler Gaming NX|MinaX
+Oceania|Whaler Gaming NX|ecurb
+Oceania|Traffic Cones|Sent
+Oceania|Traffic Cones|Lax
+Oceania|Traffic Cones|Lehgzy
+Oceania|Traffic Cones|Gluttony
+Oceania|Traffic Cones|RAMEN
+Oceania|Traffic Cones|Moshu
+Oceania|Traffic Cones|Reti
+Oceania|KZ|kettspend
+Oceania|KZ|binjo
+Oceania|KZ|Jurkey64
+Oceania|KZ|rurlz
+Oceania|ej1s disciples|GXLXCTIC
+Oceania|ej1s disciples|void
+Oceania|ej1s disciples|RICQI
+Oceania|ej1s disciples|Genesis Valtryek
+Oceania|ej1s disciples|usm4n
+Oceania|Sanctuary|Mika
+Oceania|Sanctuary|nuo
+Oceania|Sanctuary|zykroh
+Oceania|Sanctuary|Zac The Zebra
+Oceania|Sanctuary|Procaine
+Oceania|Sanctuary|Bungy
+Oceania|UQ|Zac The Zebra
+Oceania|UQ|Procaine
+Oceania|UQ|Caliys
+Oceania|UQ|Mika
+Oceania|UQ|nuo
+Oceania|UNSW WOOF|Zout
+Oceania|UNSW WOOF|Joe
+Oceania|UNSW WOOF|momo
+Oceania|UNSW WOOF|Splyx
+Oceania|UNSW WOOF|Blazerwel
+Oceania|UNSW WOOF|Agent
+Oceania|GANGA|natbotss
+Oceania|GANGA|Rodimus
+Oceania|GANGA|CHeezs
+Oceania|GANGA|Flexy
+Oceania|GANGA|Belmont
+Oceania|GANGA|vaile
+Oceania|Synthesia Devotion|Kizuna
+Oceania|Synthesia Devotion|quadu
+Oceania|Synthesia Devotion|cruzz
+Oceania|Synthesia Devotion|Bucket
+Oceania|Synthesia Devotion|Sensa
+Oceania|Finishers Leviathan|m1ngy
+Oceania|Finishers Leviathan|Neiro
+Oceania|Finishers Leviathan|OverRide
+Oceania|Finishers Leviathan|Poonie
+Oceania|Lemon Scented Lawns|Jolt
+Oceania|Lemon Scented Lawns|FizzyChip
+Oceania|Lemon Scented Lawns|Kazuya
+Oceania|Lemon Scented Lawns|sam7
+Oceania|Lemon Scented Lawns|IkeaSofa
+Oceania|Lemon Scented Lawns|Hieu
+Oceania|Lemon Scented Lawns|chen
+Oceania|Southern Crest|GlitchGull
+Oceania|Southern Crest|Archtype
+Oceania|Southern Crest|Zero
+Oceania|Southern Crest|Kellish
+Oceania|Southern Crest|Krab
+Oceania|SYN|Zero
+Oceania|SYN|Natural
+Oceania|SYN|kyo
+Oceania|TRI|WisdomCats
+Oceania|TRI|Nemui
+Oceania|TRI|Kakashiii
+Oceania|TRI|NOVAE
+Oceania|TRI|Lychii
+Oceania|TRI|wilted
+Oceania|TRI|Kash
+Oceania|Finishers Hammerhead|Lychii
+Oceania|Finishers Hammerhead|Nemui
+Oceania|Finishers Hammerhead|Kakashiii
+Oceania|Finishers Hammerhead|Kash
+Oceania|Finishers Hammerhead|wilted
+Oceania|Finishers Hammerhead|NOVAE
+Oceania|Balkan Tuah|Apreggi
+Oceania|Balkan Tuah|Shinon
+Oceania|Balkan Tuah|Meracle
+Oceania|Balkan Tuah|onob
+Oceania|Balkan Tuah|Dazeryuf
+Oceania|Balkan Tuah|reaps
+Oceania|Balkan Tuah|ROKI
+Oceania|GD|Z3AST
+Oceania|GD|Mini
+Oceania|GD|Đẹpth Try
+Oceania|CXS|inertia
+Oceania|CXS|Zerphyr
+Oceania|CXS|Reegan
+Oceania|CXS|Alvinnator2
+Oceania|CXS|Treeko
+Oceania|CXS|kaden
+Oceania|CXS|pree
+Oceania|Smelly Bananas Oreo's|notmobtw
+Oceania|Smelly Bananas Oreo's|Alvinnator2
+Oceania|Smelly Bananas Oreo's|gek
+Oceania|Smelly Bananas Oreo's|Treeko
+Oceania|Smelly Bananas Oreo's|Ornum
+Oceania|Dil's Pickles|TFUC
+Oceania|Dil's Pickles|kirara
+Oceania|Dil's Pickles|DeathBlade
+Oceania|Dil's Pickles|addict
+Oceania|Dil's Pickles|MoggedBrah
+Oceania|Dil's Pickles|chickenism
+Oceania|Dil's Pickles|Ender
+Oceania|DXA|Kaz
+Oceania|DXA|Glitch
+Oceania|DXA|Mutts
+Oceania|DXA|loki
+Oceania|DXA|CARTIER
+Oceania|DXA|N00bienoob
+Oceania|DXA|blobblob
+Oceania|Lemon Party|AcZy
+Oceania|Lemon Party|Yifang
+Oceania|Lemon Party|Crunchy
+Oceania|Lemon Party|Avi
+Oceania|Lemon Party|rDeeW
+Oceania|Sel's Warriors|sel
+Oceania|Sel's Warriors|stevenfireore
+Oceania|Sel's Warriors|Kaemo
+Oceania|Sel's Warriors|Rewu
+Oceania|Sel's Warriors|cfoo
+Oceania|Faction Zero|stevenfireore
+Oceania|Faction Zero|Rewu
+Oceania|Faction Zero|Kaemo
+Oceania|Faction Zero|stance
+Oceania|Faction Zero|Geno
+Oceania|MUE Challengers|Honeybee
+Oceania|MUE Challengers|Wombat
+Oceania|MUE Challengers|exuberantearl62
+Oceania|MUE Challengers|firecrackerfeet
+Oceania|MUE Challengers|Duckton
+Oceania|MUE Challengers|pluviio
+Oceania|CPN|iBrocky
+Oceania|CPN|fusion
+Oceania|CPN|chibs
+Oceania|CPN|Mundy
+Oceania|CPN|wodz
+Oceania|CPN|Cal
+Oceania|Pandemonium|mackster
+Oceania|Pandemonium|evnnve
+Oceania|Pandemonium|h i
+Oceania|Pandemonium|Kryptic
+Oceania|Pandemonium|arin
+Oceania|Pandemonium|Hali
+Oceania|Disproportion|Rendezvous
+Oceania|Disproportion|Xiao
+Oceania|Disproportion|FeS
+Oceania|Disproportion|anos
+Oceania|Disproportion|J1ro
+Oceania|Disproportion|Destroxx
+Oceania|Bubble Tour|Hamson
+Oceania|Bubble Tour|kaien
+Oceania|Bubble Tour|shak
+Oceania|Bubble Tour|Clxpped
+Oceania|333 WP|Moped
+Oceania|333 WP|Vixx
+Oceania|333 WP|NOX
+Oceania|333 WP|Ramen
+Oceania|WojtechPause|oil
+Oceania|WojtechPause|NOX
+Oceania|WojtechPause|PodX12
+Oceania|WojtechPause|Wojtek
+Oceania|Are Mour Esports|Wojtek
+Oceania|Are Mour Esports|NOX
+Oceania|Are Mour Esports|thai
+Oceania|Are Mour Esports|Moped
+Oceania|Are Mour Esports|Vixx
+Oceania|XLB|LoFi
+Oceania|XLB|Lyuna
+Oceania|XLB|NOX
+Oceania|XLB|Wojtek
+Oceania|XLB|Vixx
+Oceania|Sentinels Jr|OwenOsset
+Oceania|Sentinels Jr|Zac The Zebra
+Oceania|Sentinels Jr|Barry Forehead
+Oceania|Sentinels Jr|LordOfTheChuds
+Oceania|Sentinels Jr|Joe The Jiraffe
+Oceania|Sentinels Jr|ADVENTUROUS YM
+Oceania|Sentinels Jr|ebenzer
+Oceania|chill on me|Exi
+Oceania|chill on me|Cyro
+Oceania|chill on me|JERIC
+Oceania|NOOB|Ixidal
+Oceania|NOOB|fezure
+Oceania|NOOB|Walli
+Oceania|NOOB|Kyun
+Oceania|NOOB|kaden
+Oceania|NOOB|Chip
+Oceania|333 Ghouls|Reactionz
+Oceania|333 Ghouls|blur
+Oceania|333 Ghouls|Streakz
+Oceania|PACIFIC REIGN|Nyx
+Oceania|PACIFIC REIGN|sillycat
+Oceania|PACIFIC REIGN|ellie
+Oceania|PACIFIC REIGN|origin
+Oceania|PACIFIC REIGN|reaa
+Oceania|PACIFIC REIGN|Khoi
+Oceania|LC|escalon
+Oceania|LC|acid
+Oceania|LC|Hina
+Oceania|LC|MrK
+Oceania|LC|ry
+Oceania|PupilsOfTheGame|UGLY
+Oceania|PupilsOfTheGame|j32
+Oceania|PupilsOfTheGame|PocketMeows
+Oceania|PupilsOfTheGame|enen
+Oceania|PupilsOfTheGame|potato
+Oceania|PupilsOfTheGame|fuyuko
+Oceania|PupilsOfTheGame|fatchuggernuts
+Oceania|PupilsOfTheGame|zombie
+Oceania|PupilsOfTheGame|zoh
+Oceania|PupilsOfTheGame|Hei
+Oceania|PupilsOfTheGame|Novahkiin
+Oceania|QUT RESPAWN|baller9
+Oceania|QUT RESPAWN|Musckt
+Oceania|QUT RESPAWN|Cheasle2
+Oceania|QUT RESPAWN|hughh
+Oceania|QUT RESPAWN|wire
+Oceania|Error 404|LOVER
+Oceania|Error 404|Smylie
+Oceania|Error 404|H3ners
+Oceania|Error 404|Blossom
+Oceania|Error 404|Shaggy
+Oceania|Error 404|Birch
+Oceania|Error 404|Chlorophyte
+Oceania|Error 404|bo0ming
+Oceania|Error 404|BloxWich
+Oceania|SOL|Cherrys
+Oceania|SOL|yoppy
+Oceania|SOL|teasohot
+Oceania|SOL|Bqnkcy
+Oceania|SOL|Squish
+Oceania|SOL|tor
+Oceania|Chief CPE Esports|Justagro
+Oceania|Chief CPE Esports|Sugarkane
+Oceania|Chief CPE Esports|MrJynx
+Oceania|Chief CPE Esports|JD7
+Oceania|Chief CPE Esports|2amFlame
+Oceania|Chief CPE Esports|nusu
+GC|MOX|SIMULACRA
+GC|MOX|kora
+GC|MOX|chiyeu
+GC|MOX|Biffy
+GC|cute monsters|mimiqru
+GC|cute monsters|4podruga
+GC|cute monsters|ssayakko
+GC|cute monsters|hruslin
+GC|cute monsters|pw3skx
+GC|FLCV|Alexy
+GC|FLCV|enerii
+GC|FLCV|Kamiyu
+GC|FLCV|madv
+GC|FLCV|shirazi
+GC|FLCV|Reta
+GC|Angels of Delusion|vyn
+GC|Angels of Delusion|Phobia
+GC|Angels of Delusion|crona
+GC|Angels of Delusion|savi
+GC|Angels of Delusion|caroly
+GC|UR.GC|Xlent
+GC|UR.GC|socolatto
+GC|UR.GC|Syndr4
+GC|UR.GC|Snooze
+GC|UR.GC|TaEri
+GC|LXE|rari
+GC|LXE|Amaya
+GC|LXE|hibari
+GC|LXE|zylina
+GC|LXE|Arki
+GC|GEN.GC|DaNa
+GC|GEN.GC|YamzzI
+GC|GEN.GC|miNt
+GC|GEN.GC|332
+GC|GEN.GC|h4ste
+GC|NTZ|Quest
+GC|NTZ|kaoru
+GC|NTZ|EveR
+GC|NTZ|ReZet
+GC|NTZ|FullMoon
+GC|XIP.GC|Yxqme
+GC|XIP.GC|capriciouS
+GC|XIP.GC|PIETY
+GC|XIP.GC|Kon
+GC|XIP.GC|grahams
+GC|M8GC|Nami
+GC|M8GC|berryx
+GC|M8GC|Wens
+GC|M8GC|Marti
+GC|M8GC|safiaa
+GC|FLGC|SereNa
+GC|FLGC|UR
+GC|FLGC|Moco
+GC|FLGC|suzu
+GC|FLGC|YuRinChi
+GC|MHZ|Vajra
+GC|MHZ|GulGul
+GC|MHZ|tr1xy
+GC|MHZ|Ab
+GC|MHZ|HanTaeYi
+GC|SOS Coven|peach
+GC|SOS Coven|shine
+GC|SOS Coven|beyr
+GC|SOS Coven|kira
+GC|SOS Coven|Tao
+GC|AKV.GC|Dano
+GC|AKV.GC|Tura
+GC|AKV.GC|WIRE
+GC|AKV.GC|Tastyy
+GC|AKV.GC|Ivy
+GC|AKV.GC|Fri
+GC|Momentum GC|safa
+GC|Momentum GC|bellion
+GC|Momentum GC|kay
+GC|Momentum GC|sea
+GC|CAT|aus
+GC|CAT|ouppy
+GC|CAT|Jeje
+GC|CAT|idda
+GC|CAT|eli
+GC|CAT|WIRE
+GC|FSU|capriciouS
+GC|FSU|Yxqme
+GC|FSU|becca
+GC|FSU|mei
+GC|FSU|apathy
+GC|FSU|shina
+GC|CROWN ESPORTS VIXENS|zeeel
+GC|CROWN ESPORTS VIXENS|S ix
+GC|CROWN ESPORTS VIXENS|mandoots
+GC|CROWN ESPORTS VIXENS|cheesetacos
+GC|CROWN ESPORTS VIXENS|Jane
+GC|Small Crew|euphoria
+GC|Small Crew|Gina
+GC|Small Crew|paashi
+GC|Small Crew|JMBass
+GC|Small Crew|eggy
+GC|Small Crew|GreenPuzzles
+GC|SISU|Yxqme
+GC|SISU|becca
+GC|SISU|shina
+GC|SISU|mei
+GC|SISU|capriciouS
+GC|SISU|apathy
+GC|the luizas|luyta
+GC|the luizas|erin
+GC|the luizas|blu
+GC|the luizas|gabe
+GC|the luizas|luiza
+GC|STSL|PIETY
+GC|STSL|yelz
+GC|STSL|sackboy
+GC|STSL|manar
+GC|C9|Gia
+GC|C9|sarie
+GC|C9|yunie
+GC|C9|leelee
+GC|C9|marceline
+GC|SWAN|gippal
+GC|SWAN|Crys
+GC|SWAN|veils
+GC|ASND|grahams
+GC|ASND|Japips
+GC|ASND|PIETY
+GC|ASND|capriciouS
+GC|ASND|Kon
+GC|ASND|shina
+GC|BEE Queens|pupi
+GC|BEE Queens|kistetuu
+GC|BEE Queens|Zynella
+GC|BEE Queens|rcklss
+GC|BEE Queens|Barbie
+GC|hallowieners|Princessicy
+GC|hallowieners|AnnieEgo
+GC|hallowieners|cyn
+GC|hallowieners|harper
+GC|hallowieners|nephis
+GC|RN|IH4
+GC|RN|tr1xy
+GC|RN|YuHyun
+GC|RN|B1nby0
+GC|RN|H4Yu
+GC|MIBR.GC|bstrdd
+GC|MIBR.GC|melissa
+GC|MIBR.GC|conir
+GC|MIBR.GC|mizzy
+GC|MIBR.GC|waved
+GC|Elemental Obscura|Yumee
+GC|Elemental Obscura|Fayee
+GC|Elemental Obscura|Red Hood
+GC|Elemental Obscura|Ayesha
+GC|EG.GC|winter
+GC|EG.GC|biazik
+GC|EG.GC|lissA
+GC|EG.GC|allie
+GC|EG.GC|sayuri
+GC|GEN|lissA
+GC|GEN|sayuri
+GC|GEN|allie
+GC|GEN|srN
+GC|GEN|vii
+GC|USHI|Krysme
+GC|USHI|Albaladejo
+GC|USHI|Lay
+GC|USHI|ivy
+GC|USHI|hehehellen
+GC|TWO|misu
+GC|TWO|Leen
+GC|TWO|Lateu
+GC|TWO|grahams
+GC|TWO|ness
+GC|TWO|sarah
+GC|SL9|alannah
+GC|SL9|bethany
+GC|SL9|tiff
+GC|SL9|riv
+GC|SL9|xyro
+GC|SL9|ferret
+GC|SL9|kitana
+GC|PSE.GC|tconda
+GC|PSE.GC|bvlenn
+GC|PSE.GC|Mawyk
+GC|PSE.GC|awus
+GC|PSE.GC|Naxa
+GC|PSE.GC|izi
+GC|RIE|Rose
+GC|RIE|CaspeR
+GC|RIE|Japips
+GC|RIE|Twirly
+GC|RIE|Meow16K
+GC|RIE|shreya
+GC|RIE|krys
+GC|VOS PAINS|Daniela
+GC|VOS PAINS|Gem
+GC|VOS PAINS|Suc3tteEnCoeur
+GC|VOS PAINS|Daenerys
+GC|VOS PAINS|zinzinh0
+GC|JFT.GC|miaf
+GC|JFT.GC|afino
+GC|JFT.GC|Shiny
+GC|JFT.GC|namy
+GC|JFT.GC|kitoko
+GC|JFT.GC|Ispxnd
+GC|DVN|afino
+GC|DVN|lea
+GC|DVN|miaf
+GC|DVN|Shiny
+GC|DVN|Pink
+GC|DVN|Nila
+GC|Terreno Gioco GC|Akaza
+GC|Terreno Gioco GC|majamia
+GC|Terreno Gioco GC|lirowe
+GC|Terreno Gioco GC|mhesty
+GC|Terreno Gioco GC|amor
+GC|GX.GC|jduh
+GC|GX.GC|Anva
+GC|GX.GC|Anita
+GC|GX.GC|adora
+GC|GX.GC|jademwah
+GC|36TH|Thykuza
+GC|36TH|Dau7
+GC|36TH|Zelyd
+GC|36TH|AMens
+GC|36TH|tess
+GC|36TH|BabiBoo
+GC|Caldya Esport GC|Neex
+GC|Caldya Esport GC|nocturina
+GC|Caldya Esport GC|Clotildeee
+GC|Caldya Esport GC|Saiko
+GC|GOCA|YUMIKO
+GC|GOCA|Asunaa
+GC|GOCA|m1rai
+GC|GOCA|kuroccino
+GC|GOCA|BLOD
+GC|AXL|terror
+GC|AXL|miyara
+GC|AXL|Australis
+GC|AXL|SaintClaws
+GC|AXL|StarBound
+GC|SGN|Rose
+GC|SGN|Meow16K
+GC|SGN|Japips
+GC|SGN|Twirly
+GC|SGN|CaspeR
+GC|AST.WO|Twirly
+GC|AST.WO|eluwu
+GC|AST.WO|CaspeR
+GC|AST.WO|Meow16K
+GC|AST.WO|Ven
+GC|YTJT|Harth
+GC|YTJT|z0graf
+GC|YTJT|gorgwilds
+GC|YTJT|kxtharsis
+GC|YTJT|3VE
+GC|YTJT|Tea
+GC|ZS|Imvietnamesegirl
+GC|ZS|Sinon
+GC|ZS|Tun
+GC|ZS|BNBN
+GC|ZS|BesLoan
+GC|ZS|Noti
+GC|DXE.GC|CaspeR
+GC|DXE.GC|eluwu
+GC|DXE.GC|Meow16K
+GC|DXE.GC|Twirly
+GC|DXE.GC|muffinloop
+GC|DXE.GC|Amy
+GC|DXE.GC|kiwi
+GC|Arcopelago Esports GC|samm
+GC|Arcopelago Esports GC|twily
+GC|Arcopelago Esports GC|shy
+GC|Arcopelago Esports GC|Leun
+GC|Arcopelago Esports GC|mikay
+GC|Arcopelago Esports GC|wiffi
+GC|PURR|apathy
+GC|PURR|Twirly
+GC|PURR|Amy
+GC|PURR|opel
+GC|WLG.FS|blxssom
+GC|WLG.FS|Lil Bob
+GC|MLT.GC|eluwu
+GC|MLT.GC|apathy
+GC|MLT.GC|CaspeR
+GC|MLT.GC|Twirly
+GC|MLT.GC|Amy
+GC|MLT.GC|opel
+GC|Team Selenis|DaddyRyuk
+GC|Team Selenis|r0si
+GC|Team Selenis|saturie
+GC|Team Selenis|suki
+GC|Team Selenis|Liv
+GC|Duality E-Sports Banshees|Sharumi
+GC|Duality E-Sports Banshees|lemmi
+GC|Duality E-Sports Banshees|Mekachoo
+GC|Duality E-Sports Banshees|Shpeedyy
+GC|Duality E-Sports Banshees|itmejoy
+GC|Duality E-Sports Banshees|biskofiii
+GC|CNE.GC|socolatto
+GC|CNE.GC|TaEri
+GC|CNE.GC|Snooze
+GC|CNE.GC|Xlent
+GC|HER|ennui
+GC|HER|colby
+GC|HER|cyn
+GC|HER|yuhan
+GC|HER|Slandy
+GC|HER|cleiYo
+GC|FNGC|frosti
+GC|FNGC|sunhail48
+GC|FNGC|molly
+GC|Uchihas|golden
+GC|Uchihas|Albaladejo
+GC|Uchihas|overthink
+GC|Uchihas|Krysme
+GC|Uchihas|ivy
+GC|LFL|m4ndzin
+GC|LFL|jubs
+GC|LFL|katie
+GC|LFL|Hinataa
+GC|LFL|azul
+GC|LFL|Karidana
+GC|ECS|Arshiel
+GC|ECS|deaROSSA
+GC|ECS|Halzvana
+GC|ECS|mellasku
+GC|ECS|Marcel
+GC|NNR|Hana
+GC|NNR|Chogire
+GC|NNR|Nanasepo
+GC|NNR|m0nakq
+GC|NNR|Samuko
+GC|NNR|CHANMAME
+GC|KISS|hayyel
+GC|KISS|soko
+GC|KISS|Amara
+GC|KISS|Rosa
+GC|KISS|dizzy
+GC|KISS|s0nsuZ
+GC|WIWI|Ayumiii
+GC|WIWI|Alluka
+GC|WIWI|Poly
+GC|WIWI|Microo
+GC|WIWI|babytz
+GC|WIWI|celll
+GC|TITA|Arki
+GC|TITA|rari
+GC|TITA|hibari
+GC|TITA|nesrak
+GC|TITA|Amaya
+GC|HALO|hibari
+GC|HALO|zylina
+GC|HALO|CodeZendiii
+GC|HALO|Prime
+GC|HALO|Parcval
+GC|HALO|Amaya
+GC|ORION GC|Amaya
+GC|ORION GC|zylina
+GC|ORION GC|shina
+GC|ORION GC|rari
+GC|ORION GC|hibari
+GC|5D|Miu
+GC|5D|HF2
+GC|5D|BIBI
+GC|5D|haby
+GC|SUNARA|annli rise
+GC|SUNARA|Zei
+GC|SUNARA|Leyah
+GC|SUNARA|QUINCY
+GC|Melilla Titans GC|aniya
+GC|Melilla Titans GC|Luzia
+GC|Melilla Titans GC|Nemesis
+GC|Melilla Titans GC|PADII
+GC|UWS|R4M
+GC|UWS|nekop4nchan
+GC|UWS|Dia
+GC|UWS|Ninnikumarin
+GC|MTR|DoHee
+GC|MTR|Ninnikumarin
+GC|MTR|Dia
+GC|MTR|daf
+GC|MTR|Merununtius
+GC|IB Morvenne|chicken
+GC|IB Morvenne|Zero
+GC|IB Morvenne|Brimmy
+GC|IB Morvenne|Jezzfour4
+GC|IB Morvenne|Sashimiu
+GC|INSANE PLAYERS|Dia
+GC|INSANE PLAYERS|DoHee
+GC|INSANE PLAYERS|R4M
+GC|INSANE PLAYERS|nekop4nchan
+GC|INSANE PLAYERS|Ninnikumarin
+GC|FLOPPERS|Saiko
+GC|FLOPPERS|mads
+GC|FLOPPERS|PeterBarker
+GC|FLOPPERS|sylkie
+GC|FLOPPERS|envy
+GC|EOTO|koyori
+GC|EOTO|onni
+GC|EOTO|MyoH4nN
+GC|EOTO|yuzu
+GC|EOTO|iffy
+GC|MALV|Shizue
+GC|MALV|caroly
+GC|MALV|jeh
+GC|MALV|Nini
+GC|MALV|lyesz
+GC|MALV|Leo
+GC|MALV|yDrezim
+GC|Panny Sitter|imyourcat
+GC|Panny Sitter|Nortor
+GC|Panny Sitter|Muk
+GC|Panny Sitter|pannyx
+GC|Panny Sitter|miles
+GC|R2S|Velvette
+GC|R2S|kyracujoh
+GC|R2S|Théa
+GC|ROZ|lleana
+GC|ROZ|rlaxodus
+GC|ROZ|Fahniez
+GC|ROZ|yor
+GC|ROZ|M1nYu
+GC|ROZ|dipsy
+GC|Revenge|kit
+GC|Revenge|svv
+GC|Revenge|rotting
+GC|Revenge|scaredy
+GC|ECHO Violynx|ashli
+GC|ECHO Violynx|Runa
+GC|ECHO Violynx|kumori
+GC|ECHO Violynx|Kishika
+GC|ECHO Violynx|shayweeee
+GC|ECHO Violynx|Rabity
+GC|ECHO Violynx|AkiraHere
+GC|7VEN|Prix
+GC|7VEN|erin
+GC|7VEN|freya
+GC|7VEN|sarah66
+GC|7VEN|nicky
+GC|NPC|awus
+GC|NPC|kalita
+GC|NPC|bvlenn
+GC|NPC|tconda
+GC|NPC|Naxa
+GC|Exolved GC|staryu
+GC|Exolved GC|pangolin
+GC|Exolved GC|Tohrufps
+GC|Exolved GC|Saori
+GC|Exolved GC|Lil Hapa
+GC|Exolved GC|slug
+GC|HYG|DREAM
+GC|HYG|13lue
+GC|HYG|Laiyin
+GC|HYG|Elina
+GC|HYG|bambi
+GC|FISH|maryna
+GC|FISH|f4ngz
+GC|FISH|nmutuA
+GC|FISH|korosu
+GC|FISH|Sekkya
+GC|FISH|carley
+GC|FISH|calsushi
+GC|BEM Esports|aden
+GC|BEM Esports|mhesty
+GC|ARS|Lendary
+GC|ARS|Natasha
+GC|ARS|blu
+GC|ARS|vii
+GC|ARS|luiza
+GC|Delulus|bubu
+GC|Delulus|Janna
+GC|Delulus|Gem
+GC|Delulus|Daniela
+GC|Delulus|rei
+GC|Angry Meow|veil
+GC|Angry Meow|iwi
+GC|Angry Meow|pthou
+GC|Angry Meow|basé ruych
+GC|Angry Meow|Biedoo
+GC|TEAM CARALHO|Sandra
+GC|TEAM CARALHO|Ixela
+GC|TEAM CARALHO|proxima
+GC|TEAM CARALHO|Sephia
+GC|TEAM CARALHO|BySmall
+GC|TEAM CARALHO|Dylo
+GC|MVSK|SoberSushi
+GC|MVSK|carley
+GC|MVSK|fel
+GC|MVSK|Spooky
+GC|MVSK|Logic
+GC|MVSK|pangolin
+GC|THQ|rat
+GC|THQ|Liliy
+GC|THQ|bbtw
+GC|THQ|Lynzr
+GC|Team Coalesce Roses|crescent
+GC|Team Coalesce Roses|w1tcat
+GC|Team Coalesce Roses|kuromi
+GC|Team Coalesce Roses|neonXbirdie
+GC|Team Coalesce Roses|Flop
+GC|Skyline Secret|Spooky
+GC|Skyline Secret|fel
+GC|Skyline Secret|Logic
+GC|Skyline Secret|carley
+GC|Skyline Secret|venture
+GC|VLG.GC|p1katong
+GC|VLG.GC|maofish
+GC|VLG.GC|x1aoWeNz
+GC|VLG.GC|PeTerPan
+GC|VLG.GC|Melody
+GC|LUNA|kiwi
+GC|LUNA|Vam
+GC|LUNA|Ven
+GC|LUNA|Amy
+GC|LUNA|eluwu
+GC|LUNA|Kaira
+GC|Valkyriant|Aneina
+GC|Valkyriant|Laou
+GC|Valkyriant|LittleBigSpy
+GC|Valkyriant|Jaxaap
+GC|Valkyriant|nocturina
+GC|ÉCLAT GC|Kior
+GC|ÉCLAT GC|Selenia
+GC|ÉCLAT GC|rhi
+GC|ÉCLAT GC|AkaPaka
+GC|RECOIL ESPORT GC|zvzula
+GC|RECOIL ESPORT GC|enaughj
+GC|RECOIL ESPORT GC|xnietoperx
+GC|RECOIL ESPORT GC|isaac night
+GC|RECOIL ESPORT GC|Poison
+GC|NOS|maL
+GC|NOS|Aria
+GC|NOS|Chloezera
+GC|NOS|vale
+GC|NOS|Levy
+GC|Delulu Bottoms|MONARQUE
+GC|Delulu Bottoms|Alora
+GC|Delulu Bottoms|mak1
+GC|Delulu Bottoms|Dina
+GC|Delulu Bottoms|Wisteria
+GC|LP|Mioli
+GC|LP|silly girl
+GC|LP|aNNja
+GC|LP|hoka
+GC|LP|FLORAMVS
+GC|LP|sel
+GC|BP|Flor
+GC|BP|aNNja
+GC|BP|elysian
+GC|BP|hoka
+GC|BP|FLORAMVS
+GC|BP|shishi
+GC|Chiiwa Gang|josie
+GC|Chiiwa Gang|veil
+GC|Chiiwa Gang|naidohuhu
+GC|Chiiwa Gang|iwi
+GC|Chiiwa Gang|pthou
+GC|HYP|Biffy
+GC|HYP|rotting
+GC|HYP|Luna1
+GC|HYP|Kross Unity
+GC|HYP|Zeukos
+GC|MELTY|josie
+GC|MELTY|pthou
+GC|MELTY|ros1
+GC|MELTY|Zenpa
+GC|MELTY|iwi
+GC|Super Shy Girls|pthou
+GC|Super Shy Girls|Biedoo
+GC|Super Shy Girls|itstl
+GC|Super Shy Girls|josie
+GC|Super Shy Girls|iwi
+GC|Zentrix Jinx|komiislive
+GC|Zentrix Jinx|dusk
+GC|Zentrix Jinx|Own Era
+GC|Zentrix Jinx|KIARA
+GC|Zentrix Jinx|Ananya
+GC|TALMP|lenka
+GC|TALMP|taraaaaaaaaaaaaa
+GC|TALMP|Pinkalie
+GC|TALMP|Kirarimy
+GC|TALMP|Misa
+GC|Leosun Leona|Medusa
+GC|Leosun Leona|Velvet
+GC|Leosun Leona|BriTSy
+GC|Leosun Leona|RIRI
+GC|Leosun Leona|Liesel
+GC|Leosun Leona|Moe
+GC|Luminary Dragons|Evoxia
+GC|Luminary Dragons|Niiko
+GC|Luminary Dragons|Chocapick
+GC|LSR|Schu
+GC|LSR|widow
+GC|LSR|Juja
+GC|LSR|kyracujoh
+GC|LSR|serenity
+GC|LSR|EmmaGTV
+GC|Headlock Esports|Juja
+GC|Headlock Esports|Cynda
+GC|Headlock Esports|Selenia
+GC|Headlock Esports|serenity
+GC|Headlock Esports|widow
+GC|Kanjo Skyline|emilia
+GC|Kanjo Skyline|Tropicana
+GC|Kanjo Skyline|Spinjitsu master
+GC|Kanjo Skyline|NaRi
+GC|DRXA.GC|ProMetheus
+GC|DRXA.GC|HestiA
+GC|DRXA.GC|Festival
+GC|DRXA.GC|Hidden
+GC|DRXA.GC|ZIAN
+GC|UW.GC|isse
+GC|UW.GC|bae
+GC|UW.GC|Morita
+GC|UW.GC|teeq
+GC|UW.GC|Kyxhy
+GC|UW.GC|Sunset
+GC|nayu e amigas|Senjyu
+GC|nayu e amigas|hannah
+GC|nayu e amigas|Lari
+GC|nayu e amigas|nayu
+GC|nayu e amigas|gabo
+GC|BAGU|sumii
+GC|BAGU|Tub
+GC|BAGU|kikowo
+GC|BAGU|deficent
+GC|BAGU|Sup1NE
+GC|BAGU|Yuubi
+GC|Ronin GC|sumii
+GC|Ronin GC|Tub
+GC|Ronin GC|s0nsuZ
+GC|Ronin GC|deficent
+GC|Genius|halita
+GC|Genius|MONARQUE
+GC|Genius|vany
+GC|Genius|AKAM
+GC|Genius|light sasuke
+GC|TOB E-Sports|aden
+GC|TOB E-Sports|Arshiel
+GC|ORA|elyria
+GC|ORA|halcyon
+GC|ORA|wall1e
+GC|ORA|Brownie
+GC|ORA|muda
+GC|ZEXAR ROSE|veni
+GC|ZEXAR ROSE|Mome
+GC|ZEXAR ROSE|Kitana
+GC|ZEXAR ROSE|Depressed
+GC|ZEXAR ROSE|Racoonoob
+GC|Bishop's Nix|RedFlavor
+GC|Bishop's Nix|Aneina
+GC|Bishop's Nix|Tyranoff
+GC|Bishop's Nix|Lyo
+GC|4F|Ivory
+GC|4F|StrwbryBagel
+GC|4F|Aisling
+GC|4F|Tweeya
+GC|4F|Cakez
+GC|4F|shirah0sh1
+GC|Daruma Synergy|Genssj
+GC|Daruma Synergy|Nini
+GC|Daruma Synergy|Rynoa
+GC|Daruma Synergy|Flop1na
+GC|Daruma Synergy|Satto
+GC|Daruma Synergy|thommy
+GC|PewPews|PuffyFerra7
+GC|PewPews|ScuzziTwoo
+GC|PewPews|Roro
+GC|PewPews|Risty
+GC|PewPews|luki
+GC|5STARS GC|twelve
+GC|5STARS GC|Miya
+GC|5STARS GC|Ye
+GC|Qbixee|ayze
+GC|Qbixee|kitkatwc
+GC|Qbixee|urxnn
+GC|Qbixee|Felce
+GC|Qbixee|nenuay
+GC|TV|mizubabe
+GC|TV|ennui
+GC|TV|harper
+GC|TV|leah
+GC|TV|sonder
+GC|TV|Kyedae
+GC|Moonflower GC|acetyl
+GC|Moonflower GC|kyeriiaa
+GC|Moonflower GC|lavender
+GC|Moonflower GC|Aric
+GC|Moonflower GC|silvermist
+GC|WeSleepz|jade
+GC|WeSleepz|ROYAL
+GC|WeSleepz|imsleep
+GC|WeSleepz|Noella
+GC|WeSleepz|Kitty
+GC|YRG|polly
+GC|YRG|icebox
+GC|YRG|EmoZz
+GC|YRG|6DD
+GC|YRG|JuanJ
+GC|FALKE VENOM|NYSSAN SKYLINE
+GC|FALKE VENOM|Aysheesh
+GC|FALKE VENOM|xKittyx
+GC|FALKE VENOM|Mioli
+GC|FALKE VENOM|oxx
+GC|S2GF|proxima
+GC|S2GF|Sephia
+GC|S2GF|Ixela
+GC|Serene Skyline|Dafne
+GC|Serene Skyline|kat
+GC|Serene Skyline|Lyépa
+GC|Serene Skyline|Puffy
+GC|Serene Skyline|Lissu
+GC|Redwings|KAT
+GC|Redwings|cano
+GC|Redwings|TaZ
+GC|Redwings|bloo
+GC|Redwings|spammy
+GC|Redwings|Sh1
+GC|OLG|winter
+GC|OLG|Saikiwi
+GC|OLG|theozy
+GC|OLG|Pinky D
+GC|OLG|lupe
+GC|OLG|Hori
+GC|OLG|Elin
+GC|Yakuza|Hiades
+GC|Yakuza|Whalien
+GC|Yakuza|N111cky
+GC|SSQ|nakano
+GC|SSQ|Ayanami
+GC|SSQ|Neu
+GC|SSQ|5nzalez
+GC|SSQ|PingSong
+GC|BG Noxra|Elio
+GC|BG Noxra|Skairi
+GC|BG Noxra|jinjin
+GC|BG Noxra|Insolaris
+GC|BG Noxra|gelocin
+GC|BG Noxra|JeryeL
+GC|BG Noxra|Elijah
+GC|67GANG|Paulinxa
+GC|67GANG|léna
+GC|67GANG|Ion
+GC|67GANG|Lunka
+GC|67GANG|maja
+GC|Claw's Unity|Mina
+GC|Claw's Unity|Howline
+GC|Claw's Unity|Nwis
+GC|Claw's Unity|MatelasDouillet
+GC|Claw's Unity|naylee
+GC|PJS|SIMULACRA
+GC|PJS|irlfemboy
+GC|PJS|potatos
+GC|PJS|Yirui
+GC|PJS|vi
+GC|DOODLEBOBS|Yanni
+GC|DOODLEBOBS|olulu
+GC|DOODLEBOBS|Bugsy
+GC|DOODLEBOBS|auri
+GC|DOODLEBOBS|Rice
+GC|DOODLEBOBS|Bless
+GC|FSX|Kyujinn
+GC|FSX|meleliita
+GC|FSX|GuterWoman
+GC|FSX|Atisca
+GC|FSX|Shuba
+GC|FSX|CHURRITOS
+GC|La Mala|Serena
+GC|La Mala|aiko
+GC|La Mala|Kirarimy
+GC|La Mala|taraaaaaaaaaaaaa
+GC|La Mala|Misa
+GC|La Mala|Nero
+GC|BBB.GC|Lynxz
+GC|Reveal Multigaming Shinobu|Krsr
+GC|Reveal Multigaming Shinobu|sheyta
+GC|Reveal Multigaming Shinobu|Fina
+GC|Reveal Multigaming Shinobu|malinsche
+GC|TACTICAL FIVE|Jxhnzek
+GC|TACTICAL FIVE|Chawee
+GC|TACTICAL FIVE|tapiokalesssweet
+GC|TACTICAL FIVE|Blynn
+GC|TACTICAL FIVE|LizM
+GC|PPW Celeste|PICKLE
+GC|PPW Celeste|Temai
+GC|PPW Celeste|memi
+GC|PPW Celeste|naia
+GC|PPW Celeste|Shade
+GC|PPW Celeste|lalambona
+GC|Memento Mori Inclusivo|bunnybun
+GC|Memento Mori Inclusivo|Fleisha
+GC|Memento Mori Inclusivo|shisui
+GC|Memento Mori Inclusivo|Am0ra
+GC|Memento Mori Inclusivo|annA
+GC|Memento Mori Inclusivo|Morte
+GC|MVR.GC|lalambona
+GC|MVR.GC|Andrehs
+GC|MVR.GC|Shotoo
+GC|MVR.GC|Ellie
+GC|MVR.GC|Cami
+GC|MVR.GC|LauGuz
+GC|MVR.GC|Inner
+GC|BBL|Nescargot
+GC|BBL|kaori
+GC|BBL|Laytho
+GC|BBL|lain
+GC|EVIL|caroly
+GC|EVIL|savi
+GC|EVIL|crona
+GC|EVIL|killa
+GC|EVIL|lyesz
+GC|Owned GC|Ririi1
+GC|Owned GC|Evoxia
+GC|Owned GC|sweazee
+GC|Owned GC|Vichyx
+GC|The Spark WR|Remas
+GC|The Spark WR|Velvet
+GC|The Spark WR|Koi
+GC|The Spark WR|Kuchiki
+GC|The Spark WR|Raffaello
+GC|The Spark WR|KRDOS
+GC|Alien Acht|Niiko
+GC|Alien Acht|Evoxia
+GC|Alien Acht|Ayaèrna
+GC|Alien Acht|Chocapick
+GC|Aura|dundundunki
+GC|Aura|Sleepycakey
+GC|Aura|weewee
+GC|Aura|quek
+GC|Aura|zeqah
+GC|femboy and friends|SleepyAria
+GC|femboy and friends|venture
+GC|femboy and friends|zoriental
+GC|N.EMUS|Sidra
+GC|N.EMUS|PeterBarker
+GC|N.EMUS|Syllene
+GC|N.EMUS|jumi
+GC|N.EMUS|mandarinai
+GC|Fallen Angels|mellasku
+GC|Fallen Angels|dex1e
+GC|Fallen Angels|Niiko
+GC|Fallen Angels|Lily
+GC|LEO Azalea|EmmaGTV
+GC|LEO Azalea|exia
+GC|LEO Azalea|Aiki
+GC|LEO Azalea|Phia
+GC|LEO Azalea|Miiizzy
+GC|LEO Azalea|Amy1
+GC|maui wowie|habibti
+GC|maui wowie|maple
+GC|maui wowie|seal
+GC|maui wowie|Aniemal
+GC|maui wowie|colby
+GC|OUTCASTS|Bobbiexo
+GC|OUTCASTS|bellatr1x
+GC|OUTCASTS|aNNja
+GC|OUTCASTS|elysian
+GC|OUTCASTS|Lil Bob
+GC|Hella Goats|majusia
+GC|Hella Goats|MayaMeow
+GC|Hella Goats|ellie
+GC|Hella Goats|rainssa
+GC|Pandore GC|Kalo
+GC|Pandore GC|kaori
+GC|Pandore GC|Chocapick
+GC|Pandore GC|gabs
+GC|Pandore GC|June
+GC|NOMAD GC|Kalo
+GC|NOMAD GC|Yuna
+GC|NOMAD GC|Red
+GC|NOMAD GC|Yuqi
+GC|RAF.GC|Dylo
+GC|RAF.GC|proxima
+GC|RAF.GC|Tmtm
+GC|RAF.GC|Sandra
+GC|RAF.GC|Ixela
+GC|Breakfast Club|Yuumo
+GC|Breakfast Club|SOLARIS
+GC|Breakfast Club|KITTY
+GC|Breakfast Club|Pua
+GC|Breakfast Club|Cina
+GC|Breakfast Club|Haru
+GC|MOG Midnight Sphynx|Burns
+GC|MOG Midnight Sphynx|naya
+GC|MOG Midnight Sphynx|cas
+GC|MOG Midnight Sphynx|Boo
+GC|MOG Midnight Sphynx|meekaa
+GC|MOG Midnight Sphynx|nari
+GC|5 stack|emm4
+GC|Glowbyte|Nana
+GC|Glowbyte|hannah
+GC|Glowbyte|phoon
+GC|Glowbyte|myers
+GC|Glowbyte|nayu
+GC|EVXG|Angela
+GC|EVXG|Gold
+GC|EVXG|Liliy
+GC|EVXG|rat
+GC|EVXG|farewell
+GC|EVXG|Víz
+GC|Exoria|max
+GC|Exoria|julia
+GC|Exoria|lanaa
+GC|Exoria|macaroon
+GC|Exoria|bella
+GC|Chikuli|nour
+GC|Chikuli|OlegMaserati95
+GC|Chikuli|Dayasst
+GC|Chikuli|Puck
+GC|Chikuli|Akrim0
+GC|MSG|IANA
+GC|MSG|Haribo
+GC|MSG|PenEloPE
+GC|MSG|MOZZING
+GC|MSG|iv1n
+GC|NOOB.GC|agrc
+GC|NOOB.GC|ohms
+GC|NOOB.GC|grace4ul
+GC|NOOB.GC|Seryn
+GC|NOOB.GC|jaydiebabie
+GC|SAD|harper
+GC|SAD|rotten1
+GC|SAD|irene
+GC|SAD|kora
+GC|SAD|pickles
+GC|AZ Rising|Noti
+GC|AZ Rising|Unicorn
+GC|AZ Rising|Flora
+GC|AZ Rising|Elin4
+GC|Kinetic|caya1
+GC|Kinetic|gabby
+GC|Kinetic|vwv
+GC|Kinetic|oranges
+GC|Kinetic|pickles
+GC|YK|Wenzai
+GC|YK|KK
+GC|YK|YC33
+GC|YK|Yzy
+GC|YK|Yue
+GC|EMP|SoberSushi
+GC|EMP|xirxia
+GC|EMP|Coax
+GC|EMP|neko
+GC|EMP|svv
+GC|DX|xyeria
+GC|DX|Floppy
+GC|DX|Roxxy
+GC|DX|Strawberry
+GC|DX|shishi
+GC|DKN|hannah
+GC|DKN|gabo
+GC|DKN|yaza
+GC|DKN|phoon
+GC|DKN|nayu
+GC|NOVA.GC|alyssa
+GC|NOVA.GC|Kon
+GC|NOVA.GC|Yyni
+GC|NOVA.GC|Clem
+GC|NOVA.GC|7er
+GC|NOVA.GC|shirazi
+GC|NYA|joy
+GC|NYA|chocola
+GC|NYA|kenzie
+GC|NYA|halle
+GC|NYA|yinu
+GC|NYA|nekotapon
+GC|NYA|mirae
+GC|NYA|celly
+GC|NYA|frosti
+GC|NRV|Pugs
+GC|NRV|chem
+GC|NRV|avaerus
+GC|NRV|ShelbyLynn
+GC|NRV|jules
+GC|NRV|henessy
+GC|EMUs|PeterBarker
+GC|EMUs|Syllene
+GC|EMUs|elaa
+GC|EMUs|mads
+GC|NOCTX FBL|Tékia
+GC|NOCTX FBL|Nakiia
+GC|NOCTX FBL|Yannou
+GC|NOCTX FBL|pipa
+GC|FATE X Lyra|Neex
+GC|FATE X Lyra|Momoy
+GC|FATE X Lyra|cho
+GC|HANAMI|jumi
+GC|HANAMI|sumi
+GC|HANAMI|mila
+GC|HANAMI|KXoma
+GC|HANAMI|k t
+GC|TWISTED SAINTS XIRENS|ayano
+GC|TWISTED SAINTS XIRENS|lain
+GC|TWISTED SAINTS XIRENS|Théa
+GC|TWISTED SAINTS XIRENS|Velvette
+GC|TWISTED SAINTS XIRENS|Naksu
+GC|TWISTED SAINTS XIRENS|schnee
+GC|TWISTED SAINTS XIRENS|embi
+GC|Fungus Maximus|alittleisland
+GC|Fungus Maximus|buble
+GC|Fungus Maximus|Effy
+GC|Fungus Maximus|clxsa
+GC|Fungus Maximus|alide
+GC|777 Female|vårin
+GC|777 Female|sissil
+GC|777 Female|vic2ria
+GC|777 Female|mills
+GC|777 Female|Kine
+GC|MKS Markiss|xZeroth
+GC|MKS Markiss|YTF
+GC|MKS Markiss|Masquerade
+GC|MKS Markiss|Muggle
+GC|MKS Markiss|jasan
+GC|MKS Markiss|2110
+GC|MKS Markiss|moosatae
+GC|THE REST OF US|Valentina
+GC|THE REST OF US|Red
+GC|THE REST OF US|balu
+GC|THE REST OF US|delaira
+GC|Meow|Manart
+GC|Meow|Lilouuuuuuu
+GC|Meow|Moon
+GC|Meow|yumeko
+GC|Meow|SamSou
+GC|Misora|jjeonda
+GC|Misora|sweven
+GC|Misora|risbe
+GC|Misora|binz
+GC|DayLight Lyra|SamSou
+GC|DayLight Lyra|lyaa
+GC|DayLight Lyra|Moon
+GC|EPX|ATARAXIE
+GC|EPX|snowy
+GC|LLX|yayee
+GC|LLX|fanie
+GC|LLX|ArinJi
+GC|LLX|Newky
+GC|LLX|bunni
+GC|CHUD|jid
+GC|CHUD|chip
+GC|CHUD|MochiMei
+GC|BNG|Akemi
+GC|BNG|Romii
+GC|BNG|Champi
+GC|BNG|Jia
+GC|BNG|Jinx
+GC|BNG|Lynaa
+GC|Stellarix GC|Yuri
+GC|Stellarix GC|Sushi
+GC|Stellarix GC|ItsCryMeARiver
+GC|PSRX|café
+GC|PSRX|rina
+GC|PSRX|staryu
+GC|PSRX|jid
+GC|ONE|mariposa
+GC|ONE|Nare
+GC|NOC GC|pumpkins
+GC|NOC GC|Dyummy
+GC|NOC GC|mmoopingx
+GC|NOC GC|klao
+GC|NOC GC|nupnipp
+GC|Team Phoenix Female|solid
+GC|Team Phoenix Female|snowy
+GC|Team Phoenix Female|Laleh
+GC|Team Phoenix Female|supiNa
+GC|Team Phoenix Female|hori
+GC|SOL.GC|Rey
+GC|SOL.GC|Healing
+GC|SOL.GC|Amaebi
+GC|SOL.GC|Yunah
+GC|SOL.GC|lucky
+GC|EXCEED VYXEN|Aivy
+GC|EXCEED VYXEN|sbubu
+GC|EXCEED VYXEN|Unchy
+GC|EXCEED VYXEN|Crys
+GC|EXCEED VYXEN|lyy
+GC|EXCEED VYXEN|vantasie
+GC|EFA|anamagic
+GC|EFA|clapie
+GC|EFA|SIMULACRA
+GC|EFA|Snowy
+GC|EFA|Prism
+GC|EFA|boop
+GC|BLT.GC|Aengxy
+GC|BLT.GC|MeW
+GC|BLT.GC|B1nby0
+GC|BLT.GC|H4Yu
+GC|BLT.GC|YuHyun
+GC|BLT.GC|Nico1e
+GC|Ubur Ubur Ikan Lele|Cyprin
+GC|Ubur Ubur Ikan Lele|Miws
+GC|Ubur Ubur Ikan Lele|kimxy
+GC|Krystall Essence|ioooooo
+GC|Krystall Essence|Saiko
+GC|Krystall Essence|Lunar
+GC|Krystall Essence|Lawless
+GC|Krystall Essence|aireezn
+GC|AuraGaming|moi
+GC|AuraGaming|pipu
+GC|AuraGaming|anju
+GC|AuraGaming|Aisu
+GC|AuraGaming|Pichu
+GC|DT|Phanie
+GC|DT|流口水大隊長巫禹彤
+GC|DT|Sü9ar
+GC|DT|MiLu
+GC|DT|Yuiko
+GC|DT|JuJu
+GC|Mushoku|alisanesedaya
+GC|Mushoku|nVeiK
+GC|Mushoku|gabs
+GC|Mushoku|rory
+GC|Mushoku|Fukkatsu
+GC|NF|eggplant
+GC|NF|akihito
+GC|NF|Yuuki
+GC|VOID Obscura|cynical
+GC|VOID Obscura|xiewie
+GC|VOID Obscura|Mashari
+GC|VOID Obscura|Khaleesi
+GC|VOID Obscura|igris
+GC|Late Night Crew GC|eunoia
+GC|Late Night Crew GC|nala
+GC|Late Night Crew GC|luzy
+GC|Late Night Crew GC|Estela
+GC|FRG GC|Daru
+GC|FRG GC|Amiix
+GC|FRG GC|slackmasc
+GC|FRG GC|gaia
+GC|FRG GC|Wolfiee
+GC|OWLS|Aimi
+GC|OWLS|Himari
+GC|OWLS|MiriSoe
+GC|EXG|rozz
+GC|EXG|binz
+GC|EXG|jjeonda
+GC|EXG|sweven
+GC|EXG|mous1e
+GC|NxG Gc|wall1e
+GC|Six7|ภาวนา
+GC|Six7|Daisy
+GC|Six7|měilì
+GC|Six7|R J
+GC|Six7|merciless
+GC|VIM Nyxia|choco
+GC|VIM Nyxia|Pua
+GC|VIM Nyxia|Cina
+GC|VIM Nyxia|Haru
+GC|VIM Nyxia|KEI
+GC|VIM Nyxia|BACON
+GC|GATO|Mity
+GC|GATO|luyta
+GC|GATO|giovanA
+GC|GATO|Phobia
+GC|GATO|Ayumi
+GC|Nivek Esports|Cina
+GC|Nivek Esports|uy si idol
+GC|Nivek Esports|choco
+GC|RGL Ruby|Kathrina
+GC|RGL Ruby|vmp
+GC|RGL Ruby|Fluffalito
+GC|MTD.GC|delbisky
+GC|MTD.GC|jiari
+GC|MTD.GC|kazato
+GC|MTD.GC|MoNa
+GC|MTD.GC|yyuririi
+GC|RCS|Asteria
+GC|RCS|Lil Bob
+GC|RCS|xKittyx
+GC|RCS|Luzia
+GC|RCS|aliya
+GC|RCS|Cathy
+GC|RCS|Manart
+GC|STE.GC|gabiTê
+GC|STE.GC|isa1
+GC|Synergy|Marizinea
+GC|Synergy|mandyT
+GC|Synergy|paNcalobs
+GC|Synergy|Ayumi
+GC|Synergy|ripmeL
+GC|PIG|abbie2k
+GC|PIG|nova
+GC|PIG|babysoap
+GC|PIG|meekah
+GC|PIG|gabby
+GC|Colors GC|Nescargot
+GC|Colors GC|evyy
+GC|Colors GC|Alessia
+GC|Colors GC|Gosu
+GC|SOL|Surtipix
+GC|SOL|Crystal
+GC|SOL|Star
+GC|SOL|aki
+GC|NGU Roo|Lena
+GC|NGU Roo|Mar
+GC|NGU Roo|Aroayiyi
+GC|NGU Roo|nastybunny
+GC|NGU Roo|akira
+GC|TOG Kitsune|Gina
+GC|Titas of Valorant|Trishmosa
+GC|Titas of Valorant|Neyah
+GC|Titas of Valorant|iya
+GC|Titas of Valorant|Chesa
+GC|Titas of Valorant|Ellin
+GC|BLEHH :P GC|caelinthegr8
+GC|BLEHH :P GC|elyria
+GC|BLEHH :P GC|Brownie
+GC|BLEHH :P GC|Mekyiz
+GC|BLEHH :P GC|trin
+GC|ROA Scarlet|igris
+GC|ROA Scarlet|Casca
+GC|ROA Scarlet|nattaratu
+GC|ROA Scarlet|Ye
+GC|ROA Scarlet|emmiy
+GC|HYP|café
+GC|HYP|lovergirl
+GC|HYP|Kross Unity
+GC|HYP|pangolin
+GC|HYP|jia
+GC|YICQ|C10wn
+GC|YICQ|토마토 맛 아이스크림
+GC|YICQ|다람쥐
+GC|YICQ|hiyo
+GC|YICQ|Area
+GC|Hyperion Girls|Yunn
+GC|Hyperion Girls|Ryuko
+GC|Hyperion Girls|Methz
+GC|Spartan Valkyries|Togestar
+GC|Spartan Valkyries|Morrigan
+GC|Spartan Valkyries|c1ly
+GC|Spartan Valkyries|Nutamonnn
+GC|Spartan Valkyries|itsZephie
+GC|ECO|noodles
+GC|ECO|silentsoul
+GC|ECO|Schu
+GC|ECO|Liyana
+GC|ECO|Michelle
+GC|ZE|Buttercup
+GC|ZE|raandie
+GC|ZE|sathie
+GC|ZE|milkis
+GC|AS|ecst4sy
+GC|AS|Meikun
+GC|AS|paru
+GC|Apocalypse|mieanhae
+GC|Apocalypse|alcor
+GC|Apocalypse|S ix
+GC|Apocalypse|katrina
+GC|Apocalypse|Miyako
+GC|Apocalypse|mandoots
+GC|STR|gorgwilds
+GC|STR|zxcvb
+GC|STR|3VE
+GC|STR|Harth
+GC|STR|z0graf
+GC|AURA|Zeukos
+GC|AURA|svv
+GC|AURA|rotting
+GC|AURA|m0narcS
+GC|Mondtaforever|miles
+GC|Mondtaforever|pannyx
+GC|Mondtaforever|Muk
+GC|Mondtaforever|imyourcat
+GC|Mondtaforever|Nortor
+GC|Mondtaforever|Mauvaiz
+GC|SUZ|Ming
+GC|SUZ|Xvin
+GC|SUZ|xoery
+GC|SUZ|Sleepground
+GC|SUZ|rain2
+GC|Fact Revolution|Scary
+GC|Fact Revolution|Kozyx1
+GC|Fact Revolution|vero
+GC|Fact Revolution|Saftflaskee
+GC|Fact Revolution|Sunshine
+GC|T2G Esports|Xelashii
+GC|T2G Esports|Lissu
+GC|T2G Esports|arturinio
+GC|T2G Esports|kat
+GC|T2G Esports|Puffy
+GC|ANC|Kita
+GC|ANC|EmoZz
+GC|ANC|TT
+GC|ANC|Kalika
+GC|ANC|Lux1
+GC|Sail on Past Thalassa|nako
+GC|Sail on Past Thalassa|amel
+GC|Sail on Past Thalassa|aura
+GC|Sail on Past Thalassa|zaza
+GC|Sail on Past Thalassa|xan
+GC|Tantra eSports|Nyx
+GC|Tantra eSports|ouma
+GC|Tantra eSports|kaninkokern
+GC|Tantra eSports|saturie
+GC|SKR|ShadowWolf
+GC|SKR|Julietta
+GC|SKR|ahsoka
+GC|SKR|mimi
+GC|WARTHOX GC|JiiPrinxe
+GC|WARTHOX GC|Heracow
+GC|WARTHOX GC|VB
+GC|WARTHOX GC|YugXeo
+GC|HINODE TSUKI|Elixa
+GC|HINODE TSUKI|Winnie
+GC|HINODE TSUKI|Yoshioka
+GC|SUBSOLI GC|nai
+GC|SUBSOLI GC|moco
+GC|SUBSOLI GC|Leurørα
+GC|SUBSOLI GC|kqz
+GC|SUBSOLI GC|mariA
+GC|SUBSOLI GC|Ganjagirl
+GC|SYNA Seraph|blight
+GC|SYNA Seraph|uyka
+GC|SYNA Seraph|chuanno1
+GC|SYNA Seraph|moonxixixi
+GC|SYNA Seraph|allium
+GC|ouuu shii|lVal
+GC|ouuu shii|zev
+GC|ouuu shii|Obskury
+GC|ouuu shii|mira
+GC|ouuu shii|Decay
+GC|NorP GC|kaninkokern
+GC|NorP GC|puffishie
+GC|NorP GC|Nanisan
+GC|NorP GC|treigen
+GC|NorP GC|Aury
+GC|G Esports Nebula|Suaa
+GC|G Esports Nebula|Aya
+GC|G Esports Nebula|nani
+GC|G Esports Nebula|Lisa
+GC|G Esports Nebula|Ichigoo
+GC|Kameko Seren|shishi
+GC|Kameko Seren|3GRRRRD
+GC|Kameko Seren|saerene
+GC|Kameko Seren|Yuki
+GC|Kameko Seren|Greeey
+GC|Kameko Seren|xiaofei
+GC|Nirvana Rebirth|责任神
+GC|Nirvana Rebirth|vveiey
+GC|Nirvana Rebirth|B1han
+GC|Nirvana Rebirth|Ayana
+GC|Nirvana Rebirth|coffee1225
+GC|Nirvana Rebirth|Hsu
+GC|EvoLens Girls|vveiey
+GC|EvoLens Girls|责任神
+GC|EvoLens Girls|toes
+GC|EvoLens Girls|Makima
+GC|EvoLens Girls|2099
+GC|WgW|Star
+GC|WgW|Crystal
+GC|WgW|vyy
+GC|WgW|Leila
+GC|WgW|Zappiks
+GC|AIR Fryers|sodium
+GC|AIR Fryers|sinon asada
+GC|AIR Fryers|Floofy
+GC|AIR Fryers|BojioNatalie
+GC|AIR Fryers|kalopsia
+GC|Radiant Shadows|Bilbo
+GC|Radiant Shadows|Kisara
+GC|Radiant Shadows|miauu
+GC|Radiant Shadows|Sunset
+GC|Radiant Shadows|Ayumi
+GC|Ar Skipsies|annli rise
+GC|Ar Skipsies|Avenae
+GC|Ar Skipsies|QUINCY
+GC|Ar Skipsies|nyx
+GC|Ar Skipsies|Leyah
+GC|SGA.IN|Nico1e
+GC|SGA.IN|yetti
+GC|SGA.IN|Suy4
+GC|SGA.IN|DaWn
+GC|SGA.IN|Xion
+GC|ZO.GC|asteria
+GC|ZO.GC|soko
+GC|ZO.GC|skyress
+GC|ZO.GC|Shiny
+GC|Drako Esports|Xege
+GC|Drako Esports|bibix
+GC|Drako Esports|fersis
+GC|Drako Esports|joko
+GC|Drako Esports|Nepht
+GC|FTS.GC|killa
+GC|FTS.GC|LuMi
+GC|FTS.GC|giovanA
+GC|FTS.GC|mor3Na
+GC|FTS.GC|Trwizy
+GC|MACKO Esports GC|96ghost69
+GC|MACKO Esports GC|BebeFlow
+GC|MACKO Esports GC|valeria
+GC|MACKO Esports GC|PlatyFox
+GC|MACKO Esports GC|Red
+GC|GTI|Q1ngY
+GC|GTI|candice
+GC|GTI|Huanki
+GC|GTI|RongQiuu
+GC|GTI|TANKO
+GC|Xpuse GC|daE0
+GC|Xpuse GC|경상남도카리나
+GC|Xpuse GC|Vexera
+GC|Xpuse GC|Kastel
+GC|Xpuse GC|JeongHaNa
+GC|HTG E-sports|Crispy
+GC|HTG E-sports|Izanami
+GC|HTG E-sports|Mariaa
+GC|HTG E-sports|Ashveil
+GC|HTG E-sports|Schizophrenic
+GC|teamflashers|nyat
+GC|teamflashers|nocturina
+GC|teamflashers|blxssom
+GC|teamflashers|Neex
+GC|teamflashers|Lami
+GC|Last Day Mix|Neex
+GC|Last Day Mix|Lami
+GC|Last Day Mix|blxssom
+GC|Last Day Mix|nyat
+GC|Last Day Mix|nocturina
+GC|DCG|niu66
+GC|DCG|Gosling
+GC|DCG|Seaweed
+GC|DCG|yaya
+GC|DCG|oldpine
+GC|DCG|cassie
+GC|NXC Solana|flowers
+GC|NXC Solana|miraj
+GC|NXC Solana|allium
+GC|DETECT QUEENS|rozz
+GC|DETECT QUEENS|Asteria
+GC|DETECT QUEENS|stαcey
+GC|PCIFIC Waves|sirius
+GC|PCIFIC Waves|zera
+GC|PCIFIC Waves|n1neteen9
+GC|PCIFIC Waves|mikelencelo
+GC|PCIFIC Waves|Dylo
+GC|Xentra|kaina
+GC|Xentra|Aeisheeesh
+GC|Xentra|gel
+GC|Xentra|scarlett
+GC|Xentra|Hera
+GC|Xentra|lly
+GC|fenda das streamers|cami
+GC|fenda das streamers|patip
+GC|fenda das streamers|espanha
+GC|fenda das streamers|miw
+GC|fenda das streamers|Mity
+GC|fenda das streamers|lule
+GC|malvadinhas 2.0|Rebeguinha
+GC|malvadinhas 2.0|Leo
+GC|malvadinhas 2.0|jeh
+GC|malvadinhas 2.0|lyesz
+GC|malvadinhas 2.0|caroly
+GC|LEV.GC|Maka
+GC|LEV.GC|Rynoa
+GC|LEV.GC|Yuna
+GC|Aurus GC|GINGER
+GC|Aurus GC|AvLynx
+GC|Aurus GC|Raee
+GC|Aurus GC|MystikA
+GC|Aurus GC|Moro
+GC|Aurus GC|D O B B Y
+GC|Üsküdar E Spor|k1arast
+GC|Üsküdar E Spor|laraツ
+GC|Üsküdar E Spor|Slasy
+GC|Üsküdar E Spor|livsiee
+GC|Üsküdar E Spor|Daisy
+GC|UBN|Nevereve
+GC|UBN|MiNiMiOi
+GC|UBN|동 섭
+GC|UBN|Meloxy
+GC|UBN|Lucky
+GC|TC.GC|TaZ
+GC|TC.GC|bloo
+GC|TC.GC|KAT
+GC|TC.GC|Sachi
+GC|TC.GC|Supernova
+GC|TC.GC|Alfie
+GC|LNX Venus|arracheuse2tête
+GC|LNX Venus|ImissAntoPRIME
+GC|LNX Venus|Laou
+GC|LNX Venus|Charlie
+GC|LNX Venus|Goblyn
+GC|Lillix|shailo
+GC|Lillix|HippoPlaya
+GC|Lillix|kayiiing
+GC|Lillix|s0wie
+GC|Lillix|ikka
+GC|Lillix|rei
+GC|EXA|nana
+GC|EXA|wendy
+GC|EXA|Lau
+GC|EXA|ath
+GC|EXA|Mikuna
+GC|EXA|fannou
+GC|APPROVAL GAMING GC|Myu
+GC|APPROVAL GAMING GC|hibi
+GC|APPROVAL GAMING GC|anju
+GC|APPROVAL GAMING GC|kisaragi
+GC|APPROVAL GAMING GC|Xeno
+GC|HI|tr1xy
+GC|HI|Ab
+GC|HI|syniez
+GC|HI|iv1n
+GC|ZNT.GC|Sucette
+GC|ZNT.GC|LittleBigSpy
+GC|ZNT.GC|Solédad
+GC|ZNT.GC|Valone
+GC|ZNT.GC|Nora
+GC|ZNT.GC|matrix
+GC|PCS Aphrodite|Evoxia
+GC|PCS Aphrodite|Lumi
+GC|PCS Aphrodite|slackmasc
+GC|PCS Aphrodite|Aiki
+GC|After Dark|Charl
+GC|After Dark|Jesta
+GC|After Dark|bjxrk
+GC|After Dark|Wildfire
+GC|SPF|zxv
+GC|SPF|Annie
+GC|Syrens|nugget
+GC|Syrens|Layla
+GC|Syrens|Tea
+GC|Syrens|skidd
+GC|Syrens|bob ross
+GC|REV|waster
+GC|REV|scaredy
+GC|REV|svv
+GC|REV|EXOT1C
+GC|REV|rotting
+GC|EVOG|skyress
+GC|EVOG|nine
+GC|EVOG|ZenSan1ty
+GC|EVOG|Dariari
+GC|EVOG|kirara
+GC|Revive GC|Moonlight
+GC|Revive GC|rare
+GC|Revive GC|skyress
+GC|Revive GC|ZenSan1ty
+GC|Revive GC|Dariari
+GC|SRGC|N3PFFY
+GC|SRGC|JungByung
+GC|SRGC|공 주
+GC|SRGC|Dest1ny
+GC|SRGC|hiraNa
+GC|SRGC|Cinccino
+GC|VRUM|vivihlikeyou
+GC|VRUM|Nathy
+GC|VRUM|syr
+GC|VRUM|zeN
+GC|VRUM|ozy
+GC|DSQ Viola|anna
+GC|DSQ Viola|iris
+GC|DSQ Viola|Curry
+GC|DSQ Viola|Ffi
+GC|GA|bezyy
+GC|GA|mikelencelo
+GC|GA|nza
+GC|GA|uZay
+GC|GA|hanamii
+GC|XSV|always
+GC|XSV|Luxely
+GC|XSV|emi
+GC|XSV|Hystoria
+GC|XSV|MJHypers
+GC|XSV|dakkuhh
+GC|TOG Inari|Korra
+GC|TOG Inari|bambi
+GC|TOG Inari|Meadow
+GC|TOG Inari|ninsky
+GC|TOG Inari|dschay
+GC|TOG Inari|Jules
+GC|TNX|Elfonashelf
+GC|TNX|halcyon
+GC|AURF|thommy
+GC|AURF|fracarissa
+GC|AURF|aiko
+GC|Kairos GC|Reev
+GC|Kairos GC|ShyLiss
+GC|Kairos GC|Dressa
+GC|Kairos GC|fracarissa
+GC|Kairos GC|Leurørα
+GC|Kairos GC|Bloody Mary
+GC|Aim For Khaos Noir|Opal
+GC|Aim For Khaos Noir|katyemilyx
+GC|Aim For Khaos Noir|moxie
+GC|Aim For Khaos Noir|Asteria
+GC|Aim For Khaos Noir|luxky
+GC|RZN|Sidra
+GC|RZN|YuiCee
+GC|RZN|Mym
+GC|RZN|Zoe
+GC|RZN|Juulia
+GC|FRG Sirens|Krisa
+GC|FRG Sirens|jukiiii
+GC|FRG Sirens|Wolfiee
+GC|FRG Sirens|gracelyn
+GC|FRG Sirens|Jojo
+GC|FRG Sirens|yumeko
+GC|HKE|Helyix
+GC|HKE|Valentina
+GC|HKE|Iris
+GC|HKE|Jojo
+GC|HKE|Chewbecca
+GC|Silly Shooters|nomy
+GC|Silly Shooters|enda
+GC|7SENSITIVE VALKYRIES|Uziboozie
+GC|7SENSITIVE VALKYRIES|cano
+GC|7SENSITIVE VALKYRIES|FELECIA
+GC|7SENSITIVE VALKYRIES|milk
+GC|7SENSITIVE VALKYRIES|IshUwU
+GC|7SENSITIVE VALKYRIES|Aska
+GC|CELS|FcHoMpA
+GC|CELS|Aska
+GC|CELS|milk
+GC|CELS|Cranzit
+GC|AP|angelfawn
+GC|AP|rosieroses
+GC|AP|kit
+GC|AP|Fern
+GC|UltraViolet GC|tiiapx
+GC|UltraViolet GC|Chrizux
+GC|UltraViolet GC|Roosaaa
+GC|UltraViolet GC|Eevi
+GC|UltraViolet GC|Johviina
+GC|Beans|kay why esss
+GC|Beans|ryuu
+GC|Beans|Moonwards
+GC|Beans|MishiMoo
+GC|Beans|DeMoon1
+GC|Beans|peachysmolbean
+GC|5M Kitsumi|Melie
+GC|5M Kitsumi|Kyria
+GC|5M Kitsumi|Tutti
+GC|5M Kitsumi|shunchi
+GC|5M Kitsumi|rafii
+GC|5M Kitsumi|maryS2
+GC|ARMR.GC|Lusha
+GC|ARMR.GC|dusty
+GC|ARMR.GC|Kypsi
+GC|ARMR.GC|nabiki
+GC|ARMR.GC|joom
+GC|TAL|joom
+GC|TAL|nabiki
+GC|TAL|Xero
+GC|TAL|dusty
+GC|TAL|Lusha
+GC|TAL|Mix
+GC|Fearless Esports Aspira|Kensie
+GC|Fearless Esports Aspira|dusty
+GC|Fearless Esports Aspira|Lusha
+GC|Fearless Esports Aspira|Xero
+GC|RYL|Canxieee
+GC|RYL|Juulia
+GC|RYL|eggy
+GC|RYL|paashi
+GC|RYL|dayl1na
+GC|RYL|maja
+GC|NoQL|Xaline
+GC|NoQL|Raina
+GC|NoQL|aliya
+GC|NoQL|SOREAL
+GC|RZN|Alora
+GC|RZN|Raina
+GC|RZN|Wisteria
+GC|RZN|n4la
+GC|RZN|Dina
+GC|Ege University GC|Lorita
+GC|Ege University GC|Chersia
+GC|Ege University GC|lidya
+GC|Ege University GC|Dibs
+GC|BUSHIDO ESPORTS GC|xetos
+GC|BUSHIDO ESPORTS GC|Kymiw
+GC|BUSHIDO ESPORTS GC|Nana
+GC|BUSHIDO ESPORTS GC|Emi
+GC|BUSHIDO ESPORTS GC|Nat1
+GC|BUSHIDO ESPORTS GC|Lole
+GC|KØRE FOCUS|lll
+GC|KØRE FOCUS|FishGirl
+GC|KØRE FOCUS|xamy
+GC|KØRE FOCUS|Elijah
+GC|KØRE FOCUS|IRL SUPERSTAR
+GC|Zena Kora|perLia
+GC|Zena Kora|Clo
+GC|Zena Kora|Lilith
+GC|Zena Kora|Fedaka
+GC|Zena Kora|L1lir
+GC|Zena Kora|amae
+GC|CC|evil ellis
+GC|CC|vNikki
+GC|CC|AleAle
+GC|CC|TheBookThief
+GC|CC|PuppyLouva
+GC|Les Potineuz|Lyo
+GC|Les Potineuz|Aneina
+GC|Les Potineuz|RedFlavor
+GC|Les Potineuz|Laou
+GC|Curralzinho Sync|yumefrags
+GC|Curralzinho Sync|wendy
+GC|starke männer|yue
+GC|starke männer|aeonhi
+GC|starke männer|angelina
+GC|starke männer|Mel
+GC|starke männer|Jinny
+GC|OWO|Lychi
+GC|OWO|Kaitty
+GC|OWO|Less
+GC|OWO|Lynaa
+GC|OWO|aileen
+GC|OWO|Jinx
+GC|AQL|sweesk
+GC|AQL|taylorvi
+GC|AQL|mochs
+GC|AQL|phrog
+GC|AQL|MrWhiskers
+MENA|STS|Avvix
+MENA|STS|Susano
+MENA|STS|Akai
+MENA|STS|Br1ckzl
+MENA|STS|Koji
+MENA|STS|AL7B
+MENA|STS|Fahad
+MENA|GLS|YappA
+MENA|GLS|mazen
+MENA|GLS|Bard0lf
+MENA|GLS|Madaô
+MENA|GLS|Neptunee
+MENA|BAM|Nail
+MENA|BAM|REZE
+MENA|BAM|Syratch
+MENA|BAM|JohnieBoy
+MENA|BAM|darkw0w
+MENA|RAAD|Shniider
+MENA|RAAD|RockeT
+MENA|RAAD|Tarbosh
+MENA|RAAD|Depyro
+MENA|RAAD|Sand
+MENA|RAAD|Kiddouk
+MENA|RAAD|phaze
+MENA|Terreno Gioco|emojnox
+MENA|Terreno Gioco|n1tze
+MENA|Terreno Gioco|b3zginn
+MENA|Terreno Gioco|j4wnie
+MENA|Terreno Gioco|Neji
+MENA|Terreno Gioco|Lutox
+MENA|Terreno Gioco|CaN
+MENA|EGA eSports|Psy
+MENA|EGA eSports|ITzMoe
+MENA|EGA eSports|Vamp1r
+MENA|EGA eSports|Pred
+MENA|EGA eSports|imazz
+MENA|3MK|VADA
+MENA|3MK|khavan
+MENA|3MK|Crimi
+MENA|3MK|INIOP
+MENA|NES|RaMio
+MENA|NES|Taloot
+MENA|NES|Ven0m
+MENA|NES|RMIX
+MENA|NES|Trap
+MENA|YN|Naifma7
+MENA|YN|k1Ng
+MENA|YN|Tmy
+MENA|YN|BNR
+MENA|YN|3moDJ
+MENA|YN|Erick
+MENA|GMX|TITOUNE
+MENA|GMX|nysHAA
+MENA|GMX|Helas
+MENA|GMX|Tr0mA
+MENA|GMX|Jawad
+MENA|FAST-WIN|9ondoss
+MENA|FAST-WIN|MrPropre
+MENA|FAST-WIN|TNK
+MENA|VW|Yuggs
+MENA|VW|BreaK
+MENA|VW|Mapo
+MENA|VW|oteN
+MENA|Near Reality Squad|FroZeN
+MENA|Near Reality Squad|Fyco
+MENA|Near Reality Squad|Khodor
+MENA|Near Reality Squad|FaWeZz
+MENA|Near Reality Squad|M18OneTaps
+MENA|JSK ESPORTS|YOKO
+MENA|JSK ESPORTS|Terra
+MENA|JSK ESPORTS|Rexus
+MENA|JSK ESPORTS|Nartzie
+MENA|JSK ESPORTS|Maaatrix
+MENA|Fearless Faction|Tchenirou
+MENA|Fearless Faction|Ainz
+MENA|Fearless Faction|Ayman
+MENA|Fearless Faction|Henn0
+MENA|Fearless Faction|Snake
+MENA|RAF|Naifma7
+MENA|RAF|Razziss
+MENA|RAF|Kiles
+MENA|RAF|Fighter
+MENA|CS|Matus
+MENA|CS|sudo
+MENA|CS|Traxi
+MENA|CS|OKok
+MENA|CS|Ren
+MENA|Toxic Avengers|Matus
+MENA|Toxic Avengers|barabadoobee
+MENA|Toxic Avengers|OKok
+MENA|Toxic Avengers|Traxi
+MENA|Toxic Avengers|FTES
+MENA|VIB|SaQR
+MENA|VIB|ztmonarch
+MENA|VIB|Kozok
+MENA|VIB|Yehia
+MENA|AYAR|mor3jey
+MENA|AYAR|demofpsz
+MENA|AYAR|Tiyosta
+MENA|AYAR|Lally
+MENA|AYAR|hamzaw0w
+MENA|GTH|D3XT3R
+MENA|GTH|tr1ck
+MENA|GTH|Ghanee
+MENA|GTH|osa1d
+MENA|GTH|dem0n
+MENA|HWL|WooDyy
+MENA|HWL|Kenshiro
+MENA|HWL|1mp2k
+MENA|HWL|SALT
+MENA|HWL|reltzy
+MENA|Team influx|DemoN
+MENA|Team influx|Ayn
+MENA|Team influx|Kel
+MENA|Team influx|hsn
+MENA|SRN|1mp2k
+MENA|SRN|SALT
+MENA|SRN|WooDyy
+MENA|SRN|Protagonist
+MENA|SRN|Kenshiro
+Collegiate|FCN|cuz
+Collegiate|FCN|jeffie
+Collegiate|FCN|sogo
+Collegiate|FCN|HUYNH
+Collegiate|FCN|Blahst
+Collegiate|CC|Legend
+Collegiate|CC|Swichblade
+Collegiate|CC|Carnage
+Collegiate|CC|Ev0
+Collegiate|CC|renai
+Collegiate|CC|Buzzer
+Collegiate|UW.G|tril
+Collegiate|UW.G|pea
+Collegiate|UW.G|JSTN
+Collegiate|UW.G|Swashy
+Collegiate|UW.G|tight
+Collegiate|UVA|bouphapete
+Collegiate|UVA|mistafury
+Collegiate|UVA|zabz
+Collegiate|UVA|zethas
+Collegiate|UVA|docket
+Collegiate|UVA|Zoestol
+Collegiate|UVA|shansad
+Collegiate|uOttawa Garnet|KiwisAreAwesome
+Collegiate|uOttawa Garnet|SpongeElfShirt
+Collegiate|uOttawa Garnet|Water
+Collegiate|uOttawa Garnet|GODBUCKYABUSER69
+Collegiate|uOttawa Garnet|Xssant
+Collegiate|MOBAP|ZekeNotGio
+Collegiate|MOBAP|Morc
+Collegiate|MOBAP|Katashio
+Collegiate|MOBAP|Terrell
+Collegiate|MOBAP|payne
+Collegiate|MOBAP|soggyseal278
+Collegiate|MOBAP|Polkan
+Collegiate|UAESA.G|whitr
+Collegiate|UAESA.G|portal
+Collegiate|UAESA.G|dune
+Collegiate|UAESA.G|Jax
+Collegiate|UAESA.G|RadicalRocket22
+Collegiate|ASU|Jer
+Collegiate|ASU|Wumbo
+Collegiate|ASU|aaron
+Collegiate|ASU|muhhsun
+Collegiate|ASU|Kawaii2k
+Collegiate|UH Premiere|parbole
+Collegiate|UH Premiere|ericappleson
+Collegiate|UH Premiere|Sully
+Collegiate|UH Premiere|khoi
+Collegiate|UH Premiere|Relevant
+Collegiate|UH Premiere|Jivy
+Collegiate|RAD|Tenady
+Collegiate|RAD|ayeot
+Collegiate|RAD|NMBR2
+Collegiate|RAD|ARFY
+Collegiate|RAD|Insanity
+Collegiate|RAD|Tigerr
+Collegiate|USC Gold|jaykei
+Collegiate|USC Gold|kvn
+Collegiate|USC Gold|Kamikaze
+Collegiate|USC Gold|Zundga
+Collegiate|USC Gold|Sumi
+Collegiate|Cleveland State|lime
+Collegiate|Cleveland State|Exquistely
+Collegiate|Cleveland State|n0ths
+Collegiate|Cleveland State|wyyu
+Collegiate|UGA Black|baze
+Collegiate|UGA Black|isko
+Collegiate|UGA Black|sheath
+Collegiate|UGA Black|side
+Collegiate|UGA Black|jinwoo
+Collegiate|UMN Nova|Symphony
+Collegiate|UMN Nova|akumaiL
+Collegiate|UMN Nova|Sinon
+Collegiate|UMN Nova|phish
+Collegiate|UMN Nova|ImNeKko
+Collegiate|CSULB Gold|Reckt
+Collegiate|CSULB Gold|r a f
+Collegiate|CSULB Gold|Jensoo
+Collegiate|CSULB Gold|Aceologys
+Collegiate|CSULB Gold|Kimchi
+Collegiate|Brawijaya Esports|Gojira
+Collegiate|Brawijaya Esports|coco
+Collegiate|Brawijaya Esports|Soba
+Collegiate|Brawijaya Esports|Faz
+Collegiate|Brawijaya Esports|IbizaPost
+Collegiate|Brawijaya Esports|Bob
+Collegiate|Brawijaya Esports|alluka
+Collegiate|Brawijaya Esports|marstappeN
+Collegiate|UI ESC|astzk
+Collegiate|UI ESC|dapp
+Collegiate|UI ESC|k1rbyy
+Collegiate|UI ESC|aci
+Collegiate|UI ESC|Tapz
+Collegiate|Petra Surabaya Region|krimsix
+Collegiate|Petra Surabaya Region|sorxkz
+Collegiate|Petra Surabaya Region|kerokeropi
+Collegiate|Petra Surabaya Region|valfross
+Collegiate|Petra Surabaya Region|kivar
+Collegiate|Petra Surabaya Region|weiyn
+Collegiate|SJSU Gold|CouncilJeans44
+Collegiate|SJSU Gold|Judar
+Collegiate|SJSU Gold|fate
+Collegiate|SJSU Gold|1sean
+Collegiate|SJSU Gold|byrin
+Collegiate|SJSU Gold|HEIZE
+Collegiate|SJSU Gold|simon
+Collegiate|PCUA|supaek
+Collegiate|PCUA|pzy
+Collegiate|PCUA|chiron
+Collegiate|PCUA|Luwis
+Collegiate|PCUA|m00nzey
+Collegiate|UNS Alpha|harrein
+Collegiate|UNS Alpha|LyraG
+Collegiate|UNS Alpha|PeRUnCinGRzE
+Collegiate|UNS Alpha|TeukuUmar
+Collegiate|UNS Alpha|Arez
+Collegiate|UNS Alpha|Keje
+Collegiate|IU|Druff
+Collegiate|IU|Enjoy
+Collegiate|IU|anders
+Collegiate|IU|bsmooth
+Collegiate|IU|opTED
+Collegiate|IU|simba
+Collegiate|CR|Akico
+Collegiate|CR|kitmitcat
+Collegiate|CR|JuiceWrld
+Collegiate|CR|tigrz
+Collegiate|CR|Lazyhands
+Collegiate|DPG|Zaleblee
+Collegiate|DPG|domi2shiesty
+Collegiate|DPG|pay
+Collegiate|DPG|Mcreezy
+Collegiate|DPG|MrMango
+Collegiate|UMN.CC|Fluk0
+Collegiate|UMN.CC|castronomiya
+Collegiate|UMN.CC|Inconsistence
+Collegiate|UMN.CC|zGanesha
+Collegiate|UMN.CC|DEAN
+Collegiate|NOVA|ExtweemKyle
+Collegiate|NOVA|MiniChkn
+Collegiate|NOVA|Fumsy
+Collegiate|NOVA|Ark
+Collegiate|NOVA|Toxin
+Collegiate|Buffalo|face
+Collegiate|Buffalo|Noviix
+Collegiate|Buffalo|bap
+Collegiate|Buffalo|win4life
+Collegiate|Buffalo|justin
+Collegiate|WKU Hilltoppers Red|Bullitt
+Collegiate|WKU Hilltoppers Red|Ziehm
+Collegiate|WKU Hilltoppers Red|Dazai
+Collegiate|WKU Hilltoppers Red|Maas
+Collegiate|WKU Hilltoppers Red|Exeyy
+Collegiate|UNDIP|ReSzy
+Collegiate|UNDIP|pal
+Collegiate|UNDIP|Tatamz
+Collegiate|UNDIP|Patrick
+Collegiate|UNDIP|SHOT
+Collegiate|JMU|Marsh
+Collegiate|NC State Esports|Brietz
+Collegiate|NC State Esports|Generic
+Collegiate|NC State Esports|RangerJ
+Collegiate|NC State Esports|NUTHIOM
+Collegiate|NC State Esports|Fast
+Collegiate|USC Cardinal|ellzzihsoJ
+Collegiate|USC Cardinal|Endocrysis
+Collegiate|USC Cardinal|tsubasa
+Collegiate|USC Cardinal|Axio
+Collegiate|USC Cardinal|ondoerae
+Collegiate|BSU|Rebo
+Collegiate|BSU|fraggleton
+Collegiate|BSU|classyy
+Collegiate|BSU|ian
+Collegiate|BSU|ch0ku
+Collegiate|UMBC Black|austy
+Collegiate|UMBC Black|GPS
+Collegiate|UMBC Black|Coach Lobster
+Collegiate|UMBC Black|dundo
+Collegiate|GCU Esports|Envyz
+Collegiate|GCU Esports|diego
+Collegiate|GCU Esports|noteleks
+Collegiate|GCU Esports|LumpyGuy
+Collegiate|GCU Esports|MrCipe
+Collegiate|NJIT Highlanders Red|glub
+Collegiate|NJIT Highlanders Red|Amelia Watson
+Collegiate|NJIT Highlanders Red|Hippity
+Collegiate|NJIT Highlanders Red|benjino
+Collegiate|NJIT Highlanders Red|sperka
+Collegiate|UCSB Gold|jxkr
+Collegiate|UCSB Gold|khafu
+Collegiate|UCSB Gold|Nguy3n
+Collegiate|UCSB Gold|cmfy
+Collegiate|UCSB Gold|zulanu
+Collegiate|انا ابن ماست|Hydra
+Collegiate|انا ابن ماست|ZAK
+Collegiate|انا ابن ماست|Hema
+Collegiate|انا ابن ماست|offnixie
+Collegiate|انا ابن ماست|Ashes
+Collegiate|WSU Crimson|Demetrious
+Collegiate|WSU Crimson|Nick2k
+Collegiate|WSU Crimson|naisu
+Collegiate|WSU Crimson|Ree
+Collegiate|WSU Crimson|Dynsky
+Collegiate|Simpson Esports|Daikiii
+Collegiate|Simpson Esports|Banzai
+Collegiate|Simpson Esports|SIDERZ
+Collegiate|Simpson Esports|BLIGHT
+Collegiate|Simpson Esports|Hereck
+Collegiate|CAL|Sujbubby
+Collegiate|CAL|Goat
+Collegiate|CAL|dadstin
+Collegiate|CAL|oni
+Collegiate|CAL|ART1C
+Collegiate|Western Esports|gggg
+Collegiate|Western Esports|tobstax
+Collegiate|Western Esports|Doggo
+Collegiate|Western Esports|yuuki
+Collegiate|Western Esports|ARAV
+Collegiate|CeSU Black|Jeorge
+Collegiate|CeSU Black|DatDankBoi6969
+Collegiate|CeSU Black|brilliantbeagle5
+Collegiate|CeSU Black|phost
+Collegiate|CeSU Black|Sesquip
+Collegiate|Illini Esports Orange|machuchutrain
+Collegiate|Illini Esports Orange|FrogLady81
+Collegiate|Illini Esports Orange|Phi Minh
+Collegiate|Illini Esports Orange|Zephyr
+Collegiate|Illini Esports Orange|yose
+Collegiate|Ohio State University|hamburger742
+Collegiate|Ohio State University|Grifdy
+Collegiate|Ohio State University|nyte
+Collegiate|Ohio State University|waldy
+Collegiate|Ohio State University|Des
+Collegiate|Ohio State University|wisp
+Collegiate|Ohio State University|magycobs
+Collegiate|Lawrence Tech|Smrty
+Collegiate|Lawrence Tech|niko
+Collegiate|Lawrence Tech|shine3
+Collegiate|Lawrence Tech|RogueBasher52
+Collegiate|Lawrence Tech|Izzyb0i
+Collegiate|UNCW|brand
+Collegiate|UNCW|yhgtyu
+Collegiate|UNCW|Rusty Nail
+Collegiate|UNCW|NCrane
+Collegiate|UNCW|Seacurs3
+Collegiate|Stony Brook Esports|bao
+Collegiate|Stony Brook Esports|Ayble
+Collegiate|Stony Brook Esports|gunny
+Collegiate|Stony Brook Esports|Kyzer
+Collegiate|Stony Brook Esports|MajesticNutz
+Collegiate|WLU|toacv
+Collegiate|WLU|mxk
+Collegiate|WLU|kokoro
+Collegiate|WLU|Lono6x
+Collegiate|WLU|sh1mu
+Collegiate|UCSC Gold|sonLucky
+Collegiate|UCSC Gold|ken leywin
+Collegiate|UCSC Gold|ezky
+Collegiate|UCSC Gold|Popenada
+Collegiate|UCSC Gold|nonsense
+Collegiate|UCLA|Shahzad
+Collegiate|UCLA|conc
+Collegiate|UCLA|rora
+Collegiate|UCLA|Ultra
+Collegiate|UCLA|dchewy
+Collegiate|UCD|SorryMaam
+Collegiate|UCD|skyzo
+Collegiate|UCD|brazera
+Collegiate|UCD|suda
+Collegiate|UCD|BRYAN
+Collegiate|Tiffin University|nite
+Collegiate|Tiffin University|sewerperson
+Collegiate|Tiffin University|MintmeisteЯ
+Collegiate|Tiffin University|mosey
+Collegiate|BSC Bobcats|Miro
+Collegiate|BSC Bobcats|unhoLy
+Collegiate|BSC Bobcats|Prota
+Collegiate|BSC Bobcats|Shrilly
+Collegiate|BSC Bobcats|cr1m
+Collegiate|GVSU Blue|Iv9rys
+Collegiate|GVSU Blue|amers
+Collegiate|Manhattan University|dylan
+Collegiate|Manhattan University|aevid
+Collegiate|Manhattan University|BotRamen
+Collegiate|Manhattan University|Omega
+Collegiate|Manhattan University|buchi
+Collegiate|UOG|AKz
+Collegiate|UOG|BnMc7
+Collegiate|UOG|reks
+Collegiate|UOG|Cheddar
+Collegiate|UOG|nimrod
+Collegiate|OU|tas
+Collegiate|OU|suge 1
+Collegiate|OU|Shiakose
+Collegiate|OU|haste
+Collegiate|OU|Myztik
+Collegiate|OTSU|jhk
+Collegiate|OTSU|NO BYSTANDERS
+Collegiate|OTSU|Ego
+Collegiate|OTSU|Ch1pS
+Collegiate|OTSU|OcMercy
+Collegiate|Redbird Varsity|Joqki
+Collegiate|Redbird Varsity|Pommo
+Collegiate|Redbird Varsity|cale
+Collegiate|Redbird Varsity|YODIE
+Collegiate|Redbird Varsity|Morol
+Collegiate|Akron Esports|vorcez
+Collegiate|Akron Esports|Bugz
+Collegiate|Akron Esports|DTin
+Collegiate|Akron Esports|Arcues
+Korea|KRX|BeYN
+Korea|KRX|MaKo
+Korea|KRX|free1ng
+Korea|KRX|HYUNMIN
+Korea|KRX|Flicker
+Korea|KRX|yong
+Korea|GEN|Xiesta
+Korea|GEN|Ash
+Korea|GEN|Karon
+Korea|GEN|t3xture
+Korea|GEN|Efina
+Korea|GEN|Raxcal
+Korea|GEN|ZynX
+Korea|DRXY|Accidnt
+Korea|DRXY|SABA
+Korea|DRXY|KaiN
+Korea|DRXY|SOO
+Korea|DRXY|JESKO
+Korea|NS|Rb
+Korea|NS|WoohyuN
+Korea|NS|Xross
+Korea|NS|Francis
+Korea|NS|Dambi
+Korea|NS|Ivy
+Korea|DRXA|Kyra
+Korea|DRXA|Krexx
+Korea|DRXA|NGen
+Korea|DRXA|apeX
+Korea|DRXA|XoNs
+Korea|DRXA|Athan
+Korea|DK|Kally
+Korea|DK|Ramgi
+Korea|DK|shu
+Korea|DK|JaXe
+Korea|DK|CabezA
+Korea|SPG|Persia
+Korea|SPG|Francis
+Korea|SPG|margaret
+Korea|SPG|Dambi
+Korea|SPG|Ivy
+Korea|FN|BBiyong
+Korea|FN|kobra
+Korea|FN|IceBear
+Korea|FN|Maine
+Korea|FN|tenac1ous
+Korea|T1|Munchkin
+Korea|T1|stax
+Korea|T1|Meteor
+Korea|T1|BuZz
+Korea|T1|DH
+Korea|T1|iZu
+Korea|T1A|Satoru
+Korea|T1A|Gnadel
+Korea|T1A|DarK
+Korea|T1A|Impact
+Korea|T1A|wezzy
+Korea|Strom Reign|Seven
+Korea|Strom Reign|飛龍 카이셀
+Korea|Strom Reign|KALAKALAQ
+Korea|Strom Reign|skuukzky
+Korea|Egennam (에겐남)|VaisHexe
+Korea|Egennam (에겐남)|ATA
+Korea|Egennam (에겐남)|내세상의아이돌은너뿐이야꼬냑아
+Korea|Egennam (에겐남)|왓따복숭아맛
+Korea|ReturN|Jiha
+Korea|ReturN|Saucee
+Korea|ReturN|1030
+Korea|ReturN|AshER
+Korea|ReturN|StreN
+Korea|SWT|Zoltraak
+Korea|SWT|YzaE
+Korea|SWT|Xizen
+Korea|SWT|Kitsch
+Korea|SWT|Rody
+Korea|SWT|skuzy
+Korea|Formula1|Deft
+Korea|Formula1|여창진A
+Korea|Formula1|아일톤 세나
+Korea|Formula1|검하단대장
+Korea|Formula1|Hey Ari
+Korea|Frozen 3|SPARE
+Korea|Frozen 3|ExG
+Korea|Frozen 3|sikkaN
+Korea|Frozen 3|Quokka
+Korea|Frozen 3|R3SET
+Korea|ST|Ras
+Korea|ST|말랑이거래
+Korea|ST|괴물의 아이
+Korea|ST|나영이를위한레디언트계정
+Korea|ST|Lexi
+Korea|ONS|VaNish
+Korea|ONS|XirZz
+Korea|CG|Zoltraak
+Korea|CG|Rody
+Korea|CG|YzaE
+Korea|CG|Xizen
+Korea|CG|Kitsch
+Korea|XC|INPA
+Korea|XC|Taegeuk
+Korea|XC|Beom
+Korea|XC|rsd
+Korea|XC|YJ
+Korea|RK|rsd
+Korea|RK|Taegeuk
+Korea|RK|Beom
+Korea|RK|YJ
+Korea|RK|Efina
+Korea|덱스총대하승진농구공|VaNish
+Korea|덱스총대하승진농구공|Nameless
+Korea|덱스총대하승진농구공|XirZz
+Korea|덱스총대하승진농구공|Foxar
+Korea|덱스총대하승진농구공|Xatas
+Korea|CRG|Nameless
+Korea|CRG|DaeGi
+Korea|CRG|froz
+Korea|CRG|AcMe
+Korea|CRG|wezzy
+Korea|RNE|Foxar
+Korea|RNE|Xatas
+Korea|RNE|VaNish
+Korea|RNE|XirZz
+Korea|RNE|Nameless

@@ -8,6 +8,7 @@
 #include <QObject>
 #include <QFileInfo>
 #include <QPixmap>
+#include <QMessageBox>
 #include <QLabel>
 #include <QDialog>
 #include <QLineEdit>
@@ -39,8 +40,17 @@ MainWindow::MainWindow() :
     minimap_wid->loadImage("map_layouts/Ascent_layout.png");
 
     player = new VideoPlayer(centralWidget);
-    controlPanel = new QHBoxLayout(centralWidget);
+    // Do not give controlPanel centralWidget as its parent.
+    // It will become a child of mainVerticalLayout when addLayout()
+    // is called below.
+    controlPanel = new QHBoxLayout();
     chooseFileButton = new QPushButton("Select Video", centralWidget);
+
+
+    // Create the reset button using the member variable
+    // declared in mainwindow.h.
+    resetDatabaseButton =
+        new QPushButton("Reset Player Database", centralWidget);
 
     QPixmap pixmap(":/images/logo.png");
     picLabel = new QLabel();
@@ -59,8 +69,14 @@ MainWindow::MainWindow() :
     connect(pauseButton, &QPushButton::clicked, this, &MainWindow::pauseOrPlayVideo);
     connect(logButton, &QPushButton::clicked, this, &MainWindow::resetBar);
 
+    // Call the database reset function when the button is clicked.
+    connect(resetDatabaseButton, &QPushButton::clicked,
+        this, &MainWindow::resetPlayerDatabase);
+
     //Connect frame data (minimap icon predictions) to the minimap widget
+    // // TEMP TEST: disable minimap updates
     connect(player, &VideoPlayer::frameChanged, minimap_wid, &Minimap::redrawAgents);
+    
 
     QObject::connect(volumeSlider, &QSlider::valueChanged, this, [this](int value) {player->setVolume(value / 100.0f); });
     this->setCentralWidget(centralWidget);
@@ -70,7 +86,11 @@ MainWindow::MainWindow() :
 
     mainVerticalLayout->addWidget(picLabel);
     mainVerticalLayout->addWidget(player);
+
+    // Starting-screen buttons
     mainVerticalLayout->addWidget(chooseFileButton);
+    mainVerticalLayout->addWidget(resetDatabaseButton);
+
     mainVerticalLayout->addLayout(controlPanel);
     mainVerticalLayout->addWidget(logButton);
 
@@ -83,6 +103,25 @@ MainWindow::MainWindow() :
 
     // Set up OCR detector (tessdata folder sits next to the exe)
     ocrDetector = new OCRDetector("tessdata", "eng", this);
+
+    // Load every unique team abbreviation from the local player database.
+// getTeamNames() will load players.txt automatically if needed.
+    std::vector<std::string> databaseTeamNames =
+        WebScraper::getTeamNames();
+
+    // Give OCR the complete database team list instead of relying only
+    // on the limited hardcoded team list in OCRDetector.
+    ocrDetector->setTeamNames(databaseTeamNames);
+
+    // Temporary debugging:
+    // Show how many different team abbreviations OCR can now match against.
+    std::cout << "Loaded "
+        << databaseTeamNames.size()
+        << " team abbreviations into OCR matcher.\n";
+
+    // Send already-decoded Qt video frames directly to OCR.
+    connect(player, &VideoPlayer::ocrFrameReady,
+        ocrDetector, &OCRDetector::processVideoFrame);
     
     connect(ocrDetector, &OCRDetector::ocrLog,
             logBar, &LogBar::addLog);
@@ -108,26 +147,55 @@ MainWindow::MainWindow() :
 
 void MainWindow::onTeamsDetected(QString left, QString right)
 {
-    logBar->addLog(QString("Scraping VLR.gg for %1 / %2...").arg(left, right));
-    
+    // Tell the user that the detected teams are being looked up
+    // in the local players.txt database.
+    logBar->addLog(
+        QString("Looking up local roster for %1 / %2...")
+        .arg(left, right)
+    );
+
+    // Run the roster lookup on a background thread so the GUI
+    // remains responsive while the match roster is prepared.
     std::thread([this, l = left.toStdString(), r = right.toStdString()]() {
+
+        // Look up both detected teams in the local in-memory database.
         bool ok = WebScraper::prepareForMatch(l, r);
 
-        // Fallback to cached file if the scrape struck out.
-        if (!ok && WebScraper::fileExists())
-            WebScraper::loadPlayersFromFile();
+        // Copy the players selected for this match into the format
+        // expected by OCRDetector.
+        std::vector<std::pair<std::string, std::string>> records;
 
-        std::vector<std::pair<std::string,std::string>> records;
         for (const auto& p : WebScraper::getPlayers())
+        {
             records.emplace_back(p.name, p.team);
+        }
 
-        QString source = ok ? "VLR.gg" : "cached file";
-        QMetaObject::invokeMethod(this, [this, records, source]() {
+        // Safely send the roster back to the Qt GUI thread.
+        QMetaObject::invokeMethod(this, [this, records, ok]() {
+
+            // Give OCR only the players from the detected teams.
             ocrDetector->setPlayerRecords(records);
-            logBar->addLog(QString("Roster loaded from %1: %2 players")
-                           .arg(source).arg(records.size()));
-        }, Qt::QueuedConnection);
-    }).detach();
+
+            // Report whether both teams were successfully found.
+            if (ok)
+            {
+                logBar->addLog(
+                    QString("Local roster loaded: %1 players")
+                    .arg(records.size())
+                );
+            }
+            else
+            {
+                logBar->addLog(
+                    QString("Could not find both teams in the local player database. "
+                        "%1 players loaded.")
+                    .arg(records.size())
+                );
+            }
+
+            }, Qt::QueuedConnection);
+
+        }).detach();
 }
 
 void MainWindow::onTeamsProposed(QString left, QString right)
@@ -186,7 +254,7 @@ void MainWindow::openAndPlayVideoOnClick() {
         return;
     }
     std::string source = QSource.toStdString();
-
+    /*
     // Detect the map and load the correct layout image
     QString layoutPath = detectMapFromVideo(source);
     if (!layoutPath.isEmpty()) {
@@ -195,9 +263,11 @@ void MainWindow::openAndPlayVideoOnClick() {
     }
     else {
         logBar->addLog("Map not detected.");
-    }
+    }*/
 
+    // Hide the starting-screen buttons after a video is selected.
     chooseFileButton->hide();
+    resetDatabaseButton->hide();
     picLabel->hide();
     volumeSlider->show();
     minimap_wid->show();
@@ -205,8 +275,18 @@ void MainWindow::openAndPlayVideoOnClick() {
     logBar->show();
     logButton->show();
     player->show();
+
+    // Temporarily disable Qt video playback/rendering.
+    // This lets us test whether OCR alone is light enough for the laptop.
+    //player->displayVideo(source);
+    // TEMP TEST:  Keep OCR processing enabled.
+    // Display the selected video in the Qt video player.
     player->displayVideo(source);
+
+    // Start OCR using its own OpenCV video reader.
+// Qt handles visible video playback, while OpenCV supplies frames to OCR.
     ocrDetector->startVideo(source);
+
     logBar->addLog("Video Loaded.");
 }
 
@@ -216,4 +296,85 @@ void MainWindow::pauseOrPlayVideo() {
 
 void MainWindow::resetBar() {
     logBar->resetBar();
+}
+void MainWindow::resetPlayerDatabase()
+{
+    // Open the region selection dialog first.
+    std::vector<std::string> selectedRegions =
+        WebScraper::promptRegionSelection();
+
+    // Empty means the user cancelled or selected nothing.
+    if (selectedRegions.empty())
+    {
+        return;
+    }
+
+    // Confirm before modifying the local database.
+    QMessageBox::StandardButton answer =
+        QMessageBox::question(
+            this,
+            "Refresh Player Database",
+            "The selected regions will be refreshed from VLR.gg.\n"
+            "All other regions will remain unchanged.\n\n"
+            "Do you want to continue?",
+            QMessageBox::Yes | QMessageBox::No
+        );
+
+    if (answer != QMessageBox::Yes)
+    {
+        return;
+    }
+
+    // Prevent another refresh from being started.
+    resetDatabaseButton->setEnabled(false);
+    resetDatabaseButton->setText("Refreshing Database...");
+
+    // Network work happens on a background thread.
+    std::thread(
+        [this, selectedRegions]()
+        {
+            bool success =
+                WebScraper::refreshRegions(
+                    selectedRegions);
+
+            // Return to the Qt GUI thread before touching widgets.
+            QMetaObject::invokeMethod(
+                this,
+                [this, success]()
+                {
+                    resetDatabaseButton->setEnabled(true);
+                    resetDatabaseButton->setText(
+                        "Reset Player Database");
+
+                    if (success)
+                    {
+                        // Reload all team abbreviations from the newly refreshed database.
+                        std::vector<std::string> updatedTeamNames =
+                            WebScraper::getTeamNames();
+
+                        // Give OCR the updated team list immediately so newly added
+                        // teams can be recognized without restarting the application.
+                        ocrDetector->setTeamNames(updatedTeamNames);
+
+                        QMessageBox::information(
+                            this,
+                            "Player Database",
+                            "The selected regions were refreshed successfully."
+                        );
+                    }
+                    else
+                    {
+                        QMessageBox::warning(
+                            this,
+                            "Player Database",
+                            "The regional refresh could not be completed.\n\n"
+                            "If this is your first refresh after the database update, "
+                            "choose Select All once to migrate the old player database."
+                        );
+                    }
+                },
+                Qt::QueuedConnection
+            );
+        }
+    ).detach();
 }
