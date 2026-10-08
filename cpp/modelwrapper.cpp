@@ -46,6 +46,22 @@ void ModelWrapper::loop(std::string fileName) {
 		//Run the prediction on the minimap and get the results
 		model->predict(croppedFrame);
 		Eigen::MatrixXf results = model->getCurrentTracking();
+
+		// Save the frame with the results drawn on it for debugging purposes once per second of video.
+		if (frameID % (EVERY_N_FRAMES * 6) == 0) {
+			const auto predictions = model->getCurrentPrediction();
+
+			std::cout << "[Detection] frame=" << frameID
+				<< " raw" << predictions.rows() 
+				<< " tracked=" << results.rows()
+				<< std::endl;
+
+			//Overwrite each time; pause processing or copy them to inspect.
+			cv::imwrite("debug_minimap_crop.png", croppedFrame);
+
+			model->outputClassificationImageWithBoxesAndLabels(
+				croppedFrame, predictions, 0.3f, "debug_agent_predictions.png");
+		}
 		//model->outputTrackingImageWithBoxesAndLabels(croppedFrame, results, "frames/" + std::to_string(frameID) + ".png");
 		//model->outputClassificationImageWithBoxesAndLabels(croppedFrame, results, 0.6, "frames/" + std::to_string(frameID) + ".png");
 
@@ -94,22 +110,25 @@ void ModelWrapper::startProcessingLoop(const std::string fileName, const int RUN
 }
 
 Eigen::MatrixXf ModelWrapper::getFrameData(const int NthFrame) {
+	std::lock_guard<std::mutex> guard(lock); // Ensure thread-safe access to data
 
-	int indexForThisFrame = NthFrame / EVERY_N_FRAMES;
-
-	Eigen::MatrixXf frameData;
-
-	if (indexForThisFrame < data.size()) {
-
-		lock.lock();
-		frameData = data[indexForThisFrame];
-		lock.unlock();
-
-		return data[indexForThisFrame];
-	}
-	else {
-		return frameData;
-
+	if (EVERY_N_FRAMES <= 0 || NthFrame < 0) {
+		return Eigen::MatrixXf(); // Return an empty matrix for invalid input
 	}
 
+	const int indexForThisFrame = NthFrame / EVERY_N_FRAMES;
+	const int availableFrames = static_cast<int>(data.size());
+	const int latestFrame = availableFrames > 0 ? (availableFrames - 1) * EVERY_N_FRAMES : -1;
+
+	if (indexForThisFrame >= availableFrames) {
+		qDebug() << "[Playback] requested frame:" << NthFrame
+			     << "latest processed frame:" << latestFrame
+			     << "PREDICTIONS NOT READY";
+		return Eigen::MatrixXf(); // Return an empty matrix if the requested frame is not ready
+	}
+
+	qDebug() << "[Playback] requested frame:" << NthFrame
+		     << "tracked rows delivered:" << data[indexForThisFrame].rows();
+
+	return data[indexForThisFrame];
 }
