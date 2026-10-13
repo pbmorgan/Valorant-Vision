@@ -82,9 +82,13 @@ int main(int argc, char* argv[])
     MainWindow mainWindow;
     mainWindow.show();
 
-    mainWindow.setWindowTitle("Valorant-Vision");
-    mainWindow.resize(900, 600); // initial window size for better viewing
-    mainWindow.setMinimumSize(700, 400); // set a minimum size so, it keeps the UI clean
+    // The MainWindow constructor now sets the application title.
+    // mainWindow.setWindowTitle("Valorant-Vision");
+    // Start with a larger window so the redesigned GUI has more space.
+    mainWindow.resize(1100, 750);
+
+    // Prevent the window from becoming too small for the GUI layout.
+    mainWindow.setMinimumSize(900, 650);
 
     
     // Start the Qt event loop and keep the application running.

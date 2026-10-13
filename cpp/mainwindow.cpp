@@ -25,11 +25,30 @@
 
 MainWindow::MainWindow() :
     QMainWindow() {
+    setWindowTitle("ValorVision"); // Set the application window title.
     // adds the logo next to the title
     setWindowIcon(QIcon(":/images/logo.png"));
 
     centralWidget = new QWidget(this);
     mainVerticalLayout = new QVBoxLayout(centralWidget);
+
+    // Give the main application area a dark background.
+    centralWidget->setStyleSheet(
+        "background-color: #121212;"
+    );
+
+    // Match the main window background to the central widget.
+    this->setStyleSheet(
+        "QMainWindow {"
+        "   background-color: #121212;"
+        "}"
+    );
+
+    // Add space around the GUI so widgets are not touching the edges.
+    mainVerticalLayout->setContentsMargins(25, 25, 25, 20);
+
+    // Add consistent spacing between items in the main layout.
+    mainVerticalLayout->setSpacing(12);
 
     logBar = new LogBar(this);
 
@@ -45,6 +64,32 @@ MainWindow::MainWindow() :
     // is called below.
     controlPanel = new QHBoxLayout();
     chooseFileButton = new QPushButton("Select Video", centralWidget);
+    // Give the Select Video button a larger, cleaner size.
+    chooseFileButton->setMinimumHeight(48);
+    chooseFileButton->setMinimumWidth(220);
+    chooseFileButton->setMaximumWidth(260);
+
+    // Show a hand cursor when the user hovers over the button.
+    chooseFileButton->setCursor(Qt::PointingHandCursor);
+
+    // Style the button to match the redesigned GUI.
+    chooseFileButton->setStyleSheet(
+        "QPushButton {"
+        "   background-color: #00D1C7;"
+        "   color: #101010;"
+        "   font-size: 16px;"
+        "   font-weight: bold;"
+        "   border: none;"
+        "   border-radius: 10px;"
+        "   padding: 10px 24px;"
+        "}"
+        "QPushButton:hover {"
+        "   background-color: #15E6DB;"
+        "}"
+        "QPushButton:pressed {"
+        "   background-color: #00AAA2;"
+        "}"
+    );
 
 
     // Create the reset button using the member variable
@@ -52,17 +97,106 @@ MainWindow::MainWindow() :
     resetDatabaseButton =
         new QPushButton("Reset Player Database", centralWidget);
 
+    // Keep the database reset option, but style it as a secondary action.
+    resetDatabaseButton->setMinimumHeight(44);
+    resetDatabaseButton->setMinimumWidth(220);
+    resetDatabaseButton->setMaximumWidth(260);
+
+    // Show a hand cursor when hovering over the button.
+    resetDatabaseButton->setCursor(Qt::PointingHandCursor);
+
+    // Use an outlined style so Select Video remains the primary button.
+    resetDatabaseButton->setStyleSheet(
+        "QPushButton {"
+        "   background-color: transparent;"
+        "   color: #00D1C7;"
+        "   font-size: 14px;"
+        "   font-weight: bold;"
+        "   border: 2px solid #00D1C7;"
+        "   border-radius: 10px;"
+        "   padding: 8px 20px;"
+        "}"
+        "QPushButton:hover {"
+        "   background-color: #18312F;"
+        "}"
+        "QPushButton:pressed {"
+        "   background-color: #102321;"
+        "}"
+    );
+
     QPixmap pixmap(":/images/logo.png");
     picLabel = new QLabel();
-    picLabel->setPixmap(pixmap);
+
+    // Center the logo inside its available space.
+    picLabel->setAlignment(Qt::AlignCenter);
+
+    // Resize the logo while keeping its original proportions.
+    picLabel->setPixmap(
+        pixmap.scaled(
+            290,
+            290,
+            Qt::KeepAspectRatio,
+            Qt::SmoothTransformation
+        )
+    );
+
+    // Create the application title shown underneath the logo.
+    QLabel* titleLabel = new QLabel("ValorVision", centralWidget);
+    // Give the startup title a name so we can hide it when a video loads.
+    titleLabel->setObjectName("startupTitleLabel");
+
+    // Center the title text.
+    titleLabel->setAlignment(Qt::AlignCenter);
+
+    // Match the title styling from the redesigned GUI.
+    titleLabel->setStyleSheet(
+        "QLabel {"
+        "   color: #FFFFFF;"
+        "   font-size: 32px;"
+        "   font-weight: bold;"
+        "   background: transparent;"
+        "}"
+    );
+    // Create a short description underneath the application title.
+    QLabel* subtitleLabel = new QLabel(
+        "Analyze Valorant match footage with OCR, minimap tracking, "
+        "and video playback.",
+        centralWidget
+    );
+
+    // Give the startup subtitle a name so we can hide it when a video loads.
+    subtitleLabel->setObjectName("startupSubtitleLabel");
+
+    // Center the subtitle and allow it to wrap if the window becomes narrow.
+    subtitleLabel->setAlignment(Qt::AlignCenter);
+    subtitleLabel->setWordWrap(true);
+    subtitleLabel->setMaximumWidth(800);
+
+    // Use smaller gray text so the subtitle does not compete with the title.
+    subtitleLabel->setStyleSheet(
+        "QLabel {"
+        "   color: #A9B0B7;"
+        "   font-size: 15px;"
+        "   background: transparent;"
+        "   padding: 4px;"
+        "}"
+    );
+
 
     pauseButton = new QPushButton("Pause/Play", centralWidget);
+
+    // Give the Pause/Play control a consistent height in the analysis screen.
+    pauseButton->setMinimumHeight(38);
 
     volumeSlider = new QSlider(Qt::Horizontal, this);
     volumeSlider->setRange(0, 100);
     volumeSlider->setValue(100);
 
     logButton = new QPushButton("Reset Log Bar", centralWidget);
+    // Give the Reset Log Bar button a consistent height
+    // with the other analysis controls.
+    logButton->setMinimumHeight(38);
+
 
     // removed QObject as it was not needed, as they are calling their own functions.
     connect(chooseFileButton, &QPushButton::clicked, this, &MainWindow::openAndPlayVideoOnClick);
@@ -85,11 +219,27 @@ MainWindow::MainWindow() :
     controlPanel->addWidget(volumeSlider);
 
     mainVerticalLayout->addWidget(picLabel);
+
+    mainVerticalLayout->addWidget(titleLabel);
+
+    // Place the description underneath the title.
+    mainVerticalLayout->addWidget(subtitleLabel, 0, Qt::AlignCenter);
+
     mainVerticalLayout->addWidget(player);
 
     // Starting-screen buttons
-    mainVerticalLayout->addWidget(chooseFileButton);
-    mainVerticalLayout->addWidget(resetDatabaseButton);
+    // Center the Select Video button on the startup screen.
+    mainVerticalLayout->addWidget(
+        chooseFileButton,
+        0,
+        Qt::AlignCenter
+    );
+    // Center the database reset button underneath Select Video.
+    mainVerticalLayout->addWidget(
+        resetDatabaseButton,
+        0,
+        Qt::AlignCenter
+    );
 
     mainVerticalLayout->addLayout(controlPanel);
     mainVerticalLayout->addWidget(logButton);
@@ -141,6 +291,21 @@ MainWindow::MainWindow() :
             ocrDetector, &OCRDetector::onVideoPaused);
     connect(player, &VideoPlayer::videoPositionChanged,
             ocrDetector, &OCRDetector::onVideoPositionChanged);
+
+    // Style the status bar to match the dark application theme.
+    statusBar()->setStyleSheet(
+        "QStatusBar {"
+        "   background-color: #171717;"
+        "   color: #BFC5CA;"
+        "   border-top: 1px solid #292929;"
+        "   padding-left: 6px;"
+        "}"
+    );
+
+    // Show the initial application status.
+    statusBar()->showMessage(
+        "Ready - Select a video to begin analysis"
+    );
 
     this->show();
 }
@@ -247,9 +412,44 @@ void MainWindow::onScoresChanged(QString leftTeam, int leftScore, QString rightT
 }
 
 void MainWindow::openAndPlayVideoOnClick() {
-    QString QSource = QFileDialog::getOpenFileName(this, tr("Open Video"), "C:", tr("*.mp4 *.mp3"));
+    // Let the user know the application is waiting for a video file.
+    statusBar()->showMessage(
+        "Waiting for video selection..."
+    );
+    // Open the file picker and only show supported MP4 video files.
+    QString QSource = QFileDialog::getOpenFileName(
+        this,
+        tr("Open Valorant Video"),
+        "C:",
+        tr("Video Files (*.mp4)")
+    );
+
+    // If the user closes the file picker without choosing a video,
+    // return the status bar to a ready state.
+    if (QSource.isEmpty())
+    {
+        statusBar()->showMessage(
+            "Ready - No video selected"
+        );
+
+        return;
+    }
+
     QFileInfo fileInfo(QSource);
     if (!fileInfo.exists() || !fileInfo.isFile()) {
+        // Tell the user directly if the selected video cannot be opened.
+        QMessageBox::warning(
+            this,
+            "Invalid Video",
+            "The selected video could not be opened. "
+            "Please select a valid MP4 file."
+        );
+
+        // Update the status bar so the error is also visible there.
+        statusBar()->showMessage(
+            "Error - Invalid video selected"
+        );
+
         logBar->addLog("Invalid file selected.");
         return;
     }
@@ -269,12 +469,35 @@ void MainWindow::openAndPlayVideoOnClick() {
     chooseFileButton->hide();
     resetDatabaseButton->hide();
     picLabel->hide();
+    // Hide the startup title once a video has been selected.
+    if (QLabel* startupTitle =
+        centralWidget->findChild<QLabel*>("startupTitleLabel"))
+    {
+        startupTitle->hide();
+    }
+
+    // Hide the startup subtitle once a video has been selected.
+    if (QLabel* startupSubtitle =
+        centralWidget->findChild<QLabel*>("startupSubtitleLabel"))
+    {
+        startupSubtitle->hide();
+    }
+
     volumeSlider->show();
     minimap_wid->show();
     pauseButton->show();
     logBar->show();
     logButton->show();
     player->show();
+
+    // Reduce the outer margins once the analysis screen is visible
+    // so the video, minimap, and logs have more usable space.
+    mainVerticalLayout->setContentsMargins(
+        12,
+        12,
+        12,
+        12
+    );
 
     // Temporarily disable Qt video playback/rendering.
     // This lets us test whether OCR alone is light enough for the laptop.
@@ -288,6 +511,11 @@ void MainWindow::openAndPlayVideoOnClick() {
     ocrDetector->startVideo(source);
 
     logBar->addLog("Video Loaded.");
+    // Update the status bar once the video and analysis have started.
+    statusBar()->showMessage(
+        "Video loaded - Analysis running"
+    );
+
 }
 
 void MainWindow::pauseOrPlayVideo() {
