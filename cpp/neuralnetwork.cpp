@@ -4,7 +4,7 @@
 #include <filesystem>
 #include <iostream>
 
-#include <onnxruntime_cxx_api.h>
+#include <onnxruntime/core/session/onnxruntime_cxx_api.h>
 
 NeuralNetwork::NeuralNetwork(const T_CHAR *onnxFilePath, const int ROWS, const int COLS) {
 

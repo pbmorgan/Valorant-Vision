@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QTimer>
+#include <QImage>
 #include <opencv2/opencv.hpp>
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
@@ -33,8 +34,13 @@ public:
     void setTeamNames(const std::vector<std::string>& names);
 
 public slots:
+
     void startVideo(const std::string& videoPath);
     void reset();
+
+    // Receives a frame already decoded by Qt
+    void processVideoFrame(const QImage& image);
+
     // User accepted / rejected the proposed team names from the dialog
     void confirmTeams(QString left, QString right);
     void rejectTeams();
@@ -51,6 +57,7 @@ signals:
     void teamsDetected(QString left, QString right);
     void killDetected(QString logLine);
     void scoresChanged(QString leftTeam, int leftScore, QString rightTeam, int rightScore);
+    void killEventDetected(QString killerTeam, QString killerName, QString victimTeam, QString victimName);
 
 private slots:
     void processNextFrame();
@@ -82,6 +89,32 @@ private:
     std::atomic<qint64> currentVideoPos{0};
     double capFps = 0.0;
     std::string lastRoundTimer;
+
+    // Internal round-timer tracking.
+    // This stays false until OCR successfully detects a valid in-game timer.
+    // That way videos can begin during agent select, loading screens,
+    // introductions, or in the middle of an existing round.
+    bool timerAnchorValid = false;
+
+    // True while the broadcast is showing replay footage.
+    // While this is true, replay kills, scores, and timer readings
+    // must not be treated as live match events.
+    bool inReplay = false;
+
+    // Counts consecutive frames where the REPLAY label was not detected.
+    // This prevents one temporary OCR failure from ending replay mode too early.
+    int replayMissCount = 0;
+
+    // Timer value, in seconds, at the most recent trustworthy OCR reading.
+    // Example: "1:25" is stored as 85 seconds.
+    int timerAnchorSeconds = 0;
+
+    // Video position where that trustworthy timer reading was detected.
+    // We use VIDEO time rather than real-world computer time.
+    double timerAnchorVideoSeconds = 0.0;
+
+    // Video timestamp of the frame currently being processed by OCR.
+    double currentOcrVideoSeconds = 0.0;
     std::atomic_bool ocrBusy{false};
     std::atomic_bool shuttingDown{false};
     // Serializes tess access between the OCR worker thread and destructor cleanup
@@ -90,6 +123,13 @@ private:
     std::string normalize(const std::string& s);
     int levenshtein_distance(const std::string& a, const std::string& b);
     std::string ocr_region(const cv::Mat& roi);
+
+    // OCR specifically for the Valorant killfeed.
+    // This will use different image preprocessing because the killfeed
+    // has white text on colored red/green backgrounds.
+    std::string ocr_killfeed_region(const cv::Mat& roi);
+
+
     std::string ocr_team_name(const cv::Mat& roi);
     std::string resolve_team_name(const std::string& raw,
                                   const std::vector<std::string>& teams);

@@ -1,4 +1,5 @@
 #include "modelwrapper.h"
+#include <algorithm>  // std::max
 
 ModelWrapper::ModelWrapper() {
 	// Model is loaded in startProcessingLoop to avoid crashing on startup
@@ -6,10 +7,19 @@ ModelWrapper::ModelWrapper() {
 }
 
 ModelWrapper::~ModelWrapper() {
+
+	// Stop the processing thread BEFORE deleting the model.
+	endProcessingLoop();
+
 	delete model;
 	model = nullptr;
+}
 
-	endProcessingLoop();
+void ModelWrapper::setOCRFrameCallback(
+	std::function<void(const cv::Mat&)> callback)
+{
+	// Store the function that should receive frames for OCR.
+	ocrFrameCallback = std::move(callback);
 }
 
 void ModelWrapper::loop(std::string fileName) {
@@ -30,29 +40,50 @@ void ModelWrapper::loop(std::string fileName) {
 
 		if (!cap.read(frame)) break;
 
+		// Send one of the already-decoded frames to OCR about every 500 ms.
+		// OCR receives a clone so VideoCapture can safely reuse 'frame'
+		// on the next iteration.
+		if (ocrFrameCallback &&
+			frameID % OCR_EVERY_N_FRAMES == 0) {
+
+			ocrFrameCallback(frame.clone());
+		}
 		if (frameID % EVERY_N_FRAMES != 0) {
 			frameID++;
 			continue;
 		}
 
-		//Get dimensions of the frame
-		cv::Size s = frame.size();
-		int height = s.height, width = s.width;
+		// Only run neural-network processing if the model
+// loaded successfully.
+		if (model != nullptr) {
 
-		//Crop out the minimap
-		cv::Rect ROI(LEFT_SIDE * width, TOP_SIDE * height, (RIGHT_SIDE - LEFT_SIDE) * width, (BOTTOM_SIDE - TOP_SIDE) * height);
-		cv::Mat croppedFrame = frame(ROI);
+			// Get dimensions of the frame.
+			cv::Size s = frame.size();
+			int height = s.height;
+			int width = s.width;
 
-		//Run the prediction on the minimap and get the results
-		model->predict(croppedFrame);
-		Eigen::MatrixXf results = model->getCurrentTracking();
-		//model->outputTrackingImageWithBoxesAndLabels(croppedFrame, results, "frames/" + std::to_string(frameID) + ".png");
-		//model->outputClassificationImageWithBoxesAndLabels(croppedFrame, results, 0.6, "frames/" + std::to_string(frameID) + ".png");
+			// Crop out the minimap.
+			cv::Rect ROI(
+				LEFT_SIDE * width,
+				TOP_SIDE * height,
+				(RIGHT_SIDE - LEFT_SIDE) * width,
+				(BOTTOM_SIDE - TOP_SIDE) * height
+			);
 
-		//Store the results
-		lock.lock();
-		data.push_back(results);
-		lock.unlock();
+			cv::Mat croppedFrame = frame(ROI);
+
+			// Run the prediction on the minimap.
+			model->predict(croppedFrame);
+
+			Eigen::MatrixXf results =
+				model->getCurrentTracking();
+
+			// Store the neural-network results.
+			{
+				std::lock_guard<std::mutex> guard(lock);
+				data.push_back(results);
+			}
+		}
 
 		frameID++;
 	}
@@ -66,50 +97,82 @@ void ModelWrapper::endProcessingLoop() {
 	}
 }
 
-void ModelWrapper::startProcessingLoop(const std::string fileName, const int RUN_EVERY_N_FRAMES, const int FPS) {
-
+void ModelWrapper::startProcessingLoop(
+	const std::string fileName,
+	const int RUN_EVERY_N_FRAMES,
+	const int FPS)
+{
 	EVERY_N_FRAMES = RUN_EVERY_N_FRAMES;
 
-	if (model == nullptr) { //TODO: Change this back to being done in the constructor. I don't know why someone changed it to be here. The constructor should be responsible for initializaing the model...
+	// Approximately one OCR frame every 500 ms.
+	// 60 FPS -> every 30 frames
+	// 30 FPS -> every 15 frames
+	OCR_EVERY_N_FRAMES = std::max(1, FPS / 2);
+
+	// Try to load the neural network.
+	if (model == nullptr) {
+
 		const int ROWS = 384;
 		const int COLS = 384;
+
 		try {
-			model = new NeuralNetwork(T_TEXT("faster_rcnn.onnx"), ROWS, COLS);
+			model = new NeuralNetwork(
+				T_TEXT("faster_rcnn.onnx"),
+				ROWS,
+				COLS
+			);
 		}
 		catch (const Ort::Exception& e) {
-			std::cerr << "[ModelWrapper] Failed to load ONNX model: " << e.what() << std::endl;
+			std::cerr
+				<< "[ModelWrapper] Failed to load ONNX model: "
+				<< e.what()
+				<< std::endl;
+
+			// IMPORTANT:
+			// Do NOT return here.
+			// We still want the video processing thread to run
+			// so its decoded frames can be shared with OCR.
 			return;
 		}
 		catch (const std::exception& e) {
-			std::cerr << "[ModelWrapper] Failed to load ONNX model: " << e.what() << std::endl;
+			std::cerr
+				<< "[ModelWrapper] Failed to load ONNX model: "
+				<< e.what()
+				<< std::endl;
+
 			return;
 		}
 	}
 
-	model->resetTracker(FPS / RUN_EVERY_N_FRAMES);
+	// Only reset the tracker if the model loaded successfully.
+	if (model != nullptr) {
+		model->resetTracker(FPS / RUN_EVERY_N_FRAMES);
+	}
+
 	keepThreadAlive = true;
 
-	data = std::vector<Eigen::MatrixXf>(); //We're processing from the start, so we empty out previous data
-	loopThread = std::thread(&ModelWrapper::loop, this, fileName);
+	// Starting from the beginning, so remove old results.
+	data = std::vector<Eigen::MatrixXf>();
+
+	// Start video decoding whether or not the model loaded.
+	loopThread = std::thread(
+		&ModelWrapper::loop,
+		this,
+		fileName
+	);
 }
 
 Eigen::MatrixXf ModelWrapper::getFrameData(const int NthFrame) {
 
 	int indexForThisFrame = NthFrame / EVERY_N_FRAMES;
 
-	Eigen::MatrixXf frameData;
+	// Protect all access to the shared data vector.
+	std::lock_guard<std::mutex> guard(lock);
 
 	if (indexForThisFrame < data.size()) {
-
-		lock.lock();
-		frameData = data[indexForThisFrame];
-		lock.unlock();
-
 		return data[indexForThisFrame];
 	}
-	else {
-		return frameData;
 
-	}
-
+	// No processed data exists for this frame yet.
+	return Eigen::MatrixXf();
 }

@@ -15,14 +15,22 @@ Description:
 #include <QImage>
 #include <QPushButton>
 #include <QLayout>
+#include <iostream>
+
 
 #include <opencv2/opencv.hpp>
 
 #include "../headers/mainwindow.h"
 
+//For test
+#include "../headers/WebScraper.h"
+
 
 int main(int argc, char* argv[])
-{
+{   
+
+
+
 	//Makes a Application object that is needed for any QT application,
     //It takes the command line arguments
     QApplication app(argc, argv);
@@ -39,15 +47,47 @@ int main(int argc, char* argv[])
         stylesheet.close();
     }
 
+
+    // Temporary test:
+// Search VLR for T1 and add it to the existing local database.
+    //bool added = WebScraper::scrapeMissingTeam("T1");
+
+    // Print whether the missing-team scrape worked.
+    //std::cout << "Missing-team scrape result: "
+      //  << (added ? "SUCCESS" : "FAILED")
+        //<< "\n";
+
+    // Print the new total number of locally stored player records.
+    //std::cout << "Final local player count: "
+        //<< WebScraper::getPlayers().size()
+      //  << "\n";
+    //
+    //return 0;
+
+    //return 0;
+    
+    // Temporary full-database test:
+    // Scrape all teams and players from the VLR ranking pages,
+    // save them to players.txt, then reload the file into memory.
+    //webScraper::scrapePlayers();
+
+    // Print the total number of players now loaded from players.txt.
+    //std::cout << "Final local player count: "
+      //        << WebScraper::getPlayers().size()
+        //      << "\n";
+
+    //return 0;
+
     //Makes a Window object and show it to the user
     MainWindow mainWindow;
     mainWindow.show();
 
-    //mainWindow.setWindowTitle("Valorant-Vision");
+    mainWindow.setWindowTitle("Valorant-Vision");
     mainWindow.resize(900, 600); // initial window size for better viewing
     mainWindow.setMinimumSize(700, 400); // set a minimum size so, it keeps the UI clean
 
     
-
+    // Start the Qt event loop and keep the application running.
     return app.exec();
+
 }

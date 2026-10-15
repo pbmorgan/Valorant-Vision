@@ -9,6 +9,8 @@
 #include <QSlider>
 #include <QtGlobal>
 #include <QMetaObject>
+#include <QImage>
+#include <QLabel>
 
 #include "modelwrapper.h"
 
@@ -22,10 +24,15 @@ private:
 	QVideoWidget *videoWidget;
 	QAudioOutput *audioOutput;
 	QSlider *slider;
+	QLabel *currentTimeLabel;
+	QLabel *durationLabel;
 
 	ModelWrapper modelWrapper;
 
 	double currentVideoFPS = 0;
+	// Keeps track of when we last sent a decoded frame to OCR.
+	// This prevents OCR from receiving every single video frame.
+	qint64 lastOcrFramePositionMs = -500;
 
 public:
 	// Takes in a pointer to the parent object
@@ -56,6 +63,8 @@ signals:
 	void videoPlaying(qint64 positionMs);
 	void videoPaused();
 	void videoPositionChanged(qint64 positionMs);
+	void ocrFrameReady(const QImage& frame);
+	void videoFinished();
 };
 
 #endif
