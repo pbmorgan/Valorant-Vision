@@ -40,17 +40,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(yaml-cpp)
 
-# Download motcpp
-# Note: this is a fork of it I set up because its use of onnx runtime breaks on windows
-# If you're looking at this in a future semester, it's in the onnx_backend.hpp file
-set(MOTCPP_INSTALL OFF CACHE BOOL "" FORCE)
-FetchContent_Declare(
-    motcpp
-    GIT_REPOSITORY https://github.com/KiingdomKey/motcpp
-    GIT_TAG main
-)
-FetchContent_MakeAvailable(motcpp)
-target_link_libraries(motcpp PUBLIC yaml-cpp onnxruntime::onnxruntime)
+
 
 
 # Your executable
@@ -84,7 +74,6 @@ target_link_libraries(Valorant-Vision PUBLIC
     onnxruntime::onnxruntime
     Eigen3::Eigen
     yaml-cpp::yaml-cpp
-    motcpp::motcpp
     nlohmann_json::nlohmann_json
     Tesseract::libtesseract
     leptonica

@@ -140,7 +140,9 @@ replayMissCount = 0;
 
     if (!tessOk) return;
 
+    // Open the video for the existing OCR sampling path.
     cap.open(videoPath);
+
     if (cap.isOpened()) {
         capFps = cap.get(cv::CAP_PROP_FPS);
 
@@ -148,9 +150,10 @@ replayMissCount = 0;
             capFps = 30.0;
         }
 
-        // Old timer path is currently disabled.
+        // Do NOT start OCR yet.
+        // Wait until QMediaPlayer actually enters the Playing state.
         if (frameTimer) {
-            frameTimer->start();
+            frameTimer->stop();
         }
     }
 }
@@ -273,13 +276,28 @@ void OCRDetector::setPlayerRecords(const std::vector<std::pair<std::string,std::
 
 void OCRDetector::onVideoPlaying(qint64 positionMs)
 {
+    // Store the actual Qt video-player position.
     currentVideoPos = positionMs;
 
-    // Old timer-based OCR path is disabled.
     if (!frameTimer || !cap.isOpened()) {
         return;
     }
 
+    // Synchronize OpenCV's OCR reader with the visible video before
+    // allowing OCR processing to begin.
+    if (capFps > 0)
+    {
+        double targetFrame =
+            (positionMs / 1000.0) * capFps;
+
+        cap.set(
+            cv::CAP_PROP_POS_FRAMES,
+            targetFrame
+        );
+    }
+
+    // Now that the visible video is actually playing,
+    // OCR may begin processing frames.
     frameTimer->start();
 }
 
@@ -1669,16 +1687,7 @@ void OCRDetector::processFrame(const cv::Mat& frame)
         // are separated from the red and green Valorant killfeed backgrounds.
         std::string raw = ocr_killfeed_region(frame(roi));
 
-        // TEMP DEBUG:
-        // Show exactly what Tesseract reads from each killfeed row.
-        // This will tell us whether the problem is the ROI, OCR,
-        // or matching the OCR text against the player database.
-        std::cout << "KILLFEED ROW "
-            << row
-            << " RAW -> ["
-            << raw
-            << "]\n";
-
+        
         KillEvent evt = resolve_killfeed_whole(raw, playerNames, playerListValid);
 
         // Do not record kills while replay footage is active.

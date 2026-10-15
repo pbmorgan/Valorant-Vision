@@ -3,16 +3,14 @@
 
 #include <filesystem>
 #include <string>
-
+#include <vector>
 
 #include <onnxruntime_cxx_api.h>
 #include <opencv2/opencv.hpp>
 
 #include "Eigen/Dense"
 
-#include <motcpp/trackers/bytetrack.hpp>
-#include <motcpp/trackers/strongsort.hpp>
-#include <motcpp/trackers/deepocsort.hpp>
+
 
 
 //Make sure we use the right type of char, because ONNX on Windows has to be unique and use wchar_t...
@@ -35,7 +33,7 @@ private:
 	int ROWS; //Height of images to use
 	int COLS; //Width of images to use
 
-	motcpp::trackers::ByteTrack *tracker = nullptr; //Tracker object
+	
 
 	/*Names of the nodes for the model (i.e., the names of the inputs and outputs)
 	Storing an std::string version and a c-style version separaretly

@@ -2,9 +2,12 @@
 #define MODELWRAPPER_H
 
 #include <thread>
-#include <vector>
-#include <QtWidgets>
-#include <functional>
+#include <mutex>
+#include <condition_variable>
+#include <atomic>
+
+#include <QImage>
+
 #include <opencv2/opencv.hpp>
 
 #include "neuralnetwork.h"
@@ -13,47 +16,65 @@ class ModelWrapper {
 
 private:
 
-	NeuralNetwork *model = nullptr;
-	int EVERY_N_FRAMES;
+	NeuralNetwork* model = nullptr;
 
-	// Thread for processing video data and a mutex for accessing the 'data' variable below
+	// Background thread that runs neural-network inference.
 	std::thread loopThread;
-	std::mutex lock;
 
-	// Tracks whether or not the processing thread should be running
+	// Controls whether the neural-network thread should keep running.
 	std::atomic_bool keepThreadAlive{ false };
 
-	// Holds all of the data from processed frames
-	// Note: we only store every N frames of data, so data[0] is frame 0, data[1] is frame N, data[2] is 2N, etc, etc
-	// Should likely be changed in the future in a way that we can easily use with a file to store it
-	std::vector<Eigen::MatrixXf> data;
 
-	// Loop function that our thread uses
-	void loop(std::string fileName);
+	// ============================================================
+	// LATEST VIDEO FRAME
+	// ============================================================
 
-	// Callback used to share already-decoded video frames with OCR.
-	// This prevents OCR from opening and decoding the video a second time.
-	std::function<void(const cv::Mat&)> ocrFrameCallback;
+	// Protects access to latestFrame.
+	std::mutex frameLock;
 
-	// Controls how often a frame is sent to OCR.
-	// For example, at 60 FPS this will be about every 30 frames = 500 ms.
-	int OCR_EVERY_N_FRAMES = 1;
+	// Wakes the neural-network thread when a new frame is available.
+	std::condition_variable frameCondition;
+
+	// Stores ONLY the newest frame received from the video player.
+	// Old frames are replaced instead of being queued.
+	cv::Mat latestFrame;
+
+	// Tells the worker thread whether a frame is waiting to be processed.
+	bool frameAvailable = false;
+
+
+	// ============================================================
+	// LATEST NEURAL-NETWORK RESULT
+	// ============================================================
+
+	// Protects access to latestResult.
+	std::mutex resultLock;
+
+	// Stores the most recently completed neural-network prediction.
+	Eigen::MatrixXf latestResult;
+
+
+	// Worker loop used by the neural-network thread.
+	void loop();
+
 
 public:
 
 	ModelWrapper();
 	~ModelWrapper();
 
-	void endProcessingLoop(); // Ends the processing loop if it's running, if not does nothing
-	void startProcessingLoop(std::string fileName, const int RUN_EVERY_N_FRAMES, const int FPS); // Takes in the file name that we want to process, how often we want to run the model, video FPS,and creates the thread for processing it
-	
-	// Lets VideoPlayer decide what should receive frames for OCR.
-	void setOCRFrameCallback(std::function<void(const cv::Mat&)> callback);
+	// Starts the neural-network processing thread.
+	void startProcessingLoop();
 
-	// Returns the data corresponding to the Nth frame of the video
-	// Note: pass in the actual frame in the video you want. The method will handle how it's actually stored
-	Eigen::MatrixXf getFrameData(const int NthFrame); 
+	// Stops the neural-network processing thread.
+	void endProcessingLoop();
 
+	// Receives the newest decoded frame directly from Qt's video player.
+	// If the neural network is busy, this replaces the older waiting frame.
+	void submitFrame(const QImage& frame);
+
+	// Returns the most recently completed neural-network result.
+	Eigen::MatrixXf getLatestFrameData();
 };
 
 #endif

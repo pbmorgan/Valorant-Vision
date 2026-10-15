@@ -11,6 +11,7 @@
 #include <QMessageBox>
 #include <QLabel>
 #include <QDialog>
+#include <QStatusBar>
 #include <QLineEdit>
 #include <QDialogButtonBox>
 #include <QVBoxLayout>
@@ -56,7 +57,7 @@ MainWindow::MainWindow() :
     minimap_wid = new Minimap(this);
 
     addDockWidget(Qt::RightDockWidgetArea, minimap_wid);
-    minimap_wid->loadImage("map_layouts/Ascent_layout.png");
+    
 
     player = new VideoPlayer(centralWidget);
     // Do not give controlPanel centralWidget as its parent.
@@ -269,9 +270,18 @@ MainWindow::MainWindow() :
         << databaseTeamNames.size()
         << " team abbreviations into OCR matcher.\n";
 
-    // Send already-decoded Qt video frames directly to OCR.
-    connect(player, &VideoPlayer::ocrFrameReady,
-        ocrDetector, &OCRDetector::processVideoFrame);
+    // TEMP PERFORMANCE TEST:
+    // Do not send Qt-decoded frames to OCR.
+    
+    
+    connect(
+        player,
+        &VideoPlayer::ocrFrameReady,
+        ocrDetector,
+        &OCRDetector::processVideoFrame
+    );
+
+    
     
     connect(ocrDetector, &OCRDetector::ocrLog,
             logBar, &LogBar::addLog);
@@ -454,16 +464,7 @@ void MainWindow::openAndPlayVideoOnClick() {
         return;
     }
     std::string source = QSource.toStdString();
-    /*
-    // Detect the map and load the correct layout image
-    QString layoutPath = detectMapFromVideo(source);
-    if (!layoutPath.isEmpty()) {
-        minimap_wid->loadImage(layoutPath);
-        logBar->addLog("Map detected: " + layoutPath);
-    }
-    else {
-        logBar->addLog("Map not detected.");
-    }*/
+    
 
     // Hide the starting-screen buttons after a video is selected.
     chooseFileButton->hide();
@@ -503,18 +504,67 @@ void MainWindow::openAndPlayVideoOnClick() {
     // This lets us test whether OCR alone is light enough for the laptop.
     //player->displayVideo(source);
     // TEMP TEST:  Keep OCR processing enabled.
-    // Display the selected video in the Qt video player.
-    player->displayVideo(source);
+    // Reset OCR state before playback begins.
+    // This ensures the first decoded frame belongs to a clean OCR session.
+    
 
-    // Start OCR using its own OpenCV video reader.
-// Qt handles visible video playback, while OpenCV supplies frames to OCR.
-    ocrDetector->startVideo(source);
+    // Start map detection on a background thread.
+    //
+    // detectMapFromVideo() currently opens the video with OpenCV and checks
+    // several timestamps. Running it here prevents that work from blocking
+    // the Qt GUI thread or delaying video playback.
+        
+    // Detect the map before normal video playback begins.
+// This prevents MapDetector and QMediaPlayer from decoding
+// the same video at the same time.
+    logBar->addLog("Detecting map...");
 
-    logBar->addLog("Video Loaded.");
-    // Update the status bar once the video and analysis have started.
-    statusBar()->showMessage(
-        "Video loaded - Analysis running"
-    );
+    std::thread([this, source]()
+        {
+            // MapDetector performs its work on the background thread.
+            QString detectedLayout =
+                detectMapFromVideo(source);
+
+            // Return to the GUI thread before touching Qt widgets
+            // or starting the visible video player.
+            QMetaObject::invokeMethod(
+                this,
+                [this, source, detectedLayout]()
+                {
+                    if (!detectedLayout.isEmpty())
+                    {
+                        minimap_wid->loadImage(detectedLayout);
+
+                        logBar->addLog(
+                            "Map detected: " + detectedLayout
+                        );
+                    }
+                    else
+                    {
+                        logBar->addLog(
+                            "Map could not be detected."
+                        );
+                    }
+
+                    // Map detection is now completely finished.
+                    // Start the normal working playback pipeline.
+                    player->displayVideo(source);
+
+                    // Start the normal OCR video reader after playback begins.
+                    ocrDetector->startVideo(source);
+
+                    logBar->addLog("Video Loaded.");
+
+                    statusBar()->showMessage(
+                        "Video loaded - Analysis running"
+                    );
+                },
+                Qt::QueuedConnection
+            );
+
+        }).detach();
+
+    
 
 }
 

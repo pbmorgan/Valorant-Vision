@@ -31,6 +31,10 @@ private:
 	// This prevents OCR from receiving every single video frame.
 	qint64 lastOcrFramePositionMs = -500;
 
+	// Keeps track of when we last sent a displayed video frame
+	// to the neural network.
+	// We do not need to convert all 30/60 frames per second.
+	qint64 lastModelFramePositionMs = -200;
 public:
 	// Takes in a pointer to the parent object
 	VideoPlayer(QWidget *parent);
