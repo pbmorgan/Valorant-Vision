@@ -170,34 +170,110 @@ void NeuralNetwork::predict(cv::Mat imageBGR) {
     // For now, convert the raw detections into the format expected by
     // the existing minimap code. These are NOT real tracking IDs.
 
-    currentTracking = Eigen::MatrixXf(currentPrediction.rows(), 8);
+    // TEMPORARY:
+// Ignore very low-confidence Faster R-CNN detections before sending
+// them to the minimap.
+    const float MIN_CONFIDENCE = 0.50f;
 
-    for (int i = 0; i < currentPrediction.rows(); i++)
+    // First count how many detections pass the confidence threshold.
+    int acceptedDetections = 0;
+
+    for (int i = 0; i < currentPrediction.rows(); ++i)
     {
+        if (currentPrediction(i, 4) >= MIN_CONFIDENCE)
+        {
+            ++acceptedDetections;
+        }
+    }
+
+    // Create the tracking matrix using only accepted detections.
+    currentTracking = Eigen::MatrixXf(acceptedDetections, 8);
+
+    int trackingRow = 0;
+
+    for (int i = 0; i < currentPrediction.rows(); ++i)
+    {
+        // Skip detections that are below our confidence threshold.
+        if (currentPrediction(i, 4) < MIN_CONFIDENCE)
+        {
+            continue;
+        }
+
         // Bounding box.
-        currentTracking(i, 0) = currentPrediction(i, 0);
-        currentTracking(i, 1) = currentPrediction(i, 1);
-        currentTracking(i, 2) = currentPrediction(i, 2);
-        currentTracking(i, 3) = currentPrediction(i, 3);
+        currentTracking(trackingRow, 0) = currentPrediction(i, 0);
+        currentTracking(trackingRow, 1) = currentPrediction(i, 1);
+        currentTracking(trackingRow, 2) = currentPrediction(i, 2);
+        currentTracking(trackingRow, 3) = currentPrediction(i, 3);
 
         // Temporary fake tracking ID.
-        currentTracking(i, 4) = i;
+        currentTracking(trackingRow, 4) = i;
 
         // Model confidence.
-        currentTracking(i, 5) = currentPrediction(i, 4);
+        currentTracking(trackingRow, 5) = currentPrediction(i, 4);
 
         // Detected agent/class ID.
-        currentTracking(i, 6) = currentPrediction(i, 5);
+        currentTracking(trackingRow, 6) = currentPrediction(i, 5);
 
-        // Temporary detection index.
-        currentTracking(i, 7) = i;
+        // Original detection index.
+        currentTracking(trackingRow, 7) = i;
 
+        ++trackingRow;
     }
     // TEMP DEBUG:
 // Show whether the model is detecting anything on this frame.
     std::cout << "[NN DETECTIONS] "
         << currentPrediction.rows()
         << std::endl;
+    // TEMP DEBUG:
+// Show how many Faster R-CNN detections survive different confidence levels.
+    int confidence25 = 0;
+    int confidence50 = 0;
+    int confidence75 = 0;
+    int confidence90 = 0;
+
+    for (int i = 0; i < currentPrediction.rows(); ++i)
+    {
+        float confidence = currentPrediction(i, 4);
+
+        if (confidence >= 0.25f) ++confidence25;
+        if (confidence >= 0.50f) ++confidence50;
+        if (confidence >= 0.75f) ++confidence75;
+        if (confidence >= 0.90f) ++confidence90;
+    }
+
+    std::cout
+        << "[NN CONFIDENCE] "
+        << ">=0.25: " << confidence25
+        << " | >=0.50: " << confidence50
+        << " | >=0.75: " << confidence75
+        << " | >=0.90: " << confidence90
+        << std::endl;
+
+    // TEMP DEBUG:
+// Print only the detections that currently pass the minimap threshold.
+    std::cout << "[ACCEPTED DETECTIONS]" << std::endl;
+
+    for (int i = 0; i < currentPrediction.rows(); ++i)
+    {
+        float confidence = currentPrediction(i, 4);
+
+        if (confidence < MIN_CONFIDENCE)
+        {
+            continue;
+        }
+
+        float centerX =
+            (currentPrediction(i, 0) + currentPrediction(i, 2)) / 2.0f;
+
+        float centerY =
+            (currentPrediction(i, 1) + currentPrediction(i, 3)) / 2.0f;
+
+        std::cout
+            << "  class=" << static_cast<int>(currentPrediction(i, 5))
+            << " confidence=" << confidence
+            << " center=(" << centerX << ", " << centerY << ")"
+            << std::endl;
+    }
 }
 
 
