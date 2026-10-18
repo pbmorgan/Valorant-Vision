@@ -10,6 +10,7 @@
 #include <QtGlobal>
 #include <QMetaObject>
 #include <QImage>
+#include <QLabel>
 
 #include "modelwrapper.h"
 
@@ -23,6 +24,8 @@ private:
 	QVideoWidget *videoWidget;
 	QAudioOutput *audioOutput;
 	QSlider *slider;
+	// Displays the current video position and total duration.
+	QLabel* timeLabel;
 
 	ModelWrapper modelWrapper;
 

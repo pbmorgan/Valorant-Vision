@@ -24,7 +24,8 @@ VideoPlayer::VideoPlayer(QWidget *parentAddress) :
 	videoWidget = new QVideoWidget(this);
 	audioOutput = new QAudioOutput(this);
 	slider = new QSlider(Qt::Horizontal, this);
-
+	// Displays the current playback time and total video duration.
+	timeLabel = new QLabel("0:00 / 0:00", this);
 	player->setVideoOutput(videoWidget);
 	player->setAudioOutput(audioOutput);
 
@@ -87,10 +88,65 @@ VideoPlayer::VideoPlayer(QWidget *parentAddress) :
 	connect(player, &QMediaPlayer::durationChanged, slider, &QSlider::setMaximum);
 	connect(player, &QMediaPlayer::positionChanged, slider, &QSlider::setValue);
 	connect(slider, &QSlider::sliderMoved, player, &QMediaPlayer::setPosition);
+	// Converts milliseconds into a readable video timestamp.
+//
+// Examples:
+// 65000 ms    -> 1:05
+// 3725000 ms  -> 1:02:05
+	auto formatTime = [](qint64 milliseconds) -> QString
+		{
+			qint64 totalSeconds = milliseconds / 1000;
 
-	QVBoxLayout *layout = new QVBoxLayout(this);
+			qint64 hours = totalSeconds / 3600;
+			qint64 minutes = (totalSeconds % 3600) / 60;
+			qint64 seconds = totalSeconds % 60;
+
+			if (hours > 0)
+			{
+				return QString("%1:%2:%3")
+					.arg(hours)
+					.arg(minutes, 2, 10, QChar('0'))
+					.arg(seconds, 2, 10, QChar('0'));
+			}
+
+			return QString("%1:%2")
+				.arg(minutes)
+				.arg(seconds, 2, 10, QChar('0'));
+		};
+
+	// Update the current playback time whenever the video position changes.
+	connect(
+		player,
+		&QMediaPlayer::positionChanged,
+		this,
+		[this, formatTime](qint64 position)
+		{
+			timeLabel->setText(
+				formatTime(position) +
+				" / " +
+				formatTime(player->duration())
+			);
+		}
+	);
+
+	// Update the total duration when a new video is loaded.
+	connect(
+		player,
+		&QMediaPlayer::durationChanged,
+		this,
+		[this, formatTime](qint64 duration)
+		{
+			timeLabel->setText(
+				formatTime(player->position()) +
+				" / " +
+				formatTime(duration)
+			);
+		}
+	);
+	QVBoxLayout* layout = new QVBoxLayout(this);
 	layout->addWidget(videoWidget);
 	layout->addWidget(slider);
+	layout->addWidget(timeLabel);
 
 	connect(player, &QMediaPlayer::positionChanged, this, &VideoPlayer::onFrameChange);
 

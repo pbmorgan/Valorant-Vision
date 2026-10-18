@@ -1756,9 +1756,41 @@ void OCRDetector::processFrame(const cv::Mat& frame)
                 QString victimTeam = (victimTeamIt != nameToTeam.end())
                                      ? QString::fromStdString(victimTeamIt->second) : "";
 
-                QString prefix = lastRoundTimer.empty()
-                                 ? ""
-                                 : QString::fromStdString(lastRoundTimer) + " - ";
+                // Build the timestamp of the video frame where this kill was detected.
+// This is the position in the MP4, not the Valorant round timer.
+                qint64 videoTotalSeconds =
+                    static_cast<qint64>(currentOcrVideoSeconds);
+
+                qint64 videoHours = videoTotalSeconds / 3600;
+                qint64 videoMinutes = (videoTotalSeconds % 3600) / 60;
+                qint64 videoSeconds = videoTotalSeconds % 60;
+
+                QString videoTime;
+
+                if (videoHours > 0)
+                {
+                    videoTime = QString("%1:%2:%3")
+                        .arg(videoHours)
+                        .arg(videoMinutes, 2, 10, QChar('0'))
+                        .arg(videoSeconds, 2, 10, QChar('0'));
+                }
+                else
+                {
+                    videoTime = QString("%1:%2")
+                        .arg(videoMinutes)
+                        .arg(videoSeconds, 2, 10, QChar('0'));
+                }
+
+                // Start every kill log with the video's timestamp.
+                QString prefix =
+                    "[" + videoTime + "] ";
+
+                // Keep the Valorant round timer too, when one is available.
+                if (!lastRoundTimer.empty())
+                {
+                    prefix +=
+                        QString::fromStdString(lastRoundTimer) + " - ";
+                }
 
                 QString logLine;
                 if (!killerTeam.isEmpty() && !victimTeam.isEmpty())
