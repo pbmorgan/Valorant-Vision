@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <filesystem>
 #include <iostream>
+#include <chrono>
 
 #include <onnxruntime_cxx_api.h>
 
@@ -106,12 +107,28 @@ void NeuralNetwork::predict(cv::Mat imageBGR) {
 
     //Perform the actual prediction
     try {
+        // TEMP DEBUG:
+// Measure how long one Faster R-CNN inference takes.
+        auto inferenceStart = std::chrono::high_resolution_clock::now();
+
         outputTensor = model->Run(Ort::RunOptions{ nullptr },
             inputNodeNamesCStyle.data(),
             &input_tensor,
             inputNodeNamesCStyle.size(),
             outputNodeNamesCStyle.data(),
             outputNodeNamesCStyle.size());
+        auto inferenceEnd = std::chrono::high_resolution_clock::now();
+
+        auto inferenceMilliseconds =
+            std::chrono::duration_cast<std::chrono::milliseconds>(
+                inferenceEnd - inferenceStart
+            ).count();
+
+        std::cout
+            << "[NN TIME] "
+            << inferenceMilliseconds
+            << " ms"
+            << std::endl;
     }
     catch (const Ort::Exception &e) {
         throw(e);

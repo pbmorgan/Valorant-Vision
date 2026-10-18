@@ -3,6 +3,9 @@
 #include <algorithm>
 #include <cctype>
 
+// Set to true when detailed OCR debugging is needed.
+static constexpr bool OCR_DEBUG = false;
+
 // Relative coordinate helpers (calibrated for 1920x1080 broadcast layout)
 struct RelRect { double x1, y1, x2, y2; };
 
@@ -260,18 +263,21 @@ void OCRDetector::setPlayerRecords(const std::vector<std::pair<std::string,std::
         }
     }
     playerListValid = !playerNames.empty();
-    // TEMP DEBUG:
-    // Print every player that the killfeed matcher is allowed to recognize.
-    // This lets us verify that players such as Asuna are actually in the
-    // roster loaded for the two confirmed teams.
-    std::cout << "MATCH ROSTER -> ";
 
-    for (const auto& player : playerNames)
+    if (OCR_DEBUG)
     {
-        std::cout << player << " ";
+        // TEMP DEBUG:
+        // Print every player that the killfeed matcher is allowed to recognize.
+        std::cout << "MATCH ROSTER -> ";
+
+        for (const auto& player : playerNames)
+        {
+            std::cout << player << " ";
+        }
+
+        std::cout << "\n";
     }
 
-    std::cout << "\n";
 }
 
 void OCRDetector::onVideoPlaying(qint64 positionMs)
@@ -384,9 +390,12 @@ void OCRDetector::processNextFrame()
     // The internal Valorant timer will use this instead of real-world time.
     currentOcrVideoSeconds = ocrTimeSeconds;
 
-    std::cout << "OCR VIDEO TIME -> "
-        << ocrTimeSeconds
-        << " seconds\n";
+    if (OCR_DEBUG)
+    {
+        std::cout << "OCR VIDEO TIME -> "
+            << ocrTimeSeconds
+            << " seconds\n";
+    }
 
     // TEMP DEBUG:
 // Save the exact video frames around the first kill so we can inspect
@@ -898,11 +907,16 @@ std::string OCRDetector::ocr_team_name(const cv::Mat& roi)
         std::string rawDigitCharacter =
             digitOut ? digitOut : "";
 
-        std::cout << "CHAR BOX "
-            << characterIndex
-            << " DIGIT RAW -> ["
-            << rawDigitCharacter
-            << "]\n";
+        if (OCR_DEBUG)
+        {
+            std::cout << "CHAR BOX "
+                << characterIndex
+                << " DIGIT RAW -> ["
+                << rawDigitCharacter
+                << "]\n";
+        }
+
+        
 
         if (digitOut)
         {
@@ -921,11 +935,16 @@ std::string OCRDetector::ocr_team_name(const cv::Mat& roi)
         // This will tell us which character in "100T" is being missed.
         std::string rawCharacter = out ? out : "";
 
-        std::cout << "CHAR BOX "
-            << characterIndex
-            << " RAW -> ["
-            << rawCharacter
-            << "]\n";
+
+        if (OCR_DEBUG)
+        {
+            std::cout << "CHAR BOX "
+                << characterIndex
+                << " RAW -> ["
+                << rawCharacter
+                << "]\n";
+        }
+        
 
         ++characterIndex;
 
@@ -956,11 +975,17 @@ std::string OCRDetector::ocr_team_name(const cv::Mat& roi)
         }
     }
 
-    // Temporary debugging:
-    // Show what character-by-character OCR produced.
-    std::cout << "CHAR TEAM OCR -> ["
-        << result
-        << "]\n";
+
+    if (OCR_DEBUG)
+    {
+        // Temporary debugging:
+        // Show what character-by-character OCR produced.
+        std::cout << "CHAR TEAM OCR -> ["
+            << result
+            << "]\n";
+    }
+
+    
 
     return result;
 }
@@ -1081,20 +1106,25 @@ std::string OCRDetector::resolve_team_name(
         }
     }
 
-    // Temporary debugging:
-    // Show the two strongest candidates so we can inspect how much
-    // better the winning candidate was.
-    std::cout << "TEAM SCORE -> Raw: ["
-        << raw
-        << "] Best: ["
-        << bestTeam
-        << "] Score: "
-        << bestScore
-        << " Second: ["
-        << secondBestTeam
-        << "] Score: "
-        << secondBestScore
-        << "\n";
+
+    if (OCR_DEBUG)
+    {
+        // Temporary debugging:
+        // Show the two strongest candidates so we can inspect how much
+        // better the winning candidate was.
+        std::cout << "TEAM SCORE -> Raw: ["
+            << raw
+            << "] Best: ["
+            << bestTeam
+            << "] Score: "
+            << bestScore
+            << " Second: ["
+            << secondBestTeam
+            << "] Score: "
+            << secondBestScore
+            << "\n";
+    }
+    
 
     // An exact OCR result should always be trusted.
     //
@@ -1205,21 +1235,25 @@ KillEvent OCRDetector::resolve_killfeed_whole(const std::string& raw,
         if (bestDist <= threshold && bestPos >= 0)
             found.push_back({ p, bestPos, bestLen, bestDist });
     }
-    // TEMP DEBUG:
-// Show which roster players were successfully found inside
-// the raw killfeed OCR text before overlap filtering happens.
-    std::cout << "KILL MATCH CANDIDATES -> ";
 
-    for (const auto& f : found)
+    if (OCR_DEBUG)
     {
-        std::cout
-            << f.player
-            << "(dist=" << f.dist
-            << ", pos=" << f.pos
-            << ") ";
-    }
+        // TEMP DEBUG:
+        // Show which roster players were successfully found inside
+        // the raw killfeed OCR text before overlap filtering happens.
+        std::cout << "KILL MATCH CANDIDATES -> ";
 
-    std::cout << "\n";
+        for (const auto& f : found)
+        {
+            std::cout
+                << f.player
+                << "(dist=" << f.dist
+                << ", pos=" << f.pos
+                << ") ";
+        }
+
+        std::cout << "\n";
+    }
 
 
     // Greedy dedup: prefer lower distance, drop overlapping hits.
@@ -1316,12 +1350,15 @@ void OCRDetector::processFrame(const cv::Mat& frame)
 
         // Temporary debugging so we can verify the replay detector
         // before it is allowed to suppress real match events.
-        std::cout
-            << "REPLAY OCR -> ["
-            << replayRaw
-            << "] Detected: "
-            << (inReplay ? "YES" : "NO")
-            << "\n";
+        if (OCR_DEBUG)
+        {
+            std::cout
+                << "REPLAY OCR -> ["
+                << replayRaw
+                << "] Detected: "
+                << (inReplay ? "YES" : "NO")
+                << "\n";
+        }
     }
 
     // --- TEAM DETECTION (propose to user, confirmed by dialog) ---
@@ -1341,12 +1378,18 @@ void OCRDetector::processFrame(const cv::Mat& frame)
         std::string leftRaw = ocr_team_name(frame(lr));
         std::string rightRaw = ocr_team_name(frame(rr));
 
-        // Temporary debug output so we can inspect exactly what Tesseract sees.
-        std::cout << "RAW TEAM OCR -> Left: ["
-            << leftRaw
-            << "] Right: ["
-            << rightRaw
-            << "]\n";
+
+        if (OCR_DEBUG)
+        {
+            // Temporary debug output so we can inspect exactly what Tesseract sees.
+            std::cout << "RAW TEAM OCR -> Left: ["
+                << leftRaw
+                << "] Right: ["
+                << rightRaw
+                << "]\n";
+        }
+
+        
 
         // After printing the raw OCR, continue using the normal fuzzy matching.
         std::string left_team =
@@ -1427,11 +1470,16 @@ void OCRDetector::processFrame(const cv::Mat& frame)
 
         // TEMP DEBUG:
 // Show exactly what Tesseract reads from the left and right score regions.
-        std::cout << "SCORE OCR -> Left: ["
-            << ls
-            << "] Right: ["
-            << rs
-            << "]\n";
+
+        if (OCR_DEBUG)
+        {
+            std::cout << "SCORE OCR -> Left: ["
+                << ls
+                << "] Right: ["
+                << rs
+                << "]\n";
+        }
+     
 
         try {
             if (!ls.empty() && !rs.empty()) {
