@@ -104,14 +104,6 @@ MainWindow::MainWindow() :
     // WELCOME / STARTUP SCREEN
     // ---------------------------------------------------------
 
-    /*
-     * Everything on the starting screen is placed inside
-     * welcomeWidget.
-     *
-     * This makes it easy to hide the entire welcome screen
-     * after the user loads a video.
-     */
-
     QWidget *welcomeWidget = new QWidget(centralWidget);
     welcomeWidget->setObjectName("welcomeWidget");
 
@@ -282,14 +274,6 @@ MainWindow::MainWindow() :
     // VIDEO CONTROL PANEL
     // ---------------------------------------------------------
 
-    /*
-     * IMPORTANT:
-     * This is the layout fix you made earlier.
-     *
-     * We do NOT attach centralWidget directly to this layout
-     * because centralWidget already owns mainVerticalLayout.
-     */
-
     controlPanel = new QHBoxLayout();
 
 
@@ -328,11 +312,6 @@ MainWindow::MainWindow() :
     // ---------------------------------------------------------
     // ADD EVERYTHING TO MAIN WINDOW LAYOUT
     // ---------------------------------------------------------
-
-    /*
-     * At startup, welcomeWidget is visible while the
-     * video-related widgets are hidden.
-     */
 
     mainVerticalLayout->addWidget(
         welcomeWidget,
@@ -916,14 +895,6 @@ void MainWindow::openAndPlayVideoOnClick()
     // ---------------------------------------------------------
     // SWITCH FROM HOME SCREEN TO ANALYSIS SCREEN
     // ---------------------------------------------------------
-
-    /*
-     * Hide the entire startup screen:
-     * logo
-     * title
-     * subtitle
-     * Select Video button
-     */
 
     QWidget *welcomeWidget =
         centralWidget->findChild<QWidget *>(
