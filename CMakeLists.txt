@@ -1,12 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
+# See readme.md for instructions on how to set up environment variables for vcpkg and Qt6. This will allow CMake to find the correct toolchain and libraries.
+if (NOT DEFINED ${CMAKE_TOOLCHAIN_FILE}) 
+    set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
+endif()
+
 # Use the standalone vcpkg installation
-set(
-    CMAKE_TOOLCHAIN_FILE
-    "C:/Users/Jr121/vcpkg/scripts/buildsystems/vcpkg.cmake"
-    CACHE FILEPATH ""
-    FORCE
-)
 if(MSVC)
     cmake_policy(SET CMP0091 NEW)
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
@@ -39,7 +38,6 @@ FetchContent_Declare(
     GIT_REPOSITORY https://github.com/jbeder/yaml-cpp.git
 )
 FetchContent_MakeAvailable(yaml-cpp)
-
 
 
 
