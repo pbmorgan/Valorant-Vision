@@ -11,6 +11,7 @@
 #include <QMessageBox>
 #include <QLabel>
 #include <QDialog>
+
 #include <QStatusBar>
 #include <QLineEdit>
 #include <QDialogButtonBox>
@@ -515,28 +516,123 @@ void MainWindow::openAndPlayVideoOnClick() {
     // the Qt GUI thread or delaying video playback.
         
     // Detect the map before normal video playback begins.
-// This prevents MapDetector and QMediaPlayer from decoding
-// the same video at the same time.
+    // This prevents MapDetector and QMediaPlayer from decoding
+    // the same video at the same time.
     logBar->addLog("Detecting map...");
 
     std::thread([this, source]()
         {
-            // MapDetector performs its work on the background thread.
-            QString detectedLayout =
-                detectMapFromVideo(source);
+            // Open the selected video with OpenCV
+            cv::VideoCapture cap(source);
 
-            // Return to the GUI thread before touching Qt widgets
-            // or starting the visible video player.
+            QString detectedLayout = "";
+
+            if (!cap.isOpened())
+            {
+                qWarning("Minimap detection: could not open video");
+            }
+            else
+            {
+                // Get total video length in milliseconds
+                double fps =
+                    cap.get(cv::CAP_PROP_FPS);
+
+                double frameCount =
+                    cap.get(cv::CAP_PROP_FRAME_COUNT);
+
+                double videoLengthMs = 0.0;
+
+                if (fps > 0.0)
+                {
+                    videoLengthMs =
+                        (frameCount / fps) * 1000.0;
+                }
+
+                qDebug(
+                    "Minimap detection: video length %.1f seconds",
+                    videoLengthMs / 1000.0
+                );
+
+
+                // ---------------------------------------------
+                // Check one frame every 20 seconds
+                // ---------------------------------------------
+
+                const double checkIntervalMs = 20000.0;
+
+                for (double timeMs = 0.0;
+                    timeMs < videoLengthMs;
+                    timeMs += checkIntervalMs)
+                {
+                    // Jump to this point in the video
+                    cap.set(
+                        cv::CAP_PROP_POS_MSEC,
+                        timeMs
+                    );
+
+                    cv::Mat frame;
+
+                    // Try to read the frame
+                    if (!cap.read(frame))
+                    {
+                        qWarning(
+                            "Minimap detection: could not read frame at %.1f seconds",
+                            timeMs / 1000.0
+                        );
+
+                        continue;
+                    }
+
+                    qDebug(
+                        "\nChecking minimap at %.1f seconds...",
+                        timeMs / 1000.0
+                    );
+
+
+                    // Ask checkMap() whether this frame
+                    // contains a recognizable minimap
+                    QString result =
+                        minimap_wid->checkMap(frame);
+
+
+                    // If checkMap returned a map,
+                    // we are finished searching
+                    if (!result.isEmpty())
+                    {
+                        detectedLayout = result;
+
+                        qDebug(
+                            "Minimap found at %.1f seconds",
+                            timeMs / 1000.0
+                        );
+
+                        break;
+                    }
+                }
+
+                cap.release();
+            }
+
+
+            // ---------------------------------------------
+            // Return to the Qt GUI thread
+            // ---------------------------------------------
+
             QMetaObject::invokeMethod(
                 this,
                 [this, source, detectedLayout]()
                 {
                     if (!detectedLayout.isEmpty())
                     {
-                        minimap_wid->loadImage(detectedLayout);
+                        // Now that we know the map,
+                        // display it in the minimap widget
+                        minimap_wid->loadImage(
+                            detectedLayout
+                        );
 
                         logBar->addLog(
-                            "Map detected: " + detectedLayout
+                            "Map detected: " +
+                            detectedLayout
                         );
                     }
                     else
@@ -546,14 +642,16 @@ void MainWindow::openAndPlayVideoOnClick() {
                         );
                     }
 
-                    // Map detection is now completely finished.
-                    // Start the normal working playback pipeline.
+
+                    // Start normal video playback
                     player->displayVideo(source);
 
-                    // Start the normal OCR video reader after playback begins.
+                    // Start the normal OCR system
                     ocrDetector->startVideo(source);
 
-                    logBar->addLog("Video Loaded.");
+                    logBar->addLog(
+                        "Video Loaded."
+                    );
 
                     statusBar()->showMessage(
                         "Video loaded - Analysis running"
