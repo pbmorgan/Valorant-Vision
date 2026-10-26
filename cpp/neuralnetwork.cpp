@@ -170,33 +170,58 @@ void NeuralNetwork::predict(cv::Mat imageBGR) {
     // For now, convert the raw detections into the format expected by
     // the existing minimap code. These are NOT real tracking IDs.
 
-    currentTracking = Eigen::MatrixXf(currentPrediction.rows(), 8);
+    constexpr float CONFIDENCE_THRESHOLD = 0.50f;
+    // Only keep detections above the confidence threshold
+    int validDetections = 0;
+
+    for (int i = 0; i < currentPrediction.rows(); i++) {
+        if (currentPrediction(i, 4) >= CONFIDENCE_THRESHOLD) {
+            validDetections++;
+        }
+    }
+    
+    // Initialize the tracking matrix with the number of valid detections.
+    currentTracking = Eigen::MatrixXf(validDetections, 8);
+    
+
+    int filteredIndex = 0;
 
     for (int i = 0; i < currentPrediction.rows(); i++)
     {
-        // Bounding box.
-        currentTracking(i, 0) = currentPrediction(i, 0);
-        currentTracking(i, 1) = currentPrediction(i, 1);
-        currentTracking(i, 2) = currentPrediction(i, 2);
-        currentTracking(i, 3) = currentPrediction(i, 3);
+        float confidence = currentPrediction(i, 4);
 
-        // Temporary fake tracking ID.
-        currentTracking(i, 4) = i;
+        // Skip detections below the confidence threshold.
+        if (confidence < CONFIDENCE_THRESHOLD) {
+            continue;
+        }
+
+        // Bounding box.
+        currentTracking(filteredIndex, 0) = currentPrediction(i, 0);
+        currentTracking(filteredIndex, 1) = currentPrediction(i, 1);
+        currentTracking(filteredIndex, 2) = currentPrediction(i, 2);
+        currentTracking(filteredIndex, 3) = currentPrediction(i, 3);
+
+        // Temporary tracking ID.
+        currentTracking(filteredIndex, 4) = filteredIndex;
 
         // Model confidence.
-        currentTracking(i, 5) = currentPrediction(i, 4);
+        currentTracking(filteredIndex, 5) = confidence;
 
         // Detected agent/class ID.
-        currentTracking(i, 6) = currentPrediction(i, 5);
+        currentTracking(filteredIndex, 6) = currentPrediction(i, 5);
 
-        // Temporary detection index.
-        currentTracking(i, 7) = i;
+        // Original detection index.
+        currentTracking(filteredIndex, 7) = i;
 
+        filteredIndex++;
     }
     // TEMP DEBUG:
 // Show whether the model is detecting anything on this frame.
-    std::cout << "[NN DETECTIONS] "
+    std::cout << "[NN DETECTIONS] Raw: "
         << currentPrediction.rows()
+        << " | Filtered: " << currentTracking.rows()
+        << " | Removed: "
+        << currentPrediction.rows() - currentTracking.rows()
         << std::endl;
 }
 
