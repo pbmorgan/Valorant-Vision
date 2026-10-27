@@ -157,6 +157,19 @@ VideoPlayer::VideoPlayer(QWidget *parentAddress) :
 			else if (state == QMediaPlayer::PausedState)
 				emit videoPaused();
 		});
+	// Detect when Qt reaches the actual end of the video.
+	connect(
+		player,
+		&QMediaPlayer::mediaStatusChanged,
+		this,
+		[this](QMediaPlayer::MediaStatus status)
+		{
+			if (status == QMediaPlayer::EndOfMedia)
+			{
+				emit videoFinished();
+			}
+		}
+	);
 }
 
 qint64 VideoPlayer::currentPositionMs() const

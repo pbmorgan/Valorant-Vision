@@ -11,6 +11,7 @@
 #include "../headers/videoplayer.h"
 #include "../headers/minimap.h"
 #include "../headers/ocr.h"
+#include "../headers/playertracker.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -30,10 +31,15 @@ private:
     QPixmap* pixmap;
     QLabel* picLabel;
     OCRDetector* ocrDetector;
+    PlayerTracker* playerTracker;
 
     void openAndPlayVideoOnClick();
     void pauseOrPlayVideo();
     void resetBar();
+    void showPlayerStats(
+        const QString& title,
+        const std::vector<PlayerStats>& stats
+    );
 
 private slots:
     void onTeamsDetected(QString left, QString right);

@@ -11,6 +11,12 @@
 #include <QMessageBox>
 #include <QLabel>
 #include <QDialog>
+#include <QTableWidget>
+#include <QTableWidgetItem>
+#include <QHeaderView>
+#include <QAbstractItemView>
+#include <QFont>
+
 
 #include <QStatusBar>
 #include <QLineEdit>
@@ -24,6 +30,7 @@
 #include "../headers/ocr.h"
 #include "../headers/webScraper.h"
 #include <thread>
+#include <iostream>
 
 MainWindow::MainWindow() :
     QMainWindow() {
@@ -54,13 +61,19 @@ MainWindow::MainWindow() :
 
     logBar = new LogBar(this);
 
+    std::cerr << "2 - LogBar created" << std::endl;
+
+
     addDockWidget(Qt::RightDockWidgetArea, logBar);
     minimap_wid = new Minimap(this);
+    std::cerr << "3 - Minimap created" << std::endl;
 
     addDockWidget(Qt::RightDockWidgetArea, minimap_wid);
     
 
     player = new VideoPlayer(centralWidget);
+
+    std::cerr << "4 - VideoPlayer created" << std::endl;
     // Do not give controlPanel centralWidget as its parent.
     // It will become a child of mainVerticalLayout when addLayout()
     // is called below.
@@ -253,13 +266,67 @@ MainWindow::MainWindow() :
     logButton->hide();
     player->hide();
 
+    std::cerr << "5 - Creating OCR" << std::endl;
+
     // Set up OCR detector (tessdata folder sits next to the exe)
     ocrDetector = new OCRDetector("tessdata", "eng", this);
 
+    std::cerr << "6 - OCR created" << std::endl;
+
+    std::cerr << "7 - Creating PlayerTracker" << std::endl;
+
+    // Tracks player kills, deaths, and round/match statistics.
+    playerTracker = new PlayerTracker(this);
+
+    // Show statistics whenever PlayerTracker determines a round has ended.
+    connect(
+        playerTracker,
+        &PlayerTracker::roundFinished,
+        this,
+        [this](int roundNumber)
+        {
+            player->pause();
+
+            std::vector<PlayerStats> stats =
+                playerTracker->getLastRoundStats();
+
+            showPlayerStats(
+                QString("Round %1 Stats")
+                .arg(roundNumber),
+                stats
+            );
+
+            player->play();
+        }
+    );
+    // Show cumulative statistics when the video reaches the end.
+    connect(
+        player,
+        &VideoPlayer::videoFinished,
+        this,
+        [this]()
+        {
+            std::vector<PlayerStats> stats =
+                playerTracker->getMatchStats();
+
+            showPlayerStats(
+                "Final Match Stats",
+                stats
+            );
+        }
+    );
+    
+
+    std::cerr << "8 - PlayerTracker created" << std::endl;
+
+    std::cerr << "9 - Loading team database" << std::endl;
+
     // Load every unique team abbreviation from the local player database.
-// getTeamNames() will load players.txt automatically if needed.
+    // getTeamNames() will load players.txt automatically if needed.
     std::vector<std::string> databaseTeamNames =
         WebScraper::getTeamNames();
+
+    std::cerr << "10 - Team database loaded" << std::endl;
 
     // Give OCR the complete database team list instead of relying only
     // on the limited hardcoded team list in OCRDetector.
@@ -290,10 +357,40 @@ MainWindow::MainWindow() :
             this, &MainWindow::onTeamsProposed);
     connect(ocrDetector, &OCRDetector::teamsDetected,
             this, &MainWindow::onTeamsDetected);
+    // Keep the existing human-readable kill message in the log.
     connect(ocrDetector, &OCRDetector::killDetected,
-            logBar, &LogBar::addLog);
+        logBar, &LogBar::addLog);
+
+    // Send structured kill information to the player statistics tracker.
+    connect(ocrDetector, &OCRDetector::killEventDetected,
+        playerTracker, &PlayerTracker::recordKill);
+
+    // TEMP TEST: print player statistics whenever PlayerTracker changes.
+    connect(playerTracker, &PlayerTracker::statsUpdated, this, [this]() {
+        std::cout << "\n=== PLAYER TRACKER UPDATE ===\n";
+
+        for (const auto& stats : playerTracker->getMatchStats())
+        {
+            std::cout
+                << stats.team << " "
+                << stats.name
+                << " | K: " << stats.kills
+                << " D: " << stats.deaths
+                << " KD: " << stats.kd()
+                << std::endl;
+        }
+
+        std::cout << "=============================\n";
+        });
+
+    // Keep the existing MainWindow score handling.
     connect(ocrDetector, &OCRDetector::scoresChanged,
-            this, &MainWindow::onScoresChanged);
+        this, &MainWindow::onScoresChanged);
+
+    // Let PlayerTracker know when the match score changes so it
+    // can determine when a round has ended.
+    connect(ocrDetector, &OCRDetector::scoresChanged,
+        playerTracker, &PlayerTracker::onScoreChanged);
 
     // Sync OCR to video playback state and position
     connect(player, &VideoPlayer::videoPlaying,
@@ -317,8 +414,9 @@ MainWindow::MainWindow() :
     statusBar()->showMessage(
         "Ready - Select a video to begin analysis"
     );
-
+    std::cerr << "11 - About to show MainWindow" << std::endl;
     this->show();
+
 }
 
 void MainWindow::onTeamsDetected(QString left, QString right)
@@ -352,6 +450,9 @@ void MainWindow::onTeamsDetected(QString left, QString right)
             // Give OCR only the players from the detected teams.
             ocrDetector->setPlayerRecords(records);
 
+            // Give PlayerTracker the same roster so it can initialize
+            // each player's match and round statistics.
+            playerTracker->setRoster(records);
             // Report whether both teams were successfully found.
             if (ok)
             {
@@ -507,7 +608,8 @@ void MainWindow::openAndPlayVideoOnClick() {
     // TEMP TEST:  Keep OCR processing enabled.
     // Reset OCR state before playback begins.
     // This ensures the first decoded frame belongs to a clean OCR session.
-    
+    // Start fresh player statistics for this video/match.
+    playerTracker->reset();
 
     // Start map detection on a background thread.
     //
@@ -753,4 +855,158 @@ void MainWindow::resetPlayerDatabase()
             );
         }
     ).detach();
+}
+
+void MainWindow::showPlayerStats(
+    const QString& title,
+    const std::vector<PlayerStats>& stats)
+{
+    QDialog dialog(this);
+
+    dialog.setWindowTitle(title);
+    dialog.resize(750, 450);
+
+    QVBoxLayout* layout =
+        new QVBoxLayout(&dialog);
+
+    // Title
+    QLabel* titleLabel =
+        new QLabel(title, &dialog);
+
+    QFont titleFont =
+        titleLabel->font();
+
+    titleFont.setBold(true);
+    titleFont.setPointSize(16);
+
+    titleLabel->setFont(titleFont);
+
+    layout->addWidget(titleLabel);
+
+    // Player stat table
+    QTableWidget* table =
+        new QTableWidget(
+            static_cast<int>(stats.size()),
+            7,
+            &dialog
+        );
+
+    table->setHorizontalHeaderLabels(
+        {
+            "Team",
+            "Player",
+            "Kills",
+            "Deaths",
+            "K/D",
+            "Damage Done",
+            "Damage Taken"
+        }
+    );
+
+    for (int row = 0;
+        row < static_cast<int>(stats.size());
+        ++row)
+    {
+        const PlayerStats& playerStats =
+            stats[row];
+
+        table->setItem(
+            row,
+            0,
+            new QTableWidgetItem(
+                QString::fromStdString(playerStats.team)
+            )
+        );
+
+        table->setItem(
+            row,
+            1,
+            new QTableWidgetItem(
+                QString::fromStdString(playerStats.name)
+            )
+        );
+
+        table->setItem(
+            row,
+            2,
+            new QTableWidgetItem(
+                QString::number(playerStats.kills)
+            )
+        );
+
+        table->setItem(
+            row,
+            3,
+            new QTableWidgetItem(
+                QString::number(playerStats.deaths)
+            )
+        );
+
+        table->setItem(
+            row,
+            4,
+            new QTableWidgetItem(
+                QString::number(
+                    playerStats.kd(),
+                    'f',
+                    2
+                )
+            )
+        );
+
+        table->setItem(
+            row,
+            5,
+            new QTableWidgetItem(
+                QString::number(
+                    playerStats.damageDone
+                )
+            )
+        );
+
+        table->setItem(
+            row,
+            6,
+            new QTableWidgetItem(
+                QString::number(
+                    playerStats.damageTaken
+                )
+            )
+        );
+    }
+
+    // Stretch columns across the dialog.
+    table->horizontalHeader()
+        ->setSectionResizeMode(
+            QHeaderView::Stretch
+        );
+
+    // Stats are view-only.
+    table->setEditTriggers(
+        QAbstractItemView::NoEditTriggers
+    );
+
+    table->setSelectionBehavior(
+        QAbstractItemView::SelectRows
+    );
+
+    layout->addWidget(table);
+
+    // Close button
+    QDialogButtonBox* buttons =
+        new QDialogButtonBox(
+            QDialogButtonBox::Close,
+            &dialog
+        );
+
+    connect(
+        buttons,
+        &QDialogButtonBox::rejected,
+        &dialog,
+        &QDialog::reject
+    );
+
+    layout->addWidget(buttons);
+
+    dialog.exec();
 }

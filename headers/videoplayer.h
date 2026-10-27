@@ -68,6 +68,7 @@ signals:
 	void videoPaused();
 	void videoPositionChanged(qint64 positionMs);
 	void ocrFrameReady(const QImage& frame);
+	void videoFinished();
 };
 
 #endif

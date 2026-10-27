@@ -51,12 +51,30 @@ public slots:
 
 signals:
     void ocrLog(QString text);
+
     // OCR detected team names - MainWindow shows a confirmation dialog
     void teamsProposed(QString left, QString right);
+
     // Fired only after the user has confirmed the names (roster scrape trigger)
     void teamsDetected(QString left, QString right);
+
+    // Existing human-readable kill log
     void killDetected(QString logLine);
-    void scoresChanged(QString leftTeam, int leftScore, QString rightTeam, int rightScore);
+
+    // Structured kill information for PlayerTracker
+    void killEventDetected(
+        QString killerTeam,
+        QString killerName,
+        QString victimTeam,
+        QString victimName
+    );
+
+    void scoresChanged(
+        QString leftTeam,
+        int leftScore,
+        QString rightTeam,
+        int rightScore
+    );
 
 private slots:
     void processNextFrame();

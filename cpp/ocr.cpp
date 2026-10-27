@@ -1805,6 +1805,12 @@ void OCRDetector::processFrame(const cv::Mat& frame)
                               + QString::fromStdString(evt.victim);
 
                 emit killDetected(logLine);
+                emit killEventDetected(
+                    killerTeam,
+                    QString::fromStdString(evt.killer),
+                    victimTeam,
+                    QString::fromStdString(evt.victim)
+                );
             }
         }
     }

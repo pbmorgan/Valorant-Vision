@@ -1,8 +1,21 @@
 cmake_minimum_required(VERSION 3.16)
 
-# See readme.md for instructions on how to set up environment variables for vcpkg and Qt6. This will allow CMake to find the correct toolchain and libraries.
-if (NOT DEFINED ${CMAKE_TOOLCHAIN_FILE}) 
-    set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
+# Choose the vcpkg toolchain.
+# Prefer the user's standalone vcpkg installation when available.
+if(NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+    if(EXISTS "$ENV{USERPROFILE}/vcpkg/scripts/buildsystems/vcpkg.cmake")
+        set(
+            CMAKE_TOOLCHAIN_FILE
+            "$ENV{USERPROFILE}/vcpkg/scripts/buildsystems/vcpkg.cmake"
+            CACHE STRING ""
+        )
+    elseif(DEFINED ENV{VCPKG_ROOT})
+        set(
+            CMAKE_TOOLCHAIN_FILE
+            "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+            CACHE STRING ""
+        )
+    endif()
 endif()
 
 # Use the standalone vcpkg installation
@@ -53,10 +66,12 @@ add_executable(Valorant-Vision
     "cpp/modelwrapper.cpp"
     "cpp/ocr.cpp"
     "cpp/webScraper.cpp"
+    "cpp/playertracker.cpp"
     "headers/videoplayer.h"
     "headers/minimap.h"
     "headers/mainwindow.h"
     "headers/ocr.h"
+    "headers/playertracker.h"
 )
 
 # Lets us just include the files without having to specify relative path
