@@ -126,11 +126,11 @@ void OCRDetector::startVideo(const std::string& videoPath)
     lastRightScore = -1;
     leftTeamName.clear();
     rightTeamName.clear();
-    // A newly loaded video always starts with replay detection reset.
-inReplay = false;
+    inReplay = false;
+    replayMissCount = 0;
 
-// Reset the replay miss counter for the newly loaded video.
-replayMissCount = 0;
+    // Make sure a newly loaded video begins with replay mode disabled.
+    emit replayStateChanged(false);
 
 
     // Reset internal round-timer tracking for every newly loaded video.
@@ -1298,8 +1298,7 @@ void OCRDetector::processFrame(const cv::Mat& frame)
 
     // --- REPLAY DETECTION ---
 // Check the bottom-right broadcast area for the word "REPLAY".
-// For now, this only detects and prints the result.
-// We will not block kills, scores, or timer updates until we verify it works.
+
     {
         tess.SetPageSegMode(tesseract::PSM_SINGLE_WORD);
         tess.SetVariable(
@@ -1323,9 +1322,14 @@ void OCRDetector::processFrame(const cv::Mat& frame)
 
         if (replayDetectedThisFrame)
         {
-            // A positive detection immediately puts us into replay mode.
-            // Reset the miss counter because OCR successfully saw REPLAY.
-            inReplay = true;
+            // Only notify the rest of the program when replay mode
+            // actually begins.
+            if (!inReplay)
+            {
+                inReplay = true;
+                emit replayStateChanged(true);
+            }
+
             replayMissCount = 0;
         }
         else if (inReplay)
@@ -1340,6 +1344,9 @@ void OCRDetector::processFrame(const cv::Mat& frame)
             {
                 inReplay = false;
                 replayMissCount = 0;
+
+                // Replay has ended, so normal minimap updates can resume.
+                emit replayStateChanged(false);
             }
         }
         else

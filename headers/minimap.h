@@ -28,6 +28,9 @@ private:
 	std::vector<cv::Mat> agentIcons;
 
 	Eigen::MatrixXf lastPredictions; //We store this so that we don't have to redraw the minimap if nothing has changed
+	// True while replay footage is active.
+	// Agent positions should not be displayed during a replay.
+	bool replayActive = false;
 
 public:
 	// sets the parent to nullptr if no main parent
@@ -40,6 +43,9 @@ public:
 	void resizeEvent(QResizeEvent *event);
 
 	void redrawAgents(Eigen::MatrixXf frameData);
+
+	// Enables or disables agent placement during replay footage.
+	void setReplayActive(bool active);
 
 	// Image Detection 2.0
 	// Returns the detected map layout path.

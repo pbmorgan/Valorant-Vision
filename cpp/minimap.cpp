@@ -99,7 +99,52 @@ QPixmap Minimap::cvMatToQPixmap(const cv::Mat &inMat) {
     return QPixmap::fromImage(qtImage).copy();
 }
 
+void Minimap::setReplayActive(bool active)
+{
+    // Do nothing if the replay state did not actually change.
+    if (replayActive == active)
+    {
+        return;
+    }
+
+    replayActive = active;
+
+    if (replayActive)
+    {
+        // Replay started:
+        // remove any agent icons that were already being displayed.
+        if (!mapFile.isEmpty())
+        {
+            QPixmap cleanMap;
+
+            if (cleanMap.load(mapFile))
+            {
+                pixmap = cleanMap;
+
+                minimap_wid->setPixmap(
+                    pixmap.scaled(
+                        minimap_wid->size(),
+                        Qt::KeepAspectRatio,
+                        Qt::SmoothTransformation
+                    )
+                );
+            }
+        }
+    }
+    else
+    {
+        // Replay ended:
+        // force the next prediction to redraw even if it happens
+        // to match the last prediction from before the replay.
+        lastPredictions.resize(0, 0);
+    }
+}
+
 void Minimap::redrawAgents(Eigen::MatrixXf frameData) {
+    if (replayActive)
+    {
+        return;
+    }
 
     //Don't redraw if there are no predictions or if the predictions are unchanged from the last frame
     if (frameData.rows() == 0) { return; }
@@ -137,11 +182,44 @@ void Minimap::redrawAgents(Eigen::MatrixXf frameData) {
         cv::Mat bgr_foreground;
         cv::merge(std::vector<cv::Mat>{channels[0], channels[1], channels[2]}, bgr_foreground);
 
-        //If the area to draw on is OOB, don't do it (should change it later to just shift it to fit within bounds) 
-        if (xmin < 0 || ymin < 0 || xmin + agent.cols > resizedImg.cols || ymin + agent.rows > resizedImg.rows) {
+        // Find the center of the model's detected bounding box.
+        int centerX = (xmin + xmax) / 2;
+        int centerY = (ymin + ymax) / 2;
+
+        // The broadcast minimap occupies a slightly smaller area than the
+        // clean 384x384 map layout. Convert model coordinates into the
+        // clean-map coordinate system.
+        constexpr float MAP_SCALE_X = 1.10f;
+        constexpr float MAP_SCALE_Y = 1.10f;
+
+        constexpr float MAP_OFFSET_X = 6.0f;
+        constexpr float MAP_OFFSET_Y = 6.0f;
+
+        int mappedCenterX =
+            static_cast<int>((centerX * MAP_SCALE_X) + MAP_OFFSET_X);
+
+        int mappedCenterY =
+            static_cast<int>((centerY * MAP_SCALE_Y) + MAP_OFFSET_Y);
+
+        // Center the agent icon on the corrected map position.
+        int drawX = mappedCenterX - (agent.cols / 2);
+        int drawY = mappedCenterY - (agent.rows / 2);
+
+        // Make sure the icon stays inside the minimap.
+        if (drawX < 0 || drawY < 0 ||
+            drawX + agent.cols > resizedImg.cols ||
+            drawY + agent.rows > resizedImg.rows)
+        {
             continue;
         }
-        cv::Rect rect(xmin, ymin, agent.cols, agent.rows);
+
+        cv::Rect rect(
+            drawX,
+            drawY,
+            agent.cols,
+            agent.rows
+        );
+
         cv::Mat ROI = resizedImg(rect);
 
         bgr_foreground.copyTo(ROI, alpha);

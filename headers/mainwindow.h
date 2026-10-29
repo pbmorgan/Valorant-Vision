@@ -12,6 +12,7 @@
 #include "../headers/minimap.h"
 #include "../headers/ocr.h"
 #include "../headers/playertracker.h"
+#include "../headers/playerstatswidget.h"
 
 class MainWindow : public QMainWindow {
     Q_OBJECT
@@ -32,14 +33,12 @@ private:
     QLabel* picLabel;
     OCRDetector* ocrDetector;
     PlayerTracker* playerTracker;
+    PlayerStatsWidget* playerStatsWidget;
 
     void openAndPlayVideoOnClick();
     void pauseOrPlayVideo();
     void resetBar();
-    void showPlayerStats(
-        const QString& title,
-        const std::vector<PlayerStats>& stats
-    );
+    
 
 private slots:
     void onTeamsDetected(QString left, QString right);

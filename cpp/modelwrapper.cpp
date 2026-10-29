@@ -2,6 +2,8 @@
 
 #include <iostream>
 
+
+
 ModelWrapper::ModelWrapper()
 {
 	// The neural network is loaded when startProcessingLoop() is called.
@@ -116,6 +118,7 @@ void ModelWrapper::loop()
 		}
 
 		cv::Mat croppedFrame = frame(ROI);
+
 
 
 		// ========================================================

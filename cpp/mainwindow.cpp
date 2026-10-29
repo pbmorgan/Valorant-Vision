@@ -70,6 +70,14 @@ MainWindow::MainWindow() :
 
     addDockWidget(Qt::RightDockWidgetArea, minimap_wid);
     
+    // Create the dockable player statistics panel.
+    playerStatsWidget = new PlayerStatsWidget(this);
+
+    addDockWidget(
+        Qt::RightDockWidgetArea,
+        playerStatsWidget
+    );
+
 
     player = new VideoPlayer(centralWidget);
 
@@ -265,6 +273,7 @@ MainWindow::MainWindow() :
     logBar->hide();
     logButton->hide();
     player->hide();
+    playerStatsWidget->hide();
 
     std::cerr << "5 - Creating OCR" << std::endl;
 
@@ -278,28 +287,26 @@ MainWindow::MainWindow() :
     // Tracks player kills, deaths, and round/match statistics.
     playerTracker = new PlayerTracker(this);
 
-    // Show statistics whenever PlayerTracker determines a round has ended.
+    // Add each completed round to the dockable statistics panel.
+    // Playback continues while the user views previous rounds.
     connect(
         playerTracker,
         &PlayerTracker::roundFinished,
         this,
         [this](int roundNumber)
         {
-            player->pause();
-
             std::vector<PlayerStats> stats =
                 playerTracker->getLastRoundStats();
 
-            showPlayerStats(
-                QString("Round %1 Stats")
-                .arg(roundNumber),
+            playerStatsWidget->addRoundStats(
+                roundNumber,
                 stats
             );
-
-            player->play();
         }
     );
     // Show cumulative statistics when the video reaches the end.
+    // Add cumulative match statistics to the dockable statistics panel
+    // when the video reaches the end.
     connect(
         player,
         &VideoPlayer::videoFinished,
@@ -309,10 +316,7 @@ MainWindow::MainWindow() :
             std::vector<PlayerStats> stats =
                 playerTracker->getMatchStats();
 
-            showPlayerStats(
-                "Final Match Stats",
-                stats
-            );
+            playerStatsWidget->addFinalStats(stats);
         }
     );
     
@@ -360,6 +364,14 @@ MainWindow::MainWindow() :
     // Keep the existing human-readable kill message in the log.
     connect(ocrDetector, &OCRDetector::killDetected,
         logBar, &LogBar::addLog);
+
+    // Disable minimap agent placement while replay footage is active.
+    connect(
+        ocrDetector,
+        &OCRDetector::replayStateChanged,
+        minimap_wid,
+        &Minimap::setReplayActive
+    );
 
     // Send structured kill information to the player statistics tracker.
     connect(ocrDetector, &OCRDetector::killEventDetected,
@@ -588,10 +600,12 @@ void MainWindow::openAndPlayVideoOnClick() {
 
     volumeSlider->show();
     minimap_wid->show();
+    playerStatsWidget->show();
     pauseButton->show();
     logBar->show();
     logButton->show();
     player->show();
+
 
     // Reduce the outer margins once the analysis screen is visible
     // so the video, minimap, and logs have more usable space.
@@ -608,8 +622,12 @@ void MainWindow::openAndPlayVideoOnClick() {
     // TEMP TEST:  Keep OCR processing enabled.
     // Reset OCR state before playback begins.
     // This ensures the first decoded frame belongs to a clean OCR session.
+    
     // Start fresh player statistics for this video/match.
     playerTracker->reset();
+
+    // Remove statistics from the previous video/match.
+    playerStatsWidget->resetStats();
 
     // Start map detection on a background thread.
     //
@@ -857,156 +875,3 @@ void MainWindow::resetPlayerDatabase()
     ).detach();
 }
 
-void MainWindow::showPlayerStats(
-    const QString& title,
-    const std::vector<PlayerStats>& stats)
-{
-    QDialog dialog(this);
-
-    dialog.setWindowTitle(title);
-    dialog.resize(750, 450);
-
-    QVBoxLayout* layout =
-        new QVBoxLayout(&dialog);
-
-    // Title
-    QLabel* titleLabel =
-        new QLabel(title, &dialog);
-
-    QFont titleFont =
-        titleLabel->font();
-
-    titleFont.setBold(true);
-    titleFont.setPointSize(16);
-
-    titleLabel->setFont(titleFont);
-
-    layout->addWidget(titleLabel);
-
-    // Player stat table
-    QTableWidget* table =
-        new QTableWidget(
-            static_cast<int>(stats.size()),
-            7,
-            &dialog
-        );
-
-    table->setHorizontalHeaderLabels(
-        {
-            "Team",
-            "Player",
-            "Kills",
-            "Deaths",
-            "K/D",
-            "Damage Done",
-            "Damage Taken"
-        }
-    );
-
-    for (int row = 0;
-        row < static_cast<int>(stats.size());
-        ++row)
-    {
-        const PlayerStats& playerStats =
-            stats[row];
-
-        table->setItem(
-            row,
-            0,
-            new QTableWidgetItem(
-                QString::fromStdString(playerStats.team)
-            )
-        );
-
-        table->setItem(
-            row,
-            1,
-            new QTableWidgetItem(
-                QString::fromStdString(playerStats.name)
-            )
-        );
-
-        table->setItem(
-            row,
-            2,
-            new QTableWidgetItem(
-                QString::number(playerStats.kills)
-            )
-        );
-
-        table->setItem(
-            row,
-            3,
-            new QTableWidgetItem(
-                QString::number(playerStats.deaths)
-            )
-        );
-
-        table->setItem(
-            row,
-            4,
-            new QTableWidgetItem(
-                QString::number(
-                    playerStats.kd(),
-                    'f',
-                    2
-                )
-            )
-        );
-
-        table->setItem(
-            row,
-            5,
-            new QTableWidgetItem(
-                QString::number(
-                    playerStats.damageDone
-                )
-            )
-        );
-
-        table->setItem(
-            row,
-            6,
-            new QTableWidgetItem(
-                QString::number(
-                    playerStats.damageTaken
-                )
-            )
-        );
-    }
-
-    // Stretch columns across the dialog.
-    table->horizontalHeader()
-        ->setSectionResizeMode(
-            QHeaderView::Stretch
-        );
-
-    // Stats are view-only.
-    table->setEditTriggers(
-        QAbstractItemView::NoEditTriggers
-    );
-
-    table->setSelectionBehavior(
-        QAbstractItemView::SelectRows
-    );
-
-    layout->addWidget(table);
-
-    // Close button
-    QDialogButtonBox* buttons =
-        new QDialogButtonBox(
-            QDialogButtonBox::Close,
-            &dialog
-        );
-
-    connect(
-        buttons,
-        &QDialogButtonBox::rejected,
-        &dialog,
-        &QDialog::reject
-    );
-
-    layout->addWidget(buttons);
-
-    dialog.exec();
-}

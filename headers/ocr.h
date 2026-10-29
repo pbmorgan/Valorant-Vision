@@ -75,6 +75,8 @@ signals:
         QString rightTeam,
         int rightScore
     );
+    // Notifies the GUI when replay footage starts or ends.
+    void replayStateChanged(bool inReplay);
 
 private slots:
     void processNextFrame();

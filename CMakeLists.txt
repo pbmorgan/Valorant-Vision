@@ -67,12 +67,14 @@ add_executable(Valorant-Vision
     "cpp/ocr.cpp"
     "cpp/webScraper.cpp"
     "cpp/playertracker.cpp"
+    "cpp/playerstatswidget.cpp"
     "headers/videoplayer.h"
     "headers/minimap.h"
     "headers/mainwindow.h"
     "headers/ocr.h"
     "headers/playertracker.h"
-)
+    "headers/playerstatswidget.h" 
+   )
 
 # Lets us just include the files without having to specify relative path
 target_include_directories(Valorant-Vision PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/cpp")
