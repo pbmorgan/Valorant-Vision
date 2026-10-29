@@ -5,11 +5,12 @@
 #include <QLabel>
 #include <QPixmap>
 
-#include <Eigen/dense>
+#include <Eigen/Dense>
 #include <opencv2/opencv.hpp>
 
 #include <vector>
 #include <string>
+
 
 #include <nlohmann/json.hpp>
 
@@ -39,6 +40,12 @@ public:
 	void resizeEvent(QResizeEvent *event);
 
 	void redrawAgents(Eigen::MatrixXf frameData);
+
+	// Image Detection 2.0
+	// Returns the detected map layout path.
+	// Returns an empty QString if the frame is not confident enough.
+	QString checkMap(const cv::Mat& inputFrame);
+	
 };
 
 #endif

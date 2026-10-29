@@ -34,6 +34,10 @@ std::vector<PlayerRecord>       WebScraper::proPlayers;  // Stores all loaded pl
 std::unordered_set<std::string> WebScraper::teamLinks;   // Stores team page URLs found during scraping
 std::unordered_set<std::string> WebScraper::playerSet;   // Stores player names
 
+// Stores players grouped by team abbreviation for fast lookup.
+// Example: "SEN" -> [player1, player2, player3, ...]
+std::unordered_map<std::string, std::vector<PlayerRecord>> WebScraper::playersByTeam;
+
 // Internal helper functions
 // These functions are used internally for file handling, network requests, and HTML parsing.
 namespace {
@@ -79,6 +83,70 @@ const std::vector<PlayerRecord>& WebScraper::getPlayers()
     return proPlayers;
 }
 
+const std::vector<PlayerRecord>& WebScraper::getPlayersForTeam(const std::string& team)
+{
+    static const std::vector<PlayerRecord> empty;
+
+    // Convert the requested team abbreviation to lowercase so OCR
+    // capitalization differences do not affect the lookup.
+    std::string normalizedTeam = team;
+    for (auto& c : normalizedTeam)
+    {
+        c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+    }
+
+    // Search through the stored team keys and compare them case-insensitively.
+    for (const auto& entry : playersByTeam)
+    {
+        std::string storedTeam = entry.first;
+
+        for (auto& c : storedTeam)
+        {
+            c = static_cast<char>(std::tolower(static_cast<unsigned char>(c)));
+        }
+
+        if (storedTeam == normalizedTeam)
+        {
+            return entry.second;
+        }
+    }
+
+    // Return an empty vector if the team was not found.
+    return empty;
+}
+
+// Returns every unique team abbreviation currently stored
+// in the local player database.
+std::vector<std::string> WebScraper::getTeamNames()
+{
+    // If the database has not been loaded yet, load players.txt first.
+    // loadPlayersFromFile() also builds playersByTeam.
+    if (playersByTeam.empty())
+    {
+        loadPlayersFromFile();
+    }
+
+    std::vector<std::string> teams;
+
+    // Reserve enough space so the vector does not need to repeatedly
+    // resize while team names are being added.
+    teams.reserve(playersByTeam.size());
+
+    // Each key in playersByTeam is already a unique team abbreviation.
+    for (const auto& entry : playersByTeam)
+    {
+        if (!entry.first.empty())
+        {
+            teams.push_back(entry.first);
+        }
+    }
+
+    // Sort the names so the order is predictable every time the app runs.
+    std::sort(teams.begin(), teams.end());
+
+    return teams;
+}
+
 // fileExists checks if players.txt exists and is non-empty
 // Very basic check so might need to be expanded in the future
 bool WebScraper::fileExists()
@@ -104,34 +172,75 @@ bool WebScraper::fileExists()
 // Reads from players.txt and populates proPlayers and playerSet
 void WebScraper::loadPlayersFromFile()
 {
-    // Clear existing data before loading new data
+    // Clear the current in-memory database before reloading it.
     proPlayers.clear();
     playerSet.clear();
+    playersByTeam.clear();
 
-    // Check if file exists before trying to read
     std::ifstream file(playersFilePath());
+
     if (!file.is_open())
     {
         std::cerr << "Could not open players.txt\n";
         return;
     }
 
-    // Read each line, expecting format: "TEAM PLAYERNAME"
     std::string line;
+
     while (std::getline(file, line))
     {
-        if (line.empty()) continue;
-        auto space = line.find(' ');
-        if (space == std::string::npos) continue;
+        if (line.empty())
+            continue;
 
         PlayerRecord rec;
-        rec.team = line.substr(0, space);
-        rec.name = line.substr(space + 1);
+
+        // New format:
+        // REGION|TEAM|PLAYER
+        size_t firstPipe = line.find('|');
+        size_t secondPipe =
+            (firstPipe == std::string::npos)
+            ? std::string::npos
+            : line.find('|', firstPipe + 1);
+
+        if (firstPipe != std::string::npos &&
+            secondPipe != std::string::npos)
+        {
+            rec.region = line.substr(0, firstPipe);
+
+            rec.team = line.substr(
+                firstPipe + 1,
+                secondPipe - firstPipe - 1);
+
+            rec.name = line.substr(secondPipe + 1);
+        }
+        else
+        {
+            // Backward compatibility with the old database:
+            //
+            // TEAM PLAYER
+            //
+            // We cannot know the region from an old line,
+            // so mark it as Unknown.
+            size_t space = line.find(' ');
+
+            if (space == std::string::npos)
+                continue;
+
+            rec.region = "Unknown";
+            rec.team = line.substr(0, space);
+            rec.name = line.substr(space + 1);
+        }
+
         proPlayers.push_back(rec);
         playerSet.insert(rec.name);
+
+        // Build the normal team lookup used by OCR.
+        playersByTeam[rec.team].push_back(rec);
     }
 
-    std::cout << "Loaded " << proPlayers.size() << " players from file.\n";
+    std::cout << "Loaded "
+        << proPlayers.size()
+        << " players from file.\n";
 }
 
 // Writes current proPlayers data to players.txt in "TEAM PLAYERNAME" format
@@ -156,9 +265,17 @@ void WebScraper::savePlayersToFile()
         return;
     }
 
-    // Write each player record in "TEAM PLAYERNAME" format
+    // New database format:
+// REGION|TEAM|PLAYER
     for (const auto& p : proPlayers)
-        file << p.team << " " << p.name << "\n";
+    {
+        file << p.region
+            << "|"
+            << p.team
+            << "|"
+            << p.name
+            << "\n";
+    }
 
     std::cout << "Saved " << proPlayers.size() << " players to: " << filePath << "\n";
 }
@@ -175,9 +292,9 @@ std::string WebScraper::downloadPage(const std::string& url, int maxRetries)
     curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &html);
-    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
+    curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 10L);
     curl_easy_setopt(curl, CURLOPT_USERAGENT, "Mozilla/5.0");
-    curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 5L);
+    curl_easy_setopt(curl, CURLOPT_CONNECTTIMEOUT, 30L);
     curl_easy_setopt(curl, CURLOPT_TIMEOUT, 10L);
 
     // Attempt the request with retries
@@ -213,6 +330,10 @@ std::vector<std::string> WebScraper::scrapeAllTeamAbbreviations()
         "https://www.vlr.gg/rankings/north-america",
         "https://www.vlr.gg/rankings/brazil",
         "https://www.vlr.gg/rankings/asia-pacific",
+
+        // Korea has its own VLR ranking page.
+        "https://www.vlr.gg/rankings/korea",
+
         "https://www.vlr.gg/rankings/china",
         "https://www.vlr.gg/rankings/japan",
         "https://www.vlr.gg/rankings/la-s",
@@ -268,7 +389,16 @@ void WebScraper::extractTeams(const std::string& html)
     auto end   = std::sregex_iterator();
 
     for (auto it = begin; it != end; ++it)
-        teamLinks.insert("https://www.vlr.gg/team/" + (*it)[1].str());
+    {
+        // Build the canonical VLR team URL from the captured team ID.
+        std::string teamUrl =
+            "https://www.vlr.gg/team/" + (*it)[1].str();
+
+        
+
+        // Store the discovered team URL in the set.
+        teamLinks.insert(teamUrl);
+    }
 }
 
 // Parses VLR search results into (canonical-team-url, displayed-title) pairs.
@@ -335,7 +465,7 @@ std::string WebScraper::extractTeamTag(const std::string& html)
 }
 
 // Extracts player names from a team page's HTML by finding the "players" section and parsing player entries
-std::string WebScraper::extractPlayers(const std::string& html)
+std::string WebScraper::extractPlayers(const std::string& html,const std::string& region)
 {
     std::unordered_set<std::string> teamPlayerSet;
     std::string teamName = extractTeamTag(html);
@@ -453,6 +583,9 @@ std::string WebScraper::extractPlayers(const std::string& html)
         if (!player.empty() && teamPlayerSet.insert(player).second)
         {
             PlayerRecord rec;
+
+            // Store where this roster came from.
+            rec.region = region;
             rec.name = player;
             rec.team = teamName;
 
@@ -524,6 +657,94 @@ bool WebScraper::scrapeTeamsByAbbreviation(const std::string& teamA, const std::
     return anyTeamFound;
 }
 
+// Searches VLR for one team that is missing from the local database.
+// If the team is found, its players are added to the existing local
+// players.txt database instead of replacing the entire database.
+bool WebScraper::scrapeMissingTeam(const std::string& teamAbbreviation)
+{
+    std::cout << "Searching VLR for missing team: "
+        << teamAbbreviation << "\n";
+    std::cout.flush();
+
+    // Load the existing local database first.
+    // This is important because we want to ADD the missing team
+    // without deleting the thousands of players already stored.
+    loadPlayersFromFile();
+
+    // Search VLR for the requested team abbreviation.
+    std::string searchHTML =
+        downloadPage(
+            "https://www.vlr.gg/search/?q=" +
+            teamAbbreviation +
+            "&type=teams"
+        );
+
+    // Stop if the search page could not be downloaded.
+    if (searchHTML.empty())
+    {
+        std::cerr << "Could not search VLR for team: "
+            << teamAbbreviation << "\n";
+        return false;
+    }
+
+    // Clear old temporary team links before processing
+    // the current search results.
+    teamLinks.clear();
+
+    // Extract all team-page URLs returned by the VLR search.
+    extractTeams(searchHTML);
+
+    // Convert the requested abbreviation to lowercase so the
+    // comparison is not affected by capitalization.
+    std::string requestedTeam = toLower(teamAbbreviation);
+
+    // Check each team returned by the VLR search.
+    for (const auto& url : teamLinks)
+    {
+        std::cout << "Checking: " << url << "\n";
+        std::cout.flush();
+
+        // Download this candidate team's VLR page.
+        std::string html = downloadPage(url);
+
+        if (html.empty())
+            continue;
+
+        // Read the team's actual abbreviation from its VLR page.
+        std::string foundTag = extractTeamTag(html);
+
+        // Compare team abbreviations case-insensitively.
+        if (toLower(foundTag) != requestedTeam)
+            continue;
+
+        std::cout << "Found missing team: "
+            << foundTag << "\n";
+
+        // Add this team's players to proPlayers.
+        // Because loadPlayersFromFile() ran earlier, proPlayers
+        // already contains the existing local database.
+        extractPlayers(html);
+
+        // Save the existing database plus the newly found team.
+        savePlayersToFile();
+
+        // Reload the file so playersByTeam contains the new team
+        // immediately for future local lookups.
+        loadPlayersFromFile();
+
+        std::cout << "Added " << foundTag
+            << " to the local player database.\n";
+
+        return true;
+    }
+
+    // No exact matching team abbreviation was found.
+    std::cerr << "Could not find exact VLR team: "
+        << teamAbbreviation << "\n";
+
+    return false;
+}
+
 // If we couldn't find the teams by their abbreviations and there's no existing players.txt file, show a dialog to select regions to scrape all teams from
 // Could use more styling, is very basic pop up right now 
 std::vector<std::string> WebScraper::promptRegionSelection()
@@ -534,6 +755,11 @@ std::vector<std::string> WebScraper::promptRegionSelection()
         { "North America", "https://www.vlr.gg/rankings/north-america" },
         { "Brazil",        "https://www.vlr.gg/rankings/brazil"        },
         { "Asia-Pacific",  "https://www.vlr.gg/rankings/asia-pacific"  },
+
+        // Korea has its own VLR ranking page and is not included
+        // in the general Asia-Pacific rankings.
+        { "Korea",         "https://www.vlr.gg/rankings/korea"         },
+
         { "China",         "https://www.vlr.gg/rankings/china"         },
         { "Japan",         "https://www.vlr.gg/rankings/japan"         },
         { "LA South",      "https://www.vlr.gg/rankings/la-s"          },
@@ -548,7 +774,7 @@ std::vector<std::string> WebScraper::promptRegionSelection()
 
     // Create a dialog with a list of regions and OK/Cancel buttons
     QDialog dialog;
-    dialog.setWindowTitle("Select Regions to Scrape");
+    dialog.setWindowTitle("Refresh Player Database");
     dialog.setMinimumWidth(300);
 
     // Vertical layout for the dialog
@@ -556,8 +782,7 @@ std::vector<std::string> WebScraper::promptRegionSelection()
 
     // Instruction label at the top of the dialog
     QLabel* label = new QLabel(
-        "Could not find teams via search.\n"
-        "Select regions to scrape all teams from:"
+        "Select the region(s) you want to refresh:"
     );
     layout->addWidget(label);
 
@@ -570,16 +795,27 @@ std::vector<std::string> WebScraper::promptRegionSelection()
 
     // Horizontal layout for OK and Cancel buttons
     QHBoxLayout* buttons = new QHBoxLayout();
-    QPushButton* ok = new QPushButton("Scrape Selected");
-    QPushButton* cancel = new QPushButton("Skip - Scrape All");
+    // Allow the user to easily migrate/rebuild every region.
+    QPushButton* selectAll =
+        new QPushButton("Select All");
+
+    QPushButton* ok =
+        new QPushButton("Refresh Selected");
+
+    QPushButton* cancel =
+        new QPushButton("Cancel");
+
+
+
+    buttons->addWidget(selectAll);
     buttons->addWidget(ok);
     buttons->addWidget(cancel);
     layout->addLayout(buttons);
 
     // Connect button signals to dialog slots for accepting or rejecting the selection
     QObject::connect(ok, &QPushButton::clicked, &dialog, &QDialog::accept);
-    QObject::connect(cancel, &QPushButton::clicked, &dialog, &QDialog::reject);
-
+    QObject::connect(cancel, &QPushButton::clicked, &dialog, &QDialog::reject);// Highlight every region in the list.
+    QObject::connect(selectAll,&QPushButton::clicked,list,&QListWidget::selectAll);
     // Execute the dialog and if the user accepted, gather the selected regions' URLs based on their selection in the list widget
     if (dialog.exec() == QDialog::Accepted)
     {
@@ -593,21 +829,401 @@ std::vector<std::string> WebScraper::promptRegionSelection()
     return selected;
 }
 
+bool WebScraper::refreshRegions(
+    const std::vector<std::string>& regionUrls)
+{
+    // Nothing was selected.
+    if (regionUrls.empty())
+    {
+        return false;
+    }
+
+    // These names must match the names used by the GUI.
+    static const std::vector<std::pair<std::string, std::string>> regions = {
+        { "Europe",        "https://www.vlr.gg/rankings/europe" },
+        { "North America", "https://www.vlr.gg/rankings/north-america" },
+        { "Brazil",        "https://www.vlr.gg/rankings/brazil" },
+        { "Asia-Pacific",  "https://www.vlr.gg/rankings/asia-pacific" },
+
+        // Korea is a separate VLR ranking region.
+        { "Korea",         "https://www.vlr.gg/rankings/korea" },
+
+        { "China",         "https://www.vlr.gg/rankings/china" },
+        { "Japan",         "https://www.vlr.gg/rankings/japan" },
+        { "LA South",      "https://www.vlr.gg/rankings/la-s" },
+        { "LA North",      "https://www.vlr.gg/rankings/la-n" },
+        { "Oceania",       "https://www.vlr.gg/rankings/oceania" },
+        { "GC",            "https://www.vlr.gg/rankings/gc" },
+        { "MENA",          "https://www.vlr.gg/rankings/mena" },
+        { "Collegiate",    "https://www.vlr.gg/rankings/collegiate" }
+    };
+
+    // Load the entire existing database first.
+    loadPlayersFromFile();
+
+    // Save a copy in case something goes wrong while downloading.
+    std::vector<PlayerRecord> originalPlayers = proPlayers;
+
+    // Determine the names of the regions selected by the user.
+    std::unordered_set<std::string> selectedRegionNames;
+
+    for (const auto& selectedUrl : regionUrls)
+    {
+        for (const auto& region : regions)
+        {
+            if (region.second == selectedUrl)
+            {
+                selectedRegionNames.insert(region.first);
+                break;
+            }
+        }
+    }
+
+    if (selectedRegionNames.empty())
+    {
+        return false;
+    }
+
+
+
+    // Determine whether the database still needs its first
+// full regional migration.
+    bool hasLegacyRecords = false;
+
+    // Check whether at least one player already has
+    // an actual region assigned.
+    bool hasKnownRegion = false;
+
+    for (const auto& player : originalPlayers)
+    {
+        if (player.region != "Unknown")
+        {
+            hasKnownRegion = true;
+            break;
+        }
+    }
+
+    // Check players.txt for the OLD format:
+    //
+    // TEAM PLAYER
+    //
+    // The new format is:
+    //
+    // REGION|TEAM|PLAYER
+    {
+        std::ifstream file(playersFilePath());
+        std::string line;
+
+        while (std::getline(file, line))
+        {
+            if (line.empty())
+            {
+                continue;
+            }
+
+            size_t firstPipe = line.find('|');
+
+            size_t secondPipe =
+                (firstPipe == std::string::npos)
+                ? std::string::npos
+                : line.find('|', firstPipe + 1);
+
+            // If the line does not have two pipe characters,
+            // it is still using the old format.
+            if (firstPipe == std::string::npos ||
+                secondPipe == std::string::npos)
+            {
+                hasLegacyRecords = true;
+                break;
+            }
+        }
+    }
+
+    // There is also a case where the old database may have
+    // already been rewritten as:
+    //
+    // Unknown|TEAM|PLAYER
+    //
+    // If every player is still Unknown, treat the database
+    // as needing the initial full migration.
+    if (!originalPlayers.empty() && !hasKnownRegion)
+    {
+        hasLegacyRecords = true;
+    }
+
+
+    
+
+    // Because the old players.txt did not contain region information,
+    // we cannot safely refresh only one region the first time.
+    //
+    // The user must select every region once to migrate the database
+    // into the new REGION|TEAM|PLAYER format.
+    if (hasLegacyRecords &&
+        selectedRegionNames.size() != regions.size())
+    {
+        std::cerr
+            << "Old player database format detected.\n"
+            << "Select all regions once to migrate the database.\n";
+
+        return false;
+    }
+
+    // We temporarily append newly scraped players after the
+    // existing database. We do not delete anything yet.
+    size_t oldPlayerCount = proPlayers.size();
+
+    std::unordered_set<std::string> scrapedTeamUrls;
+
+    // Scrape only the regions selected by the user.
+    for (const auto& selectedUrl : regionUrls)
+    {
+        std::string regionName;
+
+        for (const auto& region : regions)
+        {
+            if (region.second == selectedUrl)
+            {
+                regionName = region.first;
+                break;
+            }
+        }
+
+        if (regionName.empty())
+            continue;
+
+        std::cout << "Refreshing region: "
+            << regionName << "\n";
+
+        // Download this region's ranking page.
+        std::string rankingHTML =
+            downloadPage(selectedUrl);
+
+        // TEMP DEBUG:
+        // Show how much HTML libcurl received from this VLR ranking page.
+        std::cout << "Ranking HTML size: "
+            << rankingHTML.size()
+            << " bytes\n";
+
+        // TEMP DEBUG:
+        // Check whether the downloaded HTML actually contains VLR team links.
+        std::cout << "Contains /team/: "
+            << (rankingHTML.find("/team/") != std::string::npos ? "YES" : "NO")
+            << "\n";
+
+        // Do not modify players.txt if a selected ranking page
+        // cannot even be downloaded.
+        if (rankingHTML.empty())
+        {
+            std::cerr
+                << "Could not download region: "
+                << regionName << "\n";
+
+            proPlayers = originalPlayers;
+            return false;
+        }
+
+        // Get only the teams belonging to this ranking page.
+        teamLinks.clear();
+        extractTeams(rankingHTML);
+
+        std::vector<std::string> currentTeamLinks(
+            teamLinks.begin(),
+            teamLinks.end());
+
+        for (const auto& teamUrl : currentTeamLinks)
+        {
+            // Prevent the same team page from being scraped twice
+            // if VLR happens to list it in multiple selected regions.
+            if (!scrapedTeamUrls.insert(teamUrl).second)
+            {
+                continue;
+            }
+
+            std::cout << "Scraping: "
+                << teamUrl << "\n";
+
+            std::string teamHTML =
+                downloadPage(teamUrl);
+
+            if (teamHTML.empty())
+            {
+                std::cerr
+                    << "Could not download team page: "
+                    << teamUrl << "\n";
+
+                // Restore the original in-memory database.
+                // Do not partially replace a region.
+                proPlayers = originalPlayers;
+
+                return false;
+            }
+
+            // First make sure this is a valid team page.
+            std::string teamTag = extractTeamTag(teamHTML);
+
+            if (teamTag.empty())
+            {
+                std::cerr
+                    << "Could not identify team page: "
+                    << teamUrl << "\n";
+
+                // Something is wrong with the page/parser,
+                // so abort instead of risking the database.
+                proPlayers = originalPlayers;
+
+                return false;
+            }
+
+            // Remember how many players existed before parsing this team.
+            size_t playersBefore = proPlayers.size();
+
+            // Add these players with their region attached.
+            extractPlayers(teamHTML, regionName);
+
+            // Some ranked VLR teams may currently have no active roster.
+            // That is valid, so skip them instead of failing the entire refresh.
+            if (proPlayers.size() == playersBefore)
+            {
+                std::cout
+                    << "No active roster found for "
+                    << teamTag
+                    << ". Skipping team.\n";
+
+                continue;
+            }
+        }
+    }
+
+    // Safety check before using oldPlayerCount as a vector offset.
+      //
+    // oldPlayerCount should never be greater than the current
+    // proPlayers size. If it is, something reset proPlayers while
+    // the regional refresh was running.
+    if (oldPlayerCount > proPlayers.size())
+    {
+        std::cerr
+            << "ERROR: Player vector became smaller during refresh.\n"
+            << "Old player count: " << oldPlayerCount << "\n"
+            << "Current player count: " << proPlayers.size() << "\n";
+
+        // Restore the database from before the refresh.
+        proPlayers = originalPlayers;
+
+        return false;
+    }
+
+    // Copy only the players that were added during this refresh.
+    std::vector<PlayerRecord> refreshedPlayers(
+        proPlayers.begin() + oldPlayerCount,
+        proPlayers.end());
+
+    if (refreshedPlayers.empty())
+    {
+        std::cerr
+            << "No players were found for the selected regions.\n";
+
+        proPlayers = originalPlayers;
+        return false;
+    }
+
+    // Collect all teams we just refreshed.
+    // This also lets us replace an old "Unknown" copy of a team
+    // if that team was previously added through scrapeMissingTeam().
+    std::unordered_set<std::string> refreshedTeams;
+
+    for (const auto& player : refreshedPlayers)
+    {
+        refreshedTeams.insert(
+            toLower(player.team));
+    }
+
+    // Go back to the original database before replacing records.
+    proPlayers = originalPlayers;
+
+    // First migration:
+    // all old records have no reliable region information,
+    // so after successfully scraping ALL regions we discard them.
+    if (hasLegacyRecords)
+    {
+        proPlayers.clear();
+    }
+    else
+    {
+        // Remove:
+        // 1. old records belonging to a selected region
+        // 2. old/Unknown copies of teams that were just refreshed
+        proPlayers.erase(
+            std::remove_if(
+                proPlayers.begin(),
+                proPlayers.end(),
+                [&](const PlayerRecord& player)
+                {
+                    bool selectedRegion =
+                        selectedRegionNames.count(
+                            player.region) > 0;
+
+                    bool refreshedTeam =
+                        refreshedTeams.count(
+                            toLower(player.team)) > 0;
+
+                    // Remove players from the region being refreshed.
+                    //
+                    // Also remove an "Unknown" copy of a team if that team
+                    // has now been found through a regional refresh.
+                    //
+                    // Do NOT remove records from other named regions.
+                    bool unknownCopyOfRefreshedTeam =
+                        player.region == "Unknown" &&
+                        refreshedTeam;
+
+                    return selectedRegion ||
+                        unknownCopyOfRefreshedTeam;
+                }),
+            proPlayers.end());
+    }
+
+    // Add the fresh copies from VLR.
+    proPlayers.insert(
+        proPlayers.end(),
+        refreshedPlayers.begin(),
+        refreshedPlayers.end());
+
+    // Rebuild the helper set.
+    playerSet.clear();
+
+    for (const auto& player : proPlayers)
+    {
+        playerSet.insert(player.name);
+    }
+
+    // Save the combined database.
+    savePlayersToFile();
+
+    // Rebuild playersByTeam so OCR can immediately use it.
+    loadPlayersFromFile();
+
+    std::cout
+        << "Selected regions refreshed successfully.\n";
+
+    return true;
+}
+
 // Final resort if we couldn't find the teams by their abbreviations and there's no existing players.txt file,
 // and the user either skipped the region selection or didn't select any regions
 void WebScraper::scrapePlayers()
 {
-    // Clear any existing data before starting the full scrape
-    proPlayers.clear();
-    teamLinks.clear();
-    playerSet.clear();
-
-    // List of all region ranking page URLs to scrape teams from
+    // A full database refresh is simply a refresh of every
+    // supported VLR region.
     static const std::vector<std::string> regions = {
         "https://www.vlr.gg/rankings/europe",
         "https://www.vlr.gg/rankings/north-america",
         "https://www.vlr.gg/rankings/brazil",
         "https://www.vlr.gg/rankings/asia-pacific",
+
+        // Korea has its own VLR ranking page.
+        "https://www.vlr.gg/rankings/korea",
+
         "https://www.vlr.gg/rankings/china",
         "https://www.vlr.gg/rankings/japan",
         "https://www.vlr.gg/rankings/la-s",
@@ -618,141 +1234,96 @@ void WebScraper::scrapePlayers()
         "https://www.vlr.gg/rankings/collegiate"
     };
 
-    // First, scrape all the team pages from the region ranking pages to populate teamLinks
-    std::cout << "Downloading all ranking pages...\n";
-    for (const auto& region : regions)
+    // Reuse the regional-refresh system instead of maintaining
+    // a second full-scrape implementation.
+    bool success = refreshRegions(regions);
+
+    if (!success)
     {
-        std::cout << "Scraping: " << region << "\n"; // Log the region being scraped
-        std::cout.flush();
-        std::string html = downloadPage(region);
-        if (!html.empty())
-            extractTeams(html);
+        std::cerr
+            << "Full player database refresh failed.\n";
     }
-
-    // Then, for each team page URL found, scrape the player names and teams to populate proPlayers
-    std::cout << "Teams found: " << teamLinks.size() << "\n";
-
-    // Loop through each team page URL in teamLinks, download the page, and extract player information
-    for (const auto& url : teamLinks)
-    {
-        std::cout << "Scraping: " << url << "\n";
-        std::cout.flush();
-        std::string html = downloadPage(url);
-        if (!html.empty())
-            extractPlayers(html);
-    }
-
-    std::cout << "Players found: " << proPlayers.size() << "\n";
-    savePlayersToFile();
 }
 
 // Main initialization function called by main.cpp after OCR attempts to detect teams
-bool WebScraper::prepareForMatch(const std::string& teamA, const std::string& teamB)
+bool WebScraper::prepareForMatch(
+    const std::string& teamA,
+    const std::string& teamB)
 {
-    std::cout << "Looking for teams: " << teamA << " / " << teamB << "\n";
+    std::cout << "Looking for teams: "
+        << teamA << " / " << teamB << "\n";
     std::cout.flush();
 
+    // Load the local database if it has not been loaded yet.
+    if (playersByTeam.empty())
+    {
+        loadPlayersFromFile();
+    }
+
+    // Check whether each team already exists locally.
+    bool foundA = !getPlayersForTeam(teamA).empty();
+    bool foundB = !getPlayersForTeam(teamB).empty();
+
+    std::cout << "Team A: "
+        << (foundA ? "GOOD" : "MISSING") << "\n";
+
+    std::cout << "Team B: "
+        << (foundB ? "GOOD" : "MISSING") << "\n";
+
+    // If Team A is missing, search VLR and add it to players.txt.
+    if (!foundA)
+    {
+        std::cout << "Team A missing locally. Searching VLR...\n";
+
+        bool scrapedA = scrapeMissingTeam(teamA);
+
+        // Verify that the team is now actually available locally.
+        foundA =
+            scrapedA &&
+            !getPlayersForTeam(teamA).empty();
+    }
+
+    // If Team B is missing, search VLR and add it to players.txt.
+    if (!foundB)
+    {
+        std::cout << "Team B missing locally. Searching VLR...\n";
+
+        bool scrapedB = scrapeMissingTeam(teamB);
+
+        // Verify that the team is now actually available locally.
+        foundB =
+            scrapedB &&
+            !getPlayersForTeam(teamB).empty();
+    }
+
+    // IMPORTANT:
+    // Get the rosters AFTER any web scraping has finished.
+    // scrapeMissingTeam() reloads playersByTeam.
+    std::vector<PlayerRecord> teamAPlayers =
+        getPlayersForTeam(teamA);
+
+    std::vector<PlayerRecord> teamBPlayers =
+        getPlayersForTeam(teamB);
+
+    // proPlayers should now contain ONLY the players
+    // needed for this particular match.
     proPlayers.clear();
     playerSet.clear();
     teamLinks.clear();
 
-    auto tryTeam = [&](const std::string& team) -> bool
-        {
-            if (team.empty())
-                return false;
-
-            std::cout << "Searching for: " << team << "\n";
-
-            std::string searchHTML =
-                downloadPage("https://www.vlr.gg/search/?q=" + team + "&type=teams");
-
-            if (searchHTML.empty())
-                return false;
-
-            // Rank candidates: non-inactive first, otherwise trust VLR's search ranking.
-            // We deliberately do NOT prioritize exact title matches: short titles like
-            // "PRX" or "SEN" are usually secondary/empty teams, while the canonical org
-            // (Paper Rex, Sentinels) ranks higher in VLR's natural search order.
-            auto hits = parseSearchHits(searchHTML);
-            std::string wantLower = toLower(team);
-            std::stable_sort(hits.begin(), hits.end(),
-                [&](const SearchHit& a, const SearchHit& b) {
-                    if (a.inactive != b.inactive) return !a.inactive;
-                    return false;
-                });
-
-            const int kMaxFetches = 8;
-            int fetched = 0;
-            for (const auto& hit : hits) {
-                if (fetched++ >= kMaxFetches) break;
-
-                std::string html = downloadPage(hit.url);
-                if (html.empty()) continue;
-
-                std::string tag = extractTeamTag(html);
-                if (toLower(tag) != wantLower) continue;
-
-                // Tag matches - try to extract roster. If 0 players come back,
-                // it's a tag collision with a stub/empty team; keep looking.
-                size_t before = proPlayers.size();
-                extractPlayers(html);
-                size_t added  = proPlayers.size() - before;
-                if (added == 0) {
-                    std::cout << "Tag " << tag << " matched at " << hit.url
-                              << " but roster was empty — trying next candidate\n";
-                    continue;
-                }
-
-                std::cout << "Found team: " << tag << " at " << hit.url
-                          << " (" << added << " players)\n";
-                return true;
-            }
-
-            return false;
-        };
-
-    bool foundA = tryTeam(teamA);
-    bool foundB = tryTeam(teamB);
-
-    std::cout << "Team A: " << (foundA ? "GOOD" : "MISSING") << "\n";
-    std::cout << "Team B: " << (foundB ? "GOOD" : "MISSING") << "\n";
-
-    // Per-team file fallback -if a team didn't scrape but its players are cached
-    // in players.txt from a previous run, pull just that team's records in.
-    // Avoids the "only one team scraped" failure mode where the other team is silently missing.
-    auto fillFromCache = [](const std::string& wanted) -> int {
-        if (wanted.empty() || !fileExists()) return 0;
-        std::ifstream f(playersFilePath());
-        std::string line;
-        std::string wantLower = toLower(wanted);
-        int added = 0;
-        while (std::getline(f, line)) {
-            if (line.empty()) continue;
-            auto sp = line.find(' ');
-            if (sp == std::string::npos) continue;
-            std::string team = line.substr(0, sp);
-            if (toLower(team) != wantLower) continue;
-            PlayerRecord rec;
-            rec.team = team;
-            rec.name = line.substr(sp + 1);
-            proPlayers.push_back(rec);
-            playerSet.insert(rec.name);
-            ++added;
-        }
-        return added;
-    };
-
-    if (!foundA) {
-        int n = fillFromCache(teamA);
-        if (n > 0) std::cout << "Team A " << teamA << ": filled " << n << " players from cache\n";
-    }
-    if (!foundB) {
-        int n = fillFromCache(teamB);
-        if (n > 0) std::cout << "Team B " << teamB << ": filled " << n << " players from cache\n";
+    // Add Team A's roster.
+    for (const auto& player : teamAPlayers)
+    {
+        proPlayers.push_back(player);
+        playerSet.insert(player.name);
     }
 
-    if (!proPlayers.empty())
-        savePlayersToFile();
-
-    return !proPlayers.empty();
+    // Add Team B's roster.
+    for (const auto& player : teamBPlayers)
+    {
+        proPlayers.push_back(player);
+        playerSet.insert(player.name);
+    }
+    
+    return foundA && foundB;
 }

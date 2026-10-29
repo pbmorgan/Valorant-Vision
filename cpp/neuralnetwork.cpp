@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <filesystem>
 #include <iostream>
+#include <chrono>
 
 #include <onnxruntime_cxx_api.h>
 
@@ -11,9 +12,16 @@ NeuralNetwork::NeuralNetwork(const T_CHAR *onnxFilePath, const int ROWS, const i
     this->ROWS = ROWS;
     this->COLS = COLS;
 
+    // Disable ONNX Runtime's per-node debug spam.
+    // The special ONNX Runtime build we are using prints tensor shapes
+    // and execution-provider placement by default.
+    #ifdef _WIN32
+    _putenv_s("ORT_DEBUG_NODE_IO_DUMP_SHAPE_DATA", "0");
+    _putenv_s("ORT_DEBUG_NODE_IO_DUMP_NODE_PLACEMENT", "0");
+    #endif
     //Set up environment and session options
     env = new Ort::Env(ORT_LOGGING_LEVEL_WARNING, "Valorant-Vision Model");
-    sessionOptions.SetIntraOpNumThreads(1);
+    sessionOptions.SetIntraOpNumThreads(0);
     sessionOptions.SetGraphOptimizationLevel(GraphOptimizationLevel::ORT_ENABLE_ALL);
 
     //Create session
@@ -46,22 +54,15 @@ NeuralNetwork::NeuralNetwork(const T_CHAR *onnxFilePath, const int ROWS, const i
         outputNodeNamesCStyle.push_back(name.c_str());
     }
 
-    //Set up tracker (will use default parameters for now, but this will get changed will actually ran)
-    try {
-        tracker = new motcpp::trackers::ByteTrack(); // Set the tracker to the defaults for now
-    }
-    catch (Ort::Exception & e) {
-        throw(e);
-    }
 }
 
-NeuralNetwork::~NeuralNetwork() {
-	delete model;
-	model = nullptr;
-	delete env;
-	env = nullptr;
-    delete tracker;
-    tracker = nullptr;
+NeuralNetwork::~NeuralNetwork()
+{
+    delete model;
+    model = nullptr;
+
+    delete env;
+    env = nullptr;
 }
 
 Eigen::MatrixXf NeuralNetwork::getCurrentPrediction() const {
@@ -106,12 +107,28 @@ void NeuralNetwork::predict(cv::Mat imageBGR) {
 
     //Perform the actual prediction
     try {
+        // TEMP DEBUG:
+// Measure how long one Faster R-CNN inference takes.
+        auto inferenceStart = std::chrono::high_resolution_clock::now();
+
         outputTensor = model->Run(Ort::RunOptions{ nullptr },
             inputNodeNamesCStyle.data(),
             &input_tensor,
             inputNodeNamesCStyle.size(),
             outputNodeNamesCStyle.data(),
             outputNodeNamesCStyle.size());
+        auto inferenceEnd = std::chrono::high_resolution_clock::now();
+
+        auto inferenceMilliseconds =
+            std::chrono::duration_cast<std::chrono::milliseconds>(
+                inferenceEnd - inferenceStart
+            ).count();
+
+        std::cout
+            << "[NN TIME] "
+            << inferenceMilliseconds
+            << " ms"
+            << std::endl;
     }
     catch (const Ort::Exception &e) {
         throw(e);
@@ -141,18 +158,71 @@ void NeuralNetwork::predict(cv::Mat imageBGR) {
         currentPrediction(i, 5) = labelsArr[i];
     }
 
-    //motcpp doesn't properly check for empty predictions, so we check to make sure
-    //this likely messes with the tracking, but realistically there should almost always be SOME prediction
-    if (currentPrediction.rows() > 0) {
-        cv::Mat resizedImg;
-        cv::resize(imageBGR, resizedImg, cv::Size(COLS, ROWS));
-        try {
-            currentTracking = tracker->update(currentPrediction, resizedImg);
-        }
-        catch (...) {
-            std::cerr << "Tracker failed. Using data from previous frame" << std::endl;
+    // TEMPORARY:
+    // ByteTrack is disabled.
+    //
+    // The GUI currently expects data in this format:
+    // x1, y1, x2, y2, trackID, confidence, classID, detectionIndex
+    //
+    // Faster R-CNN gives us:
+    // x1, y1, x2, y2, confidence, classID
+    //
+    // For now, convert the raw detections into the format expected by
+    // the existing minimap code. These are NOT real tracking IDs.
+
+    constexpr float CONFIDENCE_THRESHOLD = 0.50f;
+    // Only keep detections above the confidence threshold
+    int validDetections = 0;
+
+    for (int i = 0; i < currentPrediction.rows(); i++) {
+        if (currentPrediction(i, 4) >= CONFIDENCE_THRESHOLD) {
+            validDetections++;
         }
     }
+    
+    // Initialize the tracking matrix with the number of valid detections.
+    currentTracking = Eigen::MatrixXf(validDetections, 8);
+    
+
+    int filteredIndex = 0;
+
+    for (int i = 0; i < currentPrediction.rows(); i++)
+    {
+        float confidence = currentPrediction(i, 4);
+
+        // Skip detections below the confidence threshold.
+        if (confidence < CONFIDENCE_THRESHOLD) {
+            continue;
+        }
+
+        // Bounding box.
+        currentTracking(filteredIndex, 0) = currentPrediction(i, 0);
+        currentTracking(filteredIndex, 1) = currentPrediction(i, 1);
+        currentTracking(filteredIndex, 2) = currentPrediction(i, 2);
+        currentTracking(filteredIndex, 3) = currentPrediction(i, 3);
+
+        // Temporary tracking ID.
+        currentTracking(filteredIndex, 4) = filteredIndex;
+
+        // Model confidence.
+        currentTracking(filteredIndex, 5) = confidence;
+
+        // Detected agent/class ID.
+        currentTracking(filteredIndex, 6) = currentPrediction(i, 5);
+
+        // Original detection index.
+        currentTracking(filteredIndex, 7) = i;
+
+        filteredIndex++;
+    }
+    // TEMP DEBUG:
+// Show whether the model is detecting anything on this frame.
+    std::cout << "[NN DETECTIONS] Raw: "
+        << currentPrediction.rows()
+        << " | Filtered: " << currentTracking.rows()
+        << " | Removed: "
+        << currentPrediction.rows() - currentTracking.rows()
+        << std::endl;
 }
 
 
@@ -206,22 +276,12 @@ void NeuralNetwork::outputTrackingImageWithBoxesAndLabels(const cv::Mat image, E
     cv::imwrite(outFileName, resizedImg);
 }
 
-void NeuralNetwork::resetTracker(const int FPS) {
-
-    delete tracker;
-    //I would recommend just going to the motcpp repo and checking what each individual parameter does, as there are so many...
-    tracker = new motcpp::trackers::ByteTrack(0.3f,
-                                            80 * (30.0 / FPS),
-                                            120,
-                                            6,
-                                            0.3f,
-                                            true,
-                                            80, //Number of classes. It's fine to leave for now, but might cause issues if it goes over 80
-                                            "iou",
-                                            false,
-                                            0.3f,
-                                            0.45f,
-                                            0.8f,
-                                            80 * (30.0 / FPS),
-                                            FPS);
+void NeuralNetwork::resetTracker(const int FPS)
+{
+    // TEMPORARY:
+    // ByteTrack is disabled while we test whether Faster R-CNN
+    // can load and run successfully.
+    //
+    // Keep this function so ModelWrapper does not need to change yet.
+    (void)FPS;
 }

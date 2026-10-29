@@ -4,7 +4,10 @@
 #include <QAudioOutput>
 #include <QVideoWidget>
 #include <QMediaMetadata>
-
+#include <QImage>
+// Needed to access Qt's decoded video frames.
+#include <QVideoSink>
+#include <QVideoFrame>
 #include <opencv2/opencv.hpp>
 
 #include <string>
@@ -21,17 +24,129 @@ VideoPlayer::VideoPlayer(QWidget *parentAddress) :
 	videoWidget = new QVideoWidget(this);
 	audioOutput = new QAudioOutput(this);
 	slider = new QSlider(Qt::Horizontal, this);
-
+	// Displays the current playback time and total video duration.
+	timeLabel = new QLabel("0:00 / 0:00", this);
 	player->setVideoOutput(videoWidget);
 	player->setAudioOutput(audioOutput);
+
+	// Receive the actual frames that Qt is displaying.
+//
+// Both the neural network and OCR reuse Qt's already-decoded
+// video frames instead of opening the MP4 separately.
+	connect(
+		videoWidget->videoSink(),
+		&QVideoSink::videoFrameChanged,
+		this,
+		[this](const QVideoFrame& frame)
+		{
+			// Ignore invalid frames.
+			if (!frame.isValid())
+			{
+				return;
+			}
+
+			qint64 currentPosition = player->position();
+
+			// Neural network gets a frame about every 200 ms.
+			bool sendToModel =
+				currentPosition - lastModelFramePositionMs >= 200;
+
+			// OCR gets a frame about every 500 ms.
+			bool sendToOCR =
+				currentPosition - lastOcrFramePositionMs >= 500;
+
+			// If neither system needs this frame, do nothing.
+			if (!sendToModel && !sendToOCR)
+			{
+				return;
+			}
+
+			// Convert Qt's decoded frame into a QImage only once.
+			QImage image = frame.toImage();
+
+			if (image.isNull())
+			{
+				return;
+			}
+
+			// Send the newest frame to the neural network.
+			if (sendToModel)
+			{
+				lastModelFramePositionMs = currentPosition;
+				modelWrapper.submitFrame(image);
+			}
+
+			// Send a frame to OCR.
+			if (sendToOCR)
+			{
+				lastOcrFramePositionMs = currentPosition;
+				emit ocrFrameReady(image);
+			}
+		}
+	);
 
 	connect(player, &QMediaPlayer::durationChanged, slider, &QSlider::setMaximum);
 	connect(player, &QMediaPlayer::positionChanged, slider, &QSlider::setValue);
 	connect(slider, &QSlider::sliderMoved, player, &QMediaPlayer::setPosition);
+	// Converts milliseconds into a readable video timestamp.
+//
+// Examples:
+// 65000 ms    -> 1:05
+// 3725000 ms  -> 1:02:05
+	auto formatTime = [](qint64 milliseconds) -> QString
+		{
+			qint64 totalSeconds = milliseconds / 1000;
 
-	QVBoxLayout *layout = new QVBoxLayout(this);
+			qint64 hours = totalSeconds / 3600;
+			qint64 minutes = (totalSeconds % 3600) / 60;
+			qint64 seconds = totalSeconds % 60;
+
+			if (hours > 0)
+			{
+				return QString("%1:%2:%3")
+					.arg(hours)
+					.arg(minutes, 2, 10, QChar('0'))
+					.arg(seconds, 2, 10, QChar('0'));
+			}
+
+			return QString("%1:%2")
+				.arg(minutes)
+				.arg(seconds, 2, 10, QChar('0'));
+		};
+
+	// Update the current playback time whenever the video position changes.
+	connect(
+		player,
+		&QMediaPlayer::positionChanged,
+		this,
+		[this, formatTime](qint64 position)
+		{
+			timeLabel->setText(
+				formatTime(position) +
+				" / " +
+				formatTime(player->duration())
+			);
+		}
+	);
+
+	// Update the total duration when a new video is loaded.
+	connect(
+		player,
+		&QMediaPlayer::durationChanged,
+		this,
+		[this, formatTime](qint64 duration)
+		{
+			timeLabel->setText(
+				formatTime(player->position()) +
+				" / " +
+				formatTime(duration)
+			);
+		}
+	);
+	QVBoxLayout* layout = new QVBoxLayout(this);
 	layout->addWidget(videoWidget);
 	layout->addWidget(slider);
+	layout->addWidget(timeLabel);
 
 	connect(player, &QMediaPlayer::positionChanged, this, &VideoPlayer::onFrameChange);
 
@@ -52,19 +167,66 @@ qint64 VideoPlayer::currentPositionMs() const
 //Takes in the url to a video and displays it
 void VideoPlayer::displayVideo(std::string source) {
 
+	// Allow OCR to receive a frame immediately from the new video.
+	lastOcrFramePositionMs = -500;
+
+	// Allow the neural network to receive a frame immediately
+	// from the newly loaded video.
+	lastModelFramePositionMs = -200;
+
 	//Store what the video's FPS is
 	//Using openCV to do it manually because Qt just gives the wrong FPS (it said a 60 fps video was 17 fps ????)
 	cv::VideoCapture video(source);
 	currentVideoFPS = video.get(cv::CAP_PROP_FPS);
+	// TEMP DEBUG:
+// Print the selected video's basic encoding information so we can
+// determine whether the source itself is expensive to decode.
+	double videoWidth =
+		video.get(cv::CAP_PROP_FRAME_WIDTH);
+
+	double videoHeight =
+		video.get(cv::CAP_PROP_FRAME_HEIGHT);
+
+	double videoFps =
+		video.get(cv::CAP_PROP_FPS);
+
+	int fourcc =
+		static_cast<int>(
+			video.get(cv::CAP_PROP_FOURCC)
+			);
+
+	char codec[] = {
+		static_cast<char>(fourcc & 0xFF),
+		static_cast<char>((fourcc >> 8) & 0xFF),
+		static_cast<char>((fourcc >> 16) & 0xFF),
+		static_cast<char>((fourcc >> 24) & 0xFF),
+		'\0'
+	};
+
+	std::cout
+		<< "VIDEO INFO -> "
+		<< videoWidth << "x" << videoHeight
+		<< " @ " << videoFps << " FPS"
+		<< " Codec: " << codec
+		<< std::endl;
 	video.release();
 	
+
+
 	//End the model's last processing loop if it had one
 	modelWrapper.endProcessingLoop();
-	//Let the model start another thread for processing the video's frames
-	int RUN_EVERY_N_FRAMES = currentVideoFPS / 6; //Run every third of a second
-	while (RUN_EVERY_N_FRAMES % 5 != 0) { RUN_EVERY_N_FRAMES++; } //Round up to the nearest integer divisible by 5 (it personally would annoy be if it wasn't)
 
-	modelWrapper.startProcessingLoop(source, RUN_EVERY_N_FRAMES, currentVideoFPS);
+	// TEMP PERFORMANCE TEST:
+	// Disable the neural-network/minimap processing video decoder.
+	// We are checking how much GPU Video Decode usage ModelWrapper causes.
+
+	
+	// Start the neural-network worker.
+	//
+	// ModelWrapper no longer opens the video file itself.
+	// It now waits for frames supplied by QVideoSink.
+	modelWrapper.startProcessingLoop();
+	
 
 	//Convert our string into a QString (which Qt can use)
 	QString QSource = QString::fromStdString(source);
@@ -73,12 +235,18 @@ void VideoPlayer::displayVideo(std::string source) {
 	player->play();
 }
 
-void VideoPlayer::pauseOrPlayVideo() {
-	if (player->playbackState() == QMediaPlayer::PlaybackState::PausedState) {
-		player->play();
-	}
-	else {
+void VideoPlayer::pauseOrPlayVideo()
+{
+	// If the video is currently playing, pause it.
+	if (player->playbackState() ==
+		QMediaPlayer::PlaybackState::PlayingState)
+	{
 		player->pause();
+	}
+	else
+	{
+		// PausedState OR StoppedState should both attempt playback.
+		player->play();
 	}
 }
 
@@ -94,14 +262,19 @@ void VideoPlayer::setVolume(float volume) {
     audioOutput->setVolume(volume);
 }
 
-void VideoPlayer::onFrameChange(qint64 NthMillisecond) {
+void VideoPlayer::onFrameChange(qint64 NthMillisecond)
+{
+	// Keep sending the current playback position to OCR.
 	emit videoPositionChanged(NthMillisecond);
 
-	//Get frame rate of the video to convert milliseconds to frames
-	qint64 frameNum = (NthMillisecond / 1000.0) * currentVideoFPS;
-	
-	Eigen::MatrixXf results = modelWrapper.getFrameData(frameNum);
+	// Get the newest neural-network result that has finished.
+	//
+	// We no longer ask for a specific historical frame because
+	// the neural network now follows the live playback position.
+	Eigen::MatrixXf results =
+		modelWrapper.getLatestFrameData();
 
+	// Send the newest prediction to the minimap widget.
 	emit frameChanged(results);
 }
 

@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
+# See readme.md for instructions on how to set up environment variables for vcpkg and Qt6. This will allow CMake to find the correct toolchain and libraries.
 if (NOT DEFINED ${CMAKE_TOOLCHAIN_FILE}) 
     set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
 endif()
 
-# Dynamically link the runtime libraries on Windows (MSVC)
+# Use the standalone vcpkg installation
 if(MSVC)
     cmake_policy(SET CMP0091 NEW)
     set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
@@ -27,6 +28,10 @@ find_package(onnxruntime CONFIG REQUIRED)
 
 include(FetchContent)
 
+if(MSVC)
+    set(YAML_MSVC_SHARED_RT ON CACHE BOOL "" FORCE)
+endif()
+
 # Download yaml-cpp because it breaks if used with vcpkg because of course...
 FetchContent_Declare(
     yaml-cpp
@@ -34,17 +39,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(yaml-cpp)
 
-# Download motcpp
-# Note: this is a fork of it I set up because its use of onnx runtime breaks on windows
-# If you're looking at this in a future semester, it's in the onnx_backend.hpp file
-set(MOTCPP_INSTALL OFF CACHE BOOL "" FORCE)
-FetchContent_Declare(
-    motcpp
-    GIT_REPOSITORY https://github.com/KiingdomKey/motcpp
-    GIT_TAG main
-)
-FetchContent_MakeAvailable(motcpp)
-target_link_libraries(motcpp PUBLIC yaml-cpp onnxruntime::onnxruntime)
 
 
 # Your executable
@@ -78,7 +72,6 @@ target_link_libraries(Valorant-Vision PUBLIC
     onnxruntime::onnxruntime
     Eigen3::Eigen
     yaml-cpp::yaml-cpp
-    motcpp::motcpp
     nlohmann_json::nlohmann_json
     Tesseract::libtesseract
     leptonica
@@ -115,13 +108,18 @@ add_custom_command(TARGET Valorant-Vision POST_BUILD
     "${CMAKE_SOURCE_DIR}/tessdata"
     "$<TARGET_FILE_DIR:Valorant-Vision>/tessdata"
 )
-
-# Copy data folder (players.txt) next to the exe so WebScraper finds it on any machine
+# Create the runtime players.txt from the source seed database
+# only when the runtime database does not already exist.
+#
+# This prevents rebuilding the project from overwriting teams
+# that were added to players.txt while the application was running.
 add_custom_command(TARGET Valorant-Vision POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-    "${CMAKE_SOURCE_DIR}/data"
-    "$<TARGET_FILE_DIR:Valorant-Vision>/data"
+    COMMAND ${CMAKE_COMMAND}
+        "-DSOURCE_FILE=${CMAKE_SOURCE_DIR}/data/players.txt"
+        "-DDEST_FILE=$<TARGET_FILE_DIR:Valorant-Vision>/data/players.txt"
+        -P "${CMAKE_SOURCE_DIR}/cmake/CopySeedData.cmake"
 )
+
 
 # Copy over singular files
 foreach(DLL
