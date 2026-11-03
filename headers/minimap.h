@@ -11,47 +11,70 @@
 #include <vector>
 #include <string>
 
-
 #include <nlohmann/json.hpp>
 
 // This class is used by the side bar to show logs and reset bar
 class Minimap : public QDockWidget {
 
 private:
-	QLabel* minimap_wid;
-	QPixmap pixmap;
+    QLabel* minimap_wid;
+    QPixmap pixmap;
 
-	QPixmap cvMatToQPixmap(const cv::Mat &inMat);
-	QString mapFile = "";
+    QPixmap cvMatToQPixmap(const cv::Mat& inMat);
 
-	std::vector<std::string> idToName;
-	std::vector<cv::Mat> agentIcons;
+    // Redraws the complete minimap using the latest map,
+    // agent positions, score, and round timer.
+    void redrawMinimap();
 
-	Eigen::MatrixXf lastPredictions; //We store this so that we don't have to redraw the minimap if nothing has changed
-	// True while replay footage is active.
-	// Agent positions should not be displayed during a replay.
-	bool replayActive = false;
+    QString mapFile = "";
+
+    std::vector<std::string> idToName;
+    std::vector<cv::Mat> agentIcons;
+
+    Eigen::MatrixXf lastPredictions; // We store this so that we don't have to redraw the minimap if nothing has changed
+
+    // Current match information displayed above/on the minimap.
+    QString leftTeamName = "";
+    QString rightTeamName = "";
+    QString currentRoundTimer = "";
+
+    int leftScore = -1;
+    int rightScore = -1;
+
+    // True while replay footage is active.
+    // Agent positions should not be displayed during a replay.
+    bool replayActive = false;
 
 public:
-	// sets the parent to nullptr if no main parent
-	explicit Minimap(QWidget* parent = nullptr);
+    // sets the parent to nullptr if no main parent
+    explicit Minimap(QWidget* parent = nullptr);
 
-	// allows to load an image to the minimap widget
-	void loadImage(const QString &file);
+    // allows to load an image to the minimap widget
+    void loadImage(const QString& file);
 
-	// allows the image in the widget to resize without losing the quality
-	void resizeEvent(QResizeEvent *event);
+    // allows the image in the widget to resize without losing the quality
+    void resizeEvent(QResizeEvent* event);
 
-	void redrawAgents(Eigen::MatrixXf frameData);
+    void redrawAgents(Eigen::MatrixXf frameData);
 
-	// Enables or disables agent placement during replay footage.
-	void setReplayActive(bool active);
+    // Updates the current match score shown on the minimap.
+    void updateScore(
+        QString leftTeam,
+        int newLeftScore,
+        QString rightTeam,
+        int newRightScore
+    );
 
-	// Image Detection 2.0
-	// Returns the detected map layout path.
-	// Returns an empty QString if the frame is not confident enough.
-	QString checkMap(const cv::Mat& inputFrame);
-	
+    // Updates the current Valorant round timer shown on the minimap.
+    void updateRoundTimer(QString timer);
+
+    // Enables or disables agent placement during replay footage.
+    void setReplayActive(bool active);
+
+    // Image Detection 2.0
+    // Returns the detected map layout path.
+    // Returns an empty QString if the frame is not confident enough.
+    QString checkMap(const cv::Mat& inputFrame);
 };
 
 #endif

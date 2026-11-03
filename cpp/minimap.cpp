@@ -98,6 +98,46 @@ QPixmap Minimap::cvMatToQPixmap(const cv::Mat &inMat) {
 
     return QPixmap::fromImage(qtImage).copy();
 }
+void Minimap::updateScore(
+    QString leftTeam,
+    int newLeftScore,
+    QString rightTeam,
+    int newRightScore)
+{
+    // Avoid redrawing when OCR reports the same score again.
+    if (leftTeamName == leftTeam &&
+        rightTeamName == rightTeam &&
+        leftScore == newLeftScore &&
+        rightScore == newRightScore)
+    {
+        return;
+    }
+
+    // Save the newest team names and score.
+    leftTeamName = leftTeam;
+    rightTeamName = rightTeam;
+    leftScore = newLeftScore;
+    rightScore = newRightScore;
+
+    // Redraw so score changes appear even when agents have not moved.
+    redrawMinimap();
+}
+
+
+void Minimap::updateRoundTimer(QString timer)
+{
+    // OCR may report the same timer value more than once.
+    if (currentRoundTimer == timer)
+    {
+        return;
+    }
+
+    // Save the newest round timer.
+    currentRoundTimer = timer;
+
+    // Redraw independently of agent movement.
+    redrawMinimap();
+}
 
 void Minimap::setReplayActive(bool active)
 {
@@ -109,140 +149,339 @@ void Minimap::setReplayActive(bool active)
 
     replayActive = active;
 
-    if (replayActive)
-    {
-        // Replay started:
-        // remove any agent icons that were already being displayed.
-        if (!mapFile.isEmpty())
-        {
-            QPixmap cleanMap;
-
-            if (cleanMap.load(mapFile))
-            {
-                pixmap = cleanMap;
-
-                minimap_wid->setPixmap(
-                    pixmap.scaled(
-                        minimap_wid->size(),
-                        Qt::KeepAspectRatio,
-                        Qt::SmoothTransformation
-                    )
-                );
-            }
-        }
-    }
-    else
+    if (!replayActive)
     {
         // Replay ended:
-        // force the next prediction to redraw even if it happens
-        // to match the last prediction from before the replay.
+        // force the next live prediction to redraw.
         lastPredictions.resize(0, 0);
     }
+
+    // Redraw the complete minimap.
+    //
+    // During replay, redrawMinimap() will hide the agents
+    // while keeping the current score and timer visible.
+    redrawMinimap();
 }
 
-void Minimap::redrawAgents(Eigen::MatrixXf frameData) {
+void Minimap::redrawAgents(Eigen::MatrixXf frameData)
+{
+    // Never use agent predictions taken from replay footage.
     if (replayActive)
     {
         return;
     }
 
-    //Don't redraw if there are no predictions or if the predictions are unchanged from the last frame
-    if (frameData.rows() == 0) { return; }
-    if ((frameData.rows() == lastPredictions.rows()) && 
-        (frameData.cols() == lastPredictions.cols()) &&  
-        (frameData.isApprox(lastPredictions))) { return; }
+    // Keep the existing behavior when there are no predictions.
+    if (frameData.rows() == 0)
+    {
+        return;
+    }
 
-    //Store the new predictions as the last predictions for then ext frame
+    // Do not redraw if the predictions have not changed.
+    if ((frameData.rows() == lastPredictions.rows()) &&
+        (frameData.cols() == lastPredictions.cols()) &&
+        frameData.isApprox(lastPredictions))
+    {
+        return;
+    }
+
+    // Save the newest agent positions.
     lastPredictions = frameData;
 
-    //Reload the original minimap
+    // Redraw the complete minimap using the newest information.
+    redrawMinimap();
+}
+
+void Minimap::redrawMinimap()
+{
+    // Cannot draw anything until a map has been detected.
+    if (mapFile.isEmpty())
+    {
+        return;
+    }
+
+    // Always start from a clean copy of the map.
     cv::Mat image = cv::imread(mapFile.toStdString());
+
+    if (image.empty())
+    {
+        qWarning("Minimap: could not redraw map image");
+        return;
+    }
+
     cv::Mat resizedImg;
-    cv::resize(image, resizedImg, cv::Size(384, 384)); //Resize to 384x384 since that's what the model's predictions are based on
+
+    // Model coordinates are based on a 384x384 image.
+    cv::resize(
+        image,
+        resizedImg,
+        cv::Size(384, 384)
+    );
 
 
-    for (int i = 0; i < frameData.rows(); i++) {
+    // --------------------------------------------------
+    // Draw agent icons
+    // --------------------------------------------------
 
-        //Get prediction data
-        int xmin = frameData(i, 0);
-        int ymin = frameData(i, 1);
-        int xmax = frameData(i, 2);
-        int ymax = frameData(i, 3);
-        int trackID = frameData(i, 4);
-        int classID = frameData(i, 6);
-
-        //Get the right agent
-        cv::Mat agent = agentIcons[classID];
-
-        std::vector<cv::Mat> channels;
-        cv::split(agent, channels);
-
-        cv::Mat alpha;
-        alpha = channels[3]; // Extract the 4th channel
-        cv::Mat bgr_foreground;
-        cv::merge(std::vector<cv::Mat>{channels[0], channels[1], channels[2]}, bgr_foreground);
-
-        // Find the center of the model's detected bounding box.
-        int centerX = (xmin + xmax) / 2;
-        int centerY = (ymin + ymax) / 2;
-
-        // The broadcast minimap occupies a slightly smaller area than the
-        // clean 384x384 map layout. Convert model coordinates into the
-        // clean-map coordinate system.
-        constexpr float MAP_SCALE_X = 1.10f;
-        constexpr float MAP_SCALE_Y = 1.10f;
-
-        constexpr float MAP_OFFSET_X = 6.0f;
-        constexpr float MAP_OFFSET_Y = 6.0f;
-
-        int mappedCenterX =
-            static_cast<int>((centerX * MAP_SCALE_X) + MAP_OFFSET_X);
-
-        int mappedCenterY =
-            static_cast<int>((centerY * MAP_SCALE_Y) + MAP_OFFSET_Y);
-
-        // Center the agent icon on the corrected map position.
-        int drawX = mappedCenterX - (agent.cols / 2);
-        int drawY = mappedCenterY - (agent.rows / 2);
-
-        // Make sure the icon stays inside the minimap.
-        if (drawX < 0 || drawY < 0 ||
-            drawX + agent.cols > resizedImg.cols ||
-            drawY + agent.rows > resizedImg.rows)
+    // During replay footage, agents are intentionally hidden.
+    if (!replayActive && lastPredictions.rows() > 0)
+    {
+        for (int i = 0; i < lastPredictions.rows(); i++)
         {
-            continue;
-        }
+            int xmin = lastPredictions(i, 0);
+            int ymin = lastPredictions(i, 1);
+            int xmax = lastPredictions(i, 2);
+            int ymax = lastPredictions(i, 3);
+            int classID = lastPredictions(i, 6);
 
-        cv::Rect rect(
-            drawX,
-            drawY,
-            agent.cols,
-            agent.rows
+
+            // Make sure this prediction has a valid agent icon.
+            if (classID <= 0 ||
+                classID >= static_cast<int>(agentIcons.size()))
+            {
+                continue;
+            }
+
+            cv::Mat agent = agentIcons[classID];
+
+            if (agent.empty() || agent.channels() != 4)
+            {
+                continue;
+            }
+
+
+            // Separate the PNG transparency channel.
+            std::vector<cv::Mat> channels;
+            cv::split(agent, channels);
+
+            cv::Mat alpha = channels[3];
+
+            cv::Mat bgrForeground;
+
+            cv::merge(
+                std::vector<cv::Mat>{
+                channels[0],
+                    channels[1],
+                    channels[2]
+            },
+                bgrForeground
+            );
+
+
+            // Find center of the detected bounding box.
+            int centerX = (xmin + xmax) / 2;
+            int centerY = (ymin + ymax) / 2;
+
+
+            // Previously calibrated transformation from the
+            // broadcast minimap to the clean map.
+            constexpr float MAP_SCALE_X = 1.10f;
+            constexpr float MAP_SCALE_Y = 1.10f;
+
+            constexpr float MAP_OFFSET_X = 6.0f;
+            constexpr float MAP_OFFSET_Y = 6.0f;
+
+
+            int mappedCenterX =
+                static_cast<int>(
+                    (centerX * MAP_SCALE_X) +
+                    MAP_OFFSET_X
+                    );
+
+            int mappedCenterY =
+                static_cast<int>(
+                    (centerY * MAP_SCALE_Y) +
+                    MAP_OFFSET_Y
+                    );
+
+
+            int drawX =
+                mappedCenterX - (agent.cols / 2);
+
+            int drawY =
+                mappedCenterY - (agent.rows / 2);
+
+
+            // Make sure the agent icon stays inside the map.
+            if (drawX < 0 ||
+                drawY < 0 ||
+                drawX + agent.cols > resizedImg.cols ||
+                drawY + agent.rows > resizedImg.rows)
+            {
+                continue;
+            }
+
+
+            cv::Rect rect(
+                drawX,
+                drawY,
+                agent.cols,
+                agent.rows
+            );
+
+            cv::Mat ROI =
+                resizedImg(rect);
+
+            bgrForeground.copyTo(
+                ROI,
+                alpha
+            );
+        }
+    }
+
+
+    // --------------------------------------------------
+    // Draw score and round timer
+    // --------------------------------------------------
+
+    bool haveScore =
+        leftScore >= 0 &&
+        rightScore >= 0;
+
+    bool haveTimer =
+        !currentRoundTimer.isEmpty();
+
+
+    if (haveScore || haveTimer)
+    {
+        // Create a semi-transparent dark HUD area
+        // at the top-center of the minimap.
+        cv::Mat hudOverlay =
+            resizedImg.clone();
+
+        cv::rectangle(
+            hudOverlay,
+            cv::Point(65, 5),
+            cv::Point(319, 60),
+            cv::Scalar(15, 15, 15),
+            cv::FILLED
         );
 
-        cv::Mat ROI = resizedImg(rect);
+        cv::addWeighted(
+            hudOverlay,
+            0.75,
+            resizedImg,
+            0.25,
+            0.0,
+            resizedImg
+        );
 
-        bgr_foreground.copyTo(ROI, alpha);
 
-       // cv::String text = std::to_string(trackID);
-       // cv::putText(resizedImg, text, cv::Point(xmin, ymin - 10), cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(0, 0, 0), 3, cv::LINE_AA);
-       // cv::putText(resizedImg, text, cv::Point(xmin, ymin - 10), cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(0, 255, 0), 2, cv::LINE_AA);
+        // Helper for drawing centered text.
+        auto drawCenteredText =
+            [&resizedImg](
+                const std::string& text,
+                int y,
+                double fontScale,
+                int thickness)
+            {
+                int baseline = 0;
+
+                cv::Size textSize =
+                    cv::getTextSize(
+                        text,
+                        cv::FONT_HERSHEY_SIMPLEX,
+                        fontScale,
+                        thickness,
+                        &baseline
+                    );
+
+                int x =
+                    (resizedImg.cols -
+                        textSize.width) / 2;
+
+
+                // Black outline.
+                cv::putText(
+                    resizedImg,
+                    text,
+                    cv::Point(x, y),
+                    cv::FONT_HERSHEY_SIMPLEX,
+                    fontScale,
+                    cv::Scalar(0, 0, 0),
+                    thickness + 2,
+                    cv::LINE_AA
+                );
+
+
+                // White foreground.
+                cv::putText(
+                    resizedImg,
+                    text,
+                    cv::Point(x, y),
+                    cv::FONT_HERSHEY_SIMPLEX,
+                    fontScale,
+                    cv::Scalar(255, 255, 255),
+                    thickness,
+                    cv::LINE_AA
+                );
+            };
+
+
+        // Example:
+        // SEN  5 - 4  G2
+        if (haveScore)
+        {
+            QString scoreText;
+
+            if (!leftTeamName.isEmpty() &&
+                !rightTeamName.isEmpty())
+            {
+                scoreText =
+                    QString("%1  %2 - %3  %4")
+                    .arg(leftTeamName)
+                    .arg(leftScore)
+                    .arg(rightScore)
+                    .arg(rightTeamName);
+            }
+            else
+            {
+                scoreText =
+                    QString("%1 - %2")
+                    .arg(leftScore)
+                    .arg(rightScore);
+            }
+
+            drawCenteredText(
+                scoreText.toStdString(),
+                27,
+                0.55,
+                1
+            );
+        }
+
+
+        // Example:
+        // 1:23
+        if (haveTimer)
+        {
+            drawCenteredText(
+                currentRoundTimer.toStdString(),
+                52,
+                0.65,
+                2
+            );
+        }
     }
 
-    // Update the displayed minimap
-    QPixmap newPixmap = cvMatToQPixmap(resizedImg);
-    if (!pixmap.isNull()) {
-        newPixmap = newPixmap.scaled(minimap_wid->size(),
+
+    // --------------------------------------------------
+    // Display final minimap
+    // --------------------------------------------------
+
+    pixmap =
+        cvMatToQPixmap(resizedImg);
+
+    minimap_wid->setPixmap(
+        pixmap.scaled(
+            minimap_wid->size(),
             Qt::KeepAspectRatio,
-            Qt::SmoothTransformation);
-    }
-
-    if (newPixmap.toImage() != pixmap.toImage()) {
-        pixmap = newPixmap;
-        minimap_wid->setPixmap(pixmap);
-    }
-
+            Qt::SmoothTransformation
+        )
+    );
 }
+
+
 //:mapFile
 QString Minimap::checkMap(const cv::Mat& inputFrame)
 {

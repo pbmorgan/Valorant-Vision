@@ -1329,6 +1329,8 @@ void OCRDetector::processFrame(const cv::Mat& frame)
                 inReplay = true;
                 emit replayStateChanged(true);
             }
+            
+
 
             replayMissCount = 0;
         }
@@ -1523,6 +1525,14 @@ void OCRDetector::processFrame(const cv::Mat& frame)
                             QString::fromStdString(leftTeamName), leftScore,
                             QString::fromStdString(rightTeamName), rightScore
                         );
+                        // A real score increase means the previous round has ended.
+                        // Stop using the old timer anchor so the next valid timer OCR
+                        // can establish the starting point for the new round.
+                        if (!firstScore)
+                        {
+                            timerAnchorValid = false;
+                            lastRoundTimer.clear();
+                        }
 
                         // Do NOT clear old kill signatures immediately when the score changes.
                     // The previous round's killfeed can remain visible for a few seconds
@@ -1559,6 +1569,11 @@ void OCRDetector::processFrame(const cv::Mat& frame)
     // Replay footage may display an old timer that must not replace the live timer.
     if (!inReplay)
     {
+        // Use the actual Qt video playback position for the internal timer.
+            // This is more stable than using the OpenCV/OCR reader position.
+        double currentPlaybackSeconds =
+            currentVideoPos.load() / 1000.0;
+
         tess.SetPageSegMode(tesseract::PSM_SINGLE_LINE);
         tess.SetVariable("tessedit_char_whitelist", "0123456789:");
         cv::Rect tr = rel_to_rect(ROUND_TIMER_ROI, img_w, img_h) & cv::Rect(0,0,img_w,img_h);
@@ -1572,93 +1587,162 @@ void OCRDetector::processFrame(const cv::Mat& frame)
         // Validate format: one or two digits, colon, exactly two digits (00-59)
         // Accepts "1:15", "0:45", "12:00" etc.
         bool valid = false;
+
+        int detectedMinutes = 0;
+        int detectedSeconds = 0;
+
         auto col = cleaned.find(':');
-        if (col != std::string::npos && col >= 1 && col <= 2) {
+
+        if (col != std::string::npos && col >= 1 && col <= 2)
+        {
             std::string minPart = cleaned.substr(0, col);
             std::string secPart = cleaned.substr(col + 1);
-            if (secPart.size() == 2) {
-                int secs = std::stoi(secPart);
-                valid = (secs >= 0 && secs <= 59);
+
+            if (secPart.size() == 2)
+            {
+                detectedMinutes = std::stoi(minPart);
+                detectedSeconds = std::stoi(secPart);
+
+                valid =
+                    detectedSeconds >= 0 &&
+                    detectedSeconds <= 59;
             }
         }
+
+        bool acceptedTimerReading = false;
 
         if (valid)
         {
-            // Convert the detected timer into total seconds.
-            // Example: "1:25" becomes 85 seconds.
-            int detectedMinutes =
-                std::stoi(cleaned.substr(0, col));
-
-            int detectedSeconds =
-                std::stoi(cleaned.substr(col + 1));
-
             int detectedTotalSeconds =
-                (detectedMinutes * 60) + detectedSeconds;
+                detectedMinutes * 60 +
+                detectedSeconds;
 
-                    // If the round timer suddenly jumps upward by a large amount,
-        // a new Valorant round has probably started.
-        //
-        // Example:
-        // Previous timer: 0:39
-        // New timer:      1:36
-        //
-        // Clear the old round's kill signatures so the same player matchup
-        // can be counted again in the new round.
-            if (timerAnchorValid &&
-                detectedTotalSeconds > timerAnchorSeconds + 20)
+            if (!timerAnchorValid)
             {
-                std::cout
-                    << "NEW ROUND DETECTED BY TIMER -> "
-                    << timerAnchorSeconds
-                    << " seconds to "
-                    << detectedTotalSeconds
-                    << " seconds\n";
+                // First trustworthy timer reading.
+                acceptedTimerReading = true;
+            }
+            else
+            {
+                // Estimate where the timer should currently be based on
+                // the last trustworthy OCR reading and video playback time.
+                int elapsedVideoSeconds =
+                    static_cast<int>(
+                        currentPlaybackSeconds -
+                        timerAnchorVideoSeconds
+                        );
 
-                seenKills.clear();
+                if (elapsedVideoSeconds < 0)
+                {
+                    elapsedVideoSeconds = 0;
+                }
+
+                int expectedSeconds =
+                    timerAnchorSeconds -
+                    elapsedVideoSeconds;
+
+                if (expectedSeconds < 0)
+                {
+                    expectedSeconds = 0;
+                }
+
+                int difference =
+                    detectedTotalSeconds -
+                    expectedSeconds;
+
+                int absoluteDifference =
+                    std::abs(difference);
+
+
+                
+                // should NOT continuously adjust it.
+                //
+                // The internal timer is calculated from video playback time,
+                // which gives us a smooth and stable countdown.
+                if (absoluteDifference <= 5)
+                {
+                    acceptedTimerReading = false;
+                }
+
+                
+                else
+                {
+                    qDebug(
+                        "Round timer OCR rejected: detected=%d expected=%d difference=%d",
+                        detectedTotalSeconds,
+                        expectedSeconds,
+                        difference
+                    );
+                }
             }
 
-            // Use this successful OCR reading as the new timer anchor.
-            // Future failed OCR frames can count down from this point
-            // using the video's timestamp.
-            timerAnchorSeconds = detectedTotalSeconds;
-            timerAnchorVideoSeconds = currentOcrVideoSeconds;
-            timerAnchorValid = true;
 
-            lastRoundTimer = cleaned;
+            if (acceptedTimerReading)
+            {
+                timerAnchorSeconds =
+                    detectedTotalSeconds;
+
+                timerAnchorVideoSeconds =
+                    currentPlaybackSeconds;
+
+                timerAnchorValid = true;
+
+                lastRoundTimer = cleaned;
+            }
         }
-        else if (timerAnchorValid)
+
+
+        // If OCR failed OR produced an unrealistic timer jump,
+        // continue counting down from our last trustworthy anchor.
+        if (!acceptedTimerReading && timerAnchorValid)
         {
-            // OCR failed on this frame, so estimate the current Valorant timer
-            // from the most recent successful OCR reading and the video's timestamp.
-            double elapsedVideoSeconds =
-                currentOcrVideoSeconds - timerAnchorVideoSeconds;
+            int elapsedVideoSeconds =
+                static_cast<int>(
+                    currentPlaybackSeconds -
+                    timerAnchorVideoSeconds
+                    );
 
-            // Convert the elapsed video time into whole seconds.
-            int elapsedWholeSeconds =
-                static_cast<int>(elapsedVideoSeconds);
+            if (elapsedVideoSeconds < 0)
+            {
+                elapsedVideoSeconds = 0;
+            }
 
-            // Count down from the last trustworthy OCR timer value.
-            int estimatedSeconds =
-                timerAnchorSeconds - elapsedWholeSeconds;
+            int estimatedTotalSeconds =
+                timerAnchorSeconds -
+                elapsedVideoSeconds;
 
-            // Never allow the estimated timer to become negative.
-            estimatedSeconds = std::max(0, estimatedSeconds);
+            if (estimatedTotalSeconds < 0)
+            {
+                estimatedTotalSeconds = 0;
+            }
 
-            int estimatedMinutes = estimatedSeconds / 60;
-            int estimatedRemainingSeconds = estimatedSeconds % 60;
+            int estimatedMinutes =
+                estimatedTotalSeconds / 60;
 
-            // Format the estimated timer as M:SS.
+            int estimatedRemainingSeconds =
+                estimatedTotalSeconds % 60;
+
             lastRoundTimer =
-                std::to_string(estimatedMinutes) + ":" +
+                std::to_string(estimatedMinutes) +
+                ":" +
                 (estimatedRemainingSeconds < 10 ? "0" : "") +
                 std::to_string(estimatedRemainingSeconds);
         }
-        else if (lastRoundTimer.empty())
+        else if (!acceptedTimerReading &&
+            !timerAnchorValid &&
+            lastRoundTimer.empty())
         {
-            // No valid in-game timer has ever been detected yet.
-            // This is expected for videos that begin during agent select,
-            // introductions, loading screens, or other pre-game footage.
-            lastRoundTimer = "[no time detected]";
+            lastRoundTimer =
+                "[no time detected]";
+        }
+        // Send the current trustworthy round timer to the GUI.
+        // This allows other widgets, such as the minimap, to display
+        // the timer without performing their own OCR.
+        if (timerAnchorValid && !lastRoundTimer.empty())
+        {
+            emit roundTimerChanged(
+                QString::fromStdString(lastRoundTimer)
+            );
         }
     }
 

@@ -399,6 +399,22 @@ MainWindow::MainWindow() :
     connect(ocrDetector, &OCRDetector::scoresChanged,
         this, &MainWindow::onScoresChanged);
 
+    // Show the detected match score on the minimap.
+    connect(
+        ocrDetector,
+        &OCRDetector::scoresChanged,
+        minimap_wid,
+        &Minimap::updateScore
+    );
+
+    // Show the detected round timer on the minimap.
+    connect(
+        ocrDetector,
+        &OCRDetector::roundTimerChanged,
+        minimap_wid,
+        &Minimap::updateRoundTimer
+    );
+
     // Let PlayerTracker know when the match score changes so it
     // can determine when a round has ended.
     connect(ocrDetector, &OCRDetector::scoresChanged,

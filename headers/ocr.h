@@ -75,6 +75,11 @@ signals:
         QString rightTeam,
         int rightScore
     );
+
+    // Sends the current Valorant round timer to the GUI.
+    // Example: "1:25", "0:42", "0:05".
+    void roundTimerChanged(QString timer);
+
     // Notifies the GUI when replay footage starts or ends.
     void replayStateChanged(bool inReplay);
 
