@@ -138,6 +138,15 @@ private:
     // introductions, or in the middle of an existing round.
     bool timerAnchorValid = false;
 
+
+    // Video position where the normal round timer was most
+    // recently visible on the broadcast HUD.
+    //
+    // This helps prevent caster/intermission scenes from
+    // accidentally starting the Spike countdown.
+    double lastRoundTimerVisibleVideoSeconds = -1.0;
+
+
     // True while the broadcast is showing replay footage.
     // While this is true, replay kills, scores, and timer readings
     // must not be treated as live match events.

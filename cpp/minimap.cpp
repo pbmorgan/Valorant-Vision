@@ -126,6 +126,13 @@ void Minimap::updateScore(
 
 void Minimap::updateRoundTimer(QString timer)
 {
+    // Once the Spike timer is active, the normal round timer
+    // no longer matters and should not return to the minimap.
+    if (spikeSecondsRemaining >= 0)
+    {
+        return;
+    }
+
     // OCR may report the same timer value more than once.
     if (currentRoundTimer == timer)
     {
@@ -148,7 +155,19 @@ void Minimap::updateSpikeTimer(int secondsRemaining)
         return;
     }
 
+    // Check whether the Spike countdown is beginning.
+    bool spikeJustStarted =
+        spikeSecondsRemaining < 0 &&
+        secondsRemaining >= 0;
+
     spikeSecondsRemaining = secondsRemaining;
+
+    // Once the Spike is planted, the normal round timer
+    // no longer matters, so remove it from the minimap.
+    if (spikeJustStarted)
+    {
+        currentRoundTimer.clear();
+    }
 
     // Redraw so the updated Spike countdown appears
     // immediately on the minimap.

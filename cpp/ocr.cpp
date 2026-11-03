@@ -4,7 +4,7 @@
 #include <cctype>
 
 // Set to true when detailed OCR debugging is needed.
-static constexpr bool OCR_DEBUG = false;
+static constexpr bool OCR_DEBUG = true;
 
 // Relative coordinate helpers (calibrated for 1920x1080 broadcast layout)
 struct RelRect { double x1, y1, x2, y2; };
@@ -56,6 +56,13 @@ static const RelRect REPLAY_ROI = {
 };
 
 static const int FRAME_INTERVAL_MS = 500;
+
+// A new round timer must be at least this high before
+// it can establish a new internal round-timer anchor.
+//
+// This prevents the pre-round/buy-phase countdown from
+// being mistaken for the actual round clock.
+static constexpr int MIN_NEW_ROUND_TIMER_SECONDS = 50;
 
 // Constructor / destructor
 OCRDetector::OCRDetector(const std::string& tessdataPath,
@@ -164,6 +171,9 @@ void OCRDetector::startVideo(const std::string& videoPath)
     timerAnchorVideoSeconds = 0.0;
     currentOcrVideoSeconds = 0.0;
 
+    // No round timer has been seen yet in this new video.
+    lastRoundTimerVisibleVideoSeconds = -1.0;
+
     if (!tessOk) return;
 
     // Open the video for the existing OCR sampling path.
@@ -199,6 +209,9 @@ void OCRDetector::reset()
     spikePlanted = false;
     spikePlantConfirmCount = 0;
     spikePlantVideoSeconds = 0.0;
+    // Forget when the previous video's round timer was visible.
+    lastRoundTimerVisibleVideoSeconds = -1.0;
+
 
     // Remove any active Spike timer from the GUI.
     emit spikeTimerChanged(-1);
@@ -1399,6 +1412,85 @@ void OCRDetector::processFrame(const cv::Mat& frame)
                 << "\n";
         }
     }
+
+    // --------------------------------------------------
+// Decide whether the normal round timer is still active.
+// --------------------------------------------------
+//
+// The Spike timer should only be allowed to start during
+// an active Valorant round.
+//
+// This also prevents caster/intermission scenes from
+// accidentally triggering the Spike detector after the
+// round timer has reached 0:00 or has not been detected.
+
+    int estimatedRoundSeconds = 0;
+
+    if (timerAnchorValid)
+    {
+        double currentPlaybackSeconds =
+            currentVideoPos.load() / 1000.0;
+
+        int elapsedRoundSeconds =
+            static_cast<int>(
+                currentPlaybackSeconds -
+                timerAnchorVideoSeconds
+                );
+
+        if (elapsedRoundSeconds < 0)
+        {
+            elapsedRoundSeconds = 0;
+        }
+
+        estimatedRoundSeconds =
+            timerAnchorSeconds -
+            elapsedRoundSeconds;
+    }
+
+    // Check how long it has been since the normal round timer
+    // was actually visible on the broadcast.
+    double currentPlaybackSeconds =
+        currentVideoPos.load() / 1000.0;
+
+    double secondsSinceTimerVisible =
+        currentPlaybackSeconds -
+        lastRoundTimerVisibleVideoSeconds;
+
+    // Consider the gameplay HUD active only if the round timer
+    // was physically visible within the last 2 seconds.
+    //
+    // The short grace period is important because the normal
+    // round timer disappears immediately when the Spike is planted.
+    bool roundTimerRecentlyVisible =
+        lastRoundTimerVisibleVideoSeconds >= 0.0 &&
+        secondsSinceTimerVisible >= 0.0 &&
+        secondsSinceTimerVisible <= 2.0;
+
+    // Once OCR has established the round timer, trust the internal
+// countdown based on video playback time.
+//
+// Do not require Tesseract to keep rereading the clock because
+// some broadcasts make the timer difficult to recognize even
+// though the round is still actively being played.
+    bool roundTimerActive =
+        timerAnchorValid &&
+        estimatedRoundSeconds > 0;
+
+    // Once Spike confirmation has started during active gameplay,
+    // allow it to finish even if the normal round timer disappears.
+    //
+    // This is necessary because Valorant removes the normal round
+    // timer as soon as the Spike is planted.
+    bool spikeConfirmationInProgress =
+        spikePlantConfirmCount > 0 &&
+        lastRoundTimerVisibleVideoSeconds >= 0.0 &&
+        secondsSinceTimerVisible <= 4.0;
+
+    bool spikeDetectionAllowed =
+        roundTimerActive ||
+        spikeConfirmationInProgress;
+
+
     // --- SPIKE PLANT DETECTION ---
 //
 // The Spike icon below the round timer is white before planting.
@@ -1406,7 +1498,9 @@ void OCRDetector::processFrame(const cv::Mat& frame)
 //
 // We detect the color change instead of using OCR because the icon
 // is a much more reliable visual signal.
-    if (!inReplay && !spikePlanted)
+    if (!inReplay &&
+        !spikePlanted &&
+        spikeDetectionAllowed)
     {
         cv::Rect spikeRect =
             rel_to_rect(SPIKE_ICON_ROI, img_w, img_h)
@@ -1416,6 +1510,42 @@ void OCRDetector::processFrame(const cv::Mat& frame)
         {
             cv::Mat spikeRegion =
                 frame(spikeRect);
+            if (OCR_DEBUG &&
+                estimatedRoundSeconds <= 20 &&
+                estimatedRoundSeconds >= 10)
+            {
+                static int spikeRoiDebugCount = 0;
+
+                if (spikeRoiDebugCount < 25)
+                {
+                    cv::imwrite(
+                        "spike_roi_debug_" +
+                        std::to_string(spikeRoiDebugCount) +
+                        ".png",
+                        spikeRegion
+                    );
+
+                    cv::Mat fullDebugFrame =
+                        frame.clone();
+
+                    cv::rectangle(
+                        fullDebugFrame,
+                        spikeRect,
+                        cv::Scalar(0, 255, 0),
+                        3
+                    );
+
+                    cv::imwrite(
+                        "spike_full_debug_" +
+                        std::to_string(spikeRoiDebugCount) +
+                        ".png",
+                        fullDebugFrame
+                    );
+
+                    ++spikeRoiDebugCount;
+                }
+            }
+
 
             // HSV makes it easier to identify red/pink pixels even if
             // brightness changes slightly between broadcast frames.
@@ -1462,7 +1592,14 @@ void OCRDetector::processFrame(const cv::Mat& frame)
                     redMask.total()
                     );
 
-           
+            if (OCR_DEBUG)
+            {
+                std::cout
+                    << "SPIKE RED RATIO -> "
+                    << redPixelRatio
+                    << "\n";
+            }
+
 
 
             // TEMPORARY: disable plant detection while we measure
@@ -1538,6 +1675,29 @@ void OCRDetector::processFrame(const cv::Mat& frame)
             }
         }
     }
+    
+	
+    // Cancel a partial Spike confirmation if it has lasted too long
+    // after the normal round timer disappeared, or if a replay begins.
+    if ((!spikeDetectionAllowed || inReplay) &&
+        !spikePlanted)
+    {
+        spikePlantConfirmCount = 0;
+    }
+    if (OCR_DEBUG)
+    {
+        std::cout
+            << "SPIKE GATE -> "
+            << "timerAnchorValid=" << timerAnchorValid
+            << " estimatedRoundSeconds=" << estimatedRoundSeconds
+            << " recentlyVisible=" << roundTimerRecentlyVisible
+            << " secondsSinceVisible=" << secondsSinceTimerVisible
+            << " confirmCount=" << spikePlantConfirmCount
+            << " allowed=" << spikeDetectionAllowed
+            << "\n";
+    }
+
+
 
     // --- SPIKE COUNTDOWN ---
     //
@@ -1824,14 +1984,41 @@ void OCRDetector::processFrame(const cv::Mat& frame)
 
         if (valid)
         {
+            // OCR successfully saw a real round timer on this frame.
+            // Remember when it was visible so Spike detection can
+            // distinguish gameplay from caster/intermission scenes.
+            lastRoundTimerVisibleVideoSeconds =
+                currentPlaybackSeconds;
+
             int detectedTotalSeconds =
                 detectedMinutes * 60 +
                 detectedSeconds;
 
             if (!timerAnchorValid)
             {
-                // First trustworthy timer reading.
-                acceptedTimerReading = true;
+                // Only establish a new round-timer anchor if the detected
+                // clock is high enough to plausibly belong to an active round.
+                //
+                // This prevents the pre-round countdown from being mistaken
+                // for the actual Valorant round timer.
+                if (detectedTotalSeconds >= MIN_NEW_ROUND_TIMER_SECONDS)
+                {
+                    acceptedTimerReading = true;
+                }
+                else
+                {
+                    acceptedTimerReading = false;
+
+                    if (OCR_DEBUG)
+                    {
+                        std::cout
+                            << "ROUND TIMER START REJECTED -> "
+                            << detectedTotalSeconds
+                            << " seconds is below minimum "
+                            << MIN_NEW_ROUND_TIMER_SECONDS
+                            << "\n";
+                    }
+                }
             }
             else
             {
