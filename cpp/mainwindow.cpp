@@ -414,6 +414,12 @@ MainWindow::MainWindow() :
         minimap_wid,
         &Minimap::updateRoundTimer
     );
+    connect(
+        ocrDetector,
+        &OCRDetector::spikeTimerChanged,
+        minimap_wid,
+        &Minimap::updateSpikeTimer
+    );
 
     // Let PlayerTracker know when the match score changes so it
     // can determine when a round has ended.

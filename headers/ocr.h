@@ -83,8 +83,19 @@ signals:
     // Notifies the GUI when replay footage starts or ends.
     void replayStateChanged(bool inReplay);
 
+    // Sends the remaining Spike countdown to the GUI.
+    // -1 means there is currently no active planted Spike.
+    void spikeTimerChanged(int secondsRemaining);
+
+  
+
+
+
+
 private slots:
     void processNextFrame();
+
+
 
 private:
     tesseract::TessBaseAPI tess;
@@ -135,6 +146,17 @@ private:
     // Counts consecutive frames where the REPLAY label was not detected.
     // This prevents one temporary OCR failure from ending replay mode too early.
     int replayMissCount = 0;
+
+    // True once the broadcast HUD confirms that the Spike has been planted.
+    bool spikePlanted = false;
+
+    // Require the red planted icon to appear on multiple OCR samples
+    // before accepting it as a real plant event.
+    int spikePlantConfirmCount = 0;
+
+    // Qt video playback position when the Spike plant was confirmed.
+    // The internal 45-second countdown will use this as its anchor.
+    double spikePlantVideoSeconds = 0.0;
 
     // Timer value, in seconds, at the most recent trustworthy OCR reading.
     // Example: "1:25" is stored as 85 seconds.

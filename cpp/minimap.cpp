@@ -139,6 +139,24 @@ void Minimap::updateRoundTimer(QString timer)
     redrawMinimap();
 }
 
+void Minimap::updateSpikeTimer(int secondsRemaining)
+{
+    // Avoid redrawing the minimap if the Spike timer
+    // has not actually changed.
+    if (spikeSecondsRemaining == secondsRemaining)
+    {
+        return;
+    }
+
+    spikeSecondsRemaining = secondsRemaining;
+
+    // Redraw so the updated Spike countdown appears
+    // immediately on the minimap.
+    redrawMinimap();
+}
+
+
+
 void Minimap::setReplayActive(bool active)
 {
     // Do nothing if the replay state did not actually change.
@@ -462,6 +480,95 @@ void Minimap::redrawMinimap()
                 2
             );
         }
+    }
+    // --------------------------------------------------
+// Draw planted Spike countdown
+// --------------------------------------------------
+
+    if (spikeSecondsRemaining >= 0)
+    {
+        // Create a separate dark HUD area at the
+        // bottom-center of the minimap.
+        cv::Mat spikeOverlay =
+            resizedImg.clone();
+
+        cv::rectangle(
+            spikeOverlay,
+            cv::Point(105, 338),
+            cv::Point(279, 378),
+            cv::Scalar(15, 15, 15),
+            cv::FILLED
+        );
+
+        // Blend the dark box with the minimap underneath.
+        cv::addWeighted(
+            spikeOverlay,
+            0.80,
+            resizedImg,
+            0.20,
+            0.0,
+            resizedImg
+        );
+
+        // Convert the remaining number of seconds into
+        // a timer such as 0:45, 0:32, or 0:05.
+        int spikeMinutes =
+            spikeSecondsRemaining / 60;
+
+        int spikeSeconds =
+            spikeSecondsRemaining % 60;
+
+        QString spikeText =
+            QString("SPIKE  %1:%2")
+            .arg(spikeMinutes)
+            .arg(
+                spikeSeconds,
+                2,
+                10,
+                QChar('0')
+            );
+
+        std::string text =
+            spikeText.toStdString();
+
+        int baseline = 0;
+
+        cv::Size textSize =
+            cv::getTextSize(
+                text,
+                cv::FONT_HERSHEY_SIMPLEX,
+                0.55,
+                2,
+                &baseline
+            );
+
+        int x =
+            (resizedImg.cols - textSize.width) / 2;
+
+        // Black outline around the text.
+        cv::putText(
+            resizedImg,
+            text,
+            cv::Point(x, 365),
+            cv::FONT_HERSHEY_SIMPLEX,
+            0.55,
+            cv::Scalar(0, 0, 0),
+            4,
+            cv::LINE_AA
+        );
+
+        // Bright red/pink foreground to distinguish
+        // the Spike timer from the normal round timer.
+        cv::putText(
+            resizedImg,
+            text,
+            cv::Point(x, 365),
+            cv::FONT_HERSHEY_SIMPLEX,
+            0.55,
+            cv::Scalar(80, 100, 255),
+            2,
+            cv::LINE_AA
+        );
     }
 
 

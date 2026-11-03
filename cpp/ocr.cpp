@@ -31,6 +31,20 @@ static const RelRect SCORE_LEFT_ROI  = { 800.0/1920,   0.0/1080,  860.0/1920,  6
 static const RelRect SCORE_RIGHT_ROI = { 1060.0/1920,  10.0/1080, 1120.0/1920,  60.0/1080 };
 static const RelRect ROUND_TIMER_ROI = { 880.0/1920,   0.0/1080, 1010.0/1920,  67.0/1080 };
 
+// Region containing the Spike icon directly below the round timer.
+//
+// Before the Spike is planted, this icon is mostly white.
+// After the Spike is planted, the same icon becomes bright red/pink.
+//
+// Keeping this ROI small prevents the red team-side scoreboard
+// graphics from being mistaken for the planted Spike.
+static const RelRect SPIKE_ICON_ROI = {
+    920.0 / 1920,
+    20.0 / 1080,
+    1005.0 / 1920,
+    80.0 / 1080
+};
+
 // Region containing the broadcast's "REPLAY" indicator.
 // When this text is detected, kills, score changes, and timer anchors
 // from the replay should not be treated as live game events.
@@ -129,6 +143,15 @@ void OCRDetector::startVideo(const std::string& videoPath)
     inReplay = false;
     replayMissCount = 0;
 
+    // Reset Spike tracking for the newly loaded video.
+    spikePlanted = false;
+    spikePlantConfirmCount = 0;
+    spikePlantVideoSeconds = 0.0;
+
+    // Tell the GUI there is no active Spike timer yet.
+    emit spikeTimerChanged(-1);
+
+
     // Make sure a newly loaded video begins with replay mode disabled.
     emit replayStateChanged(false);
 
@@ -172,6 +195,13 @@ void OCRDetector::reset()
     seenKills.clear();
     lastLeftScore  = -1;
     lastRightScore = -1;
+    // Reset Spike tracking.
+    spikePlanted = false;
+    spikePlantConfirmCount = 0;
+    spikePlantVideoSeconds = 0.0;
+
+    // Remove any active Spike timer from the GUI.
+    emit spikeTimerChanged(-1);
 }
 
 // Receives a frame that Qt has already decoded.
@@ -1369,6 +1399,178 @@ void OCRDetector::processFrame(const cv::Mat& frame)
                 << "\n";
         }
     }
+    // --- SPIKE PLANT DETECTION ---
+//
+// The Spike icon below the round timer is white before planting.
+// Once the Spike is planted, that same icon becomes bright red/pink.
+//
+// We detect the color change instead of using OCR because the icon
+// is a much more reliable visual signal.
+    if (!inReplay && !spikePlanted)
+    {
+        cv::Rect spikeRect =
+            rel_to_rect(SPIKE_ICON_ROI, img_w, img_h)
+            & cv::Rect(0, 0, img_w, img_h);
+
+        if (spikeRect.width > 0 && spikeRect.height > 0)
+        {
+            cv::Mat spikeRegion =
+                frame(spikeRect);
+
+            // HSV makes it easier to identify red/pink pixels even if
+            // brightness changes slightly between broadcast frames.
+            cv::Mat hsv;
+            cv::cvtColor(
+                spikeRegion,
+                hsv,
+                cv::COLOR_BGR2HSV
+            );
+
+            // Red wraps around both ends of OpenCV's hue range,
+            // so check both red ranges.
+            cv::Mat redMaskLow;
+            cv::Mat redMaskHigh;
+            cv::Mat redMask;
+
+            cv::inRange(
+                hsv,
+                cv::Scalar(0, 100, 120),
+                cv::Scalar(15, 255, 255),
+                redMaskLow
+            );
+
+            cv::inRange(
+                hsv,
+                cv::Scalar(160, 100, 120),
+                cv::Scalar(179, 255, 255),
+                redMaskHigh
+            );
+
+            cv::bitwise_or(
+                redMaskLow,
+                redMaskHigh,
+                redMask
+            );
+
+            // Calculate how much of the Spike ROI is red/pink.
+            double redPixelRatio =
+                static_cast<double>(
+                    cv::countNonZero(redMask)
+                    )
+                /
+                static_cast<double>(
+                    redMask.total()
+                    );
+
+           
+
+
+            // TEMPORARY: disable plant detection while we measure
+            // the normal and planted red-pixel ratios.
+            bool plantedIconDetected =
+                redPixelRatio >= 0.08;
+
+            if (plantedIconDetected)
+            {
+                ++spikePlantConfirmCount;
+            }
+            else
+            {
+                spikePlantConfirmCount = 0;
+            }
+
+            // Require four consecutive detections.
+            // At the current 500 ms sampling interval, the planted icon
+            // must remain visible for about 2 seconds.
+            //
+            // Short red HUD flashes may briefly enter this region,
+            // but the planted Spike icon stays red continuously.
+            if (spikePlantConfirmCount >= 4)
+            {
+                // TEMP DEBUG:
+                // Save exactly what the Spike detector saw when it decided
+                // that four consecutive red frames meant the Spike was planted.
+                cv::imwrite(
+                    "spike_trigger_region.png",
+                    spikeRegion
+                );
+
+                cv::imwrite(
+                    "spike_trigger_mask.png",
+                    redMask
+                );
+
+                // Also save the full frame with the Spike ROI outlined so
+                // we can verify that the detector is looking at the correct area.
+                cv::Mat spikeDebugFrame =
+                    frame.clone();
+
+                cv::rectangle(
+                    spikeDebugFrame,
+                    spikeRect,
+                    cv::Scalar(0, 255, 0),
+                    3
+                );
+
+                cv::imwrite(
+                    "spike_trigger_full_frame.png",
+                    spikeDebugFrame
+                );
+
+                spikePlanted = true;
+
+                // The icon had to remain red for four samples before we
+                // accepted the plant. Move the anchor backward by about
+                // 1.5 seconds so the countdown begins near the first
+                // confirmed red sample instead of after the fourth one.
+                spikePlantVideoSeconds =
+                    (currentVideoPos.load() / 1000.0) - 1.5;
+
+                spikePlantConfirmCount = 0;
+
+                // For now, notify the GUI that the countdown begins at 45.
+                emit spikeTimerChanged(45);
+
+                qDebug(
+                    "SPIKE PLANTED detected at video time %.2f",
+                    spikePlantVideoSeconds
+                );
+            }
+        }
+    }
+
+    // --- SPIKE COUNTDOWN ---
+    //
+    // Once the Spike plant has been confirmed, do not rely on image
+    // detection anymore. Count down from 45 seconds using the actual
+    // Qt video playback position.
+    if (spikePlanted)
+    {
+        double currentPlaybackSeconds =
+            currentVideoPos.load() / 1000.0;
+
+        int elapsedSeconds =
+            static_cast<int>(
+                currentPlaybackSeconds -
+                spikePlantVideoSeconds
+                );
+
+        if (elapsedSeconds < 0)
+        {
+            elapsedSeconds = 0;
+        }
+
+        int secondsRemaining =
+            45 - elapsedSeconds;
+
+        if (secondsRemaining < 0)
+        {
+            secondsRemaining = 0;
+        }
+
+        // Send the current Spike countdown to the GUI.
+        emit spikeTimerChanged(secondsRemaining);
+    }
 
     // --- TEAM DETECTION (propose to user, confirmed by dialog) ---
     if (!teamDetected && !awaitingTeamConfirmation) {
@@ -1532,6 +1734,15 @@ void OCRDetector::processFrame(const cv::Mat& frame)
                         {
                             timerAnchorValid = false;
                             lastRoundTimer.clear();
+
+                            // The round has ended, so clear the planted-Spike state.
+                            // This allows the next round to detect a new Spike plant.
+                            spikePlanted = false;
+                            spikePlantConfirmCount = 0;
+                            spikePlantVideoSeconds = 0.0;
+
+                            // Remove the Spike countdown from the GUI.
+                            emit spikeTimerChanged(-1);
                         }
 
                         // Do NOT clear old kill signatures immediately when the score changes.

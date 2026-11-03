@@ -41,6 +41,11 @@ private:
     int leftScore = -1;
     int rightScore = -1;
 
+    // Current planted-Spike countdown.
+    // -1 means there is no active Spike timer.
+    int spikeSecondsRemaining = -1;
+
+
     // True while replay footage is active.
     // Agent positions should not be displayed during a replay.
     bool replayActive = false;
@@ -67,6 +72,11 @@ public:
 
     // Updates the current Valorant round timer shown on the minimap.
     void updateRoundTimer(QString timer);
+
+
+    // Receives the remaining Spike time from OCRDetector.
+    // A value of -1 clears the Spike timer.
+    void updateSpikeTimer(int secondsRemaining);
 
     // Enables or disables agent placement during replay footage.
     void setReplayActive(bool active);
