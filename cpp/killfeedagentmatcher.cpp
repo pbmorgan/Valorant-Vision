@@ -150,7 +150,7 @@ AgentIconMatch KillfeedAgentMatcher::matchMain(const cv::Mat& crop) const
 
     // Minimum difference between the best and
     // second-best agent template scores.
-    constexpr double MIN_CONFIDENCE_MARGIN = 0.004;
+    constexpr double MIN_CONFIDENCE_MARGIN = 0.0035;
 
     // Reject predictions where two agents look
     // almost equally likely to the matcher.
