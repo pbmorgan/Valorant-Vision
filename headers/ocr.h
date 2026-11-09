@@ -4,7 +4,9 @@
 #include <QObject>
 #include <QTimer>
 #include <QImage>
+#include <QtGlobal>
 #include <opencv2/opencv.hpp>
+#include "killfeedagentmatcher.h"
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
 #include <string>
@@ -18,6 +20,11 @@
 struct KillEvent {
     std::string killer;
     std::string victim;
+};
+
+struct OCRWordBox {
+    std::string text;
+    cv::Rect box;
 };
 
 class OCRDetector : public QObject {
@@ -69,6 +76,17 @@ signals:
         QString victimName
     );
 
+    // Send detected agent information to PlayerTracker.
+    // Both killer and victim detections use this signal.
+    void agentCandidateDetected(
+        QString team,
+        QString player,
+        QString agent,
+        qint64 frameId
+    );
+
+
+
     void scoresChanged(
         QString leftTeam,
         int leftScore,
@@ -103,6 +121,18 @@ private:
 
     cv::VideoCapture cap;
     QTimer* frameTimer = nullptr;
+
+
+    // VALORANT AGENT TEMPLATE MATCHING
+
+    // Handles loading agent portrait templates and comparing
+    // them against the icons displayed in the kill feed.
+    KillfeedAgentMatcher agentMatcher;
+
+    // Tracks whether our agent templates loaded successfully.
+    // If loading fails, we should not attempt template matching.
+    bool agentTemplatesReady = false;
+
 
     // name -> team lookup
     std::unordered_map<std::string, std::string> nameToTeam;
@@ -179,6 +209,11 @@ private:
     double currentOcrVideoSeconds = 0.0;
     std::atomic_bool ocrBusy{false};
     std::atomic_bool shuttingDown{false};
+
+    // Unique identifier for each processed OCR frame.
+    // Prevents counting the same frame twice for one player.
+    std::atomic<qint64> processedFrameCounter{ 0 };
+
     // Serializes tess access between the OCR worker thread and destructor cleanup
     std::mutex tessMutex;
 
@@ -191,6 +226,7 @@ private:
     // has white text on colored red/green backgrounds.
     std::string ocr_killfeed_region(const cv::Mat& roi);
 
+    std::vector<OCRWordBox> ocr_killfeed_word_boxes(const cv::Mat& roi);
 
     std::string ocr_team_name(const cv::Mat& roi);
     std::string resolve_team_name(const std::string& raw,

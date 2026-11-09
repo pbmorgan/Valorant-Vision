@@ -68,12 +68,15 @@ add_executable(Valorant-Vision
     "cpp/webScraper.cpp"
     "cpp/playertracker.cpp"
     "cpp/playerstatswidget.cpp"
+    "cpp/killfeedagentmatcher.cpp"
+
     "headers/videoplayer.h"
     "headers/minimap.h"
     "headers/mainwindow.h"
     "headers/ocr.h"
     "headers/playertracker.h"
     "headers/playerstatswidget.h" 
+    "headers/killfeedagentmatcher.h"
    )
 
 # Lets us just include the files without having to specify relative path
@@ -118,6 +121,25 @@ add_custom_command(
             "${CMAKE_SOURCE_DIR}/model/agent_icons_round"
             "$<TARGET_FILE_DIR:${PROJECT_NAME}>/agent_icons"
 )
+
+# Copy Killfeed Agent Templates
+# These images are used by OpenCV to identify agents
+# in the killfeed and detect assists.
+
+add_custom_command(
+    TARGET Valorant-Vision POST_BUILD
+
+    # Copy agent portrait templates
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_SOURCE_DIR}/assets/agent_templates/templates"
+        "$<TARGET_FILE_DIR:Valorant-Vision>/agent_templates/templates"
+
+    # Copy transparency masks for template matching
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_SOURCE_DIR}/assets/agent_templates/masks"
+        "$<TARGET_FILE_DIR:Valorant-Vision>/agent_templates/masks"
+)
+
 
 # Copy tessdata folder next to the exe
 add_custom_command(TARGET Valorant-Vision POST_BUILD

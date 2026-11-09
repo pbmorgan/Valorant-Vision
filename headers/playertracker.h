@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QString>
+#include <QtGlobal>
 
 #include <string>
 #include <utility>
@@ -15,6 +16,8 @@ struct PlayerStats
 {
     std::string team;
     std::string name;
+    std::string agent;  // Empty until confirmed
+
 
     int kills = 0;
     int deaths = 0;
@@ -105,6 +108,12 @@ public slots:
         QString victimName
     );
 
+    void recordAgentObservation(
+        QString team,
+        QString player,
+        QString agent,
+        qint64 frameId
+    );
 
     // Called whenever damage detection is added later.
     void recordDamage(
@@ -146,6 +155,13 @@ signals:
 
     // Fired whenever player statistics change.
     void statsUpdated();
+
+    void agentConfirmed(
+        QString team,
+        QString player,
+        QString agent
+    );
+
 
 
 private:
@@ -199,6 +215,14 @@ private:
     // Reset round statistics while preserving the roster.
     void resetRoundStats();
 
+    // Count detected agents for each player.
+    std::unordered_map<
+        std::string,
+        std::unordered_map<std::string, int>
+    > agentVotes;
+
+    // Prevent multiple votes for one player in one frame.
+    std::unordered_map<std::string, qint64> lastAgentVoteFrame;
 
     // Convert a map to a sorted vector for displaying.
     static std::vector<PlayerStats>

@@ -20,6 +20,14 @@ public:
         const std::vector<PlayerStats>& stats
     );
 
+    // Update the live match scoreboard whenever
+    // player statistics or confirmed agents change.
+    void updateLiveStats(
+        const std::vector<PlayerStats>& stats
+    );
+
+
+
     // Add the complete match totals.
     void addFinalStats(
         const std::vector<PlayerStats>& stats
@@ -30,6 +38,9 @@ public:
 
 private:
     QTabWidget* roundTabs;
+
+    // The live scoreboard that updates during playback.
+    QTableWidget* liveMatchTable = nullptr;
 
     QTableWidget* createStatsTable(
         const std::vector<PlayerStats>& stats

@@ -377,6 +377,17 @@ MainWindow::MainWindow() :
     connect(ocrDetector, &OCRDetector::killEventDetected,
         playerTracker, &PlayerTracker::recordKill);
 
+    // Send detected killer and victim agents to PlayerTracker.
+    // PlayerTracker counts observations and locks an agent
+    // to a player after two matching detections.
+    connect(
+        ocrDetector,
+        &OCRDetector::agentCandidateDetected,
+        playerTracker,
+        &PlayerTracker::recordAgentObservation
+    );
+
+
     // TEMP TEST: print player statistics whenever PlayerTracker changes.
     connect(playerTracker, &PlayerTracker::statsUpdated, this, [this]() {
         std::cout << "\n=== PLAYER TRACKER UPDATE ===\n";
@@ -386,6 +397,8 @@ MainWindow::MainWindow() :
             std::cout
                 << stats.team << " "
                 << stats.name
+                << " | Agent: "
+                << (stats.agent.empty() ? "Unconfirmed" : stats.agent)
                 << " | K: " << stats.kills
                 << " D: " << stats.deaths
                 << " KD: " << stats.kd()
@@ -394,6 +407,21 @@ MainWindow::MainWindow() :
 
         std::cout << "=============================\n";
         });
+
+    // Refresh the Live Match scoreboard whenever
+    // kills, deaths, or confirmed agents change.
+    connect(
+        playerTracker,
+        &PlayerTracker::statsUpdated,
+        this,
+        [this]()
+        {
+            playerStatsWidget->updateLiveStats(
+                playerTracker->getMatchStats()
+            );
+        }
+    );
+
 
     // Keep the existing MainWindow score handling.
     connect(ocrDetector, &OCRDetector::scoresChanged,
@@ -645,11 +673,13 @@ void MainWindow::openAndPlayVideoOnClick() {
     // Reset OCR state before playback begins.
     // This ensures the first decoded frame belongs to a clean OCR session.
     
+    // Remove statistics from the previous video/match.
+    playerStatsWidget->resetStats();
+
     // Start fresh player statistics for this video/match.
     playerTracker->reset();
 
-    // Remove statistics from the previous video/match.
-    playerStatsWidget->resetStats();
+    
 
     // Start map detection on a background thread.
     //
