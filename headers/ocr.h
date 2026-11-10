@@ -7,6 +7,7 @@
 #include <QtGlobal>
 #include <opencv2/opencv.hpp>
 #include "killfeedagentmatcher.h"
+#include "assistcandidatematcher.h"
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
 #include <string>
@@ -125,13 +126,17 @@ private:
 
     // VALORANT AGENT TEMPLATE MATCHING
 
-    // Handles loading agent portrait templates and comparing
-    // them against the icons displayed in the kill feed.
+    // Existing matcher for killer and victim portraits.
     KillfeedAgentMatcher agentMatcher;
 
-    // Tracks whether our agent templates loaded successfully.
-    // If loading fails, we should not attempt template matching.
+    // Tracks whether existing agent templates loaded successfully.
     bool agentTemplatesReady = false;
+
+    // Experimental matcher for ranking possible assisting agents.
+    AssistCandidateMatcher assistCandidateMatcher;
+
+    // Tracks whether the 24x24 assist candidate templates loaded.
+    bool assistCandidateTemplatesReady = false;
 
 
     // name -> team lookup

@@ -119,6 +119,20 @@ OCRDetector::OCRDetector(const std::string& tessdataPath,
     // The load function returns true if both template
     // collections were successfully loaded.
     agentTemplatesReady = agentMatcher.load(templatesPath,"48x32","20x20");
+
+    // Load the experimental 24x24 red and teal assist templates.
+    // Reuse the same agent_templates directory.
+    assistCandidateTemplatesReady =
+        assistCandidateMatcher.load(templatesPath);
+
+    if (!assistCandidateTemplatesReady)
+    {
+        std::cerr
+            << "WARNING: Assist candidate templates failed to load."
+            << std::endl;
+    }
+
+
 }
 
 OCRDetector::~OCRDetector()
@@ -2428,6 +2442,22 @@ void OCRDetector::processFrame(const cv::Mat& frame)
         {
             cv::Mat feedRow = frame(roi);
 
+            // Track what the killer-agent detector sees for this kill.
+            const bool observeKill =
+                !seenKills.count(evt.killer + "|" + evt.victim);
+
+            std::string observedStatus = "KILLER_NAME_NOT_FOUND";
+            std::string observedAgent = "NONE";
+            double observedScore = -1.0;
+            double observedMargin = -1.0;
+
+            cv::Rect observedPortrait;
+            cv::Rect observedNameBox;
+
+            // Exact killer portrait position returned by template matching.
+// Coordinates are relative to the complete killfeed row.
+            cv::Rect observedMatchedPortrait;
+
 
             if (OCR_DEBUG &&
                 evt.killer == "ZmjjKK" &&
@@ -2613,7 +2643,8 @@ void OCRDetector::processFrame(const cv::Mat& frame)
                     (startsWithTeam || matchedWithoutTeam))
                 {
 
-
+                      observedNameBox = wb.box;
+                      observedStatus = "PORTRAIT_NOT_LOCATED";
                     std::cout
                         << "KILLER BOX DEBUG | Player: " << evt.killer
                         << " | x=" << wb.box.x
@@ -2929,11 +2960,13 @@ void OCRDetector::processFrame(const cv::Mat& frame)
                         iconRect &= cv::Rect(
                             0, 0, feedRow.cols, feedRow.rows
                         );
+                        observedPortrait = iconRect;
 
                         if (portraitLocated &&
                             iconRect.width > 0 &&
                             iconRect.height > 0)
                         {
+                            observedStatus = "TEMPLATES_NOT_LOADED";
                             std::filesystem::path debugDir =
                                 std::filesystem::path(
                                     QCoreApplication::applicationDirPath().toStdString()
@@ -2954,6 +2987,28 @@ void OCRDetector::processFrame(const cv::Mat& frame)
                                 AgentIconMatch killerResult =
                                     agentMatcher.matchMain(feedRow(iconRect));
 
+                                if (killerResult.hasCandidate())
+                                {
+                                    observedStatus = "MATCHED";
+                                    observedAgent = killerResult.agent;
+                                    observedScore = killerResult.score;
+                                    observedMargin = killerResult.margin();
+
+                                    // killerResult.box is relative to iconRect.
+                                    // Convert it to coordinates within the full killfeed row.
+                                    observedMatchedPortrait = killerResult.box;
+
+                                    observedMatchedPortrait.x += iconRect.x;
+                                    observedMatchedPortrait.y += iconRect.y;
+
+                                    // Ensure the detected portrait stays inside the row.
+                                    observedMatchedPortrait &=
+                                        cv::Rect(0, 0, feedRow.cols, feedRow.rows);
+                                }
+                                else
+                                {
+                                    observedStatus = "REJECTED_OR_AMBIGUOUS";
+                                }
 
                                 if (killerResult.hasCandidate())
                                 {
@@ -3077,8 +3132,132 @@ void OCRDetector::processFrame(const cv::Mat& frame)
                         << " h=" << wb.box.height
                         << std::endl;
                     victimFound = true;
+
                 }
             }
+            if (observeKill)
+            {
+                namespace fs = std::filesystem;
+
+                fs::path debugDir =
+                    fs::path(QCoreApplication::applicationDirPath().toStdString())
+                    / "agent_debug"
+                    / "killer_observations";
+
+                fs::create_directories(debugDir);
+
+                const std::string id =
+                    "kill_" + std::to_string(frameId) +
+                    "_row_" + std::to_string(row);
+
+                // Save the entire killfeed row.
+                cv::imwrite(
+                    (debugDir / (id + "_full.png")).string(),
+                    feedRow
+                );
+
+                // Mark the detected regions.
+                cv::Mat annotated = feedRow.clone();
+
+                if (observedPortrait.area() > 0)
+                {
+                    cv::rectangle(
+                        annotated, observedPortrait,
+                        cv::Scalar(0, 0, 255), 2
+                    );
+
+                    cv::imwrite(
+                        (debugDir / (id + "_portrait.png")).string(),
+                        feedRow(observedPortrait)
+                    );
+                }
+
+                if (observedNameBox.area() > 0)
+                {
+                    cv::rectangle(
+                        annotated, observedNameBox,
+                        cv::Scalar(0, 255, 0), 2
+                    );
+                }
+
+                
+
+                // ---------------------------------------------------------
+                // ASSIST DEBUG: SEARCH LEFT OF THE KILLER PORTRAIT
+                // ---------------------------------------------------------
+
+                if (observedMatchedPortrait.area() > 0 &&
+                    observedMatchedPortrait.x > 0)
+                {
+                    // Search up to 110 pixels to the left of
+                    // the precisely matched killer portrait.
+                    // This may contain one or more assist icons.
+                    const int searchRight = observedMatchedPortrait.x;
+
+                    const int searchLeft =
+                        std::max(0, searchRight - 110);
+
+                    cv::Rect assistSearchRect(
+                        searchLeft,
+                        0,
+                        searchRight - searchLeft,
+                        feedRow.rows
+                    );
+
+                    if (assistSearchRect.area() > 0)
+                    {
+                        // Save the original pixels for later inspection.
+                        cv::imwrite(
+                            (debugDir / (id + "_assist_search.png")).string(),
+                            feedRow(assistSearchRect)
+                        );
+
+                        // Purple rectangle: possible assist search area.
+                        cv::rectangle(
+                            annotated,
+                            assistSearchRect,
+                            cv::Scalar(255, 0, 255),
+                            2
+                        );
+
+                        // Cyan rectangle: matched killer portrait.
+                        cv::rectangle(
+                            annotated,
+                            observedMatchedPortrait,
+                            cv::Scalar(255, 255, 0),
+                            2
+                        );
+
+                        std::cout
+                            << "ASSIST SEARCH DEBUG"
+                            << " | Killer: " << evt.killer
+                            << " | Victim: " << evt.victim
+                            << " | Search X: " << assistSearchRect.x
+                            << " | Search Width: " << assistSearchRect.width
+                            << " | Killer Portrait X: "
+                            << observedMatchedPortrait.x
+                            << std::endl;
+                    }
+                }
+
+                cv::imwrite(
+                    (debugDir / (id + "_annotated.png")).string(),
+                    annotated
+                );
+
+                std::cout
+                    << "KILL OBSERVATION"
+                    << " | Frame: " << frameId
+                    << " | Killer: " << evt.killer
+                    << " | Victim: " << evt.victim
+                    << " | Agent: " << observedAgent
+                    << " | Status: " << observedStatus
+                    << " | Score: " << observedScore
+                    << " | Margin: " << observedMargin
+                    << " | Row: " << row
+                    << std::endl;
+            }
+
         }
 
         // ---------------------------------------------------------

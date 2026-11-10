@@ -408,19 +408,35 @@ MainWindow::MainWindow() :
         std::cout << "=============================\n";
         });
 
-    // Refresh the Live Match scoreboard whenever
-    // kills, deaths, or confirmed agents change.
+
+    // Refresh player statistics whenever kills, deaths,
+    // assists, or confirmed agents change.
     connect(
         playerTracker,
         &PlayerTracker::statsUpdated,
         this,
         [this]()
         {
+            // Update full-match statistics.
             playerStatsWidget->updateLiveStats(
                 playerTracker->getMatchStats()
             );
+
+            // Refresh previously completed rounds.
+            // This handles assists credited retroactively
+            // after a player's agent becomes confirmed.
+            for (int round = 1;
+                round < playerTracker->getRoundNumber();
+                ++round)
+            {
+                playerStatsWidget->updateRoundStats(
+                    round,
+                    playerTracker->getRoundStats(round)
+                );
+            }
         }
     );
+
 
 
     // Keep the existing MainWindow score handling.

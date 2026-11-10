@@ -21,6 +21,7 @@ struct PlayerStats
 
     int kills = 0;
     int deaths = 0;
+    int assists = 0;
 
     int damageDone = 0;
     int damageTaken = 0;
@@ -37,12 +38,48 @@ struct PlayerStats
     }
 };
 
+// One possible assisting agent detected in a kill-feed row.
+struct AssistCandidate
+{
+    std::string agent;
+    double score = 0.0;
+    int rank = 0;
+};
+
+// An assist waiting for enough confirmed player-agent assignments.
+struct PendingAssist
+{
+    std::string eventId;
+
+    int roundNumber = 1;
+
+    std::string assistingTeam;
+    std::string killerName;
+    std::string victimName;
+
+    // Top five predictions from the assist detector.
+    // These are possible matches, not confirmed assists.
+    std::vector<AssistCandidate> candidates;
+
+    // The actual assisting agent identified by the detector.
+    // Empty until an assist icon has been positively identified.
+    std::string detectedAgent;
+
+    // Whether this assist has been assigned to a player.
+    bool resolved = false;
+
+    // The player currently credited with this assist.
+    // Used to prevent duplicate credits and handle corrections.
+    std::string assignedPlayer;
+};
 
 class PlayerTracker : public QObject
 {
     Q_OBJECT
 
 public:
+
+    
 
     explicit PlayerTracker(
         QObject* parent = nullptr
@@ -86,6 +123,11 @@ public:
     std::vector<PlayerStats>
         getLastRoundStats() const;
 
+    // Statistics for a specific round, including completed rounds.
+    std::vector<PlayerStats>
+        getRoundStats(int round) const;
+
+    
 
     // Get one player's full-match statistics.
     const PlayerStats* getPlayerStats(
@@ -96,6 +138,13 @@ public:
 
     // Round currently being played.
     int getRoundNumber() const;
+
+    // Return stored assist records.
+    // Some records may already be marked as resolved.
+    std::vector<PendingAssist> getPendingAssists() const;
+    // Save a new assist event for later identification.
+    // Returns false if the event is invalid or already stored.
+    bool recordPendingAssist(const PendingAssist& assist);
 
 
 public slots:
@@ -184,6 +233,13 @@ private:
     std::vector<PlayerStats>
         lastRoundStats;
 
+    // Statistics for every completed round.
+    // Key: round number
+    // Value: player statistics from that round.
+    std::unordered_map<
+        int,
+        std::unordered_map<std::string, PlayerStats>
+    > roundHistory;
 
     // Current round number.
     int roundNumber = 1;
@@ -210,6 +266,17 @@ private:
         const std::string& team,
         const std::string& player
     );
+
+    // Assists waiting for player-agent identification.
+    std::vector<PendingAssist> pendingAssists;
+
+    // Count players with confirmed agents on a specific team.
+    int countConfirmedAgentsForTeam(
+        const std::string& team
+    ) const;
+
+    // Reevaluate stored assists using confirmed player agents.
+    void reevaluatePendingAssists();
 
 
     // Reset round statistics while preserving the roster.

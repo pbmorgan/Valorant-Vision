@@ -88,18 +88,27 @@ namespace
                 QString::number(player.deaths)
             );
 
+            // Assists
             setCell(
                 5,
+                QString::number(player.assists)
+            );
+
+            // Kill/death ratio
+            setCell(
+                6,
                 QString::number(player.kd(), 'f', 2)
             );
 
+            // Damage done
             setCell(
-                6,
+                7,
                 QString::number(player.damageDone)
             );
 
+            // Damage taken
             setCell(
-                7,
+                8,
                 QString::number(player.damageTaken)
             );
         }
@@ -137,11 +146,11 @@ PlayerStatsWidget::PlayerStatsWidget(QWidget* parent)
 QTableWidget* PlayerStatsWidget::createStatsTable(
     const std::vector<PlayerStats>& stats)
 {
-    // Eight columns now, including Agent.
+    // Nine columns, including Agent and Assists.
     QTableWidget* table =
         new QTableWidget(
             static_cast<int>(stats.size()),
-            8
+            9
         );
 
     table->setHorizontalHeaderLabels(
@@ -151,6 +160,7 @@ QTableWidget* PlayerStatsWidget::createStatsTable(
             "Agent",
             "Kills",
             "Deaths",
+            "Assists",
             "K/D",
             "Damage Done",
             "Damage Taken"
@@ -275,6 +285,49 @@ void PlayerStatsWidget::updateLiveStats(
         }
     }
 }
+
+
+
+// ---------------------------------------------------------
+// UPDATE AN EXISTING COMPLETED ROUND
+// ---------------------------------------------------------
+
+void PlayerStatsWidget::updateRoundStats(
+    int roundNumber,
+    const std::vector<PlayerStats>& stats)
+{
+    // Find the tab corresponding to this round.
+    QString tabName =
+        QString("Round %1").arg(roundNumber);
+
+    for (int tabIndex = 0;
+        tabIndex < roundTabs->count();
+        ++tabIndex)
+    {
+        // Skip tabs belonging to other rounds.
+        if (roundTabs->tabText(tabIndex) != tabName)
+        {
+            continue;
+        }
+
+        QTableWidget* table =
+            qobject_cast<QTableWidget*>(
+                roundTabs->widget(tabIndex)
+            );
+
+        if (table == nullptr)
+        {
+            return;
+        }
+
+        // Refresh statistics using the updated
+        // historical round data from PlayerTracker.
+        populateStatsTable(table, stats);
+
+        return;
+    }
+}
+
 
 // ---------------------------------------------------------
 // ADD COMPLETED ROUND

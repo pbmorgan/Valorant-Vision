@@ -93,6 +93,9 @@ void PlayerTracker::reset()
     lastAgentVoteFrame.clear();
 
     lastRoundStats.clear();
+    roundHistory.clear();
+    pendingAssists.clear();
+
 
     roundNumber = 1;
 
@@ -115,9 +118,14 @@ void PlayerTracker::setRoster(
     matchStats.clear();
     roundStats.clear();
     lastRoundStats.clear();
+    roundHistory.clear();
+
+
+
+
     agentVotes.clear();
     lastAgentVoteFrame.clear();
-
+    pendingAssists.clear();  // NEW
 
     roundNumber = 1;
 
@@ -286,6 +294,19 @@ void PlayerTracker::recordAgentObservation(
         }
     }
 
+    // Update agent assignments in all completed rounds.
+    for (auto& roundEntry : roundHistory)
+    {
+        auto& players = roundEntry.second;
+
+        auto historicalPlayer = players.find(key);
+
+        if (historicalPlayer != players.end())
+        {
+            historicalPlayer->second.agent = leadingAgent;
+        }
+    }
+
     if (previousAgent.empty())
     {
         std::cout
@@ -305,6 +326,10 @@ void PlayerTracker::recordAgentObservation(
             << " | Votes: " << leadingVotes
             << std::endl;
     }
+
+    // New agent information may help identify older assists.
+    reevaluatePendingAssists();
+
 
     // Notify other components that this player's
     // confirmed agent has changed.
@@ -546,7 +571,10 @@ void PlayerTracker::onScoreChanged(
 
     if (roundEnded)
     {
-        // Save the completed round before resetting it.
+        // Preserve the completed round in match history.
+        roundHistory[roundNumber] = roundStats;
+
+        // Keep the existing last-round statistics.
         lastRoundStats =
             mapToVector(
                 roundStats
@@ -712,7 +740,29 @@ PlayerTracker::getLastRoundStats() const
 {
     return lastRoundStats;
 }
+// ---------------------------------------------------------
+// GET STATISTICS FOR A SPECIFIC ROUND
+// ---------------------------------------------------------
 
+std::vector<PlayerStats>
+PlayerTracker::getRoundStats(int round) const
+{
+    // Return live statistics for the current round.
+    if (round == roundNumber)
+    {
+        return mapToVector(roundStats);
+    }
+
+    // Look for a previously completed round.
+    auto it = roundHistory.find(round);
+
+    if (it == roundHistory.end())
+    {
+        return {};
+    }
+
+    return mapToVector(it->second);
+}
 
 // ---------------------------------------------------------
 // GET ONE PLAYER
@@ -751,5 +801,307 @@ PlayerTracker::getPlayerStats(
 
 int PlayerTracker::getRoundNumber() const
 {
+
     return roundNumber;
 }
+
+// ---------------------------------------------------------
+// COUNT CONFIRMED AGENTS ON A TEAM
+// ---------------------------------------------------------
+
+int PlayerTracker::countConfirmedAgentsForTeam(
+    const std::string& team) const
+{
+    int confirmedCount = 0;
+
+    for (const auto& entry : matchStats)
+    {
+        const PlayerStats& player = entry.second;
+
+        // Only examine players from the assisting team.
+        if (makeKey(player.team, "") != makeKey(team, ""))
+        {
+            continue;
+        }
+
+        // An empty agent means the player is unconfirmed.
+        if (!player.agent.empty())
+        {
+            confirmedCount++;
+        }
+    }
+
+    return confirmedCount;
+}
+
+
+// ---------------------------------------------------------
+// GET STORED ASSISTS
+// ---------------------------------------------------------
+
+std::vector<PendingAssist>
+PlayerTracker::getPendingAssists() const
+{
+    return pendingAssists;
+}
+
+// ---------------------------------------------------------
+// RECORD PENDING ASSIST
+// ---------------------------------------------------------
+
+bool PlayerTracker::recordPendingAssist(
+    const PendingAssist& assist)
+{
+    // An assist must belong to an identifiable kill event.
+    if (assist.eventId.empty() ||
+        assist.assistingTeam.empty() ||
+        assist.killerName.empty() ||
+        assist.victimName.empty() ||
+        assist.roundNumber < 1 ||
+        (assist.detectedAgent.empty() &&
+            assist.candidates.empty()) ||
+        assist.candidates.size() > 5)
+    {
+        return false;
+    }
+
+    // Prevent the same assist event from being stored twice.
+    for (const auto& existing : pendingAssists)
+    {
+        if (existing.eventId == assist.eventId)
+        {
+            return false;
+        }
+    }
+
+    // Store the assist as unresolved.
+    PendingAssist savedAssist = assist;
+    savedAssist.resolved = false;
+    savedAssist.assignedPlayer.clear();
+
+    pendingAssists.push_back(savedAssist);
+
+    std::cout
+        << "PENDING ASSIST SAVED | "
+        << "Round: " << savedAssist.roundNumber
+        << " | Team: " << savedAssist.assistingTeam
+        << " | Killer: " << savedAssist.killerName
+        << " | Candidates: " << savedAssist.candidates.size()
+        << std::endl;
+
+
+    reevaluatePendingAssists();
+
+    return true;
+}
+
+// ---------------------------------------------------------
+// REEVALUATE PENDING ASSISTS
+// ---------------------------------------------------------
+
+
+void PlayerTracker::reevaluatePendingAssists()
+{
+    bool statsChanged = false;
+
+    for (PendingAssist& assist : pendingAssists)
+    {
+        // Only a positively identified assisting agent
+        // can be used to award an assist.
+        // Ranked candidates alone are not enough.
+
+        std::string matchedPlayerKey;
+        int matchingPlayers = 0;
+
+        if (!assist.detectedAgent.empty())
+        {
+            for (const auto& entry : matchStats)
+            {
+                const PlayerStats& player = entry.second;
+
+                // The assisting player must belong
+                // to the killer's team.
+                if (makeKey(player.team, "") !=
+                    makeKey(assist.assistingTeam, ""))
+                {
+                    continue;
+                }
+
+                // The killer cannot assist their own kill.
+                if (makeKey(player.team, player.name) ==
+                    makeKey(assist.assistingTeam,
+                        assist.killerName))
+                {
+                    continue;
+                }
+
+                // The player's agent must be confirmed
+                // and match the detected assisting agent.
+                if (player.agent.empty() ||
+                    makeKey("", player.agent) !=
+                    makeKey("", assist.detectedAgent))
+                {
+                    continue;
+                }
+
+                matchedPlayerKey = entry.first;
+                matchingPlayers++;
+            }
+        }
+
+        // Never guess between multiple matching players.
+        // Keep the assist unresolved until there is
+        // exactly one eligible player.
+        if (matchingPlayers != 1)
+        {
+            matchedPlayerKey.clear();
+        }
+
+        // Find any player who was previously credited
+        // with this assist.
+        std::string oldPlayerKey;
+
+        if (!assist.assignedPlayer.empty())
+        {
+            oldPlayerKey = makeKey(
+                assist.assistingTeam,
+                assist.assignedPlayer
+            );
+        }
+
+        // Nothing has changed.
+        // This also prevents duplicate assist credits.
+        if (matchedPlayerKey == oldPlayerKey)
+        {
+            assist.resolved = !matchedPlayerKey.empty();
+            continue;
+        }
+
+        // Find the round in which the assist occurred.
+        std::unordered_map<std::string, PlayerStats>*
+            eventRound = nullptr;
+
+        if (assist.roundNumber == roundNumber)
+        {
+            eventRound = &roundStats;
+        }
+        else
+        {
+            auto roundIt =
+                roundHistory.find(assist.roundNumber);
+
+            if (roundIt != roundHistory.end())
+            {
+                eventRound = &roundIt->second;
+            }
+        }
+
+        // Never award an assist to the wrong round.
+        if (eventRound == nullptr)
+        {
+            continue;
+        }
+
+        // Ensure both the old and new player records
+        // exist before changing any statistics.
+        auto playerExists =
+            [&](const std::string& key) -> bool
+            {
+                return key.empty() ||
+                    (matchStats.find(key) != matchStats.end() &&
+                        eventRound->find(key) != eventRound->end());
+            };
+
+        if (!playerExists(oldPlayerKey) ||
+            !playerExists(matchedPlayerKey))
+        {
+            continue;
+        }
+
+        // Prevent an inconsistent correction from
+        // producing negative assist totals.
+        if (!oldPlayerKey.empty() &&
+            (matchStats.at(oldPlayerKey).assists <= 0 ||
+                eventRound->at(oldPlayerKey).assists <= 0))
+        {
+            continue;
+        }
+
+        // Apply an assist credit or remove an old credit
+        // from both the match and the original round.
+        auto changeAssists =
+            [&](const std::string& key, int amount)
+            {
+                if (key.empty())
+                {
+                    return;
+                }
+
+                matchStats.at(key).assists += amount;
+                eventRound->at(key).assists += amount;
+
+                // Keep the most recently completed
+                // round snapshot synchronized.
+                if (assist.roundNumber == roundNumber - 1)
+                {
+                    for (PlayerStats& player : lastRoundStats)
+                    {
+                        if (makeKey(player.team, player.name)
+                            == key)
+                        {
+                            player.assists += amount;
+                        }
+                    }
+                }
+            };
+
+        // Remove any previous, now-invalid credit.
+        changeAssists(oldPlayerKey, -1);
+
+        // Award the correct player, if identified.
+        changeAssists(matchedPlayerKey, +1);
+
+        // Remember who currently owns this assist.
+        if (matchedPlayerKey.empty())
+        {
+            assist.assignedPlayer.clear();
+            assist.resolved = false;
+
+            std::cout
+                << "ASSIST UNRESOLVED | "
+                << assist.eventId
+                << " | Agent: " << assist.detectedAgent
+                << std::endl;
+        }
+        else
+        {
+            const PlayerStats& player =
+                matchStats.at(matchedPlayerKey);
+
+            assist.assignedPlayer = player.name;
+            assist.resolved = true;
+
+            std::cout
+                << "ASSIST AWARDED | "
+                << assist.eventId
+                << " | Round: " << assist.roundNumber
+                << " | Player: " << player.team
+                << " " << player.name
+                << " | Agent: " << player.agent
+                << " | Match assists: " << player.assists
+                << std::endl;
+        }
+
+        statsChanged = true;
+    }
+
+    // Refresh the scoreboard when assist totals change.
+    if (statsChanged)
+    {
+        emit statsUpdated();
+    }
+}
+
+
+
+

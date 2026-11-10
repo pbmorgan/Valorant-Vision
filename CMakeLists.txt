@@ -69,15 +69,17 @@ add_executable(Valorant-Vision
     "cpp/playertracker.cpp"
     "cpp/playerstatswidget.cpp"
     "cpp/killfeedagentmatcher.cpp"
+    "cpp/assistcandidatematcher.cpp"
 
     "headers/videoplayer.h"
     "headers/minimap.h"
     "headers/mainwindow.h"
     "headers/ocr.h"
     "headers/playertracker.h"
-    "headers/playerstatswidget.h" 
+    "headers/playerstatswidget.h"
     "headers/killfeedagentmatcher.h"
-   )
+    "headers/assistcandidatematcher.h"
+)
 
 # Lets us just include the files without having to specify relative path
 target_include_directories(Valorant-Vision PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/cpp")
@@ -122,22 +124,29 @@ add_custom_command(
             "$<TARGET_FILE_DIR:${PROJECT_NAME}>/agent_icons"
 )
 
+
+
 # Copy Killfeed Agent Templates
-# These images are used by OpenCV to identify agents
-# in the killfeed and detect assists.
+# Used for killer, victim, and assist detection.
 
 add_custom_command(
     TARGET Valorant-Vision POST_BUILD
 
-    # Copy agent portrait templates
+    # Existing main and assist agent templates
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${CMAKE_SOURCE_DIR}/assets/agent_templates/templates"
         "$<TARGET_FILE_DIR:Valorant-Vision>/agent_templates/templates"
 
-    # Copy transparency masks for template matching
+    # Existing agent masks, including 24x24 assist masks
     COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${CMAKE_SOURCE_DIR}/assets/agent_templates/masks"
         "$<TARGET_FILE_DIR:Valorant-Vision>/agent_templates/masks"
+
+    # NEW: Red and teal background templates
+    # for the experimental assist candidate matcher
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_SOURCE_DIR}/assets/agent_templates/team_backgrounds"
+        "$<TARGET_FILE_DIR:Valorant-Vision>/agent_templates/team_backgrounds"
 )
 
 
@@ -186,3 +195,58 @@ message(STATUS "Qt6_DIR: ${Qt6_DIR}")
 message(STATUS "OpenCV version: ${OpenCV_VERSION}")
 message(STATUS "OpenCV include dirs: ${OpenCV_INCLUDE_DIRS}")
 message(STATUS "OpenCV included libs: ${OpenCV_LIBS}")
+
+# ==========================================
+# Standalone Assist Detection Test
+# ==========================================
+
+add_executable(assist_detection_test
+    assist_detection_test/test_assist.cpp
+)
+
+target_include_directories(assist_detection_test PRIVATE
+    ${OpenCV_INCLUDE_DIRS}
+)
+
+target_link_libraries(assist_detection_test PRIVATE
+    ${OpenCV_LIBS}
+)
+target_compile_definitions(assist_detection_test PRIVATE
+    PROJECT_ROOT="${CMAKE_SOURCE_DIR}"
+)
+# Copy required OpenCV DLLs next to test executable
+add_custom_command(TARGET assist_detection_test POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        $<TARGET_RUNTIME_DLLS:assist_detection_test>
+        $<TARGET_FILE_DIR:assist_detection_test>
+    COMMAND_EXPAND_LISTS
+)
+
+
+# ==========================================
+# Standalone PlayerTracker Assist Test
+# ==========================================
+
+add_executable(playertracker_test
+    assist_detection_test/test_playertracker.cpp
+    cpp/playertracker.cpp
+    headers/playertracker.h
+)
+
+# PlayerTracker inherits QObject and uses
+# Qt signals, so Qt's Meta-Object Compiler
+# must process its header.
+set_target_properties(playertracker_test PROPERTIES
+    AUTOMOC ON
+)
+
+target_include_directories(playertracker_test PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/headers"
+)
+
+target_link_libraries(playertracker_test PRIVATE
+    Qt6::Core
+)
+
+
+

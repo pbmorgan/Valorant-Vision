@@ -26,7 +26,13 @@ public:
         const std::vector<PlayerStats>& stats
     );
 
-
+    // Refresh an existing completed round table.
+    // This allows retroactively awarded assists
+    // to appear in the round where they occurred.
+    void updateRoundStats(
+        int roundNumber,
+        const std::vector<PlayerStats>& stats
+    );
 
     // Add the complete match totals.
     void addFinalStats(
