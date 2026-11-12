@@ -149,6 +149,16 @@ public:
 
 public slots:
 
+    // Called when OCR identifies one assisting agent on a killfeed entry.
+    // The current round is assigned here, on the statistics thread.
+    void recordDetectedAssist(
+        QString eventId,
+        QString killerTeam,
+        QString killerName,
+        QString victimName,
+        QString assistingAgent
+    );
+
     // Called whenever OCR detects a kill.
     void recordKill(
         QString killerTeam,

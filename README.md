@@ -1,3 +1,5 @@
+> **Reorganized source snapshot (November 2026).** See [REFACTOR_NOTES.md](REFACTOR_NOTES.md) for the source layout and cleanup audit, [VALIDATION.md](VALIDATION.md) for checks performed, and [WINDOWS_BUILD.md](WINDOWS_BUILD.md) for rebuilding on your Windows machine. The approximately 159 MB `model/faster_rcnn.onnx` file was not in the uploaded source-only ZIP; copy it from the original project before compiling.
+
 # Valorant-Vision
 
 # Fork Contributors

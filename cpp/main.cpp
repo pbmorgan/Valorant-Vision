@@ -1,4 +1,4 @@
-﻿
+
 /*
 Includes:
 QT: Tool for Making GUIs in C++
@@ -23,7 +23,7 @@ Description:
 #include "../headers/mainwindow.h"
 
 //For test
-#include "../headers/WebScraper.h"
+#include "../headers/webScraper.h"
 
 
 int main(int argc, char* argv[])
