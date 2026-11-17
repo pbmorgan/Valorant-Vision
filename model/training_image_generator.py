@@ -6,6 +6,10 @@ import random
 import numpy as np
 import math
 import json
+from add_agent import load_json
+
+TEAM1_COLOR = (125/255, 211/255, 188/255, 1.0) # Color for team 1
+TEAM2_COLOR = (183/255, 32/255, 48/255, 1.0) # Color for team 2
 
 """
 agent_icon_path: relative path to the folder with agent icons
@@ -67,7 +71,32 @@ class ImageGenerator:
         load_results(self.map_layout_path, self.map_layouts, resize_factor=self.map_resize_factor)
         load_results(self.misc_icon_path, self.misc_icons)
 
-        self.class_ids = {name: i + 1 for i, (_, name) in enumerate(self.agent_icons)}
+        #Read permanent IDs from id_to_name.json
+        json_path = os.path.join(
+            os.path.dirname(os.path.abspath(self.agent_icon_path)),
+            "id_to_name.json",
+        )
+
+        entries = load_json(json_path)
+
+        self.class_ids = {
+            entry["name"]: entry["id"]
+            for entry in entries
+        }
+
+        # 
+        loaded_names = {name for _, name in self.agent_icons}
+
+        if loaded_names != set(self.class_ids):
+            missing = sorted(set(self.class_ids) - loaded_names)
+            unregistered = sorted(loaded_names - set(self.class_ids))
+
+            raise ValueError(
+                f"Agent icons and id_to_name.json do not match. "
+                f"Missing icons: {missing}; "
+                f"Unregistered icons: {unregistered}"
+                "Add new agents with add_agent.py."
+            )
 
         self.coco_data = {
             "images": [],
@@ -86,73 +115,167 @@ class ImageGenerator:
         return minimap
 
     # Takes in a minimap and a number of agents to draw, and returns the minimap with the agents drawn on it, as well as the positions of the agents
-    def draw_agents(self, minimap, num_agents_to_draw):
+    def draw_agents(self, minimap):
 
+        if len(self.agent_icons) < 5:
+            raise ValueError("Not enough agent icons to draw. At least 5 are required.")
+
+        # Select 2 independent, unique five-agent teams.
+        #The same agent can appear on both teams.
+        team1_roster = random.sample(self.agent_icons, 5)
+        team2_roster = random.sample(self.agent_icons, 5)
+
+        # Round scenarios
+        scenario = random.choices(
+            ["early_round", "mid_round", "late_round"],
+            weights=[50, 30, 20],
+            k=1
+        )[0]
+
+        if scenario == "early_round":
+            team1_count = 5
+            team2_count = 5
+        elif scenario == "mid_round":
+            team1_count = random.randint(3, 5)
+            team2_count = random.randint(3, 5)
+        else:  # late_round
+            team1_count = random.randint(1, 5)
+            team2_count = random.randint(1, 5)
+
+        selected = [
+            (icon, name, "team1", TEAM1_COLOR)
+            for icon, name in random.sample(
+                team1_roster, team1_count
+            )
+        ] + [
+            (icon, name, "team2", TEAM2_COLOR)
+            for icon, name in random.sample(
+                team2_roster, team2_count
+            )
+        ]
+
+        # Randomize the drawing order so that agents are not drawn in a predictable sequence
+        random.shuffle(selected)
+
+        map_h, map_w = minimap.shape[:2]
+
+        # Generator expects RGBA minimaps.
+        playable_mask = minimap[:, :, 3] > 0.05
+        playable_points = np.argwhere(playable_mask)
+
+        # If there are no playable points, return the original minimap and an empty list of positions
+        if not len(playable_points):
+            return minimap, []
 
         position_data = []
+        centers = [] # (center_x, center_y, radius)
 
-        for _ in range(num_agents_to_draw):
+        for source_icon, name, team, color in selected:
+            # Assign team color to the agent icon
+            icon, inner_r, _ = self.square_to_circle_with_border(
+                image=source_icon,
+                border_color=color
+            )
 
-            # Load agent icon and apply transformations to it
-            agent_icon, agent_name = random.choice(self.agent_icons)
-            agent_icon, inner_r, crop_pad = self.square_to_circle_with_border(image=agent_icon)
-            agent_icon = self.rotate_image_randomly(agent_icon, angle_range=(-5, 5))
-            agent_icon = self.skew_image(agent_icon, skew_angle_deg_x=random.randint(-5, 5), skew_angle_deg_y=random.randint(-5, 5))
-            agent_icon = self.zero_out_random_angle(agent_icon) if random.random() < 0.4 else agent_icon # We cut out a random portion of the image to simulate it being covered up. Feel free to reduce if it's too extreme
+            # Apply transformations to the selected agent icons
+            if random.random() < 0.25:
+                icon = self.rotate_image_randomly(
+                    icon, angle_range=(-5, 5)
+                )
 
-            # Get dimensions of the minimap and agent icon
-            minimap_height, minimap_width, _ = minimap.shape
-            icon_height, icon_width, _ = agent_icon.shape
+            if random.random() < 0.1:
+                icon = self.zero_out_random_angle(icon)
 
-            # Check if agent icon fits within minimap (should always be the case)
-            if icon_width > minimap_width or icon_height > minimap_height:
-                continue
+            old_h, old_w, = icon.shape[:2]
 
-            def sample_valid_position(mask, icon_h, icon_w):
-                valid_points = np.argwhere(mask[:, :, 3] > 0)
+            scale = random.uniform(0.9, 1.1)
+            new_h = max(
+                8, round(self.agent_resize_factor[0] * scale)
+            )
+            new_w = max(
+                8, round(self.agent_resize_factor[1] * scale)
+            )
 
-                if len(valid_points) == 0:
-                    return None
+            icon = cv2.resize(icon, (new_w, new_h))
 
-                y, x = valid_points[random.randint(0, len(valid_points)-1)]
+            # Calculate icon bounding box dimensions
+            r_x = max(1, round(inner_r * new_w / old_w))
+            r_y = max(1, round(inner_r * new_h / old_h))
+            radius = max(r_x, r_y)
 
-                # keep icon inside map
-                x = np.clip(x, 0, mask.shape[1] - icon_w)
-                y = np.clip(y, 0, mask.shape[0] - icon_h)
+            # Make 15% of agents overlap with another agent
+            wants_overlap = (
+                bool(centers) and random.random() < 0.15
+            )
 
-                return x, y
+            # Try to place the agent icon on the minimap, retrying up to 20 times if necessary 
+            for attempt in range(20):
+                overlap_index = None
 
-            x, y = sample_valid_position(minimap, icon_height, icon_width)
+                if wants_overlap and attempt < 10:
+                    overlap_index = random.randrange(len(centers))
 
-            # Overlay the agent icon onto the minimap at the selected position
-            scaling_factor = random.uniform(0.9, 1.1)
-            resize_factor = (int(self.agent_resize_factor[0] * scaling_factor), int(self.agent_resize_factor[1] * scaling_factor))
+                    # Get the center coordinates and radius of the overlapping agent
+                    overlap_x, overlap_y, overlap_r = centers[overlap_index]
 
-            result = self.overlay_transparent(minimap, agent_icon, x, y, resize_factor)
-            if result is not None:
-                minimap = result
+                    angle = random.uniform(0, 2 * math.pi)
+                    separation = random.uniform(0.65, 0.85) * (radius + overlap_r)
+                    center_x = round(overlap_x + separation * math.cos(angle))
+                    center_y = round(overlap_y + separation * math.sin(angle))
 
-                # resize icon the same way it was drawn (please change this later)
-                scaled_icon = cv2.resize(agent_icon, resize_factor)
+                else:
+                    center_y, center_x = map(
+                        int, playable_points[random.randrange(len(playable_points))]
+                    )
 
-                # Scale inner_r and crop_pad to match the resized icon
-                scale = resize_factor[0] / agent_icon.shape[0]
-                scaled_inner_r = int(inner_r * scale)
-                scaled_crop_pad = int(crop_pad * scale)
+                x = center_x - new_w // 2
+                y = center_y - new_h // 2
 
-                # Center of the icon in minimap coordinates
-                icon_cx = x + scaled_crop_pad + (resize_factor[1] // 2 - scaled_crop_pad)
-                icon_cy = y + scaled_crop_pad + (resize_factor[0] // 2 - scaled_crop_pad)
+                # Ensure the agent icon stays within the playable area
+                if (
+                    x < 0 or y < 0
+                    or x + new_w > map_w
+                    or y + new_h > map_h
+                ):
+                    continue
 
-              
+                # Avoid placing icons outside the playable area
+                if (
+                    playable_mask[y:y + new_h, x:x + new_w].mean() < 0.6
+                ):
+                    continue
+
+                # Avoids accidental overlap with other agents
+                if any(
+                    math.hypot(center_x - cx, center_y - cy)
+                    < radius + previous_radius + 3
+
+                    for i, (cx, cy, previous_radius) in enumerate(centers)
+                    if i != overlap_index
+                ):
+                    continue
+
+                self.overlay_transparent(minimap, icon, x, y)
+
                 position_data.append({
-                    "name": agent_name,
-                    #"coordinates": (x + xmin, y + ymin),
-                    "coordinates": (icon_cx - scaled_inner_r, icon_cy - scaled_inner_r),
-                    "height": scaled_inner_r * 2,
-                    "width": scaled_inner_r * 2
+                    "name": name,
+                    "team": team,
+                    "coordinates": (center_x - r_x, center_y - r_y),
+                    "width": 2 * r_x,
+                    "height": 2 * r_y
                 })
 
+                centers.append((center_x, center_y, radius))
+                break
+
+        """
+        # [DEBUGGING] Print a summary of the scenario, selected agents, and placed agents
+        print(
+                    f"Scenario: {scenario} | "
+                    f"Selected: {len(selected)} | "
+                    f"Placed: {len(position_data)}"
+                )
+        """
         return minimap, position_data
 
     # Draws miscellaneous icons on the map that just need to be drawn on (we don't need to handle them specially)
@@ -231,7 +354,7 @@ class ImageGenerator:
                            else (125/255, 211/255, 188/255, 1.0)
 
         # Apply a little randomness to the border color
-        COLOR_DEVIATION_FACTOR = 0.5 # [REMOVE] later, this is just to have it focus on detecting the portrait rather than relying on the border color
+        COLOR_DEVIATION_FACTOR = 0.02 # Small random deviation applied to border color
         border_color = (random.uniform(-COLOR_DEVIATION_FACTOR, COLOR_DEVIATION_FACTOR) + border_color[0], 
                         random.uniform(-COLOR_DEVIATION_FACTOR, COLOR_DEVIATION_FACTOR) + border_color[1], 
                         random.uniform(-COLOR_DEVIATION_FACTOR, COLOR_DEVIATION_FACTOR) + border_color[2], 1)
@@ -572,7 +695,7 @@ class ImageGenerator:
         minimap = self.generate_map()
 
         minimap = self.draw_misc(minimap, num_misc_to_draw=random.randint(10, 16))
-        minimap, positions = self.draw_agents(minimap, num_agents_to_draw=random.randint(16, 40))
+        minimap, positions = self.draw_agents(minimap)
         minimap = self.add_gaussian_noise(minimap, sigma_range=(0.0, 0.01))
         minimap = self.scale_artifact(minimap, scale_range=(0.5, 1.0))
         minimap = self.apply_jpeg_compression(minimap, quality_range=(50, 100))
