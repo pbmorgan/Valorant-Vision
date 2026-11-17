@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <QMainWindow>
+#include <QTimer>
+#include <QTimer>
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QSlider>
@@ -34,6 +36,13 @@ private:
     OCRDetector* ocrDetector;
     PlayerTracker* playerTracker;
     PlayerStatsWidget* playerStatsWidget;
+
+    // 30 seconds of actual video playback without confirmed team names.
+    QTimer* teamDetectionFallbackTimer = nullptr;
+    int teamFallbackRemainingMs = 30000;
+    bool teamsConfirmedForCurrentVideo = false;
+    bool teamDialogOpen = false;
+    bool teamFallbackShown = false;
 
     void openAndPlayVideoOnClick();
     void pauseOrPlayVideo();

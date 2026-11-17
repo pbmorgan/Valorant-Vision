@@ -59,14 +59,32 @@ add_executable(Valorant-Vision
     "cpp/main.cpp"
     "cpp/videoplayer.cpp"
     "cpp/mainwindow.cpp"
+    "cpp/mainwindow_teams.cpp"
+    "cpp/mainwindow_video.cpp"
     "cpp/LogBar.cpp"
     "cpp/minimap.cpp"
+    "cpp/minimap_detection.cpp"
     "cpp/neuralnetwork.cpp"
     "cpp/Mapdetector.cpp"
     "cpp/modelwrapper.cpp"
     "cpp/ocr.cpp"
+    "cpp/ocr_frame.cpp"
+    "cpp/ocr_replay_spike.cpp"
+    "cpp/ocr_teams.cpp"
+    "cpp/ocr_scores.cpp"
+    "cpp/ocr_round_timer.cpp"
+    "cpp/ocr_text.cpp"
+    "cpp/ocr_killfeed_matching.cpp"
+    "cpp/ocr_killfeed.cpp"
+    "cpp/ocr_killer_agents.cpp"
+    "cpp/ocr_assists.cpp"
+    "cpp/ocr_victim_agents.cpp"
+    "cpp/ocr_kill_events.cpp"
     "cpp/webScraper.cpp"
+    "cpp/webScraper_refresh.cpp"
     "cpp/playertracker.cpp"
+    "cpp/playertracker_stats.cpp"
+    "cpp/playertracker_assists.cpp"
     "cpp/playerstatswidget.cpp"
     "cpp/killfeedagentmatcher.cpp"
     "cpp/assistcandidatematcher.cpp"
@@ -75,6 +93,7 @@ add_executable(Valorant-Vision
     "headers/minimap.h"
     "headers/mainwindow.h"
     "headers/ocr.h"
+    "headers/ocr_layout_internal.h"
     "headers/playertracker.h"
     "headers/playerstatswidget.h"
     "headers/killfeedagentmatcher.h"
@@ -169,6 +188,15 @@ add_custom_command(TARGET Valorant-Vision POST_BUILD
 )
 
 
+# The 159 MB detection model is intentionally excluded from source-only ZIPs.
+# Its original copy is needed for full application builds.
+if(NOT EXISTS "${CMAKE_SOURCE_DIR}/model/faster_rcnn.onnx")
+    message(FATAL_ERROR
+        "Missing model/faster_rcnn.onnx. Copy this 159 MB file from your "
+        "original Valorant-Vision-clean/model directory into this project's "
+        "model directory before configuring/building the application.")
+endif()
+
 # Copy over singular files
 foreach(DLL
     "${CMAKE_SOURCE_DIR}/model/id_to_name.json"
@@ -230,6 +258,8 @@ add_custom_command(TARGET assist_detection_test POST_BUILD
 add_executable(playertracker_test
     assist_detection_test/test_playertracker.cpp
     cpp/playertracker.cpp
+    cpp/playertracker_stats.cpp
+    cpp/playertracker_assists.cpp
     headers/playertracker.h
 )
 
@@ -250,3 +280,19 @@ target_link_libraries(playertracker_test PRIVATE
 
 
 
+
+# ----------------------------------------------------------
+# Live OCR -> PlayerTracker assist integration smoke tests
+# ----------------------------------------------------------
+add_executable(assist_pipeline_test
+    assist_detection_test/assist_pipeline_test.cpp
+    cpp/playertracker.cpp
+    cpp/playertracker_stats.cpp
+    cpp/playertracker_assists.cpp
+    headers/playertracker.h
+)
+set_target_properties(assist_pipeline_test PROPERTIES AUTOMOC ON)
+target_include_directories(assist_pipeline_test PRIVATE
+    "${CMAKE_CURRENT_SOURCE_DIR}/headers"
+)
+target_link_libraries(assist_pipeline_test PRIVATE Qt6::Core)

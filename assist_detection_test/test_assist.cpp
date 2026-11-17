@@ -585,7 +585,7 @@ int main(int argc, char* argv[]) {
     // ==========================================
 
     std::vector<std::string> colors = {
-    "teal"
+    "red"
     };
 
     std::vector<int> sizes = {

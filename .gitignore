@@ -1,1 +1,42 @@
-CMakeUserPresets.json 
+# Build outputs and editor state
+out/
+build/
+.vs/
+.idea/
+__pycache__/
+*.pyc
+
+# Runtime images, logs and experiments (generated, not source assets)
+/agent_debug/
+/kill_debug_*.png
+/spike_*debug*.png
+/spike_trigger_*.png
+/ocr_processed_*.png
+/team_*debug*.png
+/team_character_boxes_*.png
+/team_individual_character_*.png
+/team_left_debug.png
+/team_right_debug.png
+/score_left_debug.png
+/score_right_debug.png
+/rejected_score_*.png
+/killfeed_debug_*.png
+*.log
+*.bak
+*.zip
+
+# Local presets are environment-specific, but preserve the supplied file
+# in this delivery because existing configure presets inherit from it.
+
+/model/faster_rcnn.onnx
+
+# Local CMake configuration
+/CMakeUserPresets.json
+
+# Temporary patch utilities and template backups
+/team_timeout_patch/
+/viper_backup_*/
+
+# Generated assist-test images; keep the default test fixture
+/assist_detection_test/*.png
+!/assist_detection_test/test.png

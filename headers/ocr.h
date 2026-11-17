@@ -10,6 +10,7 @@
 #include "assistcandidatematcher.h"
 #include <tesseract/baseapi.h>
 #include <leptonica/allheaders.h>
+#include <filesystem>
 #include <string>
 #include <vector>
 #include <unordered_set>
@@ -75,6 +76,16 @@ signals:
         QString killerName,
         QString victimTeam,
         QString victimName
+    );
+
+    // One detected assisting agent on one unique kill event.
+    // During this integration pass, the icon/agent match is assumed correct.
+    void assistEventDetected(
+        QString eventId,
+        QString killerTeam,
+        QString killerName,
+        QString victimName,
+        QString assistingAgent
     );
 
     // Send detected agent information to PlayerTracker.
@@ -151,6 +162,9 @@ private:
     std::string rightTeamName;
 
     std::unordered_set<std::string> seenKills;
+    // Wait until the new-round timer is visible before clearing old
+    // kill signatures, because old killfeed rows linger after the score changes.
+    bool awaitingNewRoundKillfeed = false;
 
     // Store the previous image for each killfeed row.
 //
@@ -240,7 +254,25 @@ private:
     KillEvent resolve_killfeed_whole(const std::string& raw,
                                      const std::vector<std::string>& players,
                                      bool player_list_valid);
+    // Frame-level orchestration; each stage is a focused translation unit.
     void processFrame(const cv::Mat& frame);
+    void processReplayAndSpike(const cv::Mat& frame, int img_w, int img_h);
+    void processTeamDetection(const cv::Mat& frame, int img_w, int img_h);
+    void processScores(const cv::Mat& frame, int img_w, int img_h, double now);
+    void processRoundTimer(const cv::Mat& frame, int img_w, int img_h);
+    void processKillfeedRows(const cv::Mat& frame, int img_w, int img_h, qint64 frameId);
+    void processKillerObservation(const cv::Mat& frame, const cv::Rect& roi,
+                                  const KillEvent& evt, qint64 frameId, int row, int img_w);
+    void detectAssistAgents(const cv::Mat& feedRow, const KillEvent& evt,
+                            qint64 frameId, int row,
+                            const std::filesystem::path& debugDir,
+                            const std::string& id, cv::Mat& annotated,
+                            const cv::Rect& observedMatchedPortrait,
+                            const cv::Rect& observedPortrait);
+    void processVictimObservation(const cv::Mat& frame, const cv::Rect& roi,
+                                  const KillEvent& evt, qint64 frameId);
+    void saveKillfeedExample(const cv::Mat& frame, const cv::Rect& roi, const KillEvent& evt);
+    void emitKillIfNew(const KillEvent& evt);
 };
 
 #endif

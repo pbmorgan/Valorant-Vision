@@ -1,4 +1,4 @@
-#include "../headers/mapdetector.h"
+#include "../headers/Mapdetector.h"
 
 #include <opencv2/opencv.hpp>
 #include <tesseract/baseapi.h>
