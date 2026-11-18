@@ -24,7 +24,27 @@ find_package(Tesseract CONFIG REQUIRED)
 find_package(Leptonica CONFIG REQUIRED)
 find_package(CURL CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
-find_package(onnxruntime CONFIG REQUIRED)
+#find_package(onnxruntime CONFIG REQUIRED) If you want to use vcpkg, uncomment this line and comment out the FetchContent section below. However, as of 2026/11/17, the onnxruntime repo is gone, so we are using FetchContent to download it from NuGet instead.
+
+# Download and link ONNX Runtime from NuGet instead of vcpkg because as of right now the onnxruntime repo is gone??? 2026/11/17
+include(FetchContent)
+
+FetchContent_Declare(
+    ort_nuget
+    URL "https://api.nuget.org/v3-flatcontainer/microsoft.ml.onnxruntime/1.32.0/microsoft.ml.onnxruntime.1.32.0.nupkg"
+    DOWNLOAD_NAME "onnxruntime-1.32.0.zip"
+    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+)
+FetchContent_MakeAvailable(ort_nuget)
+
+set(ort_native_dir "${ort_nuget_SOURCE_DIR}/runtimes/win-x64/native")
+
+add_library(onnxruntime::onnxruntime SHARED IMPORTED)
+set_target_properties(onnxruntime::onnxruntime PROPERTIES
+    INTERFACE_INCLUDE_DIRECTORIES "${ort_nuget_SOURCE_DIR}/build/native/include"
+    IMPORTED_IMPLIB "${ort_native_dir}/onnxruntime.lib"
+    IMPORTED_LOCATION "${ort_native_dir}/onnxruntime.dll"
+)
 
 include(FetchContent)
 
@@ -57,6 +77,14 @@ add_executable(Valorant-Vision
     "headers/minimap.h"
     "headers/mainwindow.h"
     "headers/ocr.h"
+)
+
+# Copy the ONNX Runtime DLL to the output directory. Comment this out if you are using vcpkg to manage onnxruntime, as it will handle the DLL copying for you. 2026/11/17
+add_custom_command(TARGET Valorant-Vision POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "$<TARGET_FILE:onnxruntime::onnxruntime>"
+        "$<TARGET_FILE_DIR:Valorant-Vision>"
+    VERBATIM
 )
 
 # Lets us just include the files without having to specify relative path
