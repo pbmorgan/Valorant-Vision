@@ -17,6 +17,7 @@ class ModelWrapper {
 private:
 
 	NeuralNetwork* model = nullptr;
+	NeuralNetwork* utilityModel = nullptr; // Separate ability detector; agent model stays intact.
 
 	// Background thread that runs neural-network inference.
 	std::thread loopThread;
@@ -52,6 +53,7 @@ private:
 
 	// Stores the most recently completed neural-network prediction.
 	Eigen::MatrixXf latestResult;
+	Eigen::MatrixXf latestUtilityResult;
 
 
 	// Worker loop used by the neural-network thread.
@@ -75,6 +77,7 @@ public:
 
 	// Returns the most recently completed neural-network result.
 	Eigen::MatrixXf getLatestFrameData();
+	Eigen::MatrixXf getLatestUtilityData();
 };
 
 #endif

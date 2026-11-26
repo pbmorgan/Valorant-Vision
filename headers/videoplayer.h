@@ -64,6 +64,7 @@ public:
 
 signals:
 	void frameChanged(Eigen::MatrixXf frameData);
+	void utilitiesChanged(Eigen::MatrixXf utilityData);
 	void videoPlaying(qint64 positionMs);
 	void videoPaused();
 	void videoPositionChanged(qint64 positionMs);

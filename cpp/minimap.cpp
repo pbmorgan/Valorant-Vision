@@ -4,6 +4,8 @@
 
 #include <fstream>
 #include <algorithm>
+#include <cmath>
+#include <utility>
 
 Minimap::Minimap(QWidget *parentAddress)
     : QDockWidget("Minimap", parentAddress)
@@ -53,11 +55,39 @@ Minimap::Minimap(QWidget *parentAddress)
         cv::resize(img, resizedImg, cv::Size(16, 16)); //This isn't *really* hardcoding, as this will get layered onto the image when it's resized to match the model's predictions
         agentIcons.push_back(resizedImg);
     }
+    // ABILITY_BETA_INTEGRATION: names are indexed by their utility class ID.
+    std::ifstream utilsFile("utility_id_to_name.json");
+    if (utilsFile.is_open())
+    {
+        try
+        {
+            auto entries = nlohmann::json::parse(utilsFile);
+            utilityNames.resize(1); // class 0 is background
+            for (const auto& entry : entries)
+            {
+                int id = entry.at("id").get<int>();
+                if (id <= 0 || id > 100) continue;
+                if (static_cast<size_t>(id) >= utilityNames.size())
+                    utilityNames.resize(id + 1);
+                utilityNames[id] = entry.at("name").get<std::string>();
+            }
+        }
+        catch (const std::exception& e)
+        {
+            qWarning("Minimap: invalid utility_id_to_name.json: %s", e.what());
+        }
+    }
+    else
+    {
+        qWarning("Minimap: utility_id_to_name.json missing; displaying utility IDs.");
+    }
 }
 
 void Minimap::loadImage(const QString& filePath)
 {
     mapFile = filePath;
+    lastPredictions.resize(0, 0);
+    lastUtilityPredictions.resize(0, 0);
 
     if (!pixmap.load(filePath)) {
         // loads split as default if path error
@@ -99,72 +129,114 @@ QPixmap Minimap::cvMatToQPixmap(const cv::Mat &inMat) {
     return QPixmap::fromImage(qtImage).copy();
 }
 
-void Minimap::redrawAgents(Eigen::MatrixXf frameData) {
-
-    //Don't redraw if there are no predictions or if the predictions are unchanged from the last frame
-    if (frameData.rows() == 0) { return; }
-    if ((frameData.rows() == lastPredictions.rows()) && 
-        (frameData.cols() == lastPredictions.cols()) &&  
-        (frameData.isApprox(lastPredictions))) { return; }
-
-    //Store the new predictions as the last predictions for then ext frame
+// ABILITY_BETA_INTEGRATION: cache both models' results and render them together.
+void Minimap::redrawAgents(Eigen::MatrixXf frameData)
+{
+    if (frameData.rows() == lastPredictions.rows() &&
+        frameData.cols() == lastPredictions.cols() &&
+        (frameData.size() == 0 || frameData.isApprox(lastPredictions))) return;
     lastPredictions = frameData;
-
-    //Reload the original minimap
-    cv::Mat image = cv::imread(mapFile.toStdString());
-    cv::Mat resizedImg;
-    cv::resize(image, resizedImg, cv::Size(384, 384)); //Resize to 384x384 since that's what the model's predictions are based on
-
-
-    for (int i = 0; i < frameData.rows(); i++) {
-
-        //Get prediction data
-        int xmin = frameData(i, 0);
-        int ymin = frameData(i, 1);
-        int xmax = frameData(i, 2);
-        int ymax = frameData(i, 3);
-        int trackID = frameData(i, 4);
-        int classID = frameData(i, 6);
-
-        //Get the right agent
-        cv::Mat agent = agentIcons[classID];
-
-        std::vector<cv::Mat> channels;
-        cv::split(agent, channels);
-
-        cv::Mat alpha;
-        alpha = channels[3]; // Extract the 4th channel
-        cv::Mat bgr_foreground;
-        cv::merge(std::vector<cv::Mat>{channels[0], channels[1], channels[2]}, bgr_foreground);
-
-        //If the area to draw on is OOB, don't do it (should change it later to just shift it to fit within bounds) 
-        if (xmin < 0 || ymin < 0 || xmin + agent.cols > resizedImg.cols || ymin + agent.rows > resizedImg.rows) {
-            continue;
-        }
-        cv::Rect rect(xmin, ymin, agent.cols, agent.rows);
-        cv::Mat ROI = resizedImg(rect);
-
-        bgr_foreground.copyTo(ROI, alpha);
-
-       // cv::String text = std::to_string(trackID);
-       // cv::putText(resizedImg, text, cv::Point(xmin, ymin - 10), cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(0, 0, 0), 3, cv::LINE_AA);
-       // cv::putText(resizedImg, text, cv::Point(xmin, ymin - 10), cv::FONT_HERSHEY_SIMPLEX, 0.4, cv::Scalar(0, 255, 0), 2, cv::LINE_AA);
-    }
-
-    // Update the displayed minimap
-    QPixmap newPixmap = cvMatToQPixmap(resizedImg);
-    if (!pixmap.isNull()) {
-        newPixmap = newPixmap.scaled(minimap_wid->size(),
-            Qt::KeepAspectRatio,
-            Qt::SmoothTransformation);
-    }
-
-    if (newPixmap.toImage() != pixmap.toImage()) {
-        pixmap = newPixmap;
-        minimap_wid->setPixmap(pixmap);
-    }
-
+    renderPredictions();
 }
+
+void Minimap::redrawUtilities(Eigen::MatrixXf utilityData)
+{
+    if (utilityData.rows() == lastUtilityPredictions.rows() &&
+        utilityData.cols() == lastUtilityPredictions.cols() &&
+        (utilityData.size() == 0 || utilityData.isApprox(lastUtilityPredictions))) return;
+    lastUtilityPredictions = utilityData;
+    renderPredictions();
+}
+
+void Minimap::renderPredictions()
+{
+    if (mapFile.isEmpty()) return;
+    cv::Mat background = cv::imread(mapFile.toStdString());
+    if (background.empty()) return;
+    cv::Mat image;
+    cv::resize(background, image, cv::Size(384, 384));
+
+    // Keep the original agent rendering behavior (with safety checks).
+    if (lastPredictions.cols() >= 7)
+    {
+        for (int i = 0; i < lastPredictions.rows(); ++i)
+        {
+            int x = static_cast<int>(lastPredictions(i, 0));
+            int y = static_cast<int>(lastPredictions(i, 1));
+            int classID = static_cast<int>(lastPredictions(i, 6));
+            if (classID <= 0 || static_cast<size_t>(classID) >= agentIcons.size()) continue;
+            const cv::Mat& agent = agentIcons[classID];
+            if (agent.empty()) continue;
+            if (x < 0 || y < 0 || x + agent.cols > image.cols || y + agent.rows > image.rows) continue;
+            cv::Mat destination = image(cv::Rect(x, y, agent.cols, agent.rows));
+            if (agent.channels() == 4)
+            {
+                std::vector<cv::Mat> channels;
+                cv::split(agent, channels);
+                cv::Mat bgr;
+                cv::merge(std::vector<cv::Mat>{channels[0], channels[1], channels[2]}, bgr);
+                bgr.copyTo(destination, channels[3]);
+            }
+            else if (agent.channels() == 3)
+            {
+                agent.copyTo(destination);
+            }
+        }
+    }
+
+    // The utility model returns x1, y1, x2, y2, score, classID.
+    // Boxes are intentionally left as a baseline visualization; accuracy is not final.
+    std::vector<std::pair<float, int>> matches;
+    if (lastUtilityPredictions.cols() >= 6)
+    {
+        for (int i = 0; i < lastUtilityPredictions.rows(); ++i)
+        {
+            float score = lastUtilityPredictions(i, 4);
+            int id = static_cast<int>(lastUtilityPredictions(i, 5));
+            if (std::isfinite(score) && score >= 0.75f && id > 0 && id <= 11)
+                matches.emplace_back(score, i);
+        }
+    }
+    std::sort(matches.begin(), matches.end(),
+        [](const auto& a, const auto& b) { return a.first > b.first; });
+
+    int rendered = 0;
+    for (const auto& match : matches)
+    {
+        if (rendered >= 12) break; // Avoid overwhelming the minimap with boxes.
+        int i = match.second;
+        int id = static_cast<int>(lastUtilityPredictions(i, 5));
+        float fx1 = lastUtilityPredictions(i, 0);
+        float fy1 = lastUtilityPredictions(i, 1);
+        float fx2 = lastUtilityPredictions(i, 2);
+        float fy2 = lastUtilityPredictions(i, 3);
+        if (!std::isfinite(fx1) || !std::isfinite(fy1) ||
+            !std::isfinite(fx2) || !std::isfinite(fy2)) continue;
+        int x1 = std::clamp(static_cast<int>(fx1), 0, 383);
+        int y1 = std::clamp(static_cast<int>(fy1), 0, 383);
+        int x2 = std::clamp(static_cast<int>(fx2), 0, 383);
+        int y2 = std::clamp(static_cast<int>(fy2), 0, 383);
+        if (x2 <= x1 || y2 <= y1) continue;
+
+        cv::rectangle(image, cv::Rect(x1, y1, x2 - x1, y2 - y1),
+                      cv::Scalar(0, 215, 255), 2);
+        std::string label = "Utility " + std::to_string(id);
+        if (static_cast<size_t>(id) < utilityNames.size() && !utilityNames[id].empty())
+            label = utilityNames[id];
+        cv::putText(image, label, cv::Point(x1, std::max(12, y1 - 3)),
+                    cv::FONT_HERSHEY_SIMPLEX, 0.33, cv::Scalar(0, 0, 0), 2);
+        cv::putText(image, label, cv::Point(x1, std::max(12, y1 - 3)),
+                    cv::FONT_HERSHEY_SIMPLEX, 0.33, cv::Scalar(0, 215, 255), 1);
+        ++rendered;
+    }
+
+    QPixmap newPixmap = cvMatToQPixmap(image);
+    newPixmap = newPixmap.scaled(minimap_wid->size(), Qt::KeepAspectRatio,
+                                 Qt::SmoothTransformation);
+    pixmap = newPixmap;
+    minimap_wid->setPixmap(pixmap);
+}
+
 //:mapFile
 QString Minimap::checkMap(const cv::Mat& inputFrame)
 {

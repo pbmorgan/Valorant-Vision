@@ -1,1 +1,9 @@
 CMakeUserPresets.json 
+
+# Generated during ability training / local builds
+/out/
+/model/dataset/
+/model/prediction_preview_*.png
+/model/comparison_*.png
+/model/lightning_logs/
+/model/utility_rcnn_weights_before_resume.pth

@@ -29,7 +29,8 @@ if __name__ == "__main__":
         data_name = f"{i:04d}"
         generator.generate_data(data_name, is_train=True)
 
-    generator.save_coco(is_train=True)
+    generator.save_coco(generator.agent_coco_data, 'agents', is_train=True)
+    generator.save_coco(generator.utility_coco_data, 'utilities', is_train=True)
 
     print("Finished generating training images")
     print("Starting validation image generation...")
@@ -45,9 +46,11 @@ if __name__ == "__main__":
     print("Finished generating validation images")
     
     print("Creating COCO file...")
-    generator.save_coco(is_train=False)
+    generator.save_coco(generator.agent_coco_data, 'agents', is_train=False)
+    generator.save_coco(generator.utility_coco_data, 'utilities', is_train=False)
     print("COCO file created")
-    generator.output_id_to_name_mapping()
+    generator.output_id_to_name_mapping(generator.agent_class_ids, 'id_to_name.json')
+    generator.output_id_to_name_mapping(generator.utility_class_ids, 'utility_id_to_name.json')
     print("Finished :)")
 
 

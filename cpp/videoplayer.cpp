@@ -276,5 +276,6 @@ void VideoPlayer::onFrameChange(qint64 NthMillisecond)
 
 	// Send the newest prediction to the minimap widget.
 	emit frameChanged(results);
+	emit utilitiesChanged(modelWrapper.getLatestUtilityData());
 }
 

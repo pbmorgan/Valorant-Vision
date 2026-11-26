@@ -1,6 +1,7 @@
 #include "modelwrapper.h"
 
 #include <iostream>
+#include <filesystem>
 
 ModelWrapper::ModelWrapper()
 {
@@ -14,6 +15,8 @@ ModelWrapper::~ModelWrapper()
 
 	delete model;
 	model = nullptr;
+	delete utilityModel;
+	utilityModel = nullptr;
 }
 
 
@@ -134,6 +137,30 @@ void ModelWrapper::loop()
 				std::lock_guard<std::mutex> guard(resultLock);
 				latestResult = results;
 			}
+
+            // ABILITY_BETA_INTEGRATION: optional SECOND model on the same minimap crop.
+            // Do not replace the agent detections with ability detections.
+            if (utilityModel != nullptr)
+            {
+                try
+                {
+                    utilityModel->predict(croppedFrame);
+                    Eigen::MatrixXf abilities = utilityModel->getCurrentPrediction();
+                    {
+                        std::lock_guard<std::mutex> guard(resultLock);
+                        latestUtilityResult = abilities;
+                    }
+                    int confident = 0;
+                    for (int i = 0; i < abilities.rows(); ++i)
+                        if (abilities(i, 4) >= 0.75f) ++confident;
+                    std::cout << "[Utilities] Raw: " << abilities.rows()
+                              << " | Above 0.75: " << confident << std::endl;
+                }
+                catch (const std::exception& e)
+                {
+                    std::cerr << "[Utilities] Inference failed: " << e.what() << std::endl;
+                }
+            }
 		}
 		catch (const Ort::Exception& e)
 		{
@@ -204,6 +231,28 @@ void ModelWrapper::startProcessingLoop()
 	}
 
 
+    // ABILITY_BETA_INTEGRATION: missing or invalid ability model must NOT stop agents.
+    if (utilityModel == nullptr)
+    {
+        if (std::filesystem::exists("utility_rcnn.onnx"))
+        {
+            try
+            {
+                utilityModel = new NeuralNetwork(T_TEXT("utility_rcnn.onnx"), 384, 384);
+                std::cout << "[Utilities] ONNX model loaded." << std::endl;
+            }
+            catch (const std::exception& e)
+            {
+                std::cerr << "[Utilities] Could not load model: " << e.what() << std::endl;
+                utilityModel = nullptr;
+            }
+        }
+        else
+        {
+            std::cerr << "[Utilities] utility_rcnn.onnx not found; agent-only mode." << std::endl;
+        }
+    }
+
 	// Remove any frame left over from the previous video.
 	{
 		std::lock_guard<std::mutex> guard(frameLock);
@@ -218,6 +267,7 @@ void ModelWrapper::startProcessingLoop()
 		std::lock_guard<std::mutex> guard(resultLock);
 
 		latestResult = Eigen::MatrixXf();
+		latestUtilityResult = Eigen::MatrixXf();
 	}
 
 
@@ -318,4 +368,10 @@ Eigen::MatrixXf ModelWrapper::getLatestFrameData()
 	std::lock_guard<std::mutex> guard(resultLock);
 
 	return latestResult;
+}
+// ABILITY_BETA_INTEGRATION: called by the Qt video UI thread.
+Eigen::MatrixXf ModelWrapper::getLatestUtilityData()
+{
+    std::lock_guard<std::mutex> guard(resultLock);
+    return latestUtilityResult;
 }

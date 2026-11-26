@@ -26,6 +26,10 @@ private:
 
 	std::vector<std::string> idToName;
 	std::vector<cv::Mat> agentIcons;
+	std::vector<std::string> utilityNames;
+
+	Eigen::MatrixXf lastUtilityPredictions;
+	void renderPredictions();
 
 	Eigen::MatrixXf lastPredictions; //We store this so that we don't have to redraw the minimap if nothing has changed
 
@@ -40,6 +44,7 @@ public:
 	void resizeEvent(QResizeEvent *event);
 
 	void redrawAgents(Eigen::MatrixXf frameData);
+	void redrawUtilities(Eigen::MatrixXf utilityData);
 
 	// Image Detection 2.0
 	// Returns the detected map layout path.

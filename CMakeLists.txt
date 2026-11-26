@@ -126,6 +126,8 @@ foreach(DLL
     "${CMAKE_SOURCE_DIR}/model/id_to_name.json"
     "${CMAKE_SOURCE_DIR}/model/osnet_x1_0_dukemtmcreid.onnx"
     "${CMAKE_CURRENT_SOURCE_DIR}/model/faster_rcnn.onnx"
+    "${CMAKE_CURRENT_SOURCE_DIR}/model/utility_rcnn.onnx"
+    "${CMAKE_CURRENT_SOURCE_DIR}/model/utility_id_to_name.json"
 
 )
     add_custom_command(TARGET Valorant-Vision POST_BUILD
