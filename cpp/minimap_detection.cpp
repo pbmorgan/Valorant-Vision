@@ -21,7 +21,7 @@ QString Minimap::checkMap(const cv::Mat& inputFrame)
     // Use 35% of the video's height.
     // At 1080p, this gives us about a 378x378 region.
     // Crop the part of the top-left corner where
-// the Valorant broadcast minimap is located.
+    // the Valorant broadcast minimap is located.
     int x = static_cast<int>(inputFrame.cols * 0.02);
     int y = static_cast<int>(inputFrame.rows * 0.04);
 

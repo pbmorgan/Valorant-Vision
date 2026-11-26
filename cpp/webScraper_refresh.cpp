@@ -198,11 +198,8 @@ bool WebScraper::refreshRegions(
     }
 
     // Check players.txt for the OLD format:
-    //
     // TEAM PLAYER
-    //
     // The new format is:
-    //
     // REGION|TEAM|PLAYER
     {
         std::ifstream file(playersFilePath());
@@ -235,9 +232,7 @@ bool WebScraper::refreshRegions(
 
     // There is also a case where the old database may have
     // already been rewritten as:
-    //
     // Unknown|TEAM|PLAYER
-    //
     // If every player is still Unknown, treat the database
     // as needing the initial full migration.
     if (!originalPlayers.empty() && !hasKnownRegion)
@@ -250,7 +245,6 @@ bool WebScraper::refreshRegions(
 
     // Because the old players.txt did not contain region information,
     // we cannot safely refresh only one region the first time.
-    //
     // The user must select every region once to migrate the database
     // into the new REGION|TEAM|PLAYER format.
     if (hasLegacyRecords &&

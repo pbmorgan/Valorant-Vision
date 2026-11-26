@@ -574,8 +574,8 @@ void OCRDetector::processTeamDetection(const cv::Mat& frame, int img_w, int img_
         // Temporary OCR debugging:
         // Save the exact left and right team-name crops so we can verify
         // whether the ROI coordinates actually contain the team abbreviations.
-        cv::imwrite("team_left_debug.png", frame(lr));
-        cv::imwrite("team_right_debug.png", frame(rr));
+        //cv::imwrite("team_left_debug.png", frame(lr));
+        //cv::imwrite("team_right_debug.png", frame(rr));
 
         // Read the raw OCR text from each team-name region first.
         // This helps us determine whether the problem comes from Tesseract/cropping

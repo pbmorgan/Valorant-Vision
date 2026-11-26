@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.24)
 
 # Choose the vcpkg toolchain.
 # Prefer the user's standalone vcpkg installation when available.
@@ -37,9 +37,35 @@ find_package(Tesseract CONFIG REQUIRED)
 find_package(Leptonica CONFIG REQUIRED)
 find_package(CURL CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
-find_package(onnxruntime CONFIG REQUIRED)
 
+# ONNX Runtime is downloaded from NuGet instead of vcpkg.
 include(FetchContent)
+
+FetchContent_Declare(
+    ort_nuget
+    URL "https://api.nuget.org/v3-flatcontainer/microsoft.ml.onnxruntime/1.32.0/microsoft.ml.onnxruntime.1.32.0.nupkg"
+    DOWNLOAD_EXTRACT_TIMESTAMP TRUE
+)
+
+FetchContent_MakeAvailable(ort_nuget)
+
+# Location of the Windows 64-bit ONNX Runtime libraries
+set(ort_native_dir
+    "${ort_nuget_SOURCE_DIR}/runtimes/win-x64/native"
+)
+
+# Register ONNX Runtime as an imported library
+add_library(onnxruntime::onnxruntime SHARED IMPORTED)
+
+set_target_properties(onnxruntime::onnxruntime PROPERTIES
+    INTERFACE_INCLUDE_DIRECTORIES
+        "${ort_nuget_SOURCE_DIR}/build/native/include"
+    IMPORTED_IMPLIB
+        "${ort_native_dir}/onnxruntime.lib"
+    IMPORTED_LOCATION
+        "${ort_native_dir}/onnxruntime.dll"
+)
+
 
 if(MSVC)
     set(YAML_MSVC_SHARED_RT ON CACHE BOOL "" FORCE)
@@ -118,6 +144,15 @@ target_link_libraries(Valorant-Vision PUBLIC
     leptonica
     CURL::libcurl
 )
+
+# Copy the downloaded ONNX Runtime DLL beside the executable.
+add_custom_command(TARGET Valorant-Vision POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "$<TARGET_FILE:onnxruntime::onnxruntime>"
+        "$<TARGET_FILE_DIR:Valorant-Vision>"
+    VERBATIM
+)
+
 
 # Copy the runtime DLLs to the output directory
 add_custom_command(TARGET Valorant-Vision POST_BUILD
