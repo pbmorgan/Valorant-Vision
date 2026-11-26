@@ -1,17 +1,14 @@
 Next steps:
 
-In it's current state, the model generates a synthetic map agents, drawn abilities, and ability icons.
-A smaller selection of icons were selected to be used in testing to prioritize functionality.
-The remaining icons are provided in the file labeled Val_icons. Additionally, files in Val_icons will need to be converted to png format. 
-Moving forward, I'd recommend creating a py file similar to add_agent for utilities. Add_agent was created to simplify the implementation 
-of new agents added. With each agent possessing numerous abilities, it would prove more tedious to implement going forward.
+In its current state, the model generates a synthetic map containing agents, drawn abilities, and ability icons.
+A smaller selection of icons was chosen for testing purposes in order to prioritize core functionality. The remaining icons are included in the file labeled Val_icons. Additionally, all files within Val_icons will need to be converted to PNG format. Moving forward, I would recommend creating a Python file similar to add_agent for utilities. The add_agent implementation was created to simplify the process of adding new agents. Since each agent possesses numerous abilities, managing utility implementation individually would become increasingly tedious over time.
 
-Secondly, the CoCo files of Agents and Utils are separate. This allows the information of neither to clutter the other. 
-The hope is that they can eventually run concurrently because of this. However, as of now, the Neural Network doesn't
-recognize the save of utilities_rcnn.onnx . This is because it is not copied over to release and remains in the model
-where it is not visible. I suggest you start here when moving forward for them appearing on the map. Due to this bug.
-The program was reverted to a state where everything still compiles and the model still creates all the data. When executed,
-the program will display Agent movement alone.
+Secondly, the COCO files for Agents and Utilities are kept separate. This prevents information from one dataset from cluttering the other and should eventually allow them to run concurrently. However, at the moment, the neural network does not recognize the utilities_rcnn.onnx model file. This occurs because it is not copied into the Release directory and instead remains in the Model folder, where it is not visible to the application.
 
-Minor improvement for drawn lines is stated inside image_generator. It is more of a performance improvement than a
-necessary one.
+I would suggest starting here when utilities are not appearing on the map. Due to utilities_rcnn.onnx not being copied into the Release directory, the program is unable to access the utility model and is effectively starved of utility data. Because of this, utility information is never displayed, even though the rest of the pipeline continues to function correctly. The program was therefore reverted to a state where everything still compiles successfully and the model continues to generate all required data. When executed, the program will currently display only agent movement. While utility_data is still collected, it is effectively unusable in its current state, as the utility model is never loaded and the data is therefore never surfaced within the application.
+
+A minor suggested improvement regarding drawn lines is noted within image_generator. This is primarily a performance optimization rather than a necessary change. Furthermore, this issue only occurs on one map, so it was deemed low priority.
+
+
+
+
