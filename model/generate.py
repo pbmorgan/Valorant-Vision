@@ -17,7 +17,7 @@ if __name__ == "__main__":
     current_dir = os.getcwd()
     generator = ImageGenerator(agent_icon_path=current_dir+"/agent_icons", 
                             minimap_path=current_dir+"/map_layouts",
-                            misc_icon_path=current_dir+"/misc_icons")
+                            misc_icon_path=current_dir+"/utility_icons_training")
 
     print("Starting training image generation...")
 
@@ -29,7 +29,8 @@ if __name__ == "__main__":
         data_name = f"{i:04d}"
         generator.generate_data(data_name, is_train=True)
 
-    generator.save_coco(is_train=True)
+    generator.save_coco(generator.agent_coco_data, 'agents', is_train=True)
+    generator.save_coco(generator.utility_coco_data, 'utilities', is_train=True)
 
     print("Finished generating training images")
     print("Starting validation image generation...")
@@ -45,9 +46,11 @@ if __name__ == "__main__":
     print("Finished generating validation images")
     
     print("Creating COCO file...")
-    generator.save_coco(is_train=False)
+    generator.save_coco(generator.agent_coco_data, 'agents', is_train=False)
+    generator.save_coco(generator.utility_coco_data, 'utilities', is_train=False)
     print("COCO file created")
-    generator.output_id_to_name_mapping()
+    # Mapping files are versioned; don't overwrite them during generation.
+    # See model/id_to_name.json and model/utility_id_to_name.json.
     print("Finished :)")
 
 

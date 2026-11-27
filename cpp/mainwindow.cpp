@@ -234,6 +234,7 @@ MainWindow::MainWindow() :
     //Connect frame data (minimap icon predictions) to the minimap widget
     // // TEMP TEST: disable minimap updates
     connect(player, &VideoPlayer::frameChanged, minimap_wid, &Minimap::redrawAgents);
+    connect(player, &VideoPlayer::utilitiesChanged, minimap_wid, &Minimap::redrawUtilities);
     
 
     QObject::connect(volumeSlider, &QSlider::valueChanged, this, [this](int value) {player->setVolume(value / 100.0f); });

@@ -30,8 +30,11 @@ private:
 
     std::vector<std::string> idToName;
     std::vector<cv::Mat> agentIcons;
+    std::vector<std::string> utilityIdToName;
+    std::vector<cv::Mat> utilityIcons;
 
     Eigen::MatrixXf lastPredictions; // We store this so that we don't have to redraw the minimap if nothing has changed
+    Eigen::MatrixXf lastUtilityPredictions;
 
     // Current match information displayed above/on the minimap.
     QString leftTeamName = "";
@@ -61,6 +64,7 @@ public:
     void resizeEvent(QResizeEvent* event);
 
     void redrawAgents(Eigen::MatrixXf frameData);
+    void redrawUtilities(Eigen::MatrixXf frameData);
 
     // Updates the current match score shown on the minimap.
     void updateScore(

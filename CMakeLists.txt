@@ -232,6 +232,29 @@ if(NOT EXISTS "${CMAKE_SOURCE_DIR}/model/faster_rcnn.onnx")
         "model directory before configuring/building the application.")
 endif()
 
+# --- Optional Ability Beta runtime files ---
+# Export utility_rcnn.onnx from model/util_rcnn_training.ipynb first.
+# A missing utility model should NOT prevent the existing application from building.
+add_custom_command(TARGET Valorant-Vision POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_SOURCE_DIR}/model/utility_id_to_name.json"
+        "$<TARGET_FILE_DIR:Valorant-Vision>/utility_id_to_name.json"
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_SOURCE_DIR}/model/utility_icons_training"
+        "$<TARGET_FILE_DIR:Valorant-Vision>/utility_icons"
+    VERBATIM
+)
+if(EXISTS "${CMAKE_SOURCE_DIR}/model/utility_rcnn.onnx")
+    add_custom_command(TARGET Valorant-Vision POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${CMAKE_SOURCE_DIR}/model/utility_rcnn.onnx"
+            "$<TARGET_FILE_DIR:Valorant-Vision>/utility_rcnn.onnx"
+        VERBATIM
+    )
+else()
+    message(STATUS "Ability Beta: utility_rcnn.onnx absent; building agent-only fallback")
+endif()
+
 # Copy over singular files
 foreach(DLL
     "${CMAKE_SOURCE_DIR}/model/id_to_name.json"

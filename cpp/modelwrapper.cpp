@@ -1,6 +1,7 @@
 #include "modelwrapper.h"
 
 #include <iostream>
+#include <filesystem>
 
 
 
@@ -16,6 +17,8 @@ ModelWrapper::~ModelWrapper()
 
 	delete model;
 	model = nullptr;
+	delete utilityModel;
+	utilityModel = nullptr;
 }
 
 
@@ -137,6 +140,50 @@ void ModelWrapper::loop()
 				std::lock_guard<std::mutex> guard(resultLock);
 				latestResult = results;
 			}
+
+            // Utility inference is optional. A broken/missing utility model must
+            // never stop the existing agent detector from working.
+            if (utilityModel != nullptr)
+            {
+                try
+                {
+                    utilityModel->predict(croppedFrame);
+					// Look at the utility model's predictions before filtering.
+					Eigen::MatrixXf rawUtilities =
+						utilityModel->getCurrentPrediction();
+
+					float highestScore = 0.0f;
+					int bestClassID = -1;
+
+					for (int i = 0; i < rawUtilities.rows(); i++)
+					{
+						float score = rawUtilities(i, 4);
+
+						if (score > highestScore)
+						{
+							highestScore = score;
+							bestClassID = static_cast<int>(rawUtilities(i, 5));
+						}
+					}
+
+					std::cout << "[Utilities] Raw: " << rawUtilities.rows()
+						<< " | Highest confidence: " << highestScore
+						<< " | Class ID: " << bestClassID
+						<< std::endl;
+                    Eigen::MatrixXf utilityResults = utilityModel->getCurrentTracking();
+                    std::lock_guard<std::mutex> guard(resultLock);
+                    latestUtilityResult = utilityResults;
+                }
+                catch (const std::exception& e)
+                {
+                    std::cerr << "[Utilities] Inference failed; disabling utility detector: "
+                              << e.what() << std::endl;
+                    delete utilityModel;
+                    utilityModel = nullptr;
+                    std::lock_guard<std::mutex> guard(resultLock);
+                    latestUtilityResult = Eigen::MatrixXf();
+                }
+            }
 		}
 		catch (const Ort::Exception& e)
 		{
@@ -207,6 +254,29 @@ void ModelWrapper::startProcessingLoop()
 	}
 
 
+    // Model exported by model/util_rcnn_training.ipynb.
+    // Keep the agent-only pipeline working if the utility weights are absent.
+    if (utilityModel == nullptr && std::filesystem::exists("utility_rcnn.onnx"))
+    {
+        try
+        {
+            utilityModel = new NeuralNetwork(T_TEXT("utility_rcnn.onnx"), 384, 384);
+            std::cout << "[Utilities] ONNX model loaded." << std::endl;
+        }
+        catch (const std::exception& e)
+        {
+            std::cerr << "[Utilities] Could not load utility_rcnn.onnx: "
+                      << e.what() << std::endl;
+            delete utilityModel;
+            utilityModel = nullptr;
+        }
+    }
+    else if (utilityModel == nullptr)
+    {
+        std::cout << "[Utilities] utility_rcnn.onnx not found; "
+                     "agent detection will continue normally." << std::endl;
+    }
+
 	// Remove any frame left over from the previous video.
 	{
 		std::lock_guard<std::mutex> guard(frameLock);
@@ -221,6 +291,7 @@ void ModelWrapper::startProcessingLoop()
 		std::lock_guard<std::mutex> guard(resultLock);
 
 		latestResult = Eigen::MatrixXf();
+		latestUtilityResult = Eigen::MatrixXf();
 	}
 
 
@@ -321,4 +392,11 @@ Eigen::MatrixXf ModelWrapper::getLatestFrameData()
 	std::lock_guard<std::mutex> guard(resultLock);
 
 	return latestResult;
+}
+
+// Return a copy protected by the same lock as the agent results.
+Eigen::MatrixXf ModelWrapper::getLatestUtilityData()
+{
+    std::lock_guard<std::mutex> guard(resultLock);
+    return latestUtilityResult;
 }

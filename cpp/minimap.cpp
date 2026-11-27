@@ -53,6 +53,41 @@ Minimap::Minimap(QWidget *parentAddress)
         cv::resize(img, resizedImg, cv::Size(16, 16)); //This isn't *really* hardcoding, as this will get layered onto the image when it's resized to match the model's predictions
         agentIcons.push_back(resizedImg);
     }
+
+    // Class IDs start at 1; position zero is the background class.
+    utilityIcons.push_back(cv::Mat());
+    std::ifstream utilityFile("utility_id_to_name.json");
+    if (utilityFile.is_open())
+    {
+        try
+        {
+            nlohmann::json utilityJson = nlohmann::json::parse(utilityFile);
+            for (const auto& entry : utilityJson)
+            {
+                int classID = entry.at("id").get<int>();
+                std::string name = entry.at("name").get<std::string>();
+
+                // Keep indices aligned with the model's class IDs.
+                if (classID != static_cast<int>(utilityIcons.size()))
+                {
+                    qWarning("Minimap: invalid sequential utility class ID");
+                    break;
+                }
+                utilityIdToName.push_back(name);
+                cv::Mat icon = cv::imread("utility_icons/" + name + ".png",
+                                          cv::IMREAD_UNCHANGED);
+                if (!icon.empty())
+                {
+                    cv::resize(icon, icon, cv::Size(18, 18));
+                }
+                utilityIcons.push_back(icon);
+            }
+        }
+        catch (const std::exception& e)
+        {
+            qWarning("Minimap: could not parse utility labels: %s", e.what());
+        }
+    }
 }
 
 void Minimap::loadImage(const QString& filePath)
@@ -191,6 +226,7 @@ void Minimap::setReplayActive(bool active)
         // Replay ended:
         // force the next live prediction to redraw.
         lastPredictions.resize(0, 0);
+        lastUtilityPredictions.resize(0, 0);
     }
 
     // Redraw the complete minimap.
@@ -229,6 +265,29 @@ void Minimap::redrawAgents(Eigen::MatrixXf frameData)
     redrawMinimap();
 }
 
+
+// Utility detections use exactly the same eight-column model output as agents.
+// Unlike the older agent path, an empty result clears old ability positions.
+void Minimap::redrawUtilities(Eigen::MatrixXf frameData)
+{
+    if (replayActive)
+    {
+        return;
+    }
+    if (frameData.rows() > 0 && frameData.cols() < 7)
+    {
+        return;
+    }
+    if (frameData.rows() == lastUtilityPredictions.rows() &&
+        frameData.cols() == lastUtilityPredictions.cols() &&
+        frameData.isApprox(lastUtilityPredictions))
+    {
+        return;
+    }
+    lastUtilityPredictions = frameData;
+    redrawMinimap();
+}
+
 void Minimap::redrawMinimap()
 {
     // Cannot draw anything until a map has been detected.
@@ -257,6 +316,77 @@ void Minimap::redrawMinimap()
 
 
     // --------------------------------------------------
+    // --------------------------------------------------
+    // Draw utility / ability detections UNDER agent icons.
+    // The model is separate from the agent Faster R-CNN.
+    // --------------------------------------------------
+    if (!replayActive && lastUtilityPredictions.cols() >= 7)
+    {
+        for (int i = 0; i < lastUtilityPredictions.rows(); ++i)
+        {
+            const int classID = static_cast<int>(lastUtilityPredictions(i, 6));
+            if (classID <= 0 || classID >= static_cast<int>(utilityIcons.size()))
+            {
+                continue;
+            }
+            const float confidence = lastUtilityPredictions(i, 5);
+            if (confidence < 0.55f)
+            {
+                continue;
+            }
+            const std::string& name = utilityIdToName[classID - 1];
+
+            // Apply the same minimap calibration used for agents.
+            auto mapX = [](float x) { return static_cast<int>(x * 1.10f + 6.0f); };
+            auto mapY = [](float y) { return static_cast<int>(y * 1.10f + 6.0f); };
+            const int x1 = std::clamp(mapX(lastUtilityPredictions(i, 0)), 0, 383);
+            const int y1 = std::clamp(mapY(lastUtilityPredictions(i, 1)), 0, 383);
+            const int x2 = std::clamp(mapX(lastUtilityPredictions(i, 2)), 0, 383);
+            const int y2 = std::clamp(mapY(lastUtilityPredictions(i, 3)), 0, 383);
+            if (x2 <= x1 || y2 <= y1)
+            {
+                continue;
+            }
+
+            const cv::Scalar utilityColor(0, 185, 255); // Orange: ability, not agent
+            const bool longEffect = name == "Wall" || name == "Blaze" ||
+                name == "HighTide" || name == "CosmicDivide" || name == "FstLane";
+            if (longEffect)
+            {
+                cv::rectangle(resizedImg, cv::Point(x1, y1), cv::Point(x2, y2),
+                              utilityColor, 2);
+                continue;
+            }
+
+            const int centerX = (x1 + x2) / 2;
+            const int centerY = (y1 + y2) / 2;
+            const cv::Mat& icon = utilityIcons[classID];
+            if (!icon.empty() && icon.channels() == 4)
+            {
+                const int left = centerX - icon.cols / 2;
+                const int top = centerY - icon.rows / 2;
+                if (left >= 0 && top >= 0 &&
+                    left + icon.cols <= resizedImg.cols &&
+                    top + icon.rows <= resizedImg.rows)
+                {
+                    std::vector<cv::Mat> channels;
+                    cv::split(icon, channels);
+                    cv::Mat bgr;
+                    cv::merge(std::vector<cv::Mat>{channels[0], channels[1], channels[2]}, bgr);
+                    bgr.copyTo(resizedImg(cv::Rect(left, top, icon.cols, icon.rows)), channels[3]);
+                    continue;
+                }
+            }
+
+            // For synthetic classes without PNG icons (smokes, veils, etc.),
+            // draw a readable marker instead of silently discarding detections.
+            cv::circle(resizedImg, cv::Point(centerX, centerY), 9, utilityColor, 2);
+            std::string label = name.substr(0, std::min<size_t>(3, name.size()));
+            cv::putText(resizedImg, label, cv::Point(centerX - 9, centerY - 13),
+                        cv::FONT_HERSHEY_SIMPLEX, 0.30, utilityColor, 1, cv::LINE_AA);
+        }
+    }
+
     // Draw agent icons
     // --------------------------------------------------
 

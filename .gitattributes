@@ -1,2 +1,4 @@
 model/faster_rcnn.onnx filter=lfs diff=lfs merge=lfs -text
 *.onnx filter=lfs diff=lfs merge=lfs -text
+model/utility_rcnn.onnx filter=lfs diff=lfs merge=lfs -text
+model/utility_rcnn_weights.pth filter=lfs diff=lfs merge=lfs -text

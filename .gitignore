@@ -40,3 +40,7 @@ __pycache__/
 # Generated assist-test images; keep the default test fixture
 /assist_detection_test/*.png
 !/assist_detection_test/test.png
+
+/model/utility_rcnn.onnx
+/model/utility_rcnn_weights.pth
+/model/dataset/
